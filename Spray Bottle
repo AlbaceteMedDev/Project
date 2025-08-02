@@ -1,0 +1,126 @@
+Here is the comprehensive design package for a motion‑activated spray device that an intern can build and demo within two weeks.
+
+## 1 Executive Summary
+
+A compact motion‑activated spray device was engineered using mostly off‑the‑shelf parts. An ESP8266 D1 Mini microcontroller monitors a PIR sensor for motion and a force‑sensitive resistor (FSR) for weight detection. Upon detecting movement or pressure, it triggers a small micro‑servo that depresses the nozzle of a 30 mL spray bottle for a short burst, with a built‑in 3‑s lockout to prevent repeated spraying. Power comes from a 3.7 V Li‑ion battery; a Micro‑LiPo charger keeps the cell topped up via USB‑C, and a PowerBoost board generates 5 V for the servo and sensor. A custom 3‑D‑printed enclosure keeps everything compact (120 × 80 × 50 mm) and includes screw bosses, magnet pockets and a PIR lens window. Firmware handles auto‑calibration of the FSR, threshold storage in EEPROM, lockout timing, and LED status indications. Total prototype cost is well below US \$90 (Aug 2025 prices).
+
+## 2 Bill of Materials (BOM)
+
+| Item                                                  | SKU / Part #                            | Qty | Unit price (Aug 2025) | Vendor & link                                                                                   | Notes                                                                                        |
+| ----------------------------------------------------- | --------------------------------------- | --- | --------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **ESP8266 D1 Mini WiFi Dev Board**                    | Addicore AD318                          | 1   | US \$6.99             | [Addicore](https://www.addicore.com/products/esp8266-d1-mini-wifi-dev-board) – price \$6.99     | Microcontroller with USB programming, 1 analog input, built‑in Wi‑Fi (for optional logging). |
+| **PIR Motion Sensor**                                 | Adafruit ID 189                         | 1   | US \$9.95             | [Adafruit](https://www.adafruit.com/product/189) – price \$9.95                                 | Detects motion up to \~7 m; adjustable sensitivity/delay.                                    |
+| **Round Force‑Sensitive Resistor (FSR)**              | Adafruit ID 166 (Alpha MF01A‑N‑221‑A01) | 1   | US \$3.95             | [Adafruit](https://www.adafruit.com/product/166) – price \$3.95                                 | Weight/pressure detection; used with resistor divider.                                       |
+| **TowerPro SG90 Micro Servo**                         | Grayson Hobby TP‑101                    | 1   | US \$2.99             | [Grayson Hobby](https://graysonhobby.com/towerpro-sg90-micro-servo.html) – special price \$2.99 | Drives spray nozzle; operates at 5 V; plastic gears.                                         |
+| **Lithium‑Ion Polymer Battery 3.7 V 1200 mAh**        | Adafruit ID 258                         | 1   | US \$9.95             | [Adafruit](https://www.adafruit.com/product/258) – price \$9.95                                 | Provides \~4.5 Wh of energy; comes with JST‑PH connector.                                    |
+| **Micro‑LiPo Charger (USB‑C)**                        | Adafruit ID 4410                        | 1   | US \$5.95             | [Adafruit](https://www.adafruit.com/product/4410) – price \$5.95                                | Charges Li‑ion battery via USB‑C; 100 mA default charge rate.                                |
+| **PowerBoost 500 Basic (5 V 500 mA boost converter)** | Adafruit ID 1903                        | 1   | US \$9.95             | [Adafruit](https://www.adafruit.com/product/1903) – price \$9.95                                | Boosts 3.7 V to stable 5 V for servo/PIR; includes low‑battery indicator.                    |
+| **Assorted resistors (10 kΩ & 100 kΩ)**               | generic                                 | 2   | \~US \$0.20           | Generic kit                                                                                     | Forms voltage divider for the FSR; any 1/4 W resistors suffice.                              |
+| **M3×10 mm screws & nuts**                            | generic                                 | 4   | \~US \$0.20           | Hardware store                                                                                  | Secure lid to body.                                                                          |
+| **30 mL spray bottle (reservoir)**                    | –                                       | 1   | n/a (reuse)           | –                                                                                               | Travel spray bottle reused; nozzle pressed by servo.                                         |
+| **Magnets or Velcro strips** (optional)               | generic                                 | 4   | \~US \$2.00           | –                                                                                               | Enables removable mounting; magnets drop into base pockets.                                  |
+
+*Prototype parts total ≈ US \$49.73 (< US \$90).*
+
+## 3 3‑D Prototype
+
+### Parametric CAD
+
+The enclosure is written in OpenSCAD. It includes the main body, partition, PIR window, screw bosses, magnet pockets and a removable lid.
+[device\_enclosure.scad]({{file:file-2YctVWWATnLZThpxCETgwb}})
+
+### Assembly exploded view (ASCII)
+
+```
+          ┌──────────── Lid ────────────┐
+          │  Screw holes & PIR opening  │
+          └──────────────────────────────┘
+          ┌──────── Spray compartment ───┐
+          │  30 mL bottle + servo mount  │
+          ├──────── Partition wall ──────┤
+          │  Electronics bay:            │
+          │  D1 mini, battery, charger,  │
+          │  PowerBoost & FSR wiring     │
+          └──────────── Base ────────────┘
+            ↑ magnet pockets on bottom
+```
+
+### Print settings
+
+* Material: PLA or PETG; nozzle 0.4 mm.
+* Layer height: 0.2 mm; 2 perimeters; 20–30 % infill.
+* Supports: none needed if printed upright.
+* Post‑processing: clear PIR lens opening of any stringing; press fit magnets/Velcro into pockets; attach servo with hot‑glue or small screws; mount FSR on foam pad for better weight sensitivity.
+
+## 4 System Block Diagram
+
+```
+ [Li‑ion battery]
+        │
+        ▼
+ [Micro‑LiPo charger]──USB‑C (for charging)
+        │
+        ▼  (3.7 V)
+ [PowerBoost 500 Basic]───5 V───►Servo (SG90)
+        │                   └─►PIR sensor Vcc
+        │
+        ▼ (5 V to VIN)
+ [ESP8266 D1 Mini]—FSR (A0)  ─ weight detect
+        │
+        ├─PIR digital (D5) ─ motion detect
+        ├─Servo signal (D6)
+        └─Built‑in LED (D4) status
+```
+
+## 5 Wiring Schematic (ESP8266 D1 Mini)
+
+* **Power**: Connect Li‑ion battery to Micro‑LiPo charger; battery output to PowerBoost BAT. PowerBoost 5 V output goes to D1 Mini 5V pin and to servo/PIR Vcc; all grounds common.
+* **PIR sensor**: Vcc→5 V; GND→GND; OUT→D5 (GPIO14).
+* **FSR**: One lead to GND; other lead to A0. Add a \~100 kΩ pull‑up resistor from A0 to 3.3 V (internal divider on D1 Mini scales to 1 V).
+* **Servo**: Signal (orange)→D6 (GPIO12); V+→5 V; GND→GND.
+* **Battery charger & PowerBoost**: EN pin on PowerBoost tied to D1 Mini 5V so it is always enabled. Connect low‑battery LED on PowerBoost (optional) to an input pin if you wish to monitor battery.
+* **Built‑in LED**: Use D4 (GPIO2) as status indicator (active‑LOW).
+
+## 6 Firmware
+
+The Arduino‑style firmware for the ESP8266 D1 Mini handles sensor initialization, FSR auto‑calibration with EEPROM storage, debounce and lock‑out timing, servo control and LED indication. Compile using the Arduino IDE with ESP8266 board support and the Servo library.
+
+[firmware.ino]({{file:file-Xqwqnqu68FQJYgm448o8ZZ}})
+
+*Compilation:* Select **“LOLIN (WEMOS) D1 mini”** board. Install the **Servo** library (built‑in). Then compile and upload via USB.
+
+*Key functions:*
+– `calibrateFSR()` averages the FSR reading at startup, adds an offset and stores the threshold in EEPROM.
+– In the loop, the code blinks the LED every second to show armed status, monitors PIR and FSR; on a trigger it moves the servo for `SPRAY_MS` milliseconds then enforces a lock‑out interval.
+– The built‑in LED lights solid when spraying.
+
+## 7 Test & Calibration Procedure (≤ 15 min)
+
+1. **Assemble hardware**: Solder headers onto the D1 Mini. Wire up the PIR sensor, FSR (with 100 kΩ pull‑up), servo, PowerBoost, charger and battery per the schematic. Load the firmware.
+2. **Initial calibration**: With no weight on the FSR and no motion in front of the PIR, power up the device. During the first 5 s the firmware samples the FSR; avoid touching it. The LED will blink slowly while it calibrates.
+3. **Threshold verification**: After calibration, lightly press on the FSR; the spray should trigger once then lock out for \~3 s. Adjust the `+50` offset in code if the sensitivity is too high or low.
+4. **Motion detection**: Wave your hand \~1 m in front of the PIR. The servo should actuate the spray once. Verify the LED turns on during spraying.
+5. **Servo adjustment**: Mechanically align the servo horn to depress the bottle nozzle just enough to mist; adjust the angle (default 60°) in the firmware to refine the spray duration.
+6. **Battery & charging**: Connect USB‑C to the Micro‑LiPo charger and observe the charger’s LEDs (red while charging, green when full). Verify the device still operates from USB.
+7. **Final assembly**: Insert magnets or Velcro in the base pockets, mount the spray bottle and route the FSR under the bottle. Secure the lid with M3 screws.
+
+## 8 Risk Register & Mitigations
+
+| Risk                                                         | Impact                        | Mitigation                                                                                                                                                           |
+| ------------------------------------------------------------ | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **False triggers from PIR in sunlight or near heat sources** | Unwanted sprays               | Position sensor away from HVAC vents/windows; adjust PIR sensitivity potentiometer; add optional IR‑filtering tube over lens.                                        |
+| **FSR drift / variability**                                  | Missed or repeated sprays     | Firmware calibrates on each boot and stores threshold; ensure FSR is mounted on compliant foam; allow 3‑s lockout to avoid chatter.                                  |
+| **Servo stall or misalignment**                              | No spray or mechanical damage | Use a robust SG90 servo; design 3‑D bracket with clearance; test servo range before attaching bottle; include current limiting (PowerBoost can supply up to 500 mA). |
+| **Battery sag or under‑voltage**                             | Device resets during spray    | PowerBoost provides regulated 5 V; low‑battery LED on PowerBoost warns of depletion; encourage charging after \~100 actuations.                                      |
+| **Liquid leaks onto electronics**                            | Short circuits/damage         | Seal spray nozzle and route servo horn through a gasket; mount electronics in a separate compartment; orient bottle upright; optional absorbent pad under bottle.    |
+
+## 9 Optional Enhancements
+
+* Add BLE or Wi‑Fi logging (use D1 Mini’s Wi‑Fi) to record number of sprays and battery status.
+* Integrate a time‑of‑flight distance sensor for adjustable range.
+* Swap the servo for a small peristaltic pump (e.g., Adafruit 1150) to dispense liquid without direct contact.
+* Use a HX711 load cell amplifier and a 1 kg load cell for precise weight detection.
+* Incorporate a battery fuel‑gauge chip for accurate charge readings.
+* Design interchangeable aroma cartridges or refillable reservoirs with quick‑connect fittings.
+
+This design balances simplicity, cost and functionality and can be built quickly while leaving room for future upgrades.
