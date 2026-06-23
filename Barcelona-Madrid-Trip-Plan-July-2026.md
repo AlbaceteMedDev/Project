@@ -16,9 +16,9 @@
 
 | Day | Date | Base | Highlights |
 |-----|------|------|-----------|
-| 1 | Tue Jul 7 | Barcelona | Arrive, settle in, easy Gothic Quarter stroll |
-| 2 | Wed Jul 8 | Barcelona | Sagrada Família + Gaudí, relaxed afternoon |
-| 3 | Thu Jul 9 | Barcelona | Park Güell / Montjuïc, seafront, tapas |
+| 1 | Tue Jul 7 | Barcelona | Arrive, settle in, beach sunset + Gothic Quarter stroll |
+| 2 | Wed Jul 8 | Barcelona | Sagrada Família + Gaudí, afternoon beach/pool |
+| 3 | Thu Jul 9 | Barcelona | Beach morning, Park Güell or Montjuïc views, seafront tapas |
 | 4 | Fri Jul 10 | → Madrid | Morning AVE train, afternoon Madrid easy day |
 | 5 | Sat Jul 11 | Madrid | **Tuk-tuk tour** + Royal Palace + Plaza Mayor |
 | 6 | Sun Jul 12 | Madrid | **Mercado de San Miguel**, Puerta del Sol, shopping |
@@ -29,24 +29,26 @@
 
 ## 🏨 Where to Stay
 
-### Barcelona (3 nights: Jul 7–10)
+### Barcelona (3 nights: Jul 7–10) — *on the beach*
 
-**Top pick — Grand Hotel Central (5★, Gothic Quarter)**
-Art-deco landmark right by the Cathedral, in the heart of the old town so almost
-everything is walkable or a 5-minute taxi. Rooftop infinity pool with a bar — a
-perfect mid-afternoon escape from the heat for your parents. Spacious suites can
-**connect to a second room**, which is ideal for two-generation families (one room
-for Mom & Dad, one for you and your brother). Lift access throughout.
+**Top pick — Hotel Arts Barcelona (5★, beachfront, Port Olímpic)**
+A waterfront icon right **on Barceloneta/Port Olímpic beach** — step out of the
+lobby and you're on the sand. A big **beachfront outdoor pool** and a full spa make
+the mid-afternoon heat breaks effortless for your parents, and the rooms have
+floor-to-ceiling Mediterranean views. Polished, very accessible, and a flat
+boardwalk stroll to seafood restaurants. The old town is a ~10-min taxi when you
+want it. This is the easiest "beach + luxury + comfort for grandparents" combo.
 
-**Alternatives**
-- **Sofitel Barcelona Skipper (5★, Barceloneta/seafront)** — bigger, resort-style with a
-  large pool, sea views, balconies, and very accessible rooms. Great if you'd
-  rather have a calm beach-adjacent base; slightly less "in the middle of it all."
-- **Catalonia Ramblas (4★, near Plaça Catalunya)** — excellent value, large family
-  rooms, pool, free afternoon snack buffet, steps from the Gothic Quarter.
+**Alternatives (also right on the water)**
+- **W Barcelona (5★, Barceloneta)** — the sail-shaped landmark literally on the beach,
+  with a great pool scene and sweeping sea views; a bit more design/party-forward.
+- **Sofitel (Pullman) Barcelona Skipper (5★, Port Olímpic)** — ~100 m from the beach,
+  **two outdoor pools**, large rooms, spa, and very accessible — a calmer, family-friendly feel.
+- **Eurostars Grand Marina GL (5★, Port Vell marina)** — elegant waterfront option closer
+  to the old town side of the harbor.
 
-> **Booking tip:** Ask for **two connecting rooms on a low floor near the lift**, and
-> confirm an **accessible/step-free bathroom** for your parents.
+> **Booking tip:** Ask for **two connecting (or adjacent) sea-view rooms on a low floor
+> near the lift**, and confirm a **step-free/accessible bathroom** for your parents.
 
 ### Madrid (4 nights: Jul 11–14)
 
@@ -86,23 +88,31 @@ Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
 
 ## 📍 Day-by-Day
 
-### Day 1 — Tue Jul 7 · Arrive Barcelona
+### Day 1 — Tue Jul 7 · Arrive Barcelona (beach welcome)
 - Check in, unpack, let everyone rest after travel.
-- Gentle evening: stroll the **Gothic Quarter** and **La Rambla**, find a sit-down tapas
-  dinner near the hotel. Keep it short — recover from the journey.
+- **Late afternoon:** ease into the trip with **toes in the sand at Barceloneta beach**
+  right outside the hotel — calm water, a gentle boardwalk (the *Passeig Marítim*) for
+  Mom & Dad, and a sunset drink at a **chiringuito** (beach bar).
+- **Evening:** short stroll through the **Gothic Quarter** / **La Rambla** and a sit-down
+  tapas or seafood dinner near the marina. Keep it light — recover from the journey.
 
-### Day 2 — Wed Jul 8 · Gaudí's Barcelona
-- **Morning:** **Sagrada Família** (pre-book timed tickets; it has lifts/ramps and is
-  largely accessible — book the basilica, skip the tower climb for your parents).
-- **Afternoon:** heat break — pool / nap at the hotel.
-- **Evening:** **Passeig de Gràcia** to see **Casa Batlló** & **La Pedrera** from outside;
-  dinner in the Eixample.
+### Day 2 — Wed Jul 8 · Gaudí + Beach
+- **Morning:** **Sagrada Família** (pre-book timed tickets; lifts/ramps make it largely
+  accessible — book the basilica, skip the tower climb for your parents).
+- **Afternoon:** **beach + hotel pool** heat break — swim, sunbathe, or nap. Easy because
+  you're staying right on the sand.
+- **Evening:** **Passeig de Gràcia** to see **Casa Batlló** & **La Pedrera** lit up from
+  outside; dinner in the Eixample. (Optional gentle add: a **sunset harbor/coast boat
+  cruise** from Port Vell — sea breeze, zero walking, great for the parents.)
 
-### Day 3 — Thu Jul 9 · Park & Sea
-- **Morning:** **Park Güell** (book ahead; take a taxi to the upper entrance to avoid the
-  steep climb) **or** the **Montjuïc cable car** for views without the walk.
-- **Afternoon:** rest, or a flat seafront wander at **Barceloneta**.
-- **Evening:** seafood/paella dinner by the marina. Pack tonight for the morning train.
+### Day 3 — Thu Jul 9 · Beach Morning, Views, Seafront Tapas
+- **Morning:** slow **beach morning** — swim and relax on Barceloneta or the quieter
+  **Nova Icària / Mar Bella** stretches nearby. Rent loungers/umbrella for shade.
+- **Midday:** **Park Güell** (book ahead; taxi to the upper entrance to skip the steep
+  climb) **or** the **Montjuïc cable car** for skyline + sea views without the walk.
+- **Afternoon:** rest / pool.
+- **Evening:** **paella & seafood dinner by the marina** at Port Olímpic. Pack tonight
+  for the morning train.
 
 ### Day 4 — Fri Jul 10 · Travel Day → Madrid
 - **Morning:** AVE train Barcelona → Madrid (~2.5 hrs). Taxi to the Madrid hotel, check in.
@@ -125,8 +135,9 @@ Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
   Graze across jamón, croquetas, oysters, vermouth, and pintxos. **Go before ~1 PM** to
   beat the crush; it's a "spend a while here" kind of place, so take your time.
 - **Afternoon:** **Puerta del Sol** (the literal center of Spain — find the Km 0 plaque and
-  the bear-and-strawberry-tree statue), then hit **Zara** (the giant flagship is right on
-  Sol/Gran Vía) and browse the surrounding shopping streets.
+  the bear-and-strawberry-tree statue), then hit the **Zara** flagship and **Bershka**
+  (both Inditex stores are right around Sol/Gran Vía, a couple minutes apart) and browse
+  the surrounding shopping streets.
 - 🍔 **The Spanish McDonald's run** — yes, do it; the menu's a little different (try the
   local items). Easy, fun, and the kids-at-heart will enjoy comparing.
 - **Evening:** dinner in the **La Latina** tapas district (Sunday is its big day).
@@ -136,9 +147,7 @@ Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
   the **Prado Museum** if the family wants art (fully accessible, benches throughout).
 - **Afternoon:** heat break.
 - **Evening:** 🍫 **Chocolatería San Ginés** — the legendary 24-hr spot for **churros &
-  thick hot chocolate**; an essential Madrid ritual and a great last-night treat. (Also on
-  your list — *"Birksha"* — double-check the exact name/address before you go; if it's a
-  specific shop or café you had in mind, I can pin it down.)
+  thick hot chocolate**; an essential Madrid ritual and a great last-night treat.
 - Farewell dinner; pack.
 
 ### Day 8 — Tue Jul 14 · Departure
@@ -155,8 +164,8 @@ Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
 - [x] **Puerta del Sol** — Day 6
 - [x] **Spanish McDonald's** — Day 6
 - [x] **Zara flagship** — Day 6
+- [x] **Bershka** — Day 6 (next to Zara on Sol/Gran Vía)
 - [x] **San Ginés** (churros & chocolate) — Day 7 evening
-- [ ] **"Birksha"** — flagged for you to confirm name/location
 
 ---
 
@@ -180,6 +189,8 @@ Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
 - [Tripadvisor — Barcelona 5-Star Hotels](https://www.tripadvisor.com/Hotels-g187497-zfc5-Barcelona_Catalonia-Hotels.html)
 - [Tripadvisor — Barcelona Family Hotels](https://www.tripadvisor.com/Hotels-g187497-zff4-Barcelona_Catalonia-Hotels.html)
 - [Tripadvisor — Barcelona Accessible Hotels](https://www.tripadvisor.com/HotelsList-Barcelona-Accessible-Hotels-zfp17140066.html)
+- [Barcelona.com — Best Beach Hotels in Barcelona](https://www.barcelona.com/hotels/beach)
+- [ForeverBarcelona — Barcelona Beach Hotels (4 & 5 star)](https://www.foreverbarcelona.com/barcelona-beach-hotels/)
 - [U.S. News — Hotels near Puerta del Sol, Madrid](https://travel.usnews.com/hotels/madrid_spain/near-gateway_of_the_sun_puerta_del_sol_25439/)
 - [Tripadvisor — Sol (Madrid) Luxury Hotels](https://www.tripadvisor.com/Hotels-g187514-zff12-zfn15620734-Madrid-Hotels.html)
 - [The Most Perfect View — Best Luxury Hotels in Madrid](https://www.themostperfectview.com/madrid-hotels-best-views)
