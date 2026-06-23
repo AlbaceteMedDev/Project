@@ -169,6 +169,86 @@ Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
 
 ---
 
+## 🍽️ Top-Tier Restaurant Picks
+
+> Spain dines late — for your parents, aim for the **first sitting (~8 PM)** and
+> **book the Michelin/iconic spots weeks ahead** (DiverXO and Disfrutar open
+> reservations 1–2 months out and sell out fast). All the "iconic & classic" picks
+> below are sit-down, accessible, and grandparent-friendly.
+
+### Barcelona
+**✨ Splurge / world-class tasting menus**
+- **Disfrutar** — 3 Michelin stars and ranked **#1 on The World's 50 Best Restaurants**;
+  playful, jaw-dropping avant-garde tasting menu. The trip's bucket-list meal.
+- **Lasarte** (Martín Berasategui) — 3 Michelin stars, polished and refined; a more
+  formal, classic luxury experience.
+- **Cinc Sentits** — 1 Michelin star, modern Catalan, warmer and more intimate — a great
+  "special night" that's a touch easier than the three-stars.
+
+**🏛️ Iconic & classic (perfect for the whole family)**
+- **7 Portes** — a Barcelona institution since 1836 near the waterfront; classic **paella
+  and seafood rice**, roomy and accessible. Ideal for a relaxed family dinner.
+- **Els Quatre Gats** — the historic modernista café where a young Picasso hung out;
+  charming, central, great for atmosphere.
+- **Can Majó / La Mar Salada** (Barceloneta) — beachside **paella & fideuà** a short stroll
+  from your hotel.
+
+**🍢 Tapas & local favorites**
+- **Cal Pep**, **El Xampanyet**, **Quimet & Quimet**, **Bar del Pla** — classic standing/counter
+  tapas crawl in El Born (go early to get seats for the parents).
+
+### Madrid
+**✨ Splurge / world-class tasting menus**
+- **DiverXO** (Dabiz Muñoz) — **3 Michelin stars**, Spain's most theatrical, hardest-to-book
+  table; a wild, unforgettable tasting experience. Reserve the moment slots open.
+- **DSTAgE** — 2 Michelin stars, sleek and creative; a strong (slightly easier) alternative.
+- **StreetXO** — Muñoz's bold, casual spin-off; the DiverXO thrill with no months-long wait.
+
+**🏛️ Iconic & classic (perfect for the whole family)**
+- **Sobrino de Botín** — the **oldest restaurant in the world (1725, Guinness-certified)**,
+  steps from Plaza Mayor; wood-oven **cochinillo (roast suckling pig)** and roast lamb. A
+  must-do, and wonderful for your parents.
+- **Casa Lucio** — legendary for **huevos rotos** (eggs over fries); a beloved Madrid classic.
+- **Taberna La Bola** — old-school **cocido madrileño** (the hearty chickpea stew) cooked
+  over coals; cozy and historic.
+
+**🍢 Tapas & market grazing**
+- **Mercado de San Miguel** (already on your list) for grazing, plus the **La Latina**
+  tapas streets (Cava Baja) on Sunday — croquetas, jamón, vermouth.
+
+---
+
+## ⭐ Signature Activity Picks
+
+### Barcelona — the greats
+- **Sagrada Família** — Gaudí's breathtaking basilica; the city's unmissable sight (pre-book).
+- **Park Güell** — Gaudí's mosaic park with skyline views (taxi to the top entrance).
+- **Barceloneta beaches + Mediterranean** — swim, boardwalk strolls, and beach-bar sunsets
+  right by your hotel; optional **sunset sailing cruise** from the port (easy on the parents).
+- **Montjuïc** — ride the **cable car** for sweeping sea + city views; the **Magic Fountain**
+  light-and-music show in the evening.
+- **La Boqueria** market off La Rambla, the **Gothic Quarter**, and the **Picasso Museum** in El Born.
+- **Palau de la Música Catalana** — a jaw-dropping modernista concert hall (guided tour or a show).
+- **Flamenco** at an intimate tablao (e.g., Palau Dalmases) for an authentic evening.
+- *Optional day trip:* **Montserrat** — mountaintop monastery, ~1 hr out, reachable by
+  train + cable car/rack railway (low-effort, high-reward scenery).
+
+### Madrid — the greats
+- 🛺 **Tuk-tuk tour** — low-walking, fun sightseeing sweep (book a reputable operator ahead).
+- **Royal Palace + Plaza de Oriente** — Europe's largest royal palace; lifts available.
+- **Mercado de San Miguel** — the famous gourmet food market by Plaza Mayor.
+- **Plaza Mayor & Puerta del Sol** — the grand historic squares and Spain's "Km 0."
+- **The art "Golden Triangle":** the **Prado** (old masters), **Reina Sofía** (Picasso's
+  *Guernica*), and **Thyssen-Bornemisza** — all fully accessible with benches throughout.
+- **Retiro Park** — flat, shady, gentle; rowboats on the lake and the **Crystal Palace**.
+- **Temple of Debod** — a real ancient Egyptian temple with **the best sunset view** in Madrid.
+- **Flamenco** at **Corral de la Morería**, the world's most famous tablao (has a Michelin-starred
+  dining room too — a memorable splurge night).
+- *Optional day trip:* **Toledo** or **Segovia** — stunning historic cities ~30 min by
+  high-speed train (Segovia's Roman aqueduct + more cochinillo).
+
+---
+
 ## 👴👵 Comfort & Pacing Tips (traveling with parents at 74)
 - **Heat plan:** sightsee 9 AM–1 PM and after 6 PM; reserve mid-afternoon for the hotel
   pool or a nap. Carry water; pharmacies (*farmacia*, green cross) are everywhere.
