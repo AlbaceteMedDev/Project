@@ -1,14 +1,39 @@
 # 🇪🇸 Spain Family Trip — Barcelona → Madrid
 
-**Dates:** Tuesday, July 7 → Tuesday, July 14, 2026 (8 days / 7 nights)
+**Dates:** Wednesday, July 8 → Tuesday, July 14, 2026 (7 days / 6 nights)
 **Travelers:** 4 — Mom & Dad (74), you & your brother (29)
-**Route:** 3 nights Barcelona → high-speed train → 4 nights Madrid
+**Route:** Land Barcelona 9:00 AM Jul 8 → 3 nights Barcelona → AVE train Sat Jul 11 → 3 nights Madrid → fly to NY/NJ Tue Jul 14
 
-> Planning notes for a multigenerational trip: I've kept the pace gentle for your
-> parents — central hotels so you're never far from a rest, short walking
-> radii, taxi/tuk-tuk over long treks, and afternoon siesta gaps before the late
-> Spanish dinners. July is hot (highs ~30–34°C / 86–93°F), so mornings and
-> evenings are for sightseeing, mid-afternoon is for shade, pool, or a nap.
+> Planning notes for a multigenerational trip: central hotels chosen for shortest
+> distances to your actual wishlist, gentle pacing for your parents, timed morning
+> tickets to beat the July heat (highs ~30–36°C / 86–97°F), taxis over long walks,
+> and afternoon rest gaps before the late Spanish dinners.
+
+---
+
+## 🚨 BOOK TODAY — the trip starts in 3 days
+
+These sell out or get expensive fastest. Book in this order, today:
+
+| Priority | What | Slot to book | Price (pp) | Where |
+|---|---|---|---|---|
+| 1 | **Sagrada Família** — Thu Jul 9 | **9:00 AM** entry (Quiet Hour) | €26 adult / €21 senior; towers +€10 (sons only) | sagradafamilia.org/en/tickets-individuals |
+| 2 | **Train BCN→Madrid** — Sat Jul 11 | **AVE 03080, 8:25 AM** (nonstop) | ~€60–110 Standard, ~€90–140 Confort/Premium | renfe.com |
+| 3 | **Hotels** (both cities) | Jul 8–11 BCN / Jul 11–14 MAD | — | direct or your booking site |
+| 4 | **Spotify Camp Nou Experience** — Fri Jul 10 | **9:30 AM** guided session (English) | from €69 | fcbarcelona.com/en/tickets/camp-nou-experience |
+| 5 | **Bernabéu Tour** — Mon Jul 13 | **9:00 AM** opening (or €44 Flexible-time) | €37 online | realmadrid.com/en-US/tour-bernabeu |
+| 6 | **Royal Palace** — Sun Jul 12 | ~10:00 AM timed entry | see site | entradas.patrimonionacional.es |
+| 7 | **Tuk-tuk tour Madrid** — Sat Jul 11 | ~6:30 PM, private, 1.5–2 hr | varies | book a rated operator online in advance |
+
+- Sagrada tickets are **nominative — names must match photo ID**, and July 2026 is
+  centenary-year peak season: morning slots genuinely can sell out days ahead. If the
+  9:00–10:00 window for Jul 9 is gone, take anything before 11:00, or check Tiqets
+  (authorized reseller with separate allotments), or book the guided-tour ticket
+  (sells out slowest). ⚠️ *A teachers'-strike protest was intermittently restricting
+  basilica access as of July 5 — re-check sagradafamilia.org the morning of your visit.*
+- Restaurants: **Botín, Casa Lucio, 7 Portes** — call/book online today too. The
+  ultra-fine-dining rooms (Disfrutar, DiverXO) are realistically gone at 3 days'
+  notice, but cancellations happen — try their sites; **StreetXO** takes walk-ins.
 
 ---
 
@@ -16,261 +41,260 @@
 
 | Day | Date | Base | Highlights |
 |-----|------|------|-----------|
-| 1 | Tue Jul 7 | Barcelona | Arrive, settle in, beach sunset + Gothic Quarter stroll |
-| 2 | Wed Jul 8 | Barcelona | Sagrada Família + Gaudí, afternoon beach/pool |
-| 3 | Thu Jul 9 | Barcelona | Beach morning, Park Güell or Montjuïc views, seafront tapas |
-| 4 | Fri Jul 10 | → Madrid | Morning AVE train, afternoon Madrid easy day |
-| 5 | Sat Jul 11 | Madrid | **Tuk-tuk tour** + Royal Palace + Plaza Mayor |
-| 6 | Sun Jul 12 | Madrid | **Mercado de San Miguel**, Puerta del Sol, shopping |
-| 7 | Mon Jul 13 | Madrid | Retiro Park / Prado, San Ginés, last evening |
-| 8 | Tue Jul 14 | Madrid | Departure |
+| 1 | Wed Jul 8 | Barcelona | Land 9:00 AM, settle in, Gothic Quarter + beach sunset |
+| 2 | Thu Jul 9 | Barcelona | **Sagrada Família 9:00 AM (reserved)**, beach/pool afternoon |
+| 3 | Fri Jul 10 | Barcelona | **Camp Nou tour 9:30 AM**, beach afternoon, Park Güell evening option |
+| 4 | Sat Jul 11 | → Madrid | **AVE 8:25→11:27**, lunch at Sol, evening tuk-tuk tour + Plaza Mayor |
+| 5 | Sun Jul 12 | Madrid | Royal Palace, **Mercado de San Miguel**, Sol, Zara + Bershka, La Latina |
+| 6 | Mon Jul 13 | Madrid | **Bernabéu tour 9:00 AM**, Retiro/Prado, San Ginés churros finale |
+| 7 | Tue Jul 14 | → NY/NJ | Midday nonstop from Madrid–Barajas |
 
 ---
 
-## 🏨 Where to Stay
+## 🏨 Where to Stay — chosen by distance to YOUR list
 
-### Barcelona (3 nights: Jul 7–10) — *on the beach*
+### Barcelona (3 nights: Jul 8–11)
 
-**Top pick — Hotel Arts Barcelona (5★, beachfront, Port Olímpic)**
-A waterfront icon right **on Barceloneta/Port Olímpic beach** — step out of the
-lobby and you're on the sand. A big **beachfront outdoor pool** and a full spa make
-the mid-afternoon heat breaks effortless for your parents, and the rooms have
-floor-to-ceiling Mediterranean views. Polished, very accessible, and a flat
-boardwalk stroll to seafood restaurants. The old town is a ~10-min taxi when you
-want it. This is the easiest "beach + luxury + comfort for grandparents" combo.
+Your Barcelona list = Sagrada Família, Camp Nou, beach, old town, and the train
+station. I mapped both candidate hotels against every stop:
 
-**Alternatives (also right on the water)**
-- **W Barcelona (5★, Barceloneta)** — the sail-shaped landmark literally on the beach,
-  with a great pool scene and sweeping sea views; a bit more design/party-forward.
-- **Sofitel (Pullman) Barcelona Skipper (5★, Port Olímpic)** — ~100 m from the beach,
-  **two outdoor pools**, large rooms, spa, and very accessible — a calmer, family-friendly feel.
-- **Eurostars Grand Marina GL (5★, Port Vell marina)** — elegant waterfront option closer
-  to the old town side of the harbor.
+| Destination | Majestic Hotel & Spa (Pg. de Gràcia) | Hotel Arts (beachfront) |
+|---|---|---|
+| Sagrada Família | **8–10 min taxi / 23 min flat walk** | 10–15 min taxi |
+| Gothic Quarter | **~24 min flat walk / 8 min taxi** | 8–12 min taxi |
+| Barceloneta beach | 10–15 min taxi | **on the sand (0 min)** |
+| Park Güell | **11–15 min taxi** | 15–25 min taxi |
+| Camp Nou | **10–15 min taxi** | 16–25 min taxi |
+| Sants station (train day) | **7–12 min taxi / 12 min metro L3** | 12–20 min taxi |
 
-> **Booking tip:** Ask for **two connecting (or adjacent) sea-view rooms on a low floor
-> near the lift**, and confirm a **step-free/accessible bathroom** for your parents.
+**Top pick — Majestic Hotel & Spa (5★, Passeig de Gràcia 68).** Total distance to
+your non-beach stops is roughly **half** of Hotel Arts' (≈16 km vs ≈29 km of taxi
+legs), it has a rooftop pool with Sagrada Família views for the afternoon heat
+breaks, and Casa Batlló/La Pedrera are on its doorstep. The beach becomes one short
+taxi ride on beach afternoons.
 
-### Madrid (4 nights: Jul 11–14)
+**Beach-first alternative — Hotel Arts Barcelona (5★, Port Olímpic).** If waking up
+on the sand matters more than shorter sightseeing hops, this stays the pick: beach
+at the door, beachfront pool, spa — you'll just taxi 10–25 min to everything else.
+*(W Barcelona and Sofitel/Pullman Skipper remain solid beachfront backups.)*
 
-**Top pick — Four Seasons Hotel Madrid (5★)**
-Steps from **Puerta del Sol** and a short, flat walk to **Plaza Mayor** and **Mercado de
-San Miguel** — i.e. you're parked right on top of everything on your list. Rooftop
-pool and a large spa for downtime, impeccable accessibility, and the kind of
-service that makes a trip with older parents easy.
+### Madrid (3 nights: Jul 11–14)
 
-**Alternatives**
-- **Thompson Madrid, by Hyatt (5★)** — stylish, between Gran Vía and Puerta del Sol, a
-  short walk to Plaza Mayor; seasonal rooftop pool + restaurant. More design-forward
-  and typically a better rate than the Four Seasons.
-- **NH Collection Madrid Suecia (5★)** — central but on a quiet street (great for sleep),
-  near Gran Vía. Reliable, comfortable, strong value.
+**Top pick — Four Seasons Hotel Madrid (5★, Calle de Sevilla 3).** The distance
+check confirmed it's near-perfect for your list — six of your stops are a flat
+walk under 13 minutes:
 
-> **Why so central matters here:** every single thing on your Madrid wishlist —
-> San Miguel, Royal Palace, Plaza Mayor, Puerta del Sol, Zara, San Ginés — sits inside
-> one compact, mostly flat square kilometer. A Sol-area hotel means short walks and
-> easy taxi hops, which is exactly what you want with 74-year-old parents in July heat.
+| Destination | From the Four Seasons |
+|---|---|
+| Puerta del Sol | **5 min walk** |
+| Chocolatería San Ginés | **8–9 min walk** |
+| Bershka (Gran Vía 25) | **8 min walk** |
+| Zara flagship (Gran Vía 34) | **10 min walk** |
+| Plaza Mayor | **9–11 min walk** |
+| Mercado de San Miguel | **12–13 min walk** |
+| Royal Palace | 16–18 min walk or 7–10 min taxi |
+| Santiago Bernabéu | 10–18 min taxi (~€10–15 for all 4) |
+| Atocha station | 6–10 min taxi (~€7–9) |
+
+*(Alternatives if it's sold out at 3 days' notice: Thompson Madrid or NH Collection
+Suecia — both keep everything within the same walkable square kilometer.)*
+
+> **Booking tip for both cities:** two connecting/adjacent rooms near the lift, and a
+> step-free bathroom for your parents.
 
 ---
 
-## 🚄 Getting Between Cities — Barcelona → Madrid
+## 🚄 Train — Barcelona → Madrid, Saturday July 11 (verified timetable)
 
-Take the **AVE high-speed train** (Renfe), Barcelona Sants → Madrid Atocha.
-- **Time:** ~2 hr 30 min, far easier and more comfortable than flying for your parents.
-- **Recommended departure:** a **mid-morning train on Fri Jul 10** (e.g. ~9–10 AM)
-  so you arrive Madrid around lunchtime with the afternoon to settle in.
-- **Book early** (tickets open ~2–3 months ahead; prices rise as seats fill). Choose
-  **Comfort/Preferente class** for wider seats and quieter cars — worth it for this leg.
-- Sants and Atocha stations both have lifts, ramps, and **assisted-mobility service**
-  (free; request when booking if either parent wants help to the platform).
-- Take a taxi from Atocha to the hotel (~10 min) rather than the metro with luggage.
+**Important 2026 reality check:** Adif track works add ~25–30 min to *every* train
+on this line until ~December 2026 — so trips take **3 h+, not the advertised 2 h 30**,
+frequencies are reduced, and fares are high. Verified departures from Renfe's official
+data for **Saturday, July 11, 2026** (all arrive **Madrid–Puerta de Atocha**):
+
+| Train | Departs Sants | Arrives Atocha | Duration | Stops |
+|---|---|---|---|---|
+| Renfe AVE 03062 | 5:50 | 9:40 | 3h50 | 5 |
+| Renfe AVE 03302 | 6:35 | 9:52 | 3h17 | 1 |
+| Ouigo (budget) | 7:35 | 11:05 | 3h30 | 1 |
+| Renfe AVE 03082 | 8:00 | 11:44 | 3h44 | 4 |
+| ⭐ **Renfe AVE 03080** | **8:25** | **11:27** | **3h02** | **nonstop** |
+| Renfe AVE 03092 | 9:00 | 12:24 | 3h24 | 2 |
+| Renfe AVE 03304 | 9:55 | 13:44 | 3h49 | 5 |
+
+**Book the 8:25 AVE 03080** — the only nonstop and the fastest morning train, at a
+civilized hour for your parents, landing you in Madrid at 11:27 with the whole
+afternoon and evening ahead. If you want to arrive even earlier, the **6:35 (arr.
+9:52)** is the early-bird option. In **Elige Confort or Premium** you get wide 2+1
+seats, at-seat meal service, and Renfe's free **Atendo** assistance for your parents
+(request it when booking — they'll help with luggage and boarding at both stations).
+
+*Notes: iryo's morning times couldn't be verified (its old 8:45 no longer runs —
+check iryo.eu directly); Ouigo is cheapest but charges for luggage beyond one cabin
+bag + one carry-on each. Availability is live-only — book on renfe.com today.*
+
+---
+
+## ✈️ Flight home — Madrid → NY/NJ, Tuesday July 14 (nonstop options)
+
+| Flight | Departs MAD | Arrives | Airport | Barajas terminal |
+|---|---|---|---|---|
+| United UA50 | 10:50 | 13:15 | Newark (EWR) | T1 |
+| American AA95 | 10:25 | 12:30 | JFK | T4 |
+| ⭐ Iberia IB211 | ~12:30 | 14:55 | JFK | T4 (boards T4S) |
+| ⭐ Delta DL127 | 12:45 | ~15:00 | JFK | T1 |
+| Iberia IB325 | 16:20 | ~18:00 | JFK | T4 — lands into evening rush |
+
+If you haven't booked yet, the **midday Iberia IB211 or Delta DL127** fit your
+parents best: taxi from the hotel **~8:15–8:30 AM** (fixed **€33 flat fare** to the
+airport, ~30–45 min), airport by 9:00 (Iberia recommends up to 4 h for US-bound
+security), and a mid-afternoon landing in New York. Iberia/American board from the
+**T4S satellite** — budget an extra 30–45 min for the airside train + passport
+control. *Air Europa's Tuesday service couldn't be confirmed — avoid unless verified.*
+If your flight is already booked, just apply the same timeline: **leave the hotel
+~4 hours before departure.**
 
 ---
 
 ## 📍 Day-by-Day
 
-### Day 1 — Tue Jul 7 · Arrive Barcelona (beach welcome)
-- Check in, unpack, let everyone rest after travel.
-- **Late afternoon:** ease into the trip with **toes in the sand at Barceloneta beach**
-  right outside the hotel — calm water, a gentle boardwalk (the *Passeig Marítim*) for
-  Mom & Dad, and a sunset drink at a **chiringuito** (beach bar).
-- **Evening:** short stroll through the **Gothic Quarter** / **La Rambla** and a sit-down
-  tapas or seafood dinner near the marina. Keep it light — recover from the journey.
+### Day 1 — Wed Jul 8 · Land in Barcelona (9:00 AM)
+- **9:00 AM:** land at BCN; taxi to the hotel (~25–35 min, ~€35–40). Rooms likely
+  won't be ready — request early check-in when booking; otherwise leave bags and
+  have a slow coffee/brunch nearby.
+- **Afternoon:** nap/pool — everyone will be jet-lagged; protect this rest window.
+- **Evening:** gentle **Gothic Quarter + La Rambla** stroll while it cools, then an
+  early tapas dinner. If energy allows, finish with a **sunset drink at a beach
+  chiringuito** on Barceloneta. Early night — tomorrow has a 9:00 reservation.
 
-### Day 2 — Wed Jul 8 · Gaudí + Beach
-- **Morning:** **Sagrada Família** (pre-book timed tickets; lifts/ramps make it largely
-  accessible — book the basilica, skip the tower climb for your parents).
-- **Afternoon:** **beach + hotel pool** heat break — swim, sunbathe, or nap. Easy because
-  you're staying right on the sand.
-- **Evening:** **Passeig de Gràcia** to see **Casa Batlló** & **La Pedrera** lit up from
-  outside; dinner in the Eixample. (Optional gentle add: a **sunset harbor/coast boat
-  cruise** from Port Vell — sea breeze, zero walking, great for the parents.)
+### Day 2 — Thu Jul 9 · Sagrada Família (reserved) + Beach
+- **8:40 AM:** arrive at the basilica for security (15 min early). **9:00 AM entry —
+  the "Quiet Hour" slot**: thinnest crowds of the day, morning sun through the blue
+  Nativity-façade glass, and cool air. Parents use step-free **Entrance B (Carrer de
+  la Marina)** — lifts throughout, free loaner wheelchairs if wanted.
+- **Towers:** you and your brother can add tower access (+€10) — but Mom & Dad should
+  skip it: the descent is 300–500 narrow spiral stairs on foot, no lift down.
+- **Late morning:** stroll/taxi back via **Passeig de Gràcia** — Casa Batlló & La
+  Pedrera façades (steps from the Majestic).
+- **Afternoon:** **beach + pool** heat break — swim at Barceloneta or laze at the rooftop.
+- **Evening:** dinner in the Eixample or El Born; optional **sunset harbor cruise**
+  from Port Vell (zero walking, great for the parents).
 
-### Day 3 — Thu Jul 9 · Beach Morning, Views, Seafront Tapas
-- **Morning:** slow **beach morning** — swim and relax on Barceloneta or the quieter
-  **Nova Icària / Mar Bella** stretches nearby. Rent loungers/umbrella for shade.
-- **Midday:** **Park Güell** (book ahead; taxi to the upper entrance to skip the steep
-  climb) **or** the **Montjuïc cable car** for skyline + sea views without the walk.
-- **Afternoon:** rest / pool.
-- **Evening:** **paella & seafood dinner by the marina** at Port Olímpic. Pack tonight
-  for the morning train.
+### Day 3 — Fri Jul 10 · FC Barcelona's Camp Nou + Beach
+- **9:15 AM:** taxi to **Spotify Camp Nou, Access 15 (C/ Arístides Maillol)** —
+  arrive 15 min before the **9:30 guided Experience session** (latecomers get
+  downgraded to museum-only). ~2 h: museum + trophy gallery + Messi Zone, immersive
+  360° room, panoramic view of the rebuilt bowl, and guided access into the
+  first-tier stands. Note for Mom & Dad: everything is step-free with lifts **up to
+  the panoramic viewpoint**; the final descent into the stands is stairs-only — they
+  can wait at the viewpoint while you two go down. (Renovation continues: no
+  dressing rooms/pitch walk on the standard route yet.)
+- **Lunch + afternoon:** back east for a **final beach afternoon** — Barceloneta or
+  the quieter Nova Icària stretch.
+- **Early evening (optional):** **Park Güell** (taxi to the upper entrance, skip the
+  climb) or the **Montjuïc cable car** for golden-hour views.
+- **Night:** seafood/paella farewell dinner (7 Portes or Can Majó). Pack for the train.
 
-### Day 4 — Fri Jul 10 · Travel Day → Madrid
-- **Morning:** AVE train Barcelona → Madrid (~2.5 hrs). Taxi to the Madrid hotel, check in.
-- **Afternoon:** easy orientation walk around **Puerta del Sol** (your hotel's doorstep).
-- **Evening:** relaxed welcome-to-Madrid dinner nearby.
+### Day 4 — Sat Jul 11 · AVE to Madrid + Old-Madrid Evening
+- **7:40 AM:** taxi to **Barcelona-Sants** (10–15 min; Atendo assistance meets you
+  if requested).
+- **8:25 AM:** **AVE 03080 nonstop → Madrid-Atocha 11:27.**
+- **11:45 AM:** taxi to the Four Seasons (6–10 min); drop bags, lunch near **Puerta
+  del Sol** (5-min walk — you're staying on top of it).
+- **Afternoon:** siesta — travel day + tonight is busy.
+- **~6:30 PM:** 🛺 **Tuk-tuk tour** (pre-booked, private, 1.5–2 h): yes, the touts
+  by Plaza Mayor seem scammy — that's why you book a rated operator ahead — but the
+  format is genuinely perfect here: a fun, zero-walking sweep of the Royal Palace
+  exterior, cathedral, Plaza de Oriente, Gran Vía, and old town in the golden hour.
+- **Evening:** dinner under the arcades of **Plaza Mayor**.
 
-### Day 5 — Sat Jul 11 · Old Madrid (the big one)
-- **Morning:** 🛺 **Tuk-tuk tour** — book a private 1.5–2 hr tour. *Yes, the touts near
-  Plaza Mayor can feel scammy, so book a reputable operator in advance instead of
-  flagging one down — but the format itself is genuinely great here:* it covers a lot of
-  ground with **zero walking**, which is perfect for your parents, and it's a fun way to
-  knit together the Royal Palace area, Plaza de Oriente, the cathedral, and the old town.
-- **Late morning:** **Royal Palace of Madrid** (Palacio Real) — Europe's largest royal
-  palace; lifts available, book timed tickets. Step outside to **Plaza de Oriente**.
-- **Afternoon:** siesta / heat break.
-- **Evening:** **Plaza Mayor** — drinks under the arcades, people-watching, dinner.
+### Day 5 — Sun Jul 12 · Royal Palace, San Miguel & Shopping
+- **10:00 AM:** **Royal Palace** (timed tickets; lifts available) + **Plaza de Oriente**.
+- **~12:30 PM:** flat 10-min walk to 🍤 **Mercado de San Miguel** — your must-do.
+  Graze long and slow: jamón, croquetas, oysters, vermouth. Arriving before ~1 PM
+  beats the worst crush.
+- **Afternoon:** siesta.
+- **~6:00 PM:** **Puerta del Sol** (Km 0 plaque, the bear-and-strawberry-tree statue),
+  then **Bershka (Gran Vía 25)** and the **Zara flagship (Gran Vía 34)** — 8–10 min
+  walks from the hotel. 🍔 Fold in the **Spanish McDonald's** stop here for the menu
+  comparison the four of you can argue about at dinner.
+- **Evening:** Sunday is **La Latina's** big tapas night (Cava Baja) — or Casa Lucio
+  if you snagged a table.
 
-### Day 6 — Sun Jul 12 · Markets, Sol & Shopping
-- **Morning–lunch:** 🍤 **Mercado de San Miguel** — the must-do food market by Plaza Mayor.
-  Graze across jamón, croquetas, oysters, vermouth, and pintxos. **Go before ~1 PM** to
-  beat the crush; it's a "spend a while here" kind of place, so take your time.
-- **Afternoon:** **Puerta del Sol** (the literal center of Spain — find the Km 0 plaque and
-  the bear-and-strawberry-tree statue), then hit the **Zara** flagship and **Bershka**
-  (both Inditex stores are right around Sol/Gran Vía, a couple minutes apart) and browse
-  the surrounding shopping streets.
-- 🍔 **The Spanish McDonald's run** — yes, do it; the menu's a little different (try the
-  local items). Easy, fun, and the kids-at-heart will enjoy comparing.
-- **Evening:** dinner in the **La Latina** tapas district (Sunday is its big day).
+### Day 6 — Mon Jul 13 · Real Madrid's Bernabéu + Sweet Finale
+- **8:45 AM:** taxi up the Castellana (~15 min, one cab fits all four, ~€10–15).
+  **9:00 AM Bernabéu tour at opening** — museum with all 15 European Cups, the
+  renovated bowl with its wraparound 360° screen, changing rooms and dugout.
+  ~2 h. Heads-up: the route includes **numerous stretches of stairs** — if either
+  parent would struggle, the €44 Flexible ticket plus the club's lift-served partial
+  route (contact them ahead) is the safer setup.
+- **Lunch + siesta**, then a gentle option: **Retiro Park** (flat, shady, rowboats)
+  or the **Prado** (benches throughout).
+- **Evening:** farewell dinner — **Sobrino de Botín** (world's oldest restaurant,
+  1725; book now) — then 🍫 **Chocolatería San Ginés** for the churros-and-thick-
+  chocolate finale, 8 min from the hotel. Pack tonight.
 
-### Day 7 — Mon Jul 13 · Park, Art & Sweet Finish
-- **Morning:** **Retiro Park** (flat, shady, gentle — rent a rowboat or just stroll) **or**
-  the **Prado Museum** if the family wants art (fully accessible, benches throughout).
-- **Afternoon:** heat break.
-- **Evening:** 🍫 **Chocolatería San Ginés** — the legendary 24-hr spot for **churros &
-  thick hot chocolate**; an essential Madrid ritual and a great last-night treat.
-- Farewell dinner; pack.
-
-### Day 8 — Tue Jul 14 · Departure
-- Relaxed breakfast, last walk around Sol, taxi to **Atocha** (train) or **Barajas
-  Airport** (~30 min) depending on your onward travel.
+### Day 7 — Tue Jul 14 · Fly home to NY/NJ
+- **~8:15 AM:** taxi to Barajas (€33 flat fare, 30–45 min) for a midday nonstop —
+  airport ~4 h ahead per Iberia's US-bound guidance (T4S flyers: extra 30–45 min).
+- Land New York mid-afternoon. ¡Buen viaje!
 
 ---
 
-## ✅ Your Madrid Checklist (all covered)
-- [x] **Mercado de San Miguel** — Day 6 morning
-- [x] **Tuk-tuk tour** (booked in advance) — Day 5 morning
-- [x] **Royal Palace** — Day 5
-- [x] **Plaza Mayor** — Day 5 evening
-- [x] **Puerta del Sol** — Day 6
-- [x] **Spanish McDonald's** — Day 6
-- [x] **Zara flagship** — Day 6
-- [x] **Bershka** — Day 6 (next to Zara on Sol/Gran Vía)
-- [x] **San Ginés** (churros & chocolate) — Day 7 evening
+## ✅ Your Wishlist — all covered
+- [x] **Mercado de San Miguel** — Day 5, long grazing lunch
+- [x] **Tuk-tuk tour** (reputable, pre-booked) — Day 4 evening
+- [x] **Royal Palace** — Day 5 · **Plaza Mayor** — Day 4 evening · **Puerta del Sol** — Days 4–6
+- [x] **Sagrada Família basilica — reserved 9:00 AM slot, Thu Jul 9**
+- [x] **Camp Nou (FC Barcelona)** — Day 3, 9:30 AM Experience
+- [x] **Santiago Bernabéu (Real Madrid)** — Day 6, 9:00 AM tour
+- [x] **Beach time** — Days 1, 2 & 3
+- [x] **Zara flagship + Bershka** — Day 5 (8–10 min walk from hotel)
+- [x] **Spanish McDonald's** — Day 5 · **San Ginés** — Day 6 finale
 
 ---
 
 ## 🍽️ Top-Tier Restaurant Picks
 
-> Spain dines late — for your parents, aim for the **first sitting (~8 PM)** and
-> **book the Michelin/iconic spots weeks ahead** (DiverXO and Disfrutar open
-> reservations 1–2 months out and sell out fast). All the "iconic & classic" picks
-> below are sit-down, accessible, and grandparent-friendly.
+> With 3 days to go: **book the classics today by phone/web**; treat the 3-star
+> rooms as lottery tickets (check for cancellations). First sitting ~8 PM suits
+> your parents best.
 
 ### Barcelona
-**✨ Splurge / world-class tasting menus**
-- **Disfrutar** — 3 Michelin stars and ranked **#1 on The World's 50 Best Restaurants**;
-  playful, jaw-dropping avant-garde tasting menu. The trip's bucket-list meal.
-- **Lasarte** (Martín Berasategui) — 3 Michelin stars, polished and refined; a more
-  formal, classic luxury experience.
-- **Cinc Sentits** — 1 Michelin star, modern Catalan, warmer and more intimate — a great
-  "special night" that's a touch easier than the three-stars.
-
-**🏛️ Iconic & classic (perfect for the whole family)**
-- **7 Portes** — a Barcelona institution since 1836 near the waterfront; classic **paella
-  and seafood rice**, roomy and accessible. Ideal for a relaxed family dinner.
-- **Els Quatre Gats** — the historic modernista café where a young Picasso hung out;
-  charming, central, great for atmosphere.
-- **Can Majó / La Mar Salada** (Barceloneta) — beachside **paella & fideuà** a short stroll
-  from your hotel.
-
-**🍢 Tapas & local favorites**
-- **Cal Pep**, **El Xampanyet**, **Quimet & Quimet**, **Bar del Pla** — classic standing/counter
-  tapas crawl in El Born (go early to get seats for the parents).
+- **✨ Splurge:** **Disfrutar** (3★ Michelin, ranked world's #1 — cancellations only
+  at this notice), **Lasarte** (3★), or the warmer **Cinc Sentits** (1★).
+- **🏛️ Iconic & family-friendly:** **7 Portes** (paella institution, est. 1836),
+  **Els Quatre Gats** (Picasso's haunt), **Can Majó** (beachside paella).
+- **🍢 Tapas:** Cal Pep, El Xampanyet, Quimet & Quimet — go at opening for seats.
 
 ### Madrid
-**✨ Splurge / world-class tasting menus**
-- **DiverXO** (Dabiz Muñoz) — **3 Michelin stars**, Spain's most theatrical, hardest-to-book
-  table; a wild, unforgettable tasting experience. Reserve the moment slots open.
-- **DSTAgE** — 2 Michelin stars, sleek and creative; a strong (slightly easier) alternative.
-- **StreetXO** — Muñoz's bold, casual spin-off; the DiverXO thrill with no months-long wait.
-
-**🏛️ Iconic & classic (perfect for the whole family)**
-- **Sobrino de Botín** — the **oldest restaurant in the world (1725, Guinness-certified)**,
-  steps from Plaza Mayor; wood-oven **cochinillo (roast suckling pig)** and roast lamb. A
-  must-do, and wonderful for your parents.
-- **Casa Lucio** — legendary for **huevos rotos** (eggs over fries); a beloved Madrid classic.
-- **Taberna La Bola** — old-school **cocido madrileño** (the hearty chickpea stew) cooked
-  over coals; cozy and historic.
-
-**🍢 Tapas & market grazing**
-- **Mercado de San Miguel** (already on your list) for grazing, plus the **La Latina**
-  tapas streets (Cava Baja) on Sunday — croquetas, jamón, vermouth.
+- **✨ Splurge:** **DiverXO** (3★, Spain's hardest table — cancellation-watch only),
+  **DSTAgE** (2★), or walk-in-friendly **StreetXO**.
+- **🏛️ Iconic & family-friendly:** **Sobrino de Botín** (oldest restaurant on Earth,
+  1725 — wood-oven suckling pig, steps from Plaza Mayor), **Casa Lucio** (huevos
+  rotos), **Taberna La Bola** (cocido madrileño).
+- **🍢 Tapas:** San Miguel market grazing + Cava Baja crawl in La Latina (Sunday!).
 
 ---
 
-## ⭐ Signature Activity Picks
-
-### Barcelona — the greats
-- **Sagrada Família** — Gaudí's breathtaking basilica; the city's unmissable sight (pre-book).
-- **Park Güell** — Gaudí's mosaic park with skyline views (taxi to the top entrance).
-- **Barceloneta beaches + Mediterranean** — swim, boardwalk strolls, and beach-bar sunsets
-  right by your hotel; optional **sunset sailing cruise** from the port (easy on the parents).
-- **Montjuïc** — ride the **cable car** for sweeping sea + city views; the **Magic Fountain**
-  light-and-music show in the evening.
-- **La Boqueria** market off La Rambla, the **Gothic Quarter**, and the **Picasso Museum** in El Born.
-- **Palau de la Música Catalana** — a jaw-dropping modernista concert hall (guided tour or a show).
-- **Flamenco** at an intimate tablao (e.g., Palau Dalmases) for an authentic evening.
-- *Optional day trip:* **Montserrat** — mountaintop monastery, ~1 hr out, reachable by
-  train + cable car/rack railway (low-effort, high-reward scenery).
-
-### Madrid — the greats
-- 🛺 **Tuk-tuk tour** — low-walking, fun sightseeing sweep (book a reputable operator ahead).
-- **Royal Palace + Plaza de Oriente** — Europe's largest royal palace; lifts available.
-- **Mercado de San Miguel** — the famous gourmet food market by Plaza Mayor.
-- **Plaza Mayor & Puerta del Sol** — the grand historic squares and Spain's "Km 0."
-- **The art "Golden Triangle":** the **Prado** (old masters), **Reina Sofía** (Picasso's
-  *Guernica*), and **Thyssen-Bornemisza** — all fully accessible with benches throughout.
-- **Retiro Park** — flat, shady, gentle; rowboats on the lake and the **Crystal Palace**.
-- **Temple of Debod** — a real ancient Egyptian temple with **the best sunset view** in Madrid.
-- **Flamenco** at **Corral de la Morería**, the world's most famous tablao (has a Michelin-starred
-  dining room too — a memorable splurge night).
-- *Optional day trip:* **Toledo** or **Segovia** — stunning historic cities ~30 min by
-  high-speed train (Segovia's Roman aqueduct + more cochinillo).
-
----
-
-## 👴👵 Comfort & Pacing Tips (traveling with parents at 74)
-- **Heat plan:** sightsee 9 AM–1 PM and after 6 PM; reserve mid-afternoon for the hotel
-  pool or a nap. Carry water; pharmacies (*farmacia*, green cross) are everywhere.
-- **Walking:** keep daily walking modest and flat; **use taxis liberally** — they're cheap
-  and plentiful, and the tuk-tuk on Day 5 is intentionally a low-effort sightseeing day.
-- **Book ahead:** Sagrada Família, Park Güell, Royal Palace, Prado, and the tuk-tuk all
-  benefit from advance timed tickets — fewer queues in the sun.
-- **Accessibility:** request step-free bathrooms and rooms near the lift at both hotels;
-  major sights all have lifts/ramps.
-- **Dining rhythm:** Spaniards dine late (9–10 PM). To keep your parents comfortable, do an
-  **early-ish dinner (~7:30–8 PM)** or a late lunch + light tapas evening.
-- **Documents/insurance:** confirm travel insurance covers all four; keep a note of any
-  medications and the generic names in case a pharmacy refill is needed.
+## 👴👵 Comfort & Pacing (traveling with parents at 74)
+- **Heat plan:** all big sights are booked at 9:00–9:30 AM starts; afternoons are
+  pool/siesta; evenings are for squares, shopping, and dinners.
+- **Taxis liberally:** every leg above is one cheap cab; a standard taxi seats all 4.
+- **Renfe Atendo:** free assistance at both stations — request with the ticket.
+- **Stairs watch:** Sagrada towers (skip for parents), Camp Nou stands descent
+  (viewpoint wait), Bernabéu route (contact club if concerned). Everything else is
+  step-free or lift-served.
+- **Dining:** first sitting ~8 PM, or big lunch + light tapas night.
+- **Pharmacies** (green cross) everywhere; carry meds in original packaging + a list
+  of generic names; confirm travel insurance covers all four.
 
 ---
 
 ### Sources
-- [Tripadvisor — Barcelona 5-Star Hotels](https://www.tripadvisor.com/Hotels-g187497-zfc5-Barcelona_Catalonia-Hotels.html)
-- [Tripadvisor — Barcelona Family Hotels](https://www.tripadvisor.com/Hotels-g187497-zff4-Barcelona_Catalonia-Hotels.html)
-- [Tripadvisor — Barcelona Accessible Hotels](https://www.tripadvisor.com/HotelsList-Barcelona-Accessible-Hotels-zfp17140066.html)
-- [Barcelona.com — Best Beach Hotels in Barcelona](https://www.barcelona.com/hotels/beach)
-- [ForeverBarcelona — Barcelona Beach Hotels (4 & 5 star)](https://www.foreverbarcelona.com/barcelona-beach-hotels/)
-- [U.S. News — Hotels near Puerta del Sol, Madrid](https://travel.usnews.com/hotels/madrid_spain/near-gateway_of_the_sun_puerta_del_sol_25439/)
-- [Tripadvisor — Sol (Madrid) Luxury Hotels](https://www.tripadvisor.com/Hotels-g187514-zff12-zfn15620734-Madrid-Hotels.html)
-- [The Most Perfect View — Best Luxury Hotels in Madrid](https://www.themostperfectview.com/madrid-hotels-best-views)
+- Renfe official GTFS timetable feed (service date 2026-07-11) — [renfe.com](https://www.renfe.com) · [Ouigo timetables](https://www.ouigo.com/es/horarios-trenes-ouigo) · [Seat61 Barcelona–Madrid](https://www.seat61.com/trains-and-routes/barcelona-to-madrid-by-train.htm)
+- [Sagrada Família — official tickets](https://sagradafamilia.org/en/tickets-individuals) · [hours & access](https://sagradafamilia.org/en/schedules-how-to-get)
+- [FC Barcelona — Camp Nou Experience](https://www.fcbarcelona.com/en/tickets/camp-nou-experience) · [tours-are-back announcement](https://www.fcbarcelona.com/en/club/news/4440096/spotify-camp-nou-tours-are-back)
+- [Real Madrid — Bernabéu Tour](https://www.realmadrid.com/en-US/tour-bernabeu/individual)
+- [Iberia US-bound arrival guidance](https://www.iberia.com/us/time-limit/) · [Madrid airport taxi flat fare](https://www.madrid-traveller.com/madrid-airport-to-the-city-center/) · [MAD–JFK nonstops](https://www.flightconnections.com/flights-from-mad-to-jfk)
+- [Majestic Hotel & Spa](https://majestichotelgroup.com/en/barcelona/hotel-majestic) · [Hotel Arts (Forbes)](https://www.forbestravelguide.com/hotels/barcelona-spain/hotel-arts-barcelona) · [Four Seasons Madrid](https://www.booking.com/hotel/es/four-seasons-madrid.html)
+- [Tripadvisor — Barcelona 5★](https://www.tripadvisor.com/Hotels-g187497-zfc5-Barcelona_Catalonia-Hotels.html) · [Sol/Madrid luxury hotels](https://www.tripadvisor.com/Hotels-g187514-zff12-zfn15620734-Madrid-Hotels.html)
