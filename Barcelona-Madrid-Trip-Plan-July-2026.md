@@ -24,6 +24,10 @@ These sell out or get expensive fastest. Book in this order, today:
 | 5 | **Bernabéu Tour** — Mon Jul 13 | **9:00 AM** opening (or €44 Flexible-time) | €37 online | realmadrid.com/en-US/tour-bernabeu |
 | 6 | **Royal Palace** — Sun Jul 12 | ~10:00 AM timed entry | see site | entradas.patrimonionacional.es |
 | 7 | **Tuk-tuk tour Madrid** — Sat Jul 11 | ~6:30 PM, private, 1.5–2 hr | varies | book a rated operator online in advance |
+| 8 | **Casa Batlló (interior)** — Thu Jul 9 | ~5:00 PM timed entry | from ~€29 (senior discount) | casabatllo.es |
+| 9 | **Park Güell** — Fri Jul 10 | ~6:30 PM golden hour | ~€10–18 (check site) | parkguell.barcelona |
+| 10 | **Flamenco tablao** — Sun Jul 12 | early show (~7 PM — confirm times) | ~€50–65 with drink | Corral de la Morería (corraldelamoreria.com) |
+| 11 | **Reina Sofía (Guernica)** — Mon Jul 13 | ~4:00 PM (open Mondays) | ~€12 | museoreinasofia.es |
 
 - Sagrada tickets are **nominative — names must match photo ID**, and July 2026 is
   centenary-year peak season: morning slots genuinely can sell out days ahead. If the
@@ -41,12 +45,12 @@ These sell out or get expensive fastest. Book in this order, today:
 
 | Day | Date | Base | Highlights |
 |-----|------|------|-----------|
-| 1 | Wed Jul 8 | Barcelona | Land 9:00 AM, settle in, Gothic Quarter + beach sunset |
-| 2 | Thu Jul 9 | Barcelona | **Sagrada Família 9:00 AM (reserved)**, beach/pool afternoon |
-| 3 | Fri Jul 10 | Barcelona | **Camp Nou tour 9:30 AM**, beach afternoon, Park Güell evening option |
+| 1 | Wed Jul 8 | Barcelona | Land 9:00 AM, settle in, Gothic Quarter + La Boqueria + beach sunset |
+| 2 | Thu Jul 9 | Barcelona | **Sagrada Família 9:00 AM (reserved)**, beach/pool, **Casa Batlló interior 5 PM** |
+| 3 | Fri Jul 10 | Barcelona | **Camp Nou tour 9:30 AM**, beach afternoon, **Park Güell golden hour** |
 | 4 | Sat Jul 11 | → Madrid | **AVE 8:25→11:27**, lunch at Sol, evening tuk-tuk tour + Plaza Mayor |
-| 5 | Sun Jul 12 | Madrid | Royal Palace, **Mercado de San Miguel**, Sol, Zara + Bershka, La Latina |
-| 6 | Mon Jul 13 | Madrid | **Bernabéu tour 9:00 AM**, Retiro/Prado, San Ginés churros finale |
+| 5 | Sun Jul 12 | Madrid | Royal Palace, **Mercado de San Miguel**, shopping, **flamenco show**, La Latina |
+| 6 | Mon Jul 13 | Madrid | **Bernabéu tour 9:00 AM**, **Guernica at Reina Sofía**, San Ginés finale |
 | 7 | Tue Jul 14 | → NY/NJ | Midday nonstop from Madrid–Barajas |
 
 ---
@@ -162,9 +166,11 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   won't be ready — request early check-in when booking; otherwise leave bags and
   have a slow coffee/brunch nearby.
 - **Afternoon:** nap/pool — everyone will be jet-lagged; protect this rest window.
-- **Evening:** gentle **Gothic Quarter + La Rambla** stroll while it cools, then an
-  early tapas dinner. If energy allows, finish with a **sunset drink at a beach
-  chiringuito** on Barceloneta. Early night — tomorrow has a 9:00 reservation.
+- **Evening:** gentle **Gothic Quarter + La Rambla** stroll while it cools — duck
+  into **La Boqueria market** on the way (stalls close ~8 PM) for ten minutes of the
+  famous food stalls and a fresh-juice stop — then an early tapas dinner. If energy
+  allows, finish with a **sunset drink at a beach chiringuito** on Barceloneta.
+  Early night — tomorrow has a 9:00 reservation.
 
 ### Day 2 — Thu Jul 9 · Sagrada Família (reserved) + Beach
 - **8:40 AM:** arrive at the basilica for security (15 min early). **9:00 AM entry —
@@ -173,9 +179,13 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   la Marina)** — lifts throughout, free loaner wheelchairs if wanted.
 - **Towers:** you and your brother can add tower access (+€10) — but Mom & Dad should
   skip it: the descent is 300–500 narrow spiral stairs on foot, no lift down.
-- **Late morning:** stroll/taxi back via **Passeig de Gràcia** — Casa Batlló & La
-  Pedrera façades (steps from the Majestic).
+- **Late morning:** stroll/taxi back via **Passeig de Gràcia** — La Pedrera façade
+  on the way (steps from the Majestic).
 - **Afternoon:** **beach + pool** heat break — swim at Barceloneta or laze at the rooftop.
+- **5:00 PM:** **Casa Batlló — inside this time** (timed entry, ~90 min). Gaudí's
+  dragon-spine house 2 minutes from the Majestic: the blue-tiled light well and
+  whale-rib attic are the best interior in Barcelona. Air-conditioned with lifts —
+  the ideal late-afternoon slot for your parents.
 - **Evening:** dinner in the Eixample or El Born; optional **sunset harbor cruise**
   from Port Vell (zero walking, great for the parents).
 
@@ -190,8 +200,11 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   dressing rooms/pitch walk on the standard route yet.)
 - **Lunch + afternoon:** back east for a **final beach afternoon** — Barceloneta or
   the quieter Nova Icària stretch.
-- **Early evening (optional):** **Park Güell** (taxi to the upper entrance, skip the
-  climb) or the **Montjuïc cable car** for golden-hour views.
+- **6:30 PM:** **Park Güell — now a committed stop** (timed tickets sell out like
+  the Sagrada's; book today). Taxi to the **upper entrance** so nobody climbs the
+  hill; golden hour gives the coolest air and prettiest light on the mosaic terrace.
+  If the parents are out of energy by Friday evening, you two go alone while they
+  rest — the **Montjuïc cable car** is their low-effort alternative.
 - **Night:** seafood/paella farewell dinner (7 Portes or Can Majó). Pack for the train.
 
 ### Day 4 — Sat Jul 11 · AVE to Madrid + Old-Madrid Evening
@@ -205,6 +218,8 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   by Plaza Mayor seem scammy — that's why you book a rated operator ahead — but the
   format is genuinely perfect here: a fun, zero-walking sweep of the Royal Palace
   exterior, cathedral, Plaza de Oriente, Gran Vía, and old town in the golden hour.
+  **Ask the operator to end the route at the Temple of Debod** — the real ancient
+  Egyptian temple with Madrid's best sunset view, for zero extra effort.
 - **Evening:** dinner under the arcades of **Plaza Mayor**.
 
 ### Day 5 — Sun Jul 12 · Royal Palace, San Miguel & Shopping
@@ -213,12 +228,17 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   Graze long and slow: jamón, croquetas, oysters, vermouth. Arriving before ~1 PM
   beats the worst crush.
 - **Afternoon:** siesta.
-- **~6:00 PM:** **Puerta del Sol** (Km 0 plaque, the bear-and-strawberry-tree statue),
+- **~5:00 PM:** **Puerta del Sol** (Km 0 plaque, the bear-and-strawberry-tree statue),
   then **Bershka (Gran Vía 25)** and the **Zara flagship (Gran Vía 34)** — 8–10 min
   walks from the hotel. 🍔 Fold in the **Spanish McDonald's** stop here for the menu
   comparison the four of you can argue about at dinner.
-- **Evening:** Sunday is **La Latina's** big tapas night (Cava Baja) — or Casa Lucio
-  if you snagged a table.
+- **~7:00 PM:** 💃 **Flamenco at a top tablao** — seated, air-conditioned, and one of
+  Spain's great live experiences; take the **early show** so the night stays easy for
+  your parents. First choice **Corral de la Morería** (Calle Morería 17, near the
+  Royal Palace — the world's most famous tablao); **Torres Bermejas** near Gran Vía
+  is the closer-to-the-hotel backup. Book today and confirm exact showtimes.
+- **~9:15 PM:** short taxi to **La Latina** — Sunday is its big tapas night (Cava
+  Baja) — for a late-but-light bite, or Casa Lucio if you snagged a table.
 
 ### Day 6 — Mon Jul 13 · Real Madrid's Bernabéu + Sweet Finale
 - **8:45 AM:** taxi up the Castellana (~15 min, one cab fits all four, ~€10–15).
@@ -227,8 +247,12 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   ~2 h. Heads-up: the route includes **numerous stretches of stairs** — if either
   parent would struggle, the €44 Flexible ticket plus the club's lift-served partial
   route (contact them ahead) is the safer setup.
-- **Lunch + siesta**, then a gentle option: **Retiro Park** (flat, shady, rowboats)
-  or the **Prado** (benches throughout).
+- **Lunch + siesta.**
+- **~4:00 PM:** **Reina Sofía for *Guernica*** — Picasso's masterpiece is arguably
+  Spain's most important artwork, the museum is **open Mondays** (it closes Tuesdays),
+  fully accessible, and this is a one-hour in-and-out visit: Guernica, the rooms
+  around it, done. Gentler alternatives if the family prefers: **Retiro Park** (flat,
+  shady, rowboats) or the **Prado** (benches throughout).
 - **Evening:** farewell dinner — **Sobrino de Botín** (world's oldest restaurant,
   1725; book now) — then 🍫 **Chocolatería San Ginés** for the churros-and-thick-
   chocolate finale, 8 min from the hotel. Pack tonight.
@@ -250,6 +274,13 @@ If your flight is already booked, just apply the same timeline: **leave the hote
 - [x] **Beach time** — Days 1, 2 & 3
 - [x] **Zara flagship + Bershka** — Day 5 (8–10 min walk from hotel)
 - [x] **Spanish McDonald's** — Day 5 · **San Ginés** — Day 6 finale
+
+**Don't-miss additions folded in:**
+- [x] **La Boqueria market** — Day 1 evening stroll
+- [x] **Casa Batlló interior** — Day 2, 5:00 PM
+- [x] **Park Güell** — Day 3, 6:30 PM golden hour (committed — book today)
+- [x] **Flamenco tablao** — Day 5, ~7:00 PM early show
+- [x] **Guernica (Reina Sofía)** — Day 6, ~4:00 PM (open Mondays)
 
 ---
 
