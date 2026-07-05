@@ -19,7 +19,7 @@ These sell out or get expensive fastest. Book in this order, today:
 |---|---|---|---|---|
 | 1 | **Sagrada Família** — Thu Jul 9 | **9:00 AM** entry (Quiet Hour) | €26 adult / €21 senior; towers +€10 (sons only) | sagradafamilia.org/en/tickets-individuals |
 | 2 | **Train BCN→Madrid** — Sat Jul 11 | **AVE 03080, 8:25 AM** (nonstop) | ~€60–110 Standard, ~€90–140 Confort/Premium | renfe.com |
-| 3 | **Stays**: Suites Avenue (BCN) + Gran View (MAD) | Jul 8–11 / Jul 11–14, 2-bedroom units | — | suitesavenue.com / granviewapartments.com |
+| 3 | **Stays**: "Luxury Modernist Apartment" (BCN, Airbnb) + Gran View (MAD) | Jul 8–11 / Jul 11–14 | ~$635/nt BCN · 2-BR unit MAD | airbnb.com (verify HUTB license!) / granviewapartments.com |
 | 4 | **Spotify Camp Nou Experience** — Fri Jul 10 | **9:30 AM** guided session (English) | from €69 | fcbarcelona.com/en/tickets/camp-nou-experience |
 | 5 | **Bernabéu Tour** — Mon Jul 13 | **9:00 AM** opening (or €44 Flexible-time) | €37 online | realmadrid.com/en-US/tour-bernabeu |
 | 6 | **Royal Palace** — Sun Jul 12 | ~10:00 AM timed entry | see site | entradas.patrimonionacional.es |
@@ -71,19 +71,24 @@ station. I mapped both candidate hotels against every stop:
 | Camp Nou | **10–15 min taxi** | 16–25 min taxi |
 | Sants station (train day) | **7–12 min taxi / 12 min metro L3** | 12–20 min taxi |
 
-**✅ Chosen stay — Suites Avenue (serviced apartments, Passeig de Gràcia 83).**
-The best-value pick that keeps the winning location: it sits on the **same street as
-the Majestic** (two blocks up, directly facing La Pedrera), so every distance in the
-Majestic column above applies. You get a family apartment with a kitchen and living
-room, **individual A/C, 2 outdoor pools + solarium, and 24-hour reception** — the
-apartment experience with hotel backup, at a fraction of a two-room 5★ bill.
-📍 Passeig de Gràcia 83 · ☎ +34 934 874 159 · book direct at suitesavenue.com.
-*Ask for a family/2-bedroom unit, confirm the lift, and request early bag-drop for
-the 9 AM arrival.*
+**✅ Chosen stay — "Luxury Modernist Apartment in the Core of the City" (Airbnb).**
+3 bedrooms / 2 baths, **4.96 rating over 450 stays** — as bulletproof as Airbnb gets —
+in a restored modernista building in central Eixample, ~$635/night total for all
+four (well under two 5★ rooms). Everyone gets their own bedroom and the two baths
+solve the 8:40 AM Sagrada departure.
 
-**Splurge alternative — Majestic Hotel & Spa (5★, Pg. de Gràcia 68)**, rooftop pool
-with Sagrada views. **Beach-first alternative — Hotel Arts (5★, Port Olímpic)**,
-sand at the door but 10–25 min taxis to everything else.
+**Verify on the listing before paying (60 seconds):** ① **HUTB license number**
+displayed — no number, no booking; ② **elevator** confirmed; ③ **A/C in the
+bedrooms**; ④ map pin between Plaça de Catalunya and Diagonal, near the Passeig de
+Gràcia axis; ⑤ message the host about **9 AM Wed bag-drop** before booking.
+*Write the exact address on the day sheet once Airbnb reveals it.*
+
+**Fallback chain if it fails a check or gets booked:** ① **Designer Duplex in the
+City Center** (Airbnb, 2BR/2BA, 4.86 × 197, ~$418/nt — confirm the parents' bedroom
+is on the lower level); ② quote two rooms at **Sir Victor / NH Collection Calderón /
+Condes de Barcelona**; ③ **Suites Avenue** serviced apartments (Pg. de Gràcia 83,
+☎ +34 934 874 159) — the always-solid baseline. Splurge: **Majestic (5★)**;
+beach-first: **Hotel Arts (5★)**.
 
 ### Madrid (3 nights: Jul 11–14)
 
@@ -172,9 +177,9 @@ If your flight is already booked, just apply the same timeline: **leave the hote
 ## 📍 Day-by-Day
 
 ### Day 1 — Wed Jul 8 · Land in Barcelona (9:00 AM)
-- **9:00 AM:** land at BCN; taxi to the hotel (~25–35 min, ~€35–40). Rooms likely
-  won't be ready — request early check-in when booking; otherwise leave bags and
-  have a slow coffee/brunch nearby.
+- **9:00 AM:** land at BCN; taxi to the apartment (~25–35 min, ~€35–40). The unit
+  likely won't be ready — arrange bag-drop/early check-in with the host in advance;
+  otherwise leave bags and have a slow coffee/brunch nearby.
 - **Afternoon:** nap/pool — everyone will be jet-lagged; protect this rest window.
 - **Evening:** gentle **Gothic Quarter + La Rambla** stroll while it cools — duck
   into **La Boqueria market** on the way (stalls close ~8 PM) for ten minutes of the
