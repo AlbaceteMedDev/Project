@@ -19,7 +19,7 @@ These sell out or get expensive fastest. Book in this order, today:
 |---|---|---|---|---|
 | 1 | **Sagrada Família** — Thu Jul 9 | **9:00 AM** entry (Quiet Hour) | €26 adult / €21 senior; towers +€10 (sons only) | sagradafamilia.org/en/tickets-individuals |
 | 2 | **Train BCN→Madrid** — Sat Jul 11 | **AVE 03080, 8:25 AM** (nonstop) | ~€60–110 Standard, ~€90–140 Confort/Premium | renfe.com |
-| 3 | **Hotels** (both cities) | Jul 8–11 BCN / Jul 11–14 MAD | — | direct or your booking site |
+| 3 | **Stays**: Suites Avenue (BCN) + Gran View (MAD) | Jul 8–11 / Jul 11–14, 2-bedroom units | — | suitesavenue.com / granviewapartments.com |
 | 4 | **Spotify Camp Nou Experience** — Fri Jul 10 | **9:30 AM** guided session (English) | from €69 | fcbarcelona.com/en/tickets/camp-nou-experience |
 | 5 | **Bernabéu Tour** — Mon Jul 13 | **9:00 AM** opening (or €44 Flexible-time) | €37 online | realmadrid.com/en-US/tour-bernabeu |
 | 6 | **Royal Palace** — Sun Jul 12 | ~10:00 AM timed entry | see site | entradas.patrimonionacional.es |
@@ -62,7 +62,7 @@ These sell out or get expensive fastest. Book in this order, today:
 Your Barcelona list = Sagrada Família, Camp Nou, beach, old town, and the train
 station. I mapped both candidate hotels against every stop:
 
-| Destination | Majestic Hotel & Spa (Pg. de Gràcia) | Hotel Arts (beachfront) |
+| Destination | Pg. de Gràcia base (Suites Avenue / Majestic) | Hotel Arts (beachfront) |
 |---|---|---|
 | Sagrada Família | **8–10 min taxi / 23 min flat walk** | 10–15 min taxi |
 | Gothic Quarter | **~24 min flat walk / 8 min taxi** | 8–12 min taxi |
@@ -71,40 +71,50 @@ station. I mapped both candidate hotels against every stop:
 | Camp Nou | **10–15 min taxi** | 16–25 min taxi |
 | Sants station (train day) | **7–12 min taxi / 12 min metro L3** | 12–20 min taxi |
 
-**Top pick — Majestic Hotel & Spa (5★, Passeig de Gràcia 68).** Total distance to
-your non-beach stops is roughly **half** of Hotel Arts' (≈16 km vs ≈29 km of taxi
-legs), it has a rooftop pool with Sagrada Família views for the afternoon heat
-breaks, and Casa Batlló/La Pedrera are on its doorstep. The beach becomes one short
-taxi ride on beach afternoons.
+**✅ Chosen stay — Suites Avenue (serviced apartments, Passeig de Gràcia 83).**
+The best-value pick that keeps the winning location: it sits on the **same street as
+the Majestic** (two blocks up, directly facing La Pedrera), so every distance in the
+Majestic column above applies. You get a family apartment with a kitchen and living
+room, **individual A/C, 2 outdoor pools + solarium, and 24-hour reception** — the
+apartment experience with hotel backup, at a fraction of a two-room 5★ bill.
+📍 Passeig de Gràcia 83 · ☎ +34 934 874 159 · book direct at suitesavenue.com.
+*Ask for a family/2-bedroom unit, confirm the lift, and request early bag-drop for
+the 9 AM arrival.*
 
-**Beach-first alternative — Hotel Arts Barcelona (5★, Port Olímpic).** If waking up
-on the sand matters more than shorter sightseeing hops, this stays the pick: beach
-at the door, beachfront pool, spa — you'll just taxi 10–25 min to everything else.
-*(W Barcelona and Sofitel/Pullman Skipper remain solid beachfront backups.)*
+**Splurge alternative — Majestic Hotel & Spa (5★, Pg. de Gràcia 68)**, rooftop pool
+with Sagrada views. **Beach-first alternative — Hotel Arts (5★, Port Olímpic)**,
+sand at the door but 10–25 min taxis to everything else.
 
 ### Madrid (3 nights: Jul 11–14)
 
-**Top pick — Four Seasons Hotel Madrid (5★, Calle de Sevilla 3).** The distance
-check confirmed it's near-perfect for your list — six of your stops are a flat
-walk under 13 minutes:
+**✅ Chosen stay — Gran View Apartments (serviced apartments, Gran Vía 48).**
+Best value with everything still at your feet — it's *on Gran Vía itself* at Callao,
+which actually puts the shopping and Royal Palace **closer** than the Four Seasons:
 
-| Destination | From the Four Seasons |
+| Destination | From Gran View (Gran Vía 48) |
 |---|---|
-| Puerta del Sol | **5 min walk** |
-| Chocolatería San Ginés | **8–9 min walk** |
-| Bershka (Gran Vía 25) | **8 min walk** |
-| Zara flagship (Gran Vía 34) | **10 min walk** |
-| Plaza Mayor | **9–11 min walk** |
-| Mercado de San Miguel | **12–13 min walk** |
-| Royal Palace | 16–18 min walk or 7–10 min taxi |
+| Zara flagship (Gran Vía 34) | **3 min walk** |
+| Bershka (Gran Vía 25) | **4 min walk** |
+| Chocolatería San Ginés | **7 min walk** |
+| Puerta del Sol | **8 min walk** |
+| Plaza Mayor | **11 min walk** |
+| Royal Palace | **12 min walk** |
+| Mercado de San Miguel | **13 min walk** |
 | Santiago Bernabéu | 10–18 min taxi (~€10–15 for all 4) |
-| Atocha station | 6–10 min taxi (~€7–9) |
+| Atocha station | 8–12 min taxi (~€9–11) |
 
-*(Alternatives if it's sold out at 3 days' notice: Thompson Madrid or NH Collection
-Suecia — both keep everything within the same walkable square kilometer.)*
+1-bedroom units sleep 4, or take a **2-bedroom apartment**; the building has a
+**pool + solarium, gym, and A/C**. 📍 Gran Vía 48 · ☎ +34 91 598 14 09 · book at
+granviewapartments.com. *Confirm the lift and early bag-drop are arranged for
+Saturday's 11:45 AM arrival — you'll likely drop bags and lunch first anyway.*
 
-> **Booking tip for both cities:** two connecting/adjacent rooms near the lift, and a
-> step-free bathroom for your parents.
+**Splurge alternative — Four Seasons Hotel Madrid (5★, Calle de Sevilla 3)** — the
+plan's original pick, equally central (Sol 5 min), with full hotel service and spa.
+*(Also solid: Thompson Madrid, NH Collection Suecia, Eric Vökel Madrid Suites.)*
+
+> **Booking tip for both cities:** a true 2-bedroom unit (not two separate
+> apartments), lift confirmed explicitly, A/C in every room, and a step-free
+> bathroom for your parents.
 
 ---
 
@@ -180,10 +190,10 @@ If your flight is already booked, just apply the same timeline: **leave the hote
 - **Towers:** you and your brother can add tower access (+€10) — but Mom & Dad should
   skip it: the descent is 300–500 narrow spiral stairs on foot, no lift down.
 - **Late morning:** stroll/taxi back via **Passeig de Gràcia** — La Pedrera façade
-  on the way (steps from the Majestic).
+  on the way (directly across the street from Suites Avenue).
 - **Afternoon:** **beach + pool** heat break — swim at Barceloneta or laze at the rooftop.
 - **5:00 PM:** **Casa Batlló — inside this time** (timed entry, ~90 min). Gaudí's
-  dragon-spine house 2 minutes from the Majestic: the blue-tiled light well and
+  dragon-spine house a 7-minute stroll down Passeig de Gràcia: the blue-tiled light well and
   whale-rib attic are the best interior in Barcelona. Air-conditioned with lifts —
   the ideal late-afternoon slot for your parents.
 - **Evening:** dinner in the Eixample or El Born; optional **sunset harbor cruise**
@@ -211,8 +221,8 @@ If your flight is already booked, just apply the same timeline: **leave the hote
 - **7:40 AM:** taxi to **Barcelona-Sants** (10–15 min; Atendo assistance meets you
   if requested).
 - **8:25 AM:** **AVE 03080 nonstop → Madrid-Atocha 11:27.**
-- **11:45 AM:** taxi to the Four Seasons (6–10 min); drop bags, lunch near **Puerta
-  del Sol** (5-min walk — you're staying on top of it).
+- **11:45 AM:** taxi to Gran View Apartments, Gran Vía 48 (8–12 min); drop bags,
+  lunch around **Callao/Puerta del Sol** (8-min walk — you're staying on top of it).
 - **Afternoon:** siesta — travel day + tonight is busy.
 - **~6:30 PM:** 🛺 **Tuk-tuk tour** (pre-booked, private, 1.5–2 h): yes, the touts
   by Plaza Mayor seem scammy — that's why you book a rated operator ahead — but the
@@ -229,8 +239,8 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   beats the worst crush.
 - **Afternoon:** siesta.
 - **~5:00 PM:** **Puerta del Sol** (Km 0 plaque, the bear-and-strawberry-tree statue),
-  then **Bershka (Gran Vía 25)** and the **Zara flagship (Gran Vía 34)** — 8–10 min
-  walks from the hotel. 🍔 Fold in the **Spanish McDonald's** stop here for the menu
+  then **Bershka (Gran Vía 25)** and the **Zara flagship (Gran Vía 34)** — 3–4 min
+  walks from your apartment. 🍔 Fold in the **Spanish McDonald's** stop here for the menu
   comparison the four of you can argue about at dinner.
 - **~7:00 PM:** 💃 **Flamenco at a top tablao** — seated, air-conditioned, and one of
   Spain's great live experiences; take the **early show** so the night stays easy for
@@ -255,7 +265,7 @@ If your flight is already booked, just apply the same timeline: **leave the hote
   shady, rowboats) or the **Prado** (benches throughout).
 - **Evening:** farewell dinner — **Sobrino de Botín** (world's oldest restaurant,
   1725; book now) — then 🍫 **Chocolatería San Ginés** for the churros-and-thick-
-  chocolate finale, 8 min from the hotel. Pack tonight.
+  chocolate finale, 7 min from the apartment. Pack tonight.
 
 ### Day 7 — Tue Jul 14 · Fly home to NY/NJ
 - **~8:15 AM:** taxi to Barajas (€33 flat fare, 30–45 min) for a midday nonstop —
@@ -327,5 +337,5 @@ If your flight is already booked, just apply the same timeline: **leave the hote
 - [FC Barcelona — Camp Nou Experience](https://www.fcbarcelona.com/en/tickets/camp-nou-experience) · [tours-are-back announcement](https://www.fcbarcelona.com/en/club/news/4440096/spotify-camp-nou-tours-are-back)
 - [Real Madrid — Bernabéu Tour](https://www.realmadrid.com/en-US/tour-bernabeu/individual)
 - [Iberia US-bound arrival guidance](https://www.iberia.com/us/time-limit/) · [Madrid airport taxi flat fare](https://www.madrid-traveller.com/madrid-airport-to-the-city-center/) · [MAD–JFK nonstops](https://www.flightconnections.com/flights-from-mad-to-jfk)
-- [Majestic Hotel & Spa](https://majestichotelgroup.com/en/barcelona/hotel-majestic) · [Hotel Arts (Forbes)](https://www.forbestravelguide.com/hotels/barcelona-spain/hotel-arts-barcelona) · [Four Seasons Madrid](https://www.booking.com/hotel/es/four-seasons-madrid.html)
+- [Suites Avenue](https://www.suitesavenue.com/en) · [Gran View Apartments](https://www.granviewapartments.com/en/) · [Majestic Hotel & Spa](https://majestichotelgroup.com/en/barcelona/hotel-majestic) · [Hotel Arts (Forbes)](https://www.forbestravelguide.com/hotels/barcelona-spain/hotel-arts-barcelona) · [Four Seasons Madrid](https://www.booking.com/hotel/es/four-seasons-madrid.html)
 - [Tripadvisor — Barcelona 5★](https://www.tripadvisor.com/Hotels-g187497-zfc5-Barcelona_Catalonia-Hotels.html) · [Sol/Madrid luxury hotels](https://www.tripadvisor.com/Hotels-g187514-zff12-zfn15620734-Madrid-Hotels.html)
