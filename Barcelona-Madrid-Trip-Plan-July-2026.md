@@ -19,7 +19,7 @@ These sell out or get expensive fastest. Book in this order, today:
 |---|---|---|---|---|
 | 1 | **Sagrada Família** — Thu Jul 9 | **9:00 AM** entry (Quiet Hour) | €26 adult / €21 senior; towers +€10 (sons only) | sagradafamilia.org/en/tickets-individuals |
 | 2 | **Train BCN→Madrid** — Sat Jul 11 | **AVE 03080, 8:25 AM** (nonstop) | ~€60–110 Standard, ~€90–140 Confort/Premium | renfe.com |
-| 3 | **Stays**: "Luxury Modernist Apartment" (BCN, Airbnb) + Gran View (MAD) | Jul 8–11 / Jul 11–14 | ~$635/nt BCN · 2-BR unit MAD | airbnb.com (verify HUTB license!) / granviewapartments.com |
+| 3 | **Stays**: "Sweett | Diagonal Sagrada II" (BCN, Airbnb) + Gran View (MAD) | Jul 8–11 / Jul 11–14 | ~$584/nt BCN · 2-BR unit MAD | airbnb.com (verify HUTB license!) / granviewapartments.com |
 | 4 | **Spotify Camp Nou Experience** — Fri Jul 10 | **9:30 AM** guided session (English) | from €69 | fcbarcelona.com/en/tickets/camp-nou-experience |
 | 5 | **Bernabéu Tour** — Mon Jul 13 | **9:00 AM** opening (or €44 Flexible-time) | €37 online | realmadrid.com/en-US/tour-bernabeu |
 | 6 | **Royal Palace** — Sun Jul 12 | ~10:00 AM timed entry | see site | entradas.patrimonionacional.es |
@@ -71,11 +71,15 @@ station. I mapped both candidate hotels against every stop:
 | Camp Nou | **10–15 min taxi** | 16–25 min taxi |
 | Sants station (train day) | **7–12 min taxi / 12 min metro L3** | 12–20 min taxi |
 
-**✅ Chosen stay — "Luxury Modernist Apartment in the Core of the City" (Airbnb).**
-3 bedrooms / 2 baths, **4.96 rating over 450 stays** — as bulletproof as Airbnb gets —
-in a restored modernista building in central Eixample, ~$635/night total for all
-four (well under two 5★ rooms). Everyone gets their own bedroom and the two baths
-solve the 8:40 AM Sagrada departure.
+**✅ Chosen stay — "Sweett | Diagonal Sagrada II" (Airbnb).**
+3 bedrooms / 2 baths, 4.81 rating (89 stays), ~$584/night total for all four.
+Sweett is a professional design-apartment operator whose whole brand is
+**clean, minimalist-contemporary interiors** — the modern look you want, with
+hotel-like standards and licensing. Everyone gets their own bedroom and the two
+baths solve the 8:40 AM Sagrada departure. Location trade-off, stated honestly:
+it sits at the Diagonal/Sagrada end of the Eixample — **closer to Thursday's
+Sagrada Família visit**, but ~15–20 min walk (or a short taxi) to the Passeig de
+Gràcia evenings and a slightly longer hop to Sants on train morning.
 
 **Verify on the listing before paying (60 seconds):** ① **HUTB license number**
 displayed — no number, no booking; ② **elevator** confirmed; ③ **A/C in the
@@ -84,11 +88,12 @@ Gràcia axis; ⑤ message the host about **9 AM Wed bag-drop** before booking.
 *Write the exact address on the day sheet once Airbnb reveals it.*
 
 **Fallback chain if it fails a check or gets booked:** ① **Designer Duplex in the
-City Center** (Airbnb, 2BR/2BA, 4.86 × 197, ~$418/nt — confirm the parents' bedroom
-is on the lower level); ② quote two rooms at **Sir Victor / NH Collection Calderón /
-Condes de Barcelona**; ③ **Suites Avenue** serviced apartments (Pg. de Gràcia 83,
-☎ +34 934 874 159) — the always-solid baseline. Splurge: **Majestic (5★)**;
-beach-first: **Hotel Arts (5★)**.
+City Center** (Airbnb, 2BR/2BA, 4.86 × 197, ~$418/nt — check the photos read
+minimalist and confirm the parents' bedroom is on the lower level); ② quote two
+rooms at **Sir Victor / NH Collection Calderón** (the most minimalist-modern hotels
+in the zone); ③ **Suites Avenue** serviced apartments (Pg. de Gràcia 83,
+☎ +34 934 874 159) — avant-garde design, the always-solid baseline.
+Splurge: **Majestic (5★)**; beach-first: **Hotel Arts (5★)**.
 
 ### Madrid (3 nights: Jul 11–14)
 
