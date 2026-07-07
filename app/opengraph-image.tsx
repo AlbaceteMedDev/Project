@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+
+export const dynamic = "force-static";
 import { site } from "@/lib/site";
 
-export const runtime = "edge";
 export const alt = `${site.name} — Mobile Wound Care Across NYC's Five Boroughs`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

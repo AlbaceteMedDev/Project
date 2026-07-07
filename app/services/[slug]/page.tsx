@@ -59,17 +59,41 @@ export default async function ServicePage({ params }: Props) {
       />
 
       <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumbs" aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
-            <span aria-hidden="true">/</span>
-            <Link href="/services">Services</Link>
-            <span aria-hidden="true">/</span>
-            <span>{service.shortName}</span>
-          </nav>
-          <span className="eyebrow">Service</span>
-          <h1>{service.name}</h1>
-          <p className="section-lede">{service.intro}</p>
+        <div className="container page-hero-grid">
+          <div>
+            <nav className="breadcrumbs" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span aria-hidden="true">/</span>
+              <Link href="/services">Services</Link>
+              <span aria-hidden="true">/</span>
+              <span>{service.shortName}</span>
+            </nav>
+            <span className="eyebrow">Service</span>
+            <h1>{service.name}</h1>
+            <p className="section-lede">{service.intro}</p>
+          </div>
+          <dl className="facts" aria-label="Quick facts">
+            <div className="fact">
+              <dt>Setting</dt>
+              <dd>Your home, borough-wide</dd>
+            </div>
+            <div className="fact">
+              <dt>Coverage</dt>
+              <dd>All five NYC boroughs</dd>
+            </div>
+            <div className="fact">
+              <dt>Referral</dt>
+              <dd>Not required to start</dd>
+            </div>
+            <div className="fact">
+              <dt>Clinician</dt>
+              <dd>{site.provider.fullTitle}</dd>
+            </div>
+            <div className="fact">
+              <dt>Insurance</dt>
+              <dd>Verified before visit one</dd>
+            </div>
+          </dl>
         </div>
       </section>
 

@@ -311,37 +311,34 @@
   pointer-events: none;
 }
 
-.hero-badge {
+/* figure-plate annotations inside the emblem panel */
+.plate-row {
   position: absolute;
-  background: var(--white);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  padding: 0.7rem 0.95rem;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  color: var(--ink);
+  left: 30px;
+  right: 30px;
   display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  white-space: nowrap;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 232, 0.85);
 }
 
-.hero-badge small { display: block; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.6rem; margin-top: 2px; }
-.hero-badge-1 { top: 7%; left: -7%; }
-.hero-badge-2 { bottom: 8%; right: -5%; }
+.plate-row span:last-child { color: var(--ochre-bright); }
+.plate-row-top { top: 26px; }
+.plate-row-bottom { bottom: 26px; }
 
 @media (max-width: 920px) {
   .hero { background: var(--paper); padding-block: 2.5rem 3.5rem; }
   .hero-inner { grid-template-columns: 1fr; }
   /* Lead with the headline on mobile; emblem sits below, smaller. */
   .hero-figure { order: 2; margin-top: 3rem; }
-  .hero-figure-ring { width: min(74vw, 20rem); }
-  .hero-badge { font-size: 0.6rem; padding: 0.55rem 0.75rem; }
-  .hero-badge small { font-size: 0.52rem; }
-  .hero-badge-1 { left: -1%; top: 6%; }
-  .hero-badge-2 { right: -1%; bottom: 7%; }
+  .hero-figure-ring { width: min(78vw, 21rem); }
+  .plate-row { left: 22px; right: 22px; font-size: 0.54rem; }
+  .plate-row-top { top: 19px; }
+  .plate-row-bottom { bottom: 19px; }
   .hero-title { margin-top: 1.2rem; }
 }
 
@@ -840,6 +837,32 @@
 
 .page-hero h1 { font-size: var(--text-4xl); margin-top: 1.2rem; max-width: 20ch; letter-spacing: -0.045em; }
 .page-hero .section-lede { max-width: 60ch; }
+
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+
+@media (max-width: 860px) { .page-hero-grid { grid-template-columns: 1fr; } }
+
+/* mono quick-facts ledger */
+.facts { border-top: 1px solid var(--line-strong); }
+
+.fact {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.85rem 0.2rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono), monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.03em;
+}
+
+.fact dt { text-transform: uppercase; color: var(--ochre); letter-spacing: 0.1em; }
+.fact dd { color: var(--ink-2); text-align: right; }
 
 .breadcrumbs {
   display: flex;

@@ -84,20 +84,14 @@ export default function HomePage() {
 
           <Reveal delay={0.15} className="hero-figure">
             <div className="hero-figure-ring">
-              <Emblem size="62%" strand="#F7F4EC" accent="#D8B96E" casing="#0B2E1F" />
-              <div className="hero-badge hero-badge-1">
-                <Emblem size={26} />
-                <span>
-                  House Calls
-                  <small>Across NYC</small>
-                </span>
+              <Emblem size="58%" strand="#F7F4EC" accent="#D8B96E" casing="#0B2E1F" />
+              <div className="plate-row plate-row-top" aria-hidden="true">
+                <span>Fig. 01 — The Healing Knot</span>
+                <span>Est. NYC</span>
               </div>
-              <div className="hero-badge hero-badge-2">
-                <span aria-hidden="true">🩺</span>
-                <span>
-                  {site.provider.fullTitle}
-                  <small>Wound Care Specialist</small>
-                </span>
+              <div className="plate-row plate-row-bottom">
+                <span>{site.provider.fullTitle}</span>
+                <span>NPI {site.provider.npi}</span>
               </div>
             </div>
           </Reveal>
@@ -119,7 +113,7 @@ export default function HomePage() {
       <section className="section" id="services">
         <div className="container">
           <Reveal>
-            <span className="eyebrow">What we treat</span>
+            <span className="eyebrow">01 / What we treat</span>
             <h2 className="section-title">Complete wound care, without the wound center.</h2>
             <p className="section-lede">
               Every service an outpatient wound clinic offers — assessment, debridement,
@@ -148,7 +142,7 @@ export default function HomePage() {
       <section className="section section-night">
         <div className="container">
           <Reveal>
-            <span className="eyebrow">How it works</span>
+            <span className="eyebrow">02 / How it works</span>
             <h2 className="section-title">From first call to closed wound.</h2>
           </Reveal>
           <div className="steps">
@@ -194,7 +188,7 @@ export default function HomePage() {
       <section className="section" id="service-areas">
         <div className="container">
           <Reveal>
-            <span className="eyebrow">Where we go</span>
+            <span className="eyebrow">03 / Where we go</span>
             <h2 className="section-title">If it's in the five boroughs, it's a house call.</h2>
             <p className="section-lede">
               Explore the map — Apollo Wound Care travels to every corner of New York
@@ -222,7 +216,7 @@ export default function HomePage() {
             </figure>
           </Reveal>
           <Reveal delay={0.12}>
-            <span className="eyebrow">Your specialist</span>
+            <span className="eyebrow">04 / Your specialist</span>
             <h2 className="section-title">The same expert at your door, every time.</h2>
             <p className="section-lede">
               Apollo Wound Care was founded by Timothy Donoho, PA on a simple conviction:
@@ -253,7 +247,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <Reveal>
-            <span className="eyebrow">The Apollo standard</span>
+            <span className="eyebrow">05 / The Apollo standard</span>
             <h2 className="section-title">Why house calls heal faster.</h2>
           </Reveal>
           <div className="pillars">
@@ -275,7 +269,7 @@ export default function HomePage() {
         <div className="container">
           <div className="faq-home">
             <Reveal className="faq-home-intro">
-              <span className="eyebrow">Questions, answered</span>
+              <span className="eyebrow">06 / Questions, answered</span>
               <h2 className="section-title">Everything families ask us first.</h2>
               <p>
                 Straight answers on insurance, referrals, and what actually happens at

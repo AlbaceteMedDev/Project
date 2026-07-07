@@ -13,7 +13,9 @@ export const site = {
   tagline: "Expert wound care, delivered to your door.",
   description:
     "Apollo Wound Care brings specialist-level wound treatment to patients at home across all five boroughs of New York City. Led by Timothy Donoho, PA — diabetic ulcers, pressure injuries, venous ulcers, surgical wounds and more, treated where you live.",
-  url: "https://www.apollowoundcare.com",
+  // Canonical origin for metadata, sitemap and JSON-LD. Override per-deploy
+  // with NEXT_PUBLIC_SITE_URL; defaults to the future production domain.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.apollowoundcare.com",
   phone: "(929) 555-0134", // TODO: replace with the practice's real number
   phoneHref: "+19295550134", // TODO: replace with the practice's real number
   email: "care@apollowoundcare.com", // TODO: replace with the practice's real inbox

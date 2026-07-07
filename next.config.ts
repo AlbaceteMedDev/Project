@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
+// STATIC_EXPORT=1 builds a fully static bundle in /out (for static hosts).
+// The default build stays server-capable for Vercel.
+const isExport = process.env.STATIC_EXPORT === "1";
+
 const nextConfig: NextConfig = {
+  ...(isExport ? { output: "export" as const } : {}),
   poweredByHeader: false,
   compress: true,
   async headers() {
