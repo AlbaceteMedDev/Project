@@ -79,7 +79,7 @@ export default async function BoroughPage({ params }: Props) {
             <h2 className="section-title">Built for how {borough.name} actually lives.</h2>
             <p className="section-lede">{borough.whyHouseCalls}</p>
             <div className="hero-actions">
-              <a href={`tel:${site.phoneHref}`} className="btn btn-gold">
+              <a href={`tel:${site.phoneHref}`} className="btn btn-primary">
                 Call {site.phone}
               </a>
               <Link href="/contact" className="btn btn-ghost">

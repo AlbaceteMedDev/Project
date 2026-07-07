@@ -61,7 +61,7 @@ export default function HomePage() {
                 <strong>{site.provider.fullTitle}</strong>.
               </p>
               <div className="hero-actions">
-                <a href={`tel:${site.phoneHref}`} className="btn btn-gold btn-lg">
+                <a href={`tel:${site.phoneHref}`} className="btn btn-primary btn-lg">
                   Call {site.phone}
                 </a>
                 <Link href="/contact" className="btn btn-ghost btn-lg">
@@ -273,20 +273,27 @@ export default function HomePage() {
       {/* ============ FAQ PREVIEW ============ */}
       <section className="section section-tint">
         <div className="container">
-          <Reveal>
-            <span className="eyebrow">Questions, answered</span>
-            <h2 className="section-title">Everything families ask us first.</h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <FaqAccordion faqs={faqs.slice(0, 5)} />
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div style={{ marginTop: "2rem" }}>
-              <Link href="/faq" className="btn btn-ghost">
-                See all questions →
-              </Link>
-            </div>
-          </Reveal>
+          <div className="faq-home">
+            <Reveal className="faq-home-intro">
+              <span className="eyebrow">Questions, answered</span>
+              <h2 className="section-title">Everything families ask us first.</h2>
+              <p>
+                Straight answers on insurance, referrals, and what actually happens at
+                the first home visit. Still unsure? A real person picks up.
+              </p>
+              <div className="faq-home-actions">
+                <a href={`tel:${site.phoneHref}`} className="btn btn-primary">
+                  Call {site.phone}
+                </a>
+                <Link href="/faq" className="btn btn-ghost">
+                  All questions →
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <FaqAccordion faqs={faqs.slice(0, 5)} />
+            </Reveal>
+          </div>
           <div style={{ marginTop: "4rem" }}>
             <StitchDivider />
           </div>

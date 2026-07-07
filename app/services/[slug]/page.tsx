@@ -107,7 +107,7 @@ export default async function ServicePage({ params }: Props) {
                 Available in every borough. Call for the earliest visit, or send a
                 request online.
               </p>
-              <a href={`tel:${site.phoneHref}`} className="btn btn-gold">
+              <a href={`tel:${site.phoneHref}`} className="btn btn-primary">
                 Call {site.phone}
               </a>
               <Link href="/contact" className="btn btn-ghost">

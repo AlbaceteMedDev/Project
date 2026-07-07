@@ -95,7 +95,7 @@ export default function Nav() {
             Request a Visit
           </Link>
         </nav>
-        <a href={`tel:${site.phoneHref}`} className="btn btn-gold btn-lg mobile-call">
+        <a href={`tel:${site.phoneHref}`} className="btn btn-primary btn-lg mobile-call">
           <PhoneIcon /> Call {site.phone}
         </a>
       </div>

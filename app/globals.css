@@ -5,16 +5,18 @@
    ============================================================ */
 
 :root {
-  /* ---- Palette: bone, ink, forest, ochre ---- */
-  --paper: #f2f0e8;
-  --paper-2: #ebe8dd;
-  --paper-3: #e3dfd0;
-  --card: #f8f7f1;
-  --white: #fcfbf6;
+  /* ---- Palette: cool bone, ink, forest-primary, ochre-accent ----
+     Forest green leads; ochre is a sparing accent (dark bg + micro-marks
+     only). Small ochre text on light bg uses the darker --ochre (AA). */
+  --paper: #f1f2ec;
+  --paper-2: #e8e9e0;
+  --paper-3: #dee0d3;
+  --card: #f7f8f2;
+  --white: #fdfdf9;
 
   --ink: #14170f;
-  --ink-2: #3a3d33;
-  --ink-mute: #6a6d60;
+  --ink-2: #33362c;
+  --ink-mute: #585b4e;
 
   --forest: #123a29;
   --forest-deep: #0c2419;
@@ -22,8 +24,8 @@
   --green: #2f6b4a;
   --green-bright: #43a06a;
 
-  --ochre: #b07d24;
-  --ochre-bright: #d0982f;
+  --ochre: #886311;      /* AA on light bg for small text/marks */
+  --ochre-bright: #d6a03a; /* accents on dark bg only */
   --clay: #b5471f;
 
   --line: #14170f1f;
@@ -183,7 +185,7 @@ button { font: inherit; cursor: pointer; }
   line-height: 1.55;
 }
 
-.section-night .section-lede { color: rgba(242, 240, 232, 0.72); }
+.section-night .section-lede { color: rgba(242, 240, 232, 0.82); }
 
 .serif-italic {
   font-family: var(--font-display), sans-serif;
@@ -238,11 +240,13 @@ button { font: inherit; cursor: pointer; }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
 .btn:active { transform: translateY(0); }
 
-.btn-primary { --btn-bg: var(--ink); --btn-fg: var(--paper); }
-.btn-primary:hover { --btn-bg: var(--forest); border-color: var(--forest); }
+/* Primary = forest green (the workhorse CTA on light backgrounds) */
+.btn-primary { --btn-bg: var(--forest); --btn-fg: var(--paper); }
+.btn-primary:hover { --btn-bg: var(--forest-deep); border-color: var(--forest-deep); }
 
-.btn-gold { --btn-bg: var(--ochre); --btn-fg: var(--forest-night); border-color: var(--ochre); }
-.btn-gold:hover { --btn-bg: var(--ochre-bright); border-color: var(--ochre-bright); }
+/* Gold = reserved for DARK sections only, where it reads premium (not cream+gold) */
+.btn-gold { --btn-bg: var(--ochre-bright); --btn-fg: var(--forest-night); border-color: var(--ochre-bright); }
+.btn-gold:hover { --btn-bg: #e4b352; border-color: #e4b352; }
 
 .btn-ghost {
   --btn-bg: transparent;
@@ -285,7 +289,7 @@ button { font: inherit; cursor: pointer; }
   left: -1px;
   height: 2px;
   width: 0;
-  background: var(--ochre);
+  background: var(--green);
   transition: width 0.45s var(--ease-out);
 }
 
