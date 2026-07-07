@@ -1,0 +1,24 @@
+{
+  "name": "apollo-wound-care",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apollo Wound Care — mobile wound care across NYC's five boroughs.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "playwright-core": "^1.61.1",
+    "typescript": "^5.8.3"
+  }
+}
