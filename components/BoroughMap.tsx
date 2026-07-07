@@ -3,44 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { boroughs, type Borough } from "@/lib/boroughs";
+import { boroughShapes } from "@/lib/nyc-map";
 
 /**
- * A stylized, interactive map of New York City's five boroughs.
- * Deliberately abstract — organic shapes in the brand palette rather than a
- * cartographic tracing — but arranged true to geography.
+ * An interactive map of New York City's five boroughs, traced from real
+ * boundary data and simplified into the brand's line language.
  */
-const shapes: Record<
-  string,
-  { d: string; labelX: number; labelY: number; anchor?: "middle" | "end" }
-> = {
-  "the-bronx": {
-    d: "M226 92 C226 64 262 44 302 44 C346 44 382 66 382 96 C382 122 346 140 302 140 C262 140 226 120 226 92 Z",
-    labelX: 302,
-    labelY: 96,
-  },
-  manhattan: {
-    d: "M232 122 C242 125 244 140 241 158 L228 226 C226 238 213 238 211 227 C209 210 216 152 220 134 C223 123 226 120 232 122 Z",
-    labelX: 196,
-    labelY: 184,
-    anchor: "end",
-  },
-  queens: {
-    d: "M264 200 C264 170 302 148 354 148 C406 148 446 170 446 202 C446 234 404 258 352 258 C302 258 264 230 264 200 Z",
-    labelX: 356,
-    labelY: 204,
-  },
-  brooklyn: {
-    d: "M202 310 C202 282 238 258 282 258 C328 258 360 282 360 312 C360 342 324 366 280 366 C236 366 202 340 202 310 Z",
-    labelX: 282,
-    labelY: 314,
-  },
-  "staten-island": {
-    d: "M54 352 C54 326 86 304 122 304 C160 304 190 326 190 356 C190 384 158 402 122 402 C84 402 54 380 54 352 Z",
-    labelX: 122,
-    labelY: 356,
-  },
-};
-
 export default function BoroughMap() {
   const [active, setActive] = useState<Borough>(boroughs[1]); // Brooklyn default
 
@@ -48,12 +16,21 @@ export default function BoroughMap() {
     <div className="map-wrap">
       <div className="map-figure">
         <svg
-          viewBox="0 0 470 440"
+          viewBox="0 0 470 430"
           role="group"
           aria-label="Map of New York City's five boroughs — all served by Apollo Wound Care"
         >
+          {/* cartographic flourish: north arrow */}
+          <g className="map-compass" aria-hidden="true" transform="translate(38 44)">
+            <line x1="0" y1="14" x2="0" y2="-12" />
+            <path d="M0 -16 L-4.5 -7 L0 -9.5 L4.5 -7 Z" />
+            <text x="0" y="28" textAnchor="middle">
+              N
+            </text>
+          </g>
+
           {boroughs.map((b) => {
-            const s = shapes[b.slug];
+            const s = boroughShapes[b.slug];
             const isActive = active.slug === b.slug;
             return (
               <g key={b.slug}>
@@ -77,11 +54,11 @@ export default function BoroughMap() {
                 >
                   {b.name}
                 </text>
-                {isActive && (
+                {isActive && s.anchor !== "end" && (
                   <circle
-                    cx={s.anchor === "end" ? s.labelX - 4 : s.labelX}
-                    cy={s.labelY + 15}
-                    r="3.2"
+                    cx={s.labelX}
+                    cy={s.labelY + 14}
+                    r="3"
                     className="map-pin"
                     aria-hidden="true"
                   />
