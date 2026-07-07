@@ -260,9 +260,7 @@ export default function HomePage() {
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.07} className="pillar">
                 <h3>
-                  <span className="pillar-mark" aria-hidden="true">
-                    ✦
-                  </span>
+                  <span className="pillar-mark" aria-hidden="true" />
                   {p.title}
                 </h3>
                 <p>{p.copy}</p>

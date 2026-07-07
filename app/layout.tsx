@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
@@ -8,16 +8,26 @@ import { services } from "@/lib/services";
 import "./globals.css";
 import "./components.css";
 
-const fraunces = Fraunces({
+// Display: a characterful grotesque — architectural, confident, editorial.
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
-  axes: ["opsz"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const inter = Inter({
+// Body: warm humanist grotesque — deliberately not Inter.
+const body = Hanken_Grotesk({
   subsets: ["latin"],
   variable: "--font-body",
+  display: "swap",
+});
+
+// Mono: clinical precision for labels, indices, metadata.
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -115,7 +125,7 @@ function organizationJsonLd() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
