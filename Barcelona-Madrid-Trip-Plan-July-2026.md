@@ -26,7 +26,8 @@
 | **Airbnb Madrid — LaLatina IV (4BR/4BA)** | Jul 11, 4:00 PM → Jul 14, 11:00 AM · smart lock · host Jorge | **HMKMHEJWJM** (non-refundable) | **C/ Conde de Romanones 16, 1º1, 28012** |
 | Royal Palace — 4× **GUIDED tour in English** | **Sun Jul 12, 11:45 AM — ARRIVE 11:15** (preferential gate; meet guide in the Zaguán 5 min early) | **R117288233** (€26.77 pp via Fever — this was the "mystery" AmEx charge) | Calle de Bailén s/n |
 | Cardamomo Flamenco | **Sun Jul 12, 7:30 PM** (doors 7:15) · €176 | **MZPQH-2678** / Ref 611051 | Calle Echegaray 15 |
-| Bernabéu — Classic Tour | **Mon Jul 13, 10:30 AM** ← *moved from 9:00* · €204 | **102114803** (PDF attached in email) | Av. Concha Espina 1 |
+| Bernabéu — parents: 2× Classic Tour | **Mon Jul 13, 10:30 AM** | order **102114803** — ⚠ use only 2 of the 4 tickets on this PDF | Av. Concha Espina 1 |
+| Bernabéu — Gabe + brother: 2× **Tour + RM GAMES** | **Tour 10:30 AM · RM Games 11:30 AM** (be punctual at the Games entrance) | order **102259917** | same entrance; Games has its own check-in with avatar QR |
 | Delta 127 — **Gabe** home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Comfort+) | Barajas **Terminal 1** |
 | AA8837 (operated by Iberia) — **parents + brother** home | **Tue Jul 14, 4:20 PM → JFK 6:55 PM** (8h35 nonstop) | **BOOKED** — conf code in personal Gmail; write it on the day sheet | Barajas **Terminal 4, boards T4S satellite (+40 min)** |
 | Park Güell — 4 tickets | **Fri Jul 10, 6:30 PM** (€63) | **700997431423** / res. 8729449 | taxi to UPPER entrance, Ctra. del Carmel 23 |
@@ -96,8 +97,9 @@
 ### Mon Jul 13 · Bernabéu 10:30 + Guernica + farewell night
 - **9:00 AM** proper breakfast (later start than planned — tour moved to 10:30).
 - **10:05 AM** taxi up the Castellana (~15 min, ~€12, one cab).
-- **10:30 AM–12:30 PM** **Bernabéu Classic Tour** (order **102114803**) — many stairs; take it slow.
-- **1:00 PM lunch** back toward the center; **2:30–4:00** siesta.
+- **10:30 AM** all four start the **Bernabéu Tour** (parents on order 102114803; you two on 102259917) — many stairs; take it slow.
+- **11:30 AM** you and your brother peel off to **Real Madrid Games** (~1 h — scan the QR at the Games entrance, take the 3 avatar photos, settle the sibling rivalry). Parents finish the museum at their own pace and wait at the café/store.
+- **~12:45 PM** regroup; **1:15 PM lunch** back toward the center; **2:45–3:45** short siesta.
 - **4:00–4:30 PM entry window** — **Reina Sofía**, Sabatini Building, C/ Santa Isabel 52 — *Guernica*, Room 206 (locator **102258421**; audio guide code **0A6017** — bring headphones and charged phones; no backpacks over 50 cm).
 - **8:00 PM** farewell dinner **Sobrino de Botín**, C/ Cuchilleros 17 (booked per personal Gmail).
 - **10:00 PM** 🍫 **San Ginés** churros finale (Pasadizo de San Ginés 5). **Pack tonight.**
