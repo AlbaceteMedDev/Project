@@ -25,6 +25,8 @@
 | Cardamomo Flamenco | **Sun Jul 12, 7:30 PM** (doors 7:15) · €176 | **MZPQH-2678** / Ref 611051 | Calle Echegaray 15 |
 | Bernabéu — Classic Tour | **Mon Jul 13, 10:30 AM** ← *moved from 9:00* · €204 | **102114803** (PDF attached in email) | Av. Concha Espina 1 |
 | Delta 127 — MAD→JFK home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Gabe: Comfort+, W) | Barajas **Terminal 1** |
+| Park Güell — 4 tickets | **Fri Jul 10, 6:30 PM** (€63) | **700997431423** / res. 8729449 | taxi to UPPER entrance, Ctra. del Carmel 23 |
+| Reina Sofía — 4× General + audio guide | **Mon Jul 13** — time on your ticket PDF (plan: ~4:15 PM) · €72 | **102258421** (PDF attached in email) | C/ Santa Isabel 52 |
 
 ## 📬 BOOKED VIA gabealbacete5@gmail.com — times below are the PLANNED slots, verify against those emails
 
@@ -32,16 +34,10 @@ Gabe confirms these are booked in his personal Gmail (which this document's tool
 couldn't read — connect that account or forward the emails to work email to sync
 exact times/locators into the next revision):
 
-1. **Sagrada Família — Thu Jul 9, 9:00 AM assumed** — parents use Entrance B; bring passports (nominative tickets).
-2. **Renfe AVE 03080 — Sat Jul 11, 8:25 AM** Sants → Atocha 11:27 — add coach/seats to the day sheet; request Atendo if not done.
-3. **Barcelona apartment Jul 8–11** — Sweett | Diagonal Sagrada II — write exact address + host phone on the day sheet.
-4. **Madrid apartment Jul 11–14** — write exact address + host phone on the day sheet.
-5. **Park Güell — Fri Jul 10, ~6:30 PM** — taxi to the UPPER entrance (Ctra. del Carmel 23).
-6. **Reina Sofía — Mon Jul 13, ~4:15 PM** — parents 65+ collect free tickets at the desk with ID.
-7. **Sobrino de Botín — Mon Jul 13, 8:00 PM.**
-
-⚠️ **One real conflict to fix:** Tue Jul 7 at 11 PM you hold BOTH **Fire (1 guest, at the W)**
-and **La Madurada (2 people, Passeig Maragall)**. Cancel whichever you don't mean to use.
+1. **Sagrada Família — Thu Jul 9, 9:00 AM assumed** — parents use Entrance B; bring passports (nominative tickets). *(A €107.08 FEVER charge hit your AmEx Jul 8 6:09 AM with no matching confirmation in this inbox — if that's the Sagrada via a reseller, forward the email so the time can be verified.)*
+2. **Renfe AVE 03080 — Sat Jul 11, 8:25 AM** Sants → Atocha 11:27 — **booking in progress per Gabe** — write coach/seats on the day sheet; add Atendo assistance.
+3. **Barcelona apartment Jul 8–11** and **Madrid apartment Jul 11–14** — confirmations in the personal Gmail; write exact addresses + host phones on the day sheet.
+4. **Sobrino de Botín — Mon Jul 13, 8:00 PM** — confirmation in personal Gmail per Gabe.
 
 ---
 
@@ -76,7 +72,7 @@ and **La Madurada (2 people, Passeig Maragall)**. Cancel whichever you don't mea
 - **8:15 AM** breakfast; **9:00** taxi across town (~20 min, ~€18).
 - **9:15 AM** arrive **Access 15**; **9:30–11:30** Spotify Camp Nou Experience (conf **YX3J8FAEJD5K**) — parents: lifts to the panoramic viewpoint; the stands descent is stairs-only.
 - **12:00** taxi back; **12:45 PM lunch**; **2:00–5:00 PM** final beach block.
-- **6:00 PM** taxi to Park Güell **upper entrance** (Ctra. del Carmel 23) for a **6:30 PM** golden-hour slot — *tickets still needed, flag #5.*
+- **6:00 PM** taxi to Park Güell **upper entrance** (Ctra. del Carmel 23); **6:30 PM entry — BOOKED**, locator **700997431423** (enter within 30 min of slot).
 - **8:45 PM** paella dinner — **7 Portes** (Passeig d'Isabel II 14; reserve today). **Pack tonight**; train at 8:25 AM.
 
 ### Sat Jul 11 · AVE to Madrid + tuk-tuk evening
@@ -102,8 +98,8 @@ and **La Madurada (2 people, Passeig Maragall)**. Cancel whichever you don't mea
 - **10:05 AM** taxi up the Castellana (~15 min, ~€12, one cab).
 - **10:30 AM–12:30 PM** **Bernabéu Classic Tour** (order **102114803**) — many stairs; take it slow.
 - **1:00 PM lunch** back toward the center; **2:30–4:00** siesta.
-- **4:15–5:30 PM** **Reina Sofía** — *Guernica*, Room 206 (buy 2× General €12; parents 65+ free at the desk — flag #5).
-- **8:00 PM** farewell dinner **Sobrino de Botín**, C/ Cuchilleros 17 — *reserve now, flag #6.*
+- **4:15–5:30 PM** **Reina Sofía** — *Guernica*, Room 206 — **BOOKED**, locator **102258421** (4× General + mobile audio guide; confirm the slot time on the ticket PDF).
+- **8:00 PM** farewell dinner **Sobrino de Botín**, C/ Cuchilleros 17 (booked per personal Gmail).
 - **10:00 PM** 🍫 **San Ginés** churros finale (Pasadizo de San Ginés 5). **Pack tonight.**
 
 ### Tue Jul 14 · Home
@@ -120,6 +116,8 @@ The actual barcode PDFs are attached to (or linked from) these emails — **down
 - Royal Palace → "Confirmación de compra: Palacio Real de Madrid" (DESCARGA TUS ENTRADAS EN PDF)
 - Bernabéu → "Purchase summary by Tour Bernabéu [102114803]" (PDF attached)
 - Cardamomo → "Cardamomo Flamenco tickets MZPQH-2678 paid"
+- Park Güell → "Park Guell - Proof of purchase 700997431423"
+- Reina Sofía → "Purchase summary by Museo Reina Sofía [102258421]" (PDF attached)
 - Tuk-tuk → FareHarbor confirmation (meeting point inside)
 - Flights → Delta app with JK3ANA + JKYP52
 
