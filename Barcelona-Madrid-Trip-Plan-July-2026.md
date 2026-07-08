@@ -18,26 +18,25 @@
 | W Barcelona — Gabe solo night | Jul 7→8, Fabulous King Sea View, check-in 3 PM / out noon | Delta Stays **# 73489061029820** | Plaça Rosa dels Vents 1 |
 | Fire (restaurant at the W) | Tue Jul 7, **11:00 PM**, 1 guest | via SevenRooms | at the W |
 | La Madurada — family dinner | **Wed Jul 8, 7:00 PM, 4 people** (until 9 PM) | via Restoo/Google | Passeig Maragall 408 |
-| Casa Batlló | **Thu Jul 9, 5:00 PM** | **102119895** (PDF attached in email) | Passeig de Gràcia 43 |
+| Casa Batlló — **GOLD tier** (€40 pp) | **Thu Jul 9, 5:00 PM** (access window: 15 min) | **102119895** / tickets 303773409+ | Passeig de Gràcia 43 |
 | Spotify Camp Nou Experience | **Fri Jul 10, 9:30 AM**, 4 tickets | **YX3J8FAEJD5K** | C/ Arístides Maillol s/n, Access 15 |
-| Tuk-tuk — 2 h Panoramic | **Sat Jul 11, 7:00–9:00 PM** | Tuk Tuk Madrid SL · ☎ +34 643 841 438 | FareHarbor confirmation |
-| Royal Palace — 4× General Visit | **Sun Jul 12, 11:45 AM** ← *moved from 10:00* | **R117288233** (PDF download link in email) | Calle de Bailén s/n |
+| Tuk-tuk — 2 h Panoramic, group of 4 | **Sat Jul 11, 7:00 PM** | res. **360462733** · Tuk Tuk Madrid SL ☎ +34 643 841 438 | FareHarbor ticket attached |
+| **Renfe AVE 03080 — Confort + breakfast** | **Sat Jul 11, 8:25 → Atocha 11:27** · gate closes 2 min before | loc. **RMPLPT** (CUFX3/STTP4/FSN8B/83CJ6) · **Coach 1, seats 10B·10C·11B·11C** | Barcelona-Sants |
+| **Airbnb Barcelona — Sweett Diagonal Sagrada II** | Jul 8, 4:00 PM → Jul 11, 11:00 AM · smart-lock self check-in | **HMPC8RT5QR** · $1,752.92 · wifi: Diagonal Sagrada 2 / sweetttravel_2 | **Avinguda Diagonal 318, 08013** |
+| **Airbnb Madrid — LaLatina IV (4BR/4BA)** | Jul 11, 4:00 PM → Jul 14, 11:00 AM · smart lock · host Jorge | **HMKMHEJWJM** (non-refundable) | **C/ Conde de Romanones 16, 1º1, 28012** |
+| Royal Palace — 4× **GUIDED tour in English** | **Sun Jul 12, 11:45 AM — ARRIVE 11:15** (preferential gate; meet guide in the Zaguán 5 min early) | **R117288233** (€26.77 pp via Fever — this was the "mystery" AmEx charge) | Calle de Bailén s/n |
 | Cardamomo Flamenco | **Sun Jul 12, 7:30 PM** (doors 7:15) · €176 | **MZPQH-2678** / Ref 611051 | Calle Echegaray 15 |
 | Bernabéu — Classic Tour | **Mon Jul 13, 10:30 AM** ← *moved from 9:00* · €204 | **102114803** (PDF attached in email) | Av. Concha Espina 1 |
 | Delta 127 — MAD→JFK home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Gabe: Comfort+, W) | Barajas **Terminal 1** |
 | Park Güell — 4 tickets | **Fri Jul 10, 6:30 PM** (€63) | **700997431423** / res. 8729449 | taxi to UPPER entrance, Ctra. del Carmel 23 |
-| Reina Sofía — 4× General + audio guide | **Mon Jul 13** — time on your ticket PDF (plan: ~4:15 PM) · €72 | **102258421** (PDF attached in email) | C/ Santa Isabel 52 |
+| Reina Sofía — 4× General + audio guide | **Mon Jul 13, 16:00–16:30 entry window** · audio-guide code **0A6017** (bring headphones; no big backpacks) | **102258421** / tickets 304177435+ | Sabatini Building, C/ Santa Isabel 52 |
 
-## 📬 BOOKED VIA gabealbacete5@gmail.com — times below are the PLANNED slots, verify against those emails
+## 🚨 STILL UNACCOUNTED FOR
 
-Gabe confirms these are booked in his personal Gmail (which this document's tooling
-couldn't read — connect that account or forward the emails to work email to sync
-exact times/locators into the next revision):
-
-1. **Sagrada Família — Thu Jul 9, 9:00 AM assumed** — parents use Entrance B; bring passports (nominative tickets). *(A €107.08 FEVER charge hit your AmEx Jul 8 6:09 AM with no matching confirmation in this inbox — if that's the Sagrada via a reseller, forward the email so the time can be verified.)*
-2. **Renfe AVE 03080 — Sat Jul 11, 8:25 AM** Sants → Atocha 11:27 — **booking in progress per Gabe** — write coach/seats on the day sheet; add Atendo assistance.
-3. **Barcelona apartment Jul 8–11** and **Madrid apartment Jul 11–14** — confirmations in the personal Gmail; write exact addresses + host phones on the day sheet.
-4. **Sobrino de Botín — Mon Jul 13, 8:00 PM** — confirmation in personal Gmail per Gabe.
+1. **SAGRADA FAMÍLIA — TOMORROW 9:00 AM — no ticket found anywhere.** The Fever charge turned out to be the Royal Palace, so there is now NO evidence of a Sagrada purchase in the work inbox or the uploaded PDFs. **Check gabealbacete5@gmail.com tonight; if it's not there, buy immediately** (sagradafamilia.org → any Thursday-morning slot; fallback: Tiqets or the guided ticket). Everything about Thursday hinges on this.
+2. **Flights:** only Gabe's DL127 receipt and the parents' outbound (JK3ANA) were visible — confirm your **brother's flights** and the **parents' return on Jul 14** are ticketed.
+3. **Dinner reservations:** Botín (Mon 8 PM — you say booked, personal Gmail), 7 Portes (Fri) and Casa Lucio (Sun) still unconfirmed.
+4. **Check-in vs arrival gaps (both cities):** Barcelona check-in is **4:00 PM** (family lands 8:45 AM) and Madrid check-in is **4:00 PM** (train arrives 11:27 AM) — both are smart-lock self check-ins with no reception. **Message Sweett and Jorge about early bag-drop**; fallback is a Bounce/Radical storage shop nearby. Madrid's Saturday flow works fine either way: lunch near Tirso de Molina after dropping/storing bags, siesta once inside at 4, tuk-tuk at 7.
 
 ---
 
@@ -52,8 +51,8 @@ exact times/locators into the next revision):
 ### Wed Jul 8 · Family lands · Day 1
 - **8:45 AM** Mom & Dad + brother land (**DL128**, seats 20C/21C). Passport + bags ≈ 1 h.
 - **~9:45 AM** they taxi toward the apartment (~30 min, ~€35–40); Gabe checks out of the W (till noon — leave by ~9:30 to meet them) and taxis over (~12 min).
-- **10:30 AM** bag-drop at the apartment (pre-arranged) → **brunch on Avinguda Gaudí** with the Sagrada in view (~11:00–12:15).
-- **12:30–4:00 PM** check-in when ready; **jet-lag siesta — protect this block.**
+- **10:30 AM** bag-drop at **Avinguda Diagonal 318** (arrange with Sweett — official check-in is 4:00 PM, smart lock, code HMPC8RT5QR; wifi: Diagonal Sagrada 2 / sweetttravel_2) → **brunch on Avinguda Gaudí** (~11:00–12:15).
+- **12:30–4:00 PM** rest as soon as the unit opens; **jet-lag siesta — protect this block.**
 - **4:30–6:15 PM** gentle **Gothic Quarter + La Rambla** stroll; duck into **La Boqueria** (stalls close ~8 PM).
 - **6:35 PM** taxi (~15 min) to **La Madurada**, Passeig Maragall 408.
 - **7:00–9:00 PM** confirmed family dinner (table released at 9). Taxi home; early night — big morning tomorrow.
@@ -76,9 +75,9 @@ exact times/locators into the next revision):
 - **8:45 PM** paella dinner — **7 Portes** (Passeig d'Isabel II 14; reserve today). **Pack tonight**; train at 8:25 AM.
 
 ### Sat Jul 11 · AVE to Madrid + tuk-tuk evening
-- **7:00 AM** up; **7:40** taxi to Sants (~12 min). *Train ticket still missing — flag #2.*
-- **8:25–11:27 AM** **AVE 03080 nonstop** → Madrid-Atocha.
-- **11:45 AM** taxi (~10 min, ~€10) to the Madrid apartment; bag-drop.
+- **7:00 AM** up; **7:40** taxi to Sants (~12 min) — checkout is 11:00 AM but you leave earlier; lock up per Sweett's instructions.
+- **8:25–11:27 AM** **AVE 03080 nonstop, Coach 1, seats 10B/10C/11B/11C — Confort class, breakfast served on board** (loc. RMPLPT; access gate closes 2 min before departure).
+- **11:45 AM** taxi (~15 min, ~€12) to **Calle del Conde de Romanones 16** (per host Jorge's directions); official check-in 4:00 PM — drop bags if Jorge allows, else storage shop nearby, then lunch around Tirso de Molina.
 - **12:30 PM lunch** near the stay; **2:00–5:30 PM** siesta/settle in.
 - **6:40 PM** head to the tuk-tuk meeting point (per FareHarbor email; operator ☎ +34 643 841 438).
 - **7:00–9:00 PM** **2-hour Panoramic tuk-tuk** — confirmed; they were asked to end at the **Temple of Debod** for golden hour (sunset 9:45).
@@ -86,7 +85,7 @@ exact times/locators into the next revision):
 
 ### Sun Jul 12 · Royal Palace 11:45 + San Miguel + Cardamomo 7:30
 - **9:30 AM** slow breakfast — the palace slot moved to **11:45**, so the morning is easy.
-- **11:20 AM** walk to Calle de Bailén; **11:45 AM–1:45 PM** **Royal Palace** (order **R117288233**, 4× General Visit; lifts available) + Plaza de Oriente.
+- **11:00 AM** walk to Calle de Bailén (~15 min from the apartment) — **the ticket requires entry through the preferential gate 30 min early (11:15) and meeting your ENGLISH-SPEAKING GUIDE in the Zaguán (entrance hall) 5 min before start.** Tour 11:45 AM–~1:45 PM + Plaza de Oriente. *Bonus: your ticket includes free entry to the Fernando Brambila exhibition at the Galería de las Colecciones Reales next door — optional, only if legs allow.*
 - **2:00 PM** flat 10-min walk → **Mercado de San Miguel** — the long grazing lunch (post-lunch crowd is lighter — the late palace slot works in your favor).
 - **3:45–5:30 PM** siesta.
 - **5:30–7:00 PM** **Puerta del Sol** (Km 0, the bear) → **Bershka Gran Vía 25** → **Zara Gran Vía 34** → 🍔 the **McDonald's** stop.
@@ -98,7 +97,7 @@ exact times/locators into the next revision):
 - **10:05 AM** taxi up the Castellana (~15 min, ~€12, one cab).
 - **10:30 AM–12:30 PM** **Bernabéu Classic Tour** (order **102114803**) — many stairs; take it slow.
 - **1:00 PM lunch** back toward the center; **2:30–4:00** siesta.
-- **4:15–5:30 PM** **Reina Sofía** — *Guernica*, Room 206 — **BOOKED**, locator **102258421** (4× General + mobile audio guide; confirm the slot time on the ticket PDF).
+- **4:00–4:30 PM entry window** — **Reina Sofía**, Sabatini Building, C/ Santa Isabel 52 — *Guernica*, Room 206 (locator **102258421**; audio guide code **0A6017** — bring headphones and charged phones; no backpacks over 50 cm).
 - **8:00 PM** farewell dinner **Sobrino de Botín**, C/ Cuchilleros 17 (booked per personal Gmail).
 - **10:00 PM** 🍫 **San Ginés** churros finale (Pasadizo de San Ginés 5). **Pack tonight.**
 
@@ -109,8 +108,8 @@ exact times/locators into the next revision):
 
 ---
 
-## 🎫 Ticket PDFs — where they live
-The actual barcode PDFs are attached to (or linked from) these emails — **download all of them to your phone before Thursday** (this Gmail connection can read the emails but can't extract the attachments, so they aren't merged into this document):
+## 🎫 Ticket PDFs — attached to this document
+**All ten ticket/confirmation PDFs are appended to the end of this PDF, in trip order** (Airbnb BCN, Casa Batlló, Camp Nou, Park Güell, Renfe train, Airbnb Madrid, tuk-tuk, Royal Palace, Bernabéu, Reina Sofía). Still keep the originals in your phone wallet — venues scan better from the native PDFs:
 - Casa Batlló → "Purchase summary by Casa Batlló [102119895]" (PDF attached)
 - Camp Nou → "Purchase confirmation FC Barcelona tickets YX3J8FAEJD5K" (download link)
 - Royal Palace → "Confirmación de compra: Palacio Real de Madrid" (DESCARGA TUS ENTRADAS EN PDF)
