@@ -27,14 +27,15 @@
 | Royal Palace — 4× **GUIDED tour in English** | **Sun Jul 12, 11:45 AM — ARRIVE 11:15** (preferential gate; meet guide in the Zaguán 5 min early) | **R117288233** (€26.77 pp via Fever — this was the "mystery" AmEx charge) | Calle de Bailén s/n |
 | Cardamomo Flamenco | **Sun Jul 12, 7:30 PM** (doors 7:15) · €176 | **MZPQH-2678** / Ref 611051 | Calle Echegaray 15 |
 | Bernabéu — Classic Tour | **Mon Jul 13, 10:30 AM** ← *moved from 9:00* · €204 | **102114803** (PDF attached in email) | Av. Concha Espina 1 |
-| Delta 127 — MAD→JFK home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Gabe: Comfort+, W) | Barajas **Terminal 1** |
+| Delta 127 — **Gabe** home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Comfort+) | Barajas **Terminal 1** |
+| AA8837 (operated by Iberia) — **parents + brother** home | **Tue Jul 14, 4:20 PM → JFK 6:55 PM** (8h35 nonstop) | conf # ______ | Barajas **Terminal 4, boards T4S satellite (+40 min)** |
 | Park Güell — 4 tickets | **Fri Jul 10, 6:30 PM** (€63) | **700997431423** / res. 8729449 | taxi to UPPER entrance, Ctra. del Carmel 23 |
 | Reina Sofía — 4× General + audio guide | **Mon Jul 13, 16:00–16:30 entry window** · audio-guide code **0A6017** (bring headphones; no big backpacks) | **102258421** / tickets 304177435+ | Sabatini Building, C/ Santa Isabel 52 |
 
 ## 🚨 STILL UNACCOUNTED FOR
 
 1. **SAGRADA FAMÍLIA — TOMORROW 9:00 AM — no ticket found anywhere.** The Fever charge turned out to be the Royal Palace, so there is now NO evidence of a Sagrada purchase in the work inbox or the uploaded PDFs. **Check gabealbacete5@gmail.com tonight; if it's not there, buy immediately** (sagradafamilia.org → any Thursday-morning slot; fallback: Tiqets or the guided ticket). Everything about Thursday hinges on this.
-2. **Flights:** only Gabe's DL127 receipt and the parents' outbound (JK3ANA) were visible — confirm your **brother's flights** and the **parents' return on Jul 14** are ticketed.
+2. **Brother's outbound** (Jul 7 JFK→BCN) never surfaced — presumably on DL128 with the parents; worth a look.
 3. **Dinner reservations:** Botín (Mon 8 PM — you say booked, personal Gmail), 7 Portes (Fri) and Casa Lucio (Sun) still unconfirmed.
 4. **Check-in vs arrival gaps (both cities):** Barcelona check-in is **4:00 PM** (family lands 8:45 AM) and Madrid check-in is **4:00 PM** (train arrives 11:27 AM) — both are smart-lock self check-ins with no reception. **Message Sweett and Jorge about early bag-drop**; fallback is a Bounce/Radical storage shop nearby. Madrid's Saturday flow works fine either way: lunch near Tirso de Molina after dropping/storing bags, siesta once inside at 4, tuk-tuk at 7.
 
@@ -51,7 +52,7 @@
 ### Wed Jul 8 · Family lands · Day 1
 - **8:45 AM** Mom & Dad + brother land (**DL128**, seats 20C/21C). Passport + bags ≈ 1 h.
 - **~9:45 AM** they taxi toward the apartment (~30 min, ~€35–40); Gabe checks out of the W (till noon — leave by ~9:30 to meet them) and taxis over (~12 min).
-- **10:30 AM** bag-drop at **Avinguda Diagonal 318** (arrange with Sweett — official check-in is 4:00 PM, smart lock, code HMPC8RT5QR; wifi: Diagonal Sagrada 2 / sweetttravel_2) → **brunch on Avinguda Gaudí** (~11:00–12:15).
+- **10:30 AM** bag-drop at **Sweett's office: Carrer de la Diputació 288, baixos, 08009** (NOT the apartment — check-in at Diagonal 318 opens 4:00 PM, smart lock, code HMPC8RT5QR; wifi: Diagonal Sagrada 2 / sweetttravel_2) → brunch nearby in the Eixample or a 10-min taxi to **Avinguda Gaudí**.
 - **12:30–4:00 PM** rest as soon as the unit opens; **jet-lag siesta — protect this block.**
 - **4:30–6:15 PM** gentle **Gothic Quarter + La Rambla** stroll; duck into **La Boqueria** (stalls close ~8 PM).
 - **6:35 PM** taxi (~15 min) to **La Madurada**, Passeig Maragall 408.
@@ -101,10 +102,10 @@
 - **8:00 PM** farewell dinner **Sobrino de Botín**, C/ Cuchilleros 17 (booked per personal Gmail).
 - **10:00 PM** 🍫 **San Ginés** churros finale (Pasadizo de San Ginés 5). **Pack tonight.**
 
-### Tue Jul 14 · Home
-- **8:00 AM** breakfast; **8:30 AM** taxi to Barajas (**€33 flat fare**, 30–45 min) → **Terminal 1** (Delta).
-- **12:45 PM** **DL127** departs → **JFK 3:07 PM** (conf **JKYP52**). ¡Buen viaje!
-- *Confirm the parents and your brother hold seats on DL127 too — only Gabe's receipt was in this inbox.*
+### Tue Jul 14 · Home — two flights, two terminals
+- **8:00 AM** breakfast together; **8:30 AM** Gabe taxis to Barajas (**€33 flat**, 30–45 min) → **Terminal 1** → **DL127 12:45 PM → JFK 3:07 PM** (JKYP52).
+- **11:00 AM** apartment checkout — parents + brother taxi straight to Barajas → **Terminal 4** (arrive ~11:45, comfortably 4½ h early per Iberia's US-bound guidance; allow the extra **~40 min for the T4S satellite train + passport control**).
+- **4:20 PM** **AA8837 (operated by Iberia) → JFK 6:55 PM.** Gabe lands first and can meet them at JFK or head home. ¡Buen viaje!
 
 ---
 
