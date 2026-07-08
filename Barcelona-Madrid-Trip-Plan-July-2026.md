@@ -28,14 +28,14 @@
 | Cardamomo Flamenco | **Sun Jul 12, 7:30 PM** (doors 7:15) · €176 | **MZPQH-2678** / Ref 611051 | Calle Echegaray 15 |
 | Bernabéu — Classic Tour | **Mon Jul 13, 10:30 AM** ← *moved from 9:00* · €204 | **102114803** (PDF attached in email) | Av. Concha Espina 1 |
 | Delta 127 — **Gabe** home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Comfort+) | Barajas **Terminal 1** |
-| AA8837 (operated by Iberia) — **parents + brother** home | **Tue Jul 14, 4:20 PM → JFK 6:55 PM** (8h35 nonstop) | conf # ______ | Barajas **Terminal 4, boards T4S satellite (+40 min)** |
+| AA8837 (operated by Iberia) — **parents + brother** home | **Tue Jul 14, 4:20 PM → JFK 6:55 PM** (8h35 nonstop) | **BOOKED** — conf code in personal Gmail; write it on the day sheet | Barajas **Terminal 4, boards T4S satellite (+40 min)** |
 | Park Güell — 4 tickets | **Fri Jul 10, 6:30 PM** (€63) | **700997431423** / res. 8729449 | taxi to UPPER entrance, Ctra. del Carmel 23 |
 | Reina Sofía — 4× General + audio guide | **Mon Jul 13, 16:00–16:30 entry window** · audio-guide code **0A6017** (bring headphones; no big backpacks) | **102258421** / tickets 304177435+ | Sabatini Building, C/ Santa Isabel 52 |
 
 ## 🚨 STILL UNACCOUNTED FOR
 
 1. **SAGRADA FAMÍLIA — TOMORROW 9:00 AM — no ticket found anywhere.** The Fever charge turned out to be the Royal Palace, so there is now NO evidence of a Sagrada purchase in the work inbox or the uploaded PDFs. **Check gabealbacete5@gmail.com tonight; if it's not there, buy immediately** (sagradafamilia.org → any Thursday-morning slot; fallback: Tiqets or the guided ticket). Everything about Thursday hinges on this.
-2. **Brother's outbound** (Jul 7 JFK→BCN) never surfaced — presumably on DL128 with the parents; worth a look.
+2. ~~Family return flight~~ — **booked (AA8837)** ✓. Brother's outbound never surfaced but he's here, so: moot.
 3. **Dinner reservations:** Botín (Mon 8 PM — you say booked, personal Gmail), 7 Portes (Fri) and Casa Lucio (Sun) still unconfirmed.
 4. **Check-in vs arrival gaps (both cities):** Barcelona check-in is **4:00 PM** (family lands 8:45 AM) and Madrid check-in is **4:00 PM** (train arrives 11:27 AM) — both are smart-lock self check-ins with no reception. **Message Sweett and Jorge about early bag-drop**; fallback is a Bounce/Radical storage shop nearby. Madrid's Saturday flow works fine either way: lunch near Tirso de Molina after dropping/storing bags, siesta once inside at 4, tuk-tuk at 7.
 
