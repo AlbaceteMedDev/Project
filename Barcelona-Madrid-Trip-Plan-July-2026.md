@@ -38,7 +38,7 @@
 1. **SAGRADA FAMÍLIA — TOMORROW 9:00 AM — no ticket found anywhere.** The Fever charge turned out to be the Royal Palace, so there is now NO evidence of a Sagrada purchase in the work inbox or the uploaded PDFs. **Check gabealbacete5@gmail.com tonight; if it's not there, buy immediately** (sagradafamilia.org → any Thursday-morning slot; fallback: Tiqets or the guided ticket). Everything about Thursday hinges on this.
 2. ~~Family return flight~~ — **booked (AA8837)** ✓. Brother's outbound never surfaced but he's here, so: moot.
 3. **Dinner reservations:** Botín (Mon 8 PM — you say booked, personal Gmail), 7 Portes (Fri) and Casa Lucio (Sun) still unconfirmed.
-5. **Codorníu 15:30 English tour, Fri Jul 10** — book NOW at codorniu.com/en/visits (backups: Tiqets/Civitatis); arrange the two taxi legs (city→winery 2:30 PM, winery→Park Güell 5:05 PM) via Uber/Cabify reservations.
+5. **Juvé & Camps Armonia Route, Fri Jul 10 2:00 PM** — reply to the Enoturisme J&C email to receive the payment link (€140); confirm English + two seniors. Pre-book the 1:05 PM car out and 3:35 PM car back (Uber Reserve/Cabify).
 4. **Check-in vs arrival gaps (both cities):** Barcelona check-in is **4:00 PM** (family lands 8:45 AM) and Madrid check-in is **4:00 PM** (train arrives 11:27 AM) — both are smart-lock self check-ins with no reception. **Message Sweett and Jorge about early bag-drop**; fallback is a Bounce/Radical storage shop nearby. Madrid's Saturday flow works fine either way: lunch near Tirso de Molina after dropping/storing bags, siesta once inside at 4, tuk-tuk at 7.
 
 ---
@@ -70,16 +70,18 @@
 - **5:00–6:30 PM** **Casa Batlló** (conf 102119895) — A/C, lifts; La Pedrera façade on the walk after.
 - **8:00 PM** dinner in the Eixample/El Born (unbooked — walk-in friendly).
 
-### Fri Jul 10 · Camp Nou + CAVA COUNTRY + Park Güell (the big Friday)
+### Fri Jul 10 · Camp Nou + Juvé & Camps cava + Park Güell
 - **8:15 AM** breakfast; **9:00** taxi across town (~20 min, ~€18).
 - **9:15 AM** arrive **Access 15**; **9:30–11:30** Spotify Camp Nou Experience (conf **YX3J8FAEJD5K**) — parents: lifts to the panoramic viewpoint; the stands descent is stairs-only.
-- **12:00** taxi back toward home; **12:30 PM lunch** near the apartment; **1:30–2:30** short rest — hydrate, it's a long afternoon.
-- **2:30 PM** taxi/Uber to **Codorníu, Av. Jaume Codorníu s/n, Sant Sadurní d'Anoia** (~45–50 min, ~€60–70 — book the car ahead or use Uber/Cabify).
-- **3:30–5:00 PM** 🍾 **Codorníu English tour + tasting** (book the **15:30 English slot** at codorniu.com/en/visits — Conf# ______): Puig i Cadafalch's modernista cellars, the underground train, gardens, and cava tasting. Flat, low-walking, seated tasting — parent-friendly.
-- **5:05 PM** taxi **directly from the winery to Park Güell upper entrance** (Ctra. del Carmel 23, ~50 min, ~€65) — arrive ~6:00.
-- **6:30 PM entry — BOOKED**, locator **700997431423** (enter within 30 min of slot). Golden hour on the mosaic terrace with cava still in the bloodstream. 😄
-- **8:45 PM** paella dinner — **7 Portes** (Passeig d'Isabel II 14; reserve today). **Pack tonight**; train at 8:25 AM.
-- *Fallback if the 15:30 English tour is sold out: take a 13:00-ish Spanish tour (the cellars speak for themselves) with lunch at the winery, OR revert to the beach afternoon — Güell and dinner are unaffected either way.*
+- **12:00–12:55 PM** lunch near the apartment (brisk — a cheese feast is coming).
+- **1:05 PM** pre-booked car (~45 min, ~€65) to **Juvé & Camps, Sant Sadurní d'Anoia**.
+- **2:00–3:30 PM** 🍾 **ARMONIA ROUTE** (€35 pp / €140 total — Conf# ______): century-old cellars, **traditional disgorging demo**, tasting of 1 still wine + 2 long-aged sparklings, **paired with 5 regional cheeses**. English requested; cellars are cool and the tasting is seated.
+- **3:35 PM** car back to the apartment (~45 min).
+- **4:20–5:50 PM** siesta + pack for tomorrow's 8:25 train.
+- **6:10 PM** taxi (~12 min) to Park Güell **upper entrance** (Ctra. del Carmel 23).
+- **6:30 PM entry — BOOKED**, locator **700997431423** (enter within 30 min). Golden hour on the terrace.
+- **8:45 PM** paella dinner — **7 Portes** (Passeig d'Isabel II 14; reserve). Early night.
+
 
 ### Sat Jul 11 · AVE to Madrid + tuk-tuk evening
 - **7:00 AM** up; **7:40** taxi to Sants (~12 min) — checkout is 11:00 AM but you leave earlier; lock up per Sweett's instructions.
