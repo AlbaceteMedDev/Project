@@ -30,6 +30,7 @@
 | Bernabéu — Gabe + brother: 2× **Tour + RM GAMES** | **Tour 10:30 AM · RM Games 11:30 AM** (be punctual at the Games entrance) | order **102259917** | same entrance; Games has its own check-in with avatar QR |
 | Delta 127 — **Gabe** home | **Tue Jul 14, 12:45 PM → JFK 3:07 PM** | **JKYP52** (Comfort+) | Barajas **Terminal 1** |
 | AA8837 (operated by Iberia) — **parents + brother** home | **Tue Jul 14, 4:20 PM → JFK 6:55 PM** (8h35 nonstop) | **BOOKED** — conf code in personal Gmail; write it on the day sheet | Barajas **Terminal 4, boards T4S satellite (+40 min)** |
+| **Juvé & Camps — Armonia Route** (4 pax) | **Fri Jul 10, 2:00–3:30 PM** · €35 pp / €140 · cellars + disgorging demo + 3 pours + pairing | **RESERVED** via Enoturisme J&C email — pay the link; cheese-swap + English requested | Sant Sadurní d'Anoia (address in their email) |
 | Park Güell — 4 tickets | **Fri Jul 10, 6:30 PM** (€63) | **700997431423** / res. 8729449 | taxi to UPPER entrance, Ctra. del Carmel 23 |
 | Reina Sofía — 4× General + audio guide | **Mon Jul 13, 16:00–16:30 entry window** · audio-guide code **0A6017** (bring headphones; no big backpacks) | **102258421** / tickets 304177435+ | Sabatini Building, C/ Santa Isabel 52 |
 
@@ -38,7 +39,7 @@
 1. **SAGRADA FAMÍLIA — TOMORROW 9:00 AM — no ticket found anywhere.** The Fever charge turned out to be the Royal Palace, so there is now NO evidence of a Sagrada purchase in the work inbox or the uploaded PDFs. **Check gabealbacete5@gmail.com tonight; if it's not there, buy immediately** (sagradafamilia.org → any Thursday-morning slot; fallback: Tiqets or the guided ticket). Everything about Thursday hinges on this.
 2. ~~Family return flight~~ — **booked (AA8837)** ✓. Brother's outbound never surfaced but he's here, so: moot.
 3. **Dinner reservations:** Botín (Mon 8 PM — you say booked, personal Gmail), 7 Portes (Fri) and Casa Lucio (Sun) still unconfirmed.
-5. **Juvé & Camps Armonia Route, Fri Jul 10 2:00 PM** — reply to the Enoturisme J&C email to receive the payment link (€140); confirm English + two seniors. Pre-book the 1:05 PM car out and 3:35 PM car back (Uber Reserve/Cabify).
+5. **Juvé & Camps — RESERVED 2:00 PM Fri** ✓ — finish it: pay the €140 link when it arrives, and in the same reply request the **English guide, note two guests are 74, and the no-cheese substitution for Gabe**. Pre-book the 1:05 PM car out and 3:35 PM car back (Uber Reserve/Cabify).
 4. **Check-in vs arrival gaps (both cities):** Barcelona check-in is **4:00 PM** (family lands 8:45 AM) and Madrid check-in is **4:00 PM** (train arrives 11:27 AM) — both are smart-lock self check-ins with no reception. **Message Sweett and Jorge about early bag-drop**; fallback is a Bounce/Radical storage shop nearby. Madrid's Saturday flow works fine either way: lunch near Tirso de Molina after dropping/storing bags, siesta once inside at 4, tuk-tuk at 7.
 
 ---
@@ -75,7 +76,7 @@
 - **9:15 AM** arrive **Access 15**; **9:30–11:30** Spotify Camp Nou Experience (conf **YX3J8FAEJD5K**) — parents: lifts to the panoramic viewpoint; the stands descent is stairs-only.
 - **12:00–12:55 PM** lunch near the apartment (brisk — a cheese feast is coming).
 - **1:05 PM** pre-booked car (~45 min, ~€65) to **Juvé & Camps, Sant Sadurní d'Anoia**.
-- **2:00–3:30 PM** 🍾 **ARMONIA ROUTE** (€35 pp / €140 total — Conf# ______): century-old cellars, **traditional disgorging demo**, tasting of 1 still wine + 2 long-aged sparklings, **paired with 5 regional cheeses**. English requested; cellars are cool and the tasting is seated.
+- **2:00–3:30 PM** 🍾 **ARMONIA ROUTE — RESERVED** (€35 pp / €140 — payment link per J&C email): century-old cellars, **traditional disgorging demo**, tasting of 1 still wine + 2 long-aged sparklings, **pairing board** (5 cheeses; charcuterie swap requested for Gabe). English requested; cellars are cool, tasting is seated.
 - **3:35 PM** car back to the apartment (~45 min).
 - **4:20–5:50 PM** siesta + pack for tomorrow's 8:25 train.
 - **6:10 PM** taxi (~12 min) to Park Güell **upper entrance** (Ctra. del Carmel 23).
