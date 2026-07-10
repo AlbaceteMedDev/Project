@@ -20,10 +20,12 @@
   .cust{display:flex;gap:16px;font-size:10.5px;}
   .cust > div{flex:1;}
   .cust .fld{margin:4px 0;white-space:nowrap;}
-  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:11px;}
-  th{background:var(--navy);color:#fff;padding:5px 8px;border:1px solid var(--navy);text-align:center;}
-  td{border:1px solid #9aa7b6;padding:8px;height:26px;}
+  table{border-collapse:collapse;width:100%;margin:7px 0;font-size:11px;}
+  th{background:var(--navy);color:#fff;padding:4px 8px;border:1px solid var(--navy);text-align:center;}
+  td{border:1px solid #9aa7b6;padding:6px 8px;height:20px;}
   tbody tr:nth-child(even){background:var(--zebra);}
+  table.ref td{height:auto;padding:3px 8px;font-size:10px;}
+  table.ref th{padding:3px 8px;font-size:10px;}
   td.qty{width:14%;text-align:center;}
   td.amt,td.up{width:20%;text-align:right;}
   .billing{display:flex;justify-content:space-between;gap:20px;margin-top:6px;}
@@ -33,11 +35,11 @@
   .totals{width:48%;font-size:11px;}
   .totals .row{display:flex;justify-content:space-between;border-bottom:1px solid #cfd8e3;padding:4px 0;}
   .totals .row .lbl{color:var(--navy);}
-  .ship-h{text-align:center;color:var(--blue);font-weight:700;font-size:15px;text-decoration:underline;margin:12px 0 8px;}
+  .ship-h{text-align:center;color:var(--blue);font-weight:700;font-size:15px;text-decoration:underline;margin:8px 0 6px;}
   .ship{display:flex;justify-content:space-between;gap:24px;}
   .ship .col{flex:1;font-size:11px;}
   .chk{display:inline-block;width:12px;height:12px;border:1px solid #111;vertical-align:middle;margin-right:5px;}
-  .ship .fld{margin:8px 0;white-space:nowrap;}
+  .ship .fld{margin:6px 0;white-space:nowrap;}
   .method{color:var(--blue);font-weight:700;text-decoration:underline;font-size:13px;}
   .foot{text-align:right;font-size:8px;color:#8a97a8;margin-top:16px;}
   @media print{.page{padding:0.35in 0.45in;}}
@@ -88,7 +90,6 @@
       <tr><td class="qty"></td><td></td><td class="up"></td><td class="amt"></td></tr>
       <tr><td class="qty"></td><td></td><td class="up"></td><td class="amt"></td></tr>
       <tr><td class="qty"></td><td></td><td class="up"></td><td class="amt"></td></tr>
-      <tr><td class="qty"></td><td></td><td class="up"></td><td class="amt"></td></tr>
     </tbody>
   </table>
 
@@ -125,6 +126,26 @@
       <div class="fld"><span class="lbl">By:</span> <span class="ln" style="min-width:150px;"></span></div>
     </div>
   </div>
+
+  <div class="band" style="margin-top:10px;">Product Reference &mdash; Schedule A (per-unit pricing)</div>
+  <table class="ref" style="margin-top:4px;">
+    <thead>
+      <tr>
+        <th style="text-align:left;">Product Line</th>
+        <th style="width:16%;">HCPCS</th>
+        <th style="width:22%;">Rate per Unit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>BioLab Sciences Tri-Membrane Wrap</td><td style="text-align:center;">Q4344</td><td style="text-align:right;">$51.16 / sq cm</td></tr>
+      <tr><td>BioLab Sciences Microlyte SAM</td><td style="text-align:center;">A2005</td><td style="text-align:right;">$51.16 / sq cm</td></tr>
+      <tr><td>Palisade Placental-Derived Allograft (Dual-Membrane)</td><td style="text-align:center;">Q4350</td><td style="text-align:right;">$51.16 / sq cm</td></tr>
+      <tr><td>Activate Matrix</td><td style="text-align:center;">Q4301</td><td style="text-align:right;">$51.16 / sq cm</td></tr>
+      <tr><td>XCell AmnioMatrix</td><td style="text-align:center;">Q4280</td><td style="text-align:right;">$51.16 / sq cm</td></tr>
+      <tr><td>Interfyl&reg; Human Connective Matrix (Flowable)</td><td style="text-align:center;">Q4171</td><td style="text-align:right;">$51.16 / mg</td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:8.5px;color:var(--muted);font-style:italic;margin-top:2px;">Sheet products are priced per sq cm (Amount = Length &times; Width &times; rate); Interfyl (flowable) is priced per mg (Amount = mg &times; rate). Rates equal 40% of the 100% reimbursement per unit and are subject to change per the Purchase Agreement.</div>
 
   <div class="foot">Albacete MedDev LLC &bull; Order Form</div>
 </div>
