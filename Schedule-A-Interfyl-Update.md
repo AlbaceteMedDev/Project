@@ -26,8 +26,8 @@ reimbursement rate.
 | BioLab Sciences Tri-Membrane Wrap™ | Q4344 | 40% of locality 100% reimbursement / sq cm |
 | BioLab Sciences Microlyte® SAM™ | A2005 | 40% of locality 100% reimbursement / sq cm |
 | Palisade™ Placental-Derived Allograft (Dual-Membrane) | Q4350 | 40% of locality 100% reimbursement / sq cm |
-| Activate Matrix™ | Q4301 | 40% of locality 100% reimbursement / sq cm |
-| XCell AmnioMatrix™ | Q4280 | 40% of locality 100% reimbursement / sq cm |
+| Activate™ Matrix | Q4301 | 40% of locality 100% reimbursement / sq cm |
+| XCell Amnio Matrix™ | Q4280 | 40% of locality 100% reimbursement / sq cm |
 | **Interfyl® Human Connective Matrix (Flowable)** _(NEW)_ | **Q4171** | **40% of locality 100% reimbursement / mg** |
 
 _Dollar prices are intentionally not fixed here because the 100% reimbursement rate varies by MAC
@@ -72,7 +72,7 @@ HCPCS Code: Q4350 · Amnion-Chorion Dual-Membrane Allograft · Priced per sq cm 
 | PAL-26244 | Palisade DM 4x4 cm (Q4350) | 16 |
 | PAL-26248 | Palisade DM 4x8 cm (Q4350) | 32 |
 
-### Activate Matrix™
+### Activate™ Matrix
 HCPCS Code: Q4301 · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
@@ -82,15 +82,15 @@ HCPCS Code: Q4301 · Priced per sq cm at 40% of the locality 100% reimbursement 
 | ACT0404 | Activate Matrix 4x4 cm (Q4301) | 16 |
 | ACT0408 | Activate Matrix 4x8 cm (Q4301) | 32 |
 
-### XCell AmnioMatrix™
+### XCell Amnio Matrix™
 HCPCS Code: Q4280 · Lyophilized Amniotic Membrane · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
 | --- | --- | ---: |
-| XAM-0202 | XCell AmnioMatrix 2x2 cm (Q4280) | 4 |
-| XAM-0204 | XCell AmnioMatrix 2x4 cm (Q4280) | 8 |
-| XAM-0404 | XCell AmnioMatrix 4x4 cm (Q4280) | 16 |
-| XAM-0407 | XCell AmnioMatrix 4x7 cm (Q4280) | 28 |
+| XAM-0202 | XCell Amnio Matrix 2x2 cm (Q4280) | 4 |
+| XAM-0204 | XCell Amnio Matrix 2x4 cm (Q4280) | 8 |
+| XAM-0404 | XCell Amnio Matrix 4x4 cm (Q4280) | 16 |
+| XAM-0407 | XCell Amnio Matrix 4x7 cm (Q4280) | 28 |
 
 ### Interfyl® Human Connective Matrix (Flowable) — NEW
 HCPCS Code: Q4171 (per 1 mg) · Human Connective Tissue Matrix (flowable / non-sheet) · Priced per mg at 40% of the locality 100% reimbursement rate
