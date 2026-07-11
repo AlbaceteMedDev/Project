@@ -60,7 +60,7 @@ HCPCS Code: A2005 · 510(k) Cleared Silver Antimicrobial Wound Dressing · Price
 | MSAM0404 | Microlyte SAM 4x4 cm (A2005) | 16 |
 | MSAM0505 | Microlyte SAM 5x5 cm (A2005) | 25 |
 | MSAM0608 | Microlyte SAM 6x8 cm (A2005) | 48 |
-| MSAMD16 | Microlyte SAM 16 sq cm Disc (A2005) | 16 |
+| MSAMD16 | Microlyte SAM 16 mm Disc (A2005) | 2 |
 
 ### Palisade Placental-Derived Allograft (Dual-Membrane)
 HCPCS Code: Q4350 · Amnion-Chorion Dual-Membrane Allograft · Priced per sq cm at 40% of the locality 100% reimbursement rate
