@@ -23,11 +23,11 @@ reimbursement rate.
 
 | Product Line | HCPCS | Price Basis (per unit) |
 | --- | --- | --- |
-| BioLab Sciences Tri-Membrane Wrap | Q4344 | 40% of locality 100% reimbursement / sq cm |
-| BioLab Sciences Microlyte SAM | A2005 | 40% of locality 100% reimbursement / sq cm |
-| Palisade Placental-Derived Allograft (Dual-Membrane) | Q4350 | 40% of locality 100% reimbursement / sq cm |
-| Activate Matrix | Q4301 | 40% of locality 100% reimbursement / sq cm |
-| XCell AmnioMatrix | Q4280 | 40% of locality 100% reimbursement / sq cm |
+| BioLab Sciences Tri-Membrane Wrap™ | Q4344 | 40% of locality 100% reimbursement / sq cm |
+| BioLab Sciences Microlyte® SAM™ | A2005 | 40% of locality 100% reimbursement / sq cm |
+| Palisade™ Placental-Derived Allograft (Dual-Membrane) | Q4350 | 40% of locality 100% reimbursement / sq cm |
+| Activate Matrix™ | Q4301 | 40% of locality 100% reimbursement / sq cm |
+| XCell AmnioMatrix™ | Q4280 | 40% of locality 100% reimbursement / sq cm |
 | **Interfyl® Human Connective Matrix (Flowable)** _(NEW)_ | **Q4171** | **40% of locality 100% reimbursement / mg** |
 
 _Dollar prices are intentionally not fixed here because the 100% reimbursement rate varies by MAC
@@ -37,7 +37,7 @@ applicable CMS MAC pricing schedule._
 
 ---
 
-### BioLab Sciences Tri-Membrane Wrap
+### BioLab Sciences Tri-Membrane Wrap™
 HCPCS Code: Q4344 · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
@@ -51,7 +51,7 @@ HCPCS Code: Q4344 · Priced per sq cm at 40% of the locality 100% reimbursement 
 | TMW0608 | Tri-Membrane Wrap 6x8 cm (Q4344) | 48 |
 | TMW1010 | Tri-Membrane Wrap 10x10 cm (Q4344) | 100 |
 
-### BioLab Sciences Microlyte SAM
+### BioLab Sciences Microlyte® SAM™
 HCPCS Code: A2005 · 510(k) Cleared Silver Antimicrobial Wound Dressing · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
@@ -62,7 +62,7 @@ HCPCS Code: A2005 · 510(k) Cleared Silver Antimicrobial Wound Dressing · Price
 | MSAM0608 | Microlyte SAM 6x8 cm (A2005) | 48 |
 | MSAMD16 | Microlyte SAM 16 mm Disc (A2005) | 2 |
 
-### Palisade Placental-Derived Allograft (Dual-Membrane)
+### Palisade™ Placental-Derived Allograft (Dual-Membrane)
 HCPCS Code: Q4350 · Amnion-Chorion Dual-Membrane Allograft · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
@@ -72,7 +72,7 @@ HCPCS Code: Q4350 · Amnion-Chorion Dual-Membrane Allograft · Priced per sq cm 
 | PAL-26244 | Palisade DM 4x4 cm (Q4350) | 16 |
 | PAL-26248 | Palisade DM 4x8 cm (Q4350) | 32 |
 
-### Activate Matrix
+### Activate Matrix™
 HCPCS Code: Q4301 · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
@@ -82,7 +82,7 @@ HCPCS Code: Q4301 · Priced per sq cm at 40% of the locality 100% reimbursement 
 | ACT0404 | Activate Matrix 4x4 cm (Q4301) | 16 |
 | ACT0408 | Activate Matrix 4x8 cm (Q4301) | 32 |
 
-### XCell AmnioMatrix
+### XCell AmnioMatrix™
 HCPCS Code: Q4280 · Lyophilized Amniotic Membrane · Priced per sq cm at 40% of the locality 100% reimbursement rate
 
 | Part Number | Description | Billable Units (sq cm) |
