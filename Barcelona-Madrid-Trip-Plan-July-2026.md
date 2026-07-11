@@ -93,8 +93,8 @@
 - **7:00–9:00 PM** **2-hour Panoramic tuk-tuk** — confirmed; they were asked to end at the **Temple of Debod** for golden hour (sunset 9:45).
 - **9:15 PM** dinner under the arcades of **Plaza Mayor**.
 
-### Sun Jul 12 · Royal Palace 11:45 + San Miguel + Cardamomo 7:30
-- **9:30 AM** slow breakfast — the palace slot moved to **11:45**, so the morning is easy.
+### Sun Jul 12 · El Rastro + Royal Palace 11:45 + San Miguel + Cardamomo 7:30
+- **9:15 AM** breakfast, then **9:45–10:45: EL RASTRO** — Madrid's famous Sunday-only flea market, which sets up practically at your door (spreads from Plaza de Cascorro through La Latina). Antiques, prints, leather — one unhurried lap. *Crowded: bags worn in front, phones in front pockets.* **Hard stop 10:50** — the palace gate won't wait.
 - **11:00 AM** walk to Calle de Bailén (~15 min from the apartment) — **the ticket requires entry through the preferential gate 30 min early (11:15) and meeting your ENGLISH-SPEAKING GUIDE in the Zaguán (entrance hall) 5 min before start.** Tour 11:45 AM–~1:45 PM + Plaza de Oriente. *Bonus: your ticket includes free entry to the Fernando Brambila exhibition at the Galería de las Colecciones Reales next door — optional, only if legs allow.*
 - **2:00 PM** flat 10-min walk → **Mercado de San Miguel** — the long grazing lunch (post-lunch crowd is lighter — the late palace slot works in your favor).
 - **3:45–5:30 PM** siesta.
@@ -109,6 +109,7 @@
 - **11:30 AM** you and your brother peel off to **Real Madrid Games** (~1 h — scan the QR at the Games entrance, take the 3 avatar photos, settle the sibling rivalry). Parents finish the museum at their own pace and wait at the café/store.
 - **~12:45 PM** regroup; **1:15 PM lunch** back toward the center; **2:45–3:45** short siesta.
 - **4:00–4:30 PM entry window** — **Reina Sofía**, Sabatini Building, C/ Santa Isabel 52 — *Guernica*, Room 206 (locator **102258421**; audio guide code **0A6017** — bring headphones and charged phones; no backpacks over 50 cm).
+- **5:45–6:50 PM** — stroll into **Retiro Park** (10 min from the museum): the **Crystal Palace**, the boating lake (rowboats if the mood strikes), shaded paths as the heat breaks. Home by ~7:15 to dress for Botín.
 - **8:00 PM** farewell dinner **Sobrino de Botín**, C/ Cuchilleros 17 (booked per personal Gmail).
 - **10:00 PM** 🍫 **San Ginés** churros finale (Pasadizo de San Ginés 5). **Pack tonight.**
 
