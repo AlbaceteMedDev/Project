@@ -19,10 +19,10 @@ But it is *not* a lock, and the reasons cut both ways: the very style that makes
 | Goals **conceded** (7 games) | **7** (1.0 / game) | **1** (0.14 / game) |
 | Goals conceded in knockouts | **6 in 4 games (1.5/game)** | part of a record **6 clean sheets** |
 | Goal difference | **+12** (19 − 7) | **+12** (13 − 1) |
-| Expected goals (xG, through 6 games) | Tournament-high **~13.2 xG**, *overperforming* by ~+3.8 (clinical) | Strong creation, but striker-light finishing |
-| Possession | **54%+ in every game except Algeria**; 64% vs England | Dominant; out-possessed France, Portugal, Belgium |
+| Expected goals (xG) | **~2.2 xG/90** (~13.2 total); *out*-finishes it — 19 goals (clinical) | **~2.2 xG/90** (2.29 vs Cape Verde, 2.30 vs Saudi Arabia); tops field in xPTS (**15.53**) but scored 13 — *under* its chances (striker-light) |
+| Possession | **54%+ in every game except Algeria**; 64% vs England | **Tournament-high 60% average**; 567.7 passes / game |
 | Knockout path | 3 of 4 wins via comeback or extra time | More controlled (e.g. France 2-0) |
-| Squad profile | Veteran — avg age **~29.4** | Young core (Yamal 18, Pedri, Nico Williams) |
+| Squad profile | Veteran — avg age **~29.4** (one of the oldest) | One of the youngest — avg age **26.2** (Yamal 18, Cubarsí 19, Pedri 23) |
 | Talisman | **Messi**: 8 goals, involved in every game | **Yamal**: 6 goal involvements (Mbappé: 0); **Oyarzabal**: 5 goals |
 | FIFA ranking | **#1** | **#3** |
 | Pre-WC pedigree | 2022 World Cup + 2024 Copa América champions | Euro 2024 champions; 2025 Nations League runners-up |
@@ -67,11 +67,12 @@ Both finalists carry an identical **+12 goal difference**, but by opposite route
 
 **Strengths (data-backed):**
 1. **The tournament's best defense, by distance.** 1 goal conceded in 7 games vs Argentina's 7. They shut out France and Mbappé (Yamal outscored Mbappé 6–0 in goal involvements).
-2. **Possession supremacy + press.** Rodri/Pedri-anchored control; they took the ball off France, Portugal and Belgium. They are the one side likely to out-possess Argentina.
+2. **Possession supremacy + press.** Tournament-high **60% average possession** and **567.7 passes/game**, Rodri/Pedri-anchored; they took the ball off France, Portugal and Belgium — the one side likely to out-possess Argentina (mid-50s%).
 3. **Genuine wide pace.** Lamine Yamal (6 involvements) and Nico Williams are elite in transition — precisely the profile that troubles slow defenses.
+4. **Youngest-tier squad.** Average age **26.2** (vs Argentina's ~29.4) — fresher legs for a physical final after fewer draining games.
 
 **Weaknesses (data-backed):**
-1. **No guaranteed central goalscorer.** They win 1-0 and 2-0; Oyarzabal (5) leads the line by committee. They can dominate and *not* convert.
+1. **No guaranteed central goalscorer.** They create ~2.2 xG/game but score just 1.9 — finishing *below* their chances, the exact mirror image of clinical Argentina. Oyarzabal (5) leads the line by committee; they win 1-0 and 2-0 and can dominate without converting.
 2. **Transition exposure.** When full-backs (e.g. Porro) push high, space opens behind — the mode Messi/Álvarez/Lautaro punish best.
 3. **Rodri's fitness.** Their control fulcrum, 2024 Ballon d'Or winner, has not been the same force since an ACL injury (Sept 2024). If he's off, the midfield grip loosens.
 
@@ -119,6 +120,9 @@ Spain is the **toughest possible final matchup** for Argentina — statistically
 - Argentina 2-1 England: [Yahoo match report](https://sports.yahoo.com/soccer/live/england-vs-argentina-world-cup-2026-score-result-schedule-live-updates-150000908.html), [FIFA result & stats](https://www.fifa.com/en/match-centre/match/17/285023/289290/400021540?gender=2&date=2026-07-15), [CNN](https://www.cnn.com/2026/07/15/sport/live-news/world-cup-argentina-england)
 - Spain 2-0 France / defensive record: [CBS Sports](https://www.cbssports.com/soccer/news/france-vs-spain-live-updates-world-cup-2026-score-result/live/), [ESPN stats: Yamal 6-0 Mbappé, 6 clean sheets](https://www.espn.com/soccer/story/_/id/49363150/fifa-world-cup-2026-stats-lamine-yamal-6-0-kylian-mbappe-spain-unai-simon-set-wc-record-6-france-worst-60-years)
 - Team analyses: [Mundial Analytics – Spain](https://mundialanalytics.com/spain-national-team-analysis)
-- xG data: [OddAlerts World Cup xG](https://www.oddalerts.com/xg/world-cup)
+- Spain full results (game-by-game): [Wikipedia – 2026 WC Group H](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_H), [ESPN – Spain results](https://www.espn.com/soccer/team/results/_/id/164/league/FIFA.WORLD)
+- xG / xPTS data: [OddAlerts World Cup xG](https://www.oddalerts.com/xg/world-cup), [xGscore – Spain matches](https://xgscore.io/xg-statistics/world-cup/2026)
+- Possession & passing: [FIFA World Cup 2026 live stats](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics), [Statz – Spain passing](https://statz.ai/team/spain/passes)
+- Squad ages: [GiveMeSport – squads ranked by age](https://www.givemesport.com/world-cup-squads-ranked-age-oldest-youngest-football-soccer/), [RotoWire – 2026 squad ages](https://www.rotowire.com/soccer/article/2026-fifa-world-cup-squad-ages-youngest-oldest-teams-ranked-116813)
 - Pre-WC form: [Argentina tops FIFA ranking](https://northeasttimes.com/2026/07/13/argentina-tops-fifa-rankings-as-world-cup-2026-reaches-final-stage/), [Spain pre-WC form & Rodri (UEFA)](https://www.uefa.com/european-qualifiers/news/02a6-20d159556fdf-60d8385f463f-1000--spain-at-the-world-cup-2026-squad-fixtures-group-and-history/)
 - Head-to-head: [ESPN – Spain 6-1 Argentina (2018)](https://www.espn.in/football/match/_/gameId/506549/argentina-spain)
