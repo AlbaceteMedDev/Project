@@ -1,10 +1,10 @@
 # 2026 World Cup Final — Argentina vs. Spain: An Unbiased, Data-Driven Preview
 
-*Compiled 15 July 2026, ahead of the final. A neutral read of both finalists using 2026 World Cup match data, pre-tournament form, and the historical predictors of World Cup winners. No rooting interest — the data is left to fall where it falls.*
+*Compiled 15 July 2026, ahead of the final. A neutral read of both finalists using 2026 World Cup match data, pre-tournament form, and the predictors that most reliably forecast winners — weighted by their proven accuracy, not by folklore. No rooting interest — the data is left to fall where it falls.*
 
 ## TL;DR
 
-This is a clash of **opposite profiles with an identical bottom line**: both finalists carry a **+12 goal difference**, but Argentina got there by outscoring everyone (19 GF / 7 GA) and Spain by almost never conceding (13 GF / 1 GA). The historical predictors of champions **split** — Spain owns the single most reliable one (an elite defense), Argentina owns the others that decide one-off finals (an in-form talisman and knockout resilience) while carrying two historical headwinds — a defending champion, and a top-ranked entrant (no FIFA #1 has ever won in the ranking era). On the data, it is close to a coin-flip.
+Filtered to the predictors that *actually* forecast football reliably — **betting-market odds (the most accurate of all), model probabilities, squad market value, and knockout defensive record** — this final is **not a coin-flip: they converge on Spain, ~56–61%.** Argentina (~40%) hold real but higher-variance edges (Messi's clinical finishing, knockout resilience, and a world-class shootout goalkeeper in Emiliano Martínez). The "curses" and FIFA ranking that appeared to weigh on Argentina are, by the evidence, among the *least* reliable predictors — noted, but discounted. **Net: Spain a moderate favourite; Argentina a live underdog.**
 
 ---
 
@@ -23,6 +23,8 @@ This is a clash of **opposite profiles with an identical bottom line**: both fin
 | Squad profile | Veteran — avg age **~29.4** (one of the oldest) | One of the youngest — avg age **26.2** (Yamal 18, Cubarsí 19, Pedri 23) |
 | Talisman | **Messi**: 8 goals, involved in every game | **Yamal**: 6 goal involvements (Mbappé: 0); **Oyarzabal**: 5 goals |
 | FIFA ranking (live, 15 Jul) | Live **#2** — entered WC as official **#1** (11 Jun) | Live **#3** — entered as official **#2** (11 Jun) |
+| **Final win probability** | **~42%** — odds +125; ~44% (Opta) | **~58%** — odds −160; ~56% (Opta) |
+| **Squad market value** | **€807.5m** (7th most valuable) | **€1.22bn** (3rd most valuable) |
 | Pre-WC pedigree | 2022 World Cup + 2024 Copa América champions | Euro 2024 champions; 2025 Nations League runners-up |
 | Recent form | Brief slump (Nov loss to Ecuador), then reclaimed #1 | ~37 matches unbeaten (normal time) since Mar 2024 |
 | All-time H2H | Even: **6W–2D–6L**; biggest result Spain 6-1 (2018 friendly, **no Messi**) | |
@@ -71,22 +73,29 @@ This is a clash of **opposite profiles with an identical bottom line**: both fin
 
 ---
 
-## 4. Predictors of World Cup winners — applied to both
+## 4. Predictors of winners — ranked by how *reliably* they predict
 
-Which side fits the *historical profile* of champions? The reliable predictors don't point one way — they split.
+Not all "predictors" carry equal weight. The forecasting research is clear: **betting-market odds are the most accurate predictor of football results**, ahead of **Elo ratings**, with **FIFA rankings the weakest** of the quantitative measures (friendly scheduling distorts them). Historical "curses" are small-sample trends, not causal signal. Tiering by validity is the honest way to read them — and the reliable tier converges.
 
-| Predictor of champions | What the history shows | Edge |
+### Tier 1 — consistently accurate (weight these)
+
+| Predictor (proven reliability) | Current reading | Points to |
 |---|---|---|
-| **Defensive solidity / clean sheets** | Winners concede few and keep 3–5 clean sheets: Spain 2010 (2 GA, 5 CS, 4 in a row in KO), Italy 2006 (2 GA, 5 CS). "You can't win a World Cup without a good defence." | **Spain** — 1 GA, record 6 CS vs Argentina's 7 GA (6 in 4 KO games) |
-| **An in-form talisman** | Champions ride a hot scorer (Messi 2022). | **Argentina** — Messi 8 goals, involved in every match |
-| **Knockout resilience / winning tight games** | Winners grind out close games and shootouts (Argentina 2022, France 2018). | **Argentina** — 3 of 4 KO wins via comeback/ET (also a fragility signal) |
-| **Defending-champion curse** | Since 2002, ~80% of holders exit in the group stage; no repeat winner since Brazil 1962. | **Against Argentina** — though they've already beaten the group-stage curse by reaching the final |
-| **The FIFA No. 1 "curse"** | Since rankings began (1992), *no* team has won the World Cup as the No. 1-ranked entrant: Germany '94, Brazil '98, Spain '14 (group exit), Germany '18 (group exit), Brazil '22. | **Slight headwind for Argentina** — entered as official #1; the live #1 (France) is already out. Spain (entered #2) is uncursed |
-| **Pre-tournament favorite status** | All four of Opta's pre-tournament favourites (Spain, France, Argentina, England) reached the semis; favourites delivered. | **Both** — top-4 favourites; betting markets marginally favour Argentina |
-| **Possession & passing volume** | Studies of 2010–18 champions link quick, high-volume passing to scoring; modern winners dominate the ball. | **Both possession sides; edge Spain** — 60%, 567.7 passes/game |
-| **Squad experience vs. fatigue** | Knockouts reward experience, but "squads age together" is a cited cause of the champion's curse; ageing legs fade late. | **Split** — Argentina 29.4 (savvy) vs Spain 26.2 (fresh) |
+| **Betting markets** — the single most accurate football forecaster | Spain **−160 (~58%)** vs Argentina **+125 (~42%)** for the final | **Spain** |
+| **Model probability** — Opta supercomputer | **Spain ~56%** to lift the trophy | **Spain** |
+| **Squad market value** — strongest team-quality proxy | Spain **€1.22bn** (3rd) vs Argentina **€807.5m** (7th) | **Spain** |
+| **Knockout defensive record** — a reliable champion trait | Spain **1 GA / 6 clean sheets** vs Argentina **7 GA** | **Spain** |
+| **Underlying xG** — "who deserved to win" | Near-even creation (~2.2/90 each); Argentina finish *above* it, Spain defend far better | Lean **Spain** (tempered by ARG finishing) |
 
-**How it tallies:** Spain fits the *single strongest* historical predictor — elite defense — and the possession template, and carries none of the "curses." Argentina fits the predictors that decide *one-off finals*: an in-form superstar and proven knockout nerve, plus a marginal edge in betting odds — but faces **two historical headwinds at once** (the defending-champion curse *and* the FIFA-No.1 curse, having entered top-ranked) and a leaky back line. The caveat: Argentina has already beaten the *group-stage* version of both curses simply by reaching the final. No side sweeps the board.
+**Every reliable predictor points the same way — Spain, by a moderate ~56–61% margin.**
+
+### Tier 2 — popular but low predictive validity (discount these)
+
+- **FIFA ranking** — the *least* accurate quantitative predictor (distorted by friendlies); also unsettled (France leads the live table).
+- **Defending-champion & FIFA-No.1 "curses"** — small-sample base rates, not causal signal — and Argentina has already beaten the group-stage version of both.
+- **Possession %** — weakly predictive on its own; the ball isn't the scoreboard.
+
+**Where Argentina's real case lives** is *variance*, not the mean: Messi's clinical finishing (they outscore their xG), proven knockout nerve, and **Emiliano "Dibu" Martínez's elite penalty-shootout record** if it goes the distance. These genuinely decide one-off finals — but the markets already price them in and still rate Argentina second (~40%).
 
 ---
 
@@ -98,11 +107,11 @@ Which side fits the *historical profile* of champions? The reliable predictors d
 
 ---
 
-## Verdict (neutral)
+## Verdict (data-driven)
 
-The data does not crown a favorite. **Spain** owns the most reliable historical predictor of champions — an elite defense (1 conceded, 6 clean sheets), the statistical profile of Spain 2010 and Italy 2006 — plus possession control and fresher legs. **Argentina** owns the factors that most often decide a single final — the tournament's in-form talisman (Messi, 8 goals) and battle-tested knockout resilience — but history is *doubly* against them: no nation has defended the title since 1962, and no side has ever won as the tournament's top-ranked entrant in the ranking era (Argentina entered #1). Their knockout defense has also leaked.
+Filtered to the predictors that are *consistently* accurate — betting markets, model probabilities, squad value, and knockout defensive record — this is **not a coin-flip: all of them favour Spain, by a moderate ~56–61%.** The factors that looked like Argentina headwinds (the defending-champion and FIFA-No.1 "curses," a lower FIFA ranking) are the *least* reliable predictors and should be discounted — but discounting them changes nothing, because the reliable predictors independently converge on Spain.
 
-Both sit on **+12 goal difference** by opposite routes. Models and markets rate it near even, with **Argentina a marginal favorite on talent and odds, Spain a marginal favorite on structure and defense.** On the data, it is a coin-flip — decided at the margins by Rodri's fitness, Argentina's back line, and whether Spain's control beats Argentina's clinical edge before Messi produces a moment.
+**Argentina's ~40% is a live chance, not a long shot.** A final is a single, high-variance game, and their edges — Messi's finishing, knockout resilience, and a world-class shootout goalkeeper — are exactly the kind that swing one-off matches. But on the weight of the evidence that actually forecasts football, **Spain are the rightful favourites and Argentina the live underdog** — decided at the margins by Rodri's fitness, Argentina's back line, and whether Spain converts its control before Messi conjures a moment.
 
 ---
 
@@ -114,7 +123,10 @@ Both sit on **+12 goal difference** by opposite routes. Models and markets rate 
 - xG / xPTS: [OddAlerts World Cup xG](https://www.oddalerts.com/xg/world-cup), [xGscore – Spain matches](https://xgscore.io/xg-statistics/world-cup/2026)
 - Possession & passing: [FIFA World Cup 2026 live stats](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics), [Statz – Spain passing](https://statz.ai/team/spain/passes)
 - Squad ages: [GiveMeSport – squads ranked by age](https://www.givemesport.com/world-cup-squads-ranked-age-oldest-youngest-football-soccer/), [RotoWire – 2026 squad ages](https://www.rotowire.com/soccer/article/2026-fifa-world-cup-squad-ages-youngest-oldest-teams-ranked-116813)
-- **Predictors of winners:** [SportsBoom – best WC defensive units / clean sheets](https://www.sportsboom.com/football/best-defensive-units-in-world-cup-history/), [Sky Sports – defending-champion curse](https://www.skysports.com/football/news/11096/11418938/the-world-cup-champions-curse-germany-continue-remarkable-trend), [Legion Report – back-to-back champions](https://legionreport.com/back-to-back-world-cup-champions/), [beIN Sports – the curse of the FIFA No. 1](https://www.beinsports.com/en-us/soccer/fifa-world-cup-2026/articles/the-curse-of-the-fifa-world-ranking-no-1-2026-03-03), [Opta Analyst – 2026 supercomputer / favourites](https://theanalyst.com/articles/who-will-win-2026-fifa-world-cup-predictions-opta-supercomputer), [PMC study – champions' passing & scoring](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9821415/)
+- **Predictor reliability (which forecasts actually work):** [PLOS One – betting odds beat Elo & FIFA rankings](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0198668), [ResearchGate – FIFA rankings vs Elo predictive validity](https://www.researchgate.net/publication/406281676_FIFA_Rankings_vs_ELO_Ratings_Predictive_Validity_in_World_Cup_Knockout_Stages_1994-2022)
+- **Live final odds & model:** [Fox Sports – Spain −160 / favourite over Argentina](https://www.foxsports.com/stories/soccer/world-cup-2026-champion-odds), [Yahoo – Spain −160, win probabilities](https://sports.yahoo.com/articles/fifa-world-cup-odds-win-134100328.html), [SI / Opta – Spain ~56%](https://www.si.com/soccer/supercomputer-predicts-2026-world-cup-winner-after-thrilling-quarterfinals)
+- **Squad market value:** [Planet Football – all 48 squads ranked (Spain €1.22bn, Argentina €807.5m)](https://www.planetfootball.com/lists-and-rankings/world-cup-2026-every-squad-ranked-market-value)
+- **Historical trends (lower-weight):** [SportsBoom – WC clean-sheet history](https://www.sportsboom.com/football/best-defensive-units-in-world-cup-history/), [Sky Sports – defending-champion curse](https://www.skysports.com/football/news/11096/11418938/the-world-cup-champions-curse-germany-continue-remarkable-trend), [beIN Sports – the curse of the FIFA No. 1](https://www.beinsports.com/en-us/soccer/fifa-world-cup-2026/articles/the-curse-of-the-fifa-world-ranking-no-1-2026-03-03), [PMC – champions' passing & scoring](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9821415/)
 - FIFA rankings: [Argentina #1 at last official update (Northeast Times)](https://northeasttimes.com/2026/07/13/argentina-tops-fifa-rankings-as-world-cup-2026-reaches-final-stage/), [France reclaim top spot / live rankings (FIFA)](https://inside.fifa.com/fifa-world-ranking/men), [live daily rankings](https://football-ranking.com/fifa-world-rankings)
 - Pre-WC form: [Spain pre-WC form & Rodri (UEFA)](https://www.uefa.com/european-qualifiers/news/02a6-20d159556fdf-60d8385f463f-1000--spain-at-the-world-cup-2026-squad-fixtures-group-and-history/)
 - Head-to-head: [ESPN – Spain 6-1 Argentina (2018)](https://www.espn.in/football/match/_/gameId/506549/argentina-spain)
