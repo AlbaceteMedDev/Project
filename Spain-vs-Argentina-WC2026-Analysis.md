@@ -15,9 +15,10 @@ But it is *not* a lock, and the reasons cut both ways: the very style that makes
 | Metric | 🇦🇷 Argentina | 🇪🇸 Spain |
 |---|---|---|
 | Tournament record | 7W–0D–0L (perfect) | 6W–1D–0L (one 0-0 draw) |
-| Goals scored (7 games) | **19** (2.7 / game) | Fewer, low-scoring wins (KO run 3-0, 1-0, 2-1, 2-0) |
+| Goals scored (7 games) | **19** (2.7 / game) | **13** (1.9 / game) |
 | Goals **conceded** (7 games) | **7** (1.0 / game) | **1** (0.14 / game) |
 | Goals conceded in knockouts | **6 in 4 games (1.5/game)** | part of a record **6 clean sheets** |
+| Goal difference | **+12** (19 − 7) | **+12** (13 − 1) |
 | Expected goals (xG, through 6 games) | Tournament-high **~13.2 xG**, *overperforming* by ~+3.8 (clinical) | Strong creation, but striker-light finishing |
 | Possession | **54%+ in every game except Algeria**; 64% vs England | Dominant; out-possessed France, Portugal, Belgium |
 | Knockout path | 3 of 4 wins via comeback or extra time | More controlled (e.g. France 2-0) |
@@ -56,7 +57,13 @@ But it is *not* a lock, and the reasons cut both ways: the very style that makes
 
 ## 3. Spain's tournament profile — what the data actually says
 
-**Form:** 6 wins, 1 draw; **only one goal conceded all tournament** (Belgium), a **record-setting 6 clean sheets** (Unai Simón). Knockout wins: Austria 3-0, Portugal 1-0, Belgium 2-1, **France 2-0** to reach the final.
+**Form:** 6 wins, 1 draw; **13 goals scored, only 1 conceded** — a **record-setting 6 clean sheets** (Unai Simón).
+
+**Every game (13 scored, 1 conceded):**
+- Group H: Cape Verde 0-0, Saudi Arabia 4-0, Uruguay 1-0
+- R32: Austria 3-0 · R16: Portugal 1-0 · QF: **Belgium 2-1** (the only goal they conceded) · SF: France 2-0
+
+Both finalists carry an identical **+12 goal difference**, but by opposite routes: Argentina outscore everyone (19 GF) yet leak in knockouts (7 GA); Spain win low-event games (13 GF) and almost never concede (1 GA).
 
 **Strengths (data-backed):**
 1. **The tournament's best defense, by distance.** 1 goal conceded in 7 games vs Argentina's 7. They shut out France and Mbappé (Yamal outscored Mbappé 6–0 in goal involvements).
