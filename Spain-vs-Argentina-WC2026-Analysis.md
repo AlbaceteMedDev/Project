@@ -13,7 +13,7 @@ This is a clash of **opposite profiles with an identical bottom line**: both fin
 | Metric | 🇦🇷 Argentina | 🇪🇸 Spain |
 |---|---|---|
 | Tournament record | 7W–0D–0L (perfect) | 6W–1D–0L (one 0-0 draw) |
-| Goals scored (7 games) | **19** (2.7 / game) | **13** (1.9 / game) |
+| Goals scored (7 games) | **19** — **2.7/game** actual (vs ~2.2 xG → clinical) | **13** — **1.9/game** actual (vs ~2.2 xG → under-finishing) |
 | Goals conceded (7 games) | **7** (1.0 / game) | **1** (0.14 / game) |
 | Goals conceded in knockouts | **6 in 4 games (1.5/game)** | part of a record **6 clean sheets** |
 | Goal difference | **+12** (19 − 7) | **+12** (13 − 1) |
@@ -22,12 +22,14 @@ This is a clash of **opposite profiles with an identical bottom line**: both fin
 | Knockout path | 3 of 4 wins via comeback or extra time | More controlled (e.g. France 2-0) |
 | Squad profile | Veteran — avg age **~29.4** (one of the oldest) | One of the youngest — avg age **26.2** (Yamal 18, Cubarsí 19, Pedri 23) |
 | Talisman | **Messi**: 8 goals, involved in every game | **Yamal**: 6 goal involvements (Mbappé: 0); **Oyarzabal**: 5 goals |
-| FIFA ranking | **#1** | **#3** |
+| FIFA ranking | **#1** at last official update (11 Jun 2026) | **#3** |
 | Pre-WC pedigree | 2022 World Cup + 2024 Copa América champions | Euro 2024 champions; 2025 Nations League runners-up |
 | Recent form | Brief slump (Nov loss to Ecuador), then reclaimed #1 | ~37 matches unbeaten (normal time) since Mar 2024 |
 | All-time H2H | Even: **6W–2D–6L**; biggest result Spain 6-1 (2018 friendly, **no Messi**) | |
 
 *Both are +12. Everything else about how they got there is a study in opposites.*
+
+> **Note on rankings:** Argentina led the most recent *official* FIFA ranking (11 Jun 2026), but during the tournament **France have risen to #1 on the live rankings** (~1,926 pts) off their run to the semifinals. The next official update lands **20 Jul, after the final** — so "Argentina #1" reflects the last confirmed list, not today's live order.
 
 ---
 
@@ -112,5 +114,6 @@ Both sit on **+12 goal difference** by opposite routes. Models and markets rate 
 - Possession & passing: [FIFA World Cup 2026 live stats](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics), [Statz – Spain passing](https://statz.ai/team/spain/passes)
 - Squad ages: [GiveMeSport – squads ranked by age](https://www.givemesport.com/world-cup-squads-ranked-age-oldest-youngest-football-soccer/), [RotoWire – 2026 squad ages](https://www.rotowire.com/soccer/article/2026-fifa-world-cup-squad-ages-youngest-oldest-teams-ranked-116813)
 - **Predictors of winners:** [SportsBoom – best WC defensive units / clean sheets](https://www.sportsboom.com/football/best-defensive-units-in-world-cup-history/), [Sky Sports – defending-champion curse](https://www.skysports.com/football/news/11096/11418938/the-world-cup-champions-curse-germany-continue-remarkable-trend), [Legion Report – back-to-back champions](https://legionreport.com/back-to-back-world-cup-champions/), [Opta Analyst – 2026 supercomputer / favourites](https://theanalyst.com/articles/who-will-win-2026-fifa-world-cup-predictions-opta-supercomputer), [PMC study – champions' passing & scoring](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9821415/)
-- Pre-WC form: [Argentina tops FIFA ranking](https://northeasttimes.com/2026/07/13/argentina-tops-fifa-rankings-as-world-cup-2026-reaches-final-stage/), [Spain pre-WC form & Rodri (UEFA)](https://www.uefa.com/european-qualifiers/news/02a6-20d159556fdf-60d8385f463f-1000--spain-at-the-world-cup-2026-squad-fixtures-group-and-history/)
+- FIFA rankings: [Argentina #1 at last official update (Northeast Times)](https://northeasttimes.com/2026/07/13/argentina-tops-fifa-rankings-as-world-cup-2026-reaches-final-stage/), [France reclaim top spot / live rankings (FIFA)](https://inside.fifa.com/fifa-world-ranking/men), [live daily rankings](https://football-ranking.com/fifa-world-rankings)
+- Pre-WC form: [Spain pre-WC form & Rodri (UEFA)](https://www.uefa.com/european-qualifiers/news/02a6-20d159556fdf-60d8385f463f-1000--spain-at-the-world-cup-2026-squad-fixtures-group-and-history/)
 - Head-to-head: [ESPN – Spain 6-1 Argentina (2018)](https://www.espn.in/football/match/_/gameId/506549/argentina-spain)
