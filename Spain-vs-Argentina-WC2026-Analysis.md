@@ -4,7 +4,7 @@
 
 ## TL;DR
 
-Filtered to the predictors that *actually* forecast football reliably — **betting-market odds (the most accurate of all), model probabilities, squad market value, and knockout defensive record** — this final is **not a coin-flip: they converge on Spain, ~56–61%.** Argentina (~40%) hold real but higher-variance edges (Messi's clinical finishing, knockout resilience, and a world-class shootout goalkeeper in Emiliano Martínez). The "curses" and FIFA ranking that appeared to weigh on Argentina are, by the evidence, among the *least* reliable predictors — noted, but discounted. **Net: Spain a moderate favourite; Argentina a live underdog.**
+Filtered to the predictors that *actually* forecast football reliably — **betting-market odds (the most accurate of all), model probabilities, squad market value, and knockout defensive record** — this final is **not a coin-flip: they converge on Spain, ~56–61%.** Argentina (~40%) hold real but higher-variance edges (Messi's clinical finishing, knockout resilience, and a world-class shootout goalkeeper in Emiliano Martínez). **Net: Spain a moderate favourite; Argentina a live underdog.**
 
 ---
 
@@ -73,11 +73,9 @@ Filtered to the predictors that *actually* forecast football reliably — **bett
 
 ---
 
-## 4. Predictors of winners — ranked by how *reliably* they predict
+## 4. The predictors that actually forecast winners
 
-Not all "predictors" carry equal weight. The forecasting research is clear: **betting-market odds are the most accurate predictor of football results**, ahead of **Elo ratings**, with **FIFA rankings the weakest** of the quantitative measures (friendly scheduling distorts them). Historical "curses" are small-sample trends, not causal signal. Tiering by validity is the honest way to read them — and the reliable tier converges.
-
-### Tier 1 — consistently accurate (weight these)
+The forecasting research is clear on which signals to trust: **betting-market odds are the most accurate predictor of football results**, ahead of **Elo ratings**. Low-validity signals — FIFA ranking (the weakest quantitative measure, distorted by friendlies), the small-sample "curses," and raw possession — are excluded here as noise. What remains are the predictors with demonstrated accuracy:
 
 | Predictor (proven reliability) | Current reading | Points to |
 |---|---|---|
@@ -88,12 +86,6 @@ Not all "predictors" carry equal weight. The forecasting research is clear: **be
 | **Underlying xG** — "who deserved to win" | Near-even creation (~2.2/90 each); Argentina finish *above* it, Spain defend far better | Lean **Spain** (tempered by ARG finishing) |
 
 **Every reliable predictor points the same way — Spain, by a moderate ~56–61% margin.**
-
-### Tier 2 — popular but low predictive validity (discount these)
-
-- **FIFA ranking** — the *least* accurate quantitative predictor (distorted by friendlies); also unsettled (France leads the live table).
-- **Defending-champion & FIFA-No.1 "curses"** — small-sample base rates, not causal signal — and Argentina has already beaten the group-stage version of both.
-- **Possession %** — weakly predictive on its own; the ball isn't the scoreboard.
 
 **Where Argentina's real case lives** is *variance*, not the mean: Messi's clinical finishing (they outscore their xG), proven knockout nerve, and **Emiliano "Dibu" Martínez's elite penalty-shootout record** if it goes the distance. These genuinely decide one-off finals — but the markets already price them in and still rate Argentina second (~40%).
 
@@ -109,7 +101,7 @@ Not all "predictors" carry equal weight. The forecasting research is clear: **be
 
 ## Verdict (data-driven)
 
-Filtered to the predictors that are *consistently* accurate — betting markets, model probabilities, squad value, and knockout defensive record — this is **not a coin-flip: all of them favour Spain, by a moderate ~56–61%.** The factors that looked like Argentina headwinds (the defending-champion and FIFA-No.1 "curses," a lower FIFA ranking) are the *least* reliable predictors and should be discounted — but discounting them changes nothing, because the reliable predictors independently converge on Spain.
+Filtered to the predictors that are *consistently* accurate — betting markets, model probabilities, squad value, and knockout defensive record — this is **not a coin-flip: all of them favour Spain, by a moderate ~56–61%.**
 
 **Argentina's ~40% is a live chance, not a long shot.** A final is a single, high-variance game, and their edges — Messi's finishing, knockout resilience, and a world-class shootout goalkeeper — are exactly the kind that swing one-off matches. But on the weight of the evidence that actually forecasts football, **Spain are the rightful favourites and Argentina the live underdog** — decided at the margins by Rodri's fitness, Argentina's back line, and whether Spain converts its control before Messi conjures a moment.
 
