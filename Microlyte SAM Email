@@ -1,53 +1,59 @@
-# Microlyte® SAM — Outreach Email (Clinical & Reimbursement Package)
+# Microlyte® SAM — Outreach Email (Clinical & Coding Package)
 
-**Subject:** Microlyte® SAM — clinical evidence & A2005 reimbursement package
+**Subject:** Microlyte® SAM — clinical evidence and coding reference
 
 **Alt subjects:**
-- One product for conservative wound care: the Microlyte® SAM package
-- Microlyte® SAM: 91% of stalled wounds improved, 0% SSI — full package attached
+- A single-application antimicrobial matrix: the Microlyte® SAM package
+- Microlyte® SAM: published chronic-wound outcomes + A2005 coding reference
 
 ---
 
 Hi Dr. [Name],
 
-As promised, here is the full clinical and reimbursement package for Microlyte® SAM — the only wound matrix on the market that is both fully synthetic and antimicrobial.
+As promised, here is the full clinical and coding package for Microlyte® SAM, a fully synthetic, silver-based antimicrobial wound matrix from Imbed Biosciences.
 
-## Why it deserves a close look
+## Why it may be worth a look
 
-Most conservative-care protocols require layering a skin substitute with a separate antimicrobial dressing. Microlyte, an FDA 510(k)-cleared antimicrobial matrix, replaces both in a single application:
+Microlyte is an FDA 510(k)-cleared antimicrobial wound dressing (K153756) designed to consolidate antimicrobial wound management into a single conforming application:
 
-- **One product, two functions.** It conforms directly to the wound bed's micro-contours, supports cellular proliferation through its cytophilic scaffold, and sustains 99.99% antimicrobial activity via ionic silver for over 72 hours.
-- **No removal step.** Fully bioresorbable within about a week.
-- **Fully synthetic.** No risk of animal-derived pathogen transmission, and no refrigeration or special handling required.
+- **One conforming dressing.** It molds to the wound bed's micro-contours and provides a moist, biocompatible matrix that supports granulation, while delivering sustained ionic-silver antimicrobial activity (per the manufacturer's in vitro testing, 99.99% microbial reduction sustained beyond 72 hours).
+- **No removal step.** Fully bioresorbable, typically within about a week.
+- **Fully synthetic.** No animal-derived components — so no associated pathogen-transmission risk — and no refrigeration or special storage.
 
-## The published evidence
+In the published chronic-wound study, Microlyte replaced patients' prior antimicrobial dressings and topical antibiotics, so for many protocols it can reduce the number of separate products in the dressing regimen.
 
-- **Chronic wounds** — Manning et al., *Wounds* (2020): 91% of previously stalled wounds healed or improved significantly within 12 weeks, with a 73% average reduction in wound area.
-- **Surgical site infection prevention** — diabetic foot and ankle surgery: 0% SSI rate versus a 13% historical baseline, with 100% of per-protocol patients healing in an average of 21 days.
+## Published evidence
 
-## Reimbursement at a glance
+*The evidence below comes from the Microlyte platform (the Matrix and SURGICAL configurations).*
 
-Microlyte bills under **HCPCS A2005** with application codes **CPT 15271–15278**, and it is valid across all MAC regions. In MACs without an active LCD, it fits cleanly into the first 30 days of conservative care under medical necessity — an early-intervention option that documents well for audit defense.
+- **Chronic wounds** — *"Efficacy of a Bioresorbable Matrix in Healing Complex Chronic Wounds: An Open-Label Prospective Pilot Study."* Wounds. 2020;32(11):309–318. Among 32 patients (35 wounds), 91% of wounds (29/32) healed completely or improved significantly by 12 weeks, with a 73% average reduction in wound area.
+- **Surgical site infection prevention** — Chatelain R. Wounds. 2021;33(10):245–252. In a prospective clinical case series of at-risk diabetic patients undergoing foot and ankle surgery, prophylactic Microlyte SURGICAL was associated with no surgical site infections in the per-protocol group, against an approximately 13% historical baseline, with favorable healing times. Note this is a small, single-arm case series — worth reviewing in full before presenting to a P&T or formulary committee.
+
+## Coding and coverage
+
+Microlyte matrix bills under **HCPCS A2005** (per square centimeter); application is generally reported with the skin-substitute application codes **CPT 15271–15278**.
+
+**Coverage is not uniform, and I don't want to overstate it.** A2005 is payer- and MAC-dependent: several Medicare Administrative Contractors list it as non-covered under their cellular/tissue-based-product (CTP) LCDs, and some commercial payers currently consider it investigational. Before application, I'd recommend confirming the current LCD/coverage article for your MAC and the patient's specific plan. I'm happy to pull the current coverage status for your jurisdiction so there are no surprises at billing.
+
+## Documenting medical necessity
+
+Where antimicrobial management is clinically indicated and the product is covered, clear documentation supports the clinical decision. A defensible note typically:
+
+1. Identifies the presence — or risk — of microbial contamination or elevated bioburden at the wound site.
+2. States that Microlyte® was applied to reduce wound bioburden through its sustained ionic-silver antimicrobial activity.
+3. Records the clinical rationale for selecting an antimicrobial matrix over a non-antimicrobial alternative.
 
 ## What's attached
 
-1. **FDA 510(k) Clearance (K153756)** — Full FDA determination with 510(k) summary, indications, predicate device comparisons, and performance data across 8 organism strains.
+1. **FDA 510(k) Clearance (K153756)** — FDA determination for Microlyte Ag, with the 510(k) summary, indications for use, predicate device comparison, and in vitro performance data across the tested organism strains.
 2. **Instructions for Use (IFU)** — Imbed Biosciences' official clinical reference covering mechanism of action, application protocol, precautions, and contraindications.
-3. **Physician Product Brochure** — Clinical and reimbursement overview: SAM™ technology differentiation, Manning study outcomes, A2005 billing guidance, MAC-specific coverage pathways, full SKU catalog, and locality-adjusted reimbursement rates.
-4. **Microlyte SAM Digital Brochure** — Imbed's platform overview with in vitro antimicrobial data, published outcomes for chronic wounds and SSI prevention, and the core differentiators.
-5. **Medical Necessity Documentation Guide (A2005)** — summarized below.
-
-## Documenting medical necessity (A2005)
-
-Clinical notes should show that Microlyte® was selected specifically for its antimicrobial properties to manage wound bioburden. At minimum, the note should:
-
-1. Identify the presence — or risk — of microbial contamination at the wound site.
-2. State that Microlyte® was applied to target and reduce wound bioburden through its sustained ionic silver antimicrobial activity.
-3. Document the clinical rationale for choosing an antimicrobial matrix over a non-antimicrobial alternative.
+3. **Physician Product Brochure** — Clinical and coding overview: SAM™ technology differentiation, the published study outcomes, A2005/CPT coding guidance, MAC coverage considerations, the SKU catalog, and locality-adjusted rate references.
+4. **Microlyte SAM Digital Brochure** — Imbed's platform overview with in vitro antimicrobial data, published chronic-wound and SSI-prevention outcomes, and the core differentiators.
+5. **Medical Necessity Documentation Guide (A2005)** — the checklist summarized above.
 
 ---
 
-Happy to walk through the coverage pathway for your specific MAC, or to stop by with samples for your next wound care clinic. Would [day/time] work for a brief visit?
+Happy to walk through the current coverage picture for your specific MAC, or to stop by with samples for your next wound care clinic. Would [day/time] work for a brief visit?
 
 Best regards,
 [Name]
