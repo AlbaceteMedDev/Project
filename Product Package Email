@@ -1,66 +1,42 @@
-# Product Package Email — Microlyte, Interfyl & Xcellistem (internal/peer)
-
-**Subject:** Microlyte, Interfyl & Xcellistem — clinical detail + pricing
-
----
+**Subject:** Microlyte, Interfyl & Xcellistem: info and pricing
 
 Hey Joe,
 
-Attached is the product information I mentioned. Here's a quick map of what I'm carrying and where each piece fits, then the detail and pricing below.
+Here's the product info I mentioned. Quick rundown of what I'm carrying and where each piece fits, then the detail and pricing.
 
-**The lineup right now**
+Right now I've got Microlyte (A2005) as the synthetic antimicrobial conservative-care option, plus the two non-sheet skin substitutes, Interfyl (Q4171) and Xcellistem (A2004), which are really what I want your read on. I'm also working on getting access to Miro3D from Reprise Biomedical. On the placental and sheet side I already carry Xcell Amnio Matrix (single-layer amnion), Amchoplast (full-thickness placental), Tri-Membrane Wrap (amnion-chorion-amnion), Sentry SL (single-layer amnion), Palisade DM (dual-layer amnion), Membrane Wrap (dual-layer amnion), and Activate Matrix (full-thickness placental).
 
-- **Microlyte (A2005)** — the fully synthetic, antimicrobial conservative-care option; usable early in the wound course.
-- **Non-sheet skin substitutes** — **Interfyl (Q4171)** and **Xcellistem (A2004)**. These two are the main event of this email.
-- **In the pipeline** — I'm working on getting access to **Miro3D** (Reprise Biomedical).
-- **Sheet / placental grafts I already carry** — Xcell Amnio Matrix (single-layer amnion), Amchoplast (full-thickness placental), Tri-Membrane Wrap (amnion-chorion-amnion), Sentry SL (single-layer amnion), Palisade DM (dual-layer amnion), Membrane Wrap (dual-layer amnion), Activate Matrix (full-thickness placental).
+**Microlyte (A2005)**
 
-*(One code correction up front: Xcellistem is **A2004**, not A2005 — A2005 is Microlyte. Everything below uses the corrected codes.)*
+Microlyte is Imbed's FDA 510(k)-cleared antimicrobial wound dressing (K153756). It's an ultrathin synthetic matrix that conforms to the wound bed and carries ionic silver for sustained antimicrobial activity; the manufacturer's in vitro data shows 99.99% reduction held past 72 hours. It resorbs on its own in about a week, so there's no removal step, and there's no refrigeration or animal-derived material to deal with. The appeal is that you're managing bioburden and supporting healing with one product.
 
----
+On the evidence, the chronic-wound study (Wounds 2020;32(11):309–318, "Efficacy of a Bioresorbable Matrix in Healing Complex Chronic Wounds") ran 32 patients across 35 wounds and reported 91% healed or significantly improved by 12 weeks with a 73% average area reduction. There's also an SSI-prevention case series (Chatelain, Wounds 2021;33(10):245–252) where prophylactic Microlyte SURGICAL in at-risk diabetic foot and ankle surgery saw no SSIs in the per-protocol group against a roughly 13% historical baseline. That one's a small single-arm series, so I'd read it before quoting it to a committee.
 
-## 1. Microlyte (A2005) — conservative care
+Coverage is the part worth understanding. It bills under A2005 per square centimeter, applied with CPT 15271–15278. NGS doesn't have an LCD for skin substitutes, so coverage falls to Section 1862(a)(1)(A) of the Social Security Act, the general "reasonable and necessary" standard. There's no mandated four-week failed-conservative-care window and no application cap, which is what lets you use it early instead of waiting. The catch is that without an LCD it's a case-by-case call, so the note has to carry it: name the contamination or bioburden risk, say Microlyte was applied to reduce that bioburden through its silver activity, give your reasoning for choosing an antimicrobial matrix over a plain dressing, and confirm the application matched the cleared indication and the IFU. The 510(k) and IFU are in the packet so the note can point to them.
 
-Microlyte is an FDA 510(k)-cleared antimicrobial wound dressing (K153756) from Imbed Biosciences — an ultrathin, fully synthetic, conforming matrix with sustained ionic-silver activity (per the manufacturer's in vitro testing, 99.99% microbial reduction beyond 72 hours). Fully bioresorbable in about a week, no removal step, no refrigeration, no animal-derived components. It lets you manage bioburden and support healing in one product.
+**Interfyl vs. Xcellistem**
 
-**Published evidence** (Microlyte platform — Matrix and SURGICAL configurations):
-- **Chronic wounds** — *"Efficacy of a Bioresorbable Matrix in Healing Complex Chronic Wounds: An Open-Label Prospective Pilot Study."* Wounds. 2020;32(11):309–318. 32 patients / 35 wounds; 91% of wounds (29/32) healed or improved significantly by 12 weeks, 73% average area reduction.
-- **SSI prevention** — Chatelain R. Wounds. 2021;33(10):245–252. Prophylactic Microlyte SURGICAL in at-risk diabetic foot/ankle surgery: no SSIs in the per-protocol group vs an ~13% historical baseline. Small, single-arm case series — read it in full before quoting it to a committee.
+I've attached the new Interfyl sizing guidance along with the Xcellistem 510(k) and its studies. The quick version is that they bill the same way (both per-1-mg codes, both landing at $50 a billable unit), but they're designed to do almost opposite things in the inflammatory phase. Xcellistem dissolves and provokes; Interfyl persists and settles things down.
 
-**Coverage under NGS.** Bills under **A2005** (per sq cm); applied with **CPT 15271–15278**. NGS has **no LCD** for skin substitutes/CTPs, so coverage runs on **§1862(a)(1)(A)** of the Social Security Act ("reasonable and necessary") — no mandated four-week failed-conservative-care window, no application cap. That's what makes it a legitimate early-intervention play, as long as the note carries it: (1) identify the contamination/bioburden risk, (2) state Microlyte was applied to reduce bioburden via sustained ionic-silver activity, (3) give the rationale for an antimicrobial matrix over a non-antimicrobial alternative, and (4) tie it to on-label use per the IFU and the cleared indication (K153756). The 510(k) and IFU are in the attached package for exactly that reason.
-
----
-
-## 2. Interfyl vs. Xcellistem — the non-sheet skin substitutes
-
-I've got the new sizing guidance for Interfyl attached, plus the Xcellistem 510(k) and its studies. Headline: **they bill the same way — both are per-1-mg codes and both invoice at $50 per billable unit** — but they're built to do *opposite* things to the inflammatory phase. XcelliStem is designed to dissolve and provoke; Interfyl is designed to persist and quiet down.
-
-| | **Xcellistem (A2004)** | **Interfyl (Q4171)** |
+| | Xcellistem (A2004) | Interfyl (Q4171) |
 |---|---|---|
-| **Source** | Porcine lung + spleen — xenograft | Human placental chorionic plate — allograft |
-| **Regulatory** | 510(k) device, K172593, product code KGN | 361 HCT/P (21 CFR 1271) — no FDA clearance |
-| **Form** | Dry powder, 250 / 500 / 1000 mg | Flowable gel 0.3–1.5 mL; particulate 50 / 100 mg |
-| **Maker** | StemSys / FetTech (RTT, Bobber) | Celularity, distributed by Arthrex |
-| **Billing unit** | per 1 mg | per 1 mg |
+| Source | Porcine lung + spleen (xenograft) | Human placental chorionic plate (allograft) |
+| Regulatory | 510(k) device, K172593, product code KGN | 361 HCT/P (21 CFR 1271), no FDA clearance |
+| Form | Dry powder: 250 / 500 / 1000 mg | Flowable gel 0.3–1.5 mL; particulate 50 / 100 mg |
+| Maker | StemSys / FetTech (RTT, Bobber) | Celularity, distributed by Arthrex |
+| Billing | per 1 mg | per 1 mg |
 
-**1. Degradation kinetics — the core divergence.** Xcellistem is engineered to break down fast: the powder disintegrates and dumps matricryptic peptides, GAGs, and growth factors into the bed as a burst. Interfyl is meant to *stay* — it fills a soft-tissue deficit and remodels gradually as host cells migrate in.
+The core difference is degradation. Xcellistem is built to break down fast; the powder disintegrates and releases matricryptic peptides, GAGs, and growth factors into the bed all at once. Interfyl is meant to stay put and fill a soft-tissue deficit, remodeling slowly as host cells move in. That's where the infected-wound argument comes from. Kimmel's poster makes the point that since the matrix is supposed to disappear anyway, bacterial protease breakdown isn't a failure mode, so you can put it on a colonized bed right away. Interfyl can't make that claim; a scaffold whose whole job is to persist in dead space is the last thing you want to implant into infection.
 
-That drives the infected-wound argument. Kimmel's poster makes it explicit: because the matrix is *supposed* to disappear, bacterial protease degradation isn't a failure mode, so you can apply it to a colonized bed immediately instead of waiting. Interfyl has no such argument — a scaffold whose job is to persist in dead space is exactly what you don't want to implant into infection.
+They also aim in opposite directions on immune response. Porcine ECM works partly by driving inflammation, with brisk macrophage recruitment followed by the M1-to-M2 shift toward remodeling; Sasse's two-week biopsy showed exactly that, with neovascularization and no foreign-body granulomas. Interfyl sells the reverse. It's decellularized, not cross-linked, and human, so the pitch is a quieter immune and inflammatory response, and the in vitro work backs it up: Mao et al. found Interfyl lowered pro-inflammatory cytokine, growth-factor, and MMP expression while raising TGF-β3 against competing placental matrices. TGF-β3 over TGF-β1 is the scar-free-healing axis, so there's real mechanism there, not just a slogan. In practice, Xcellistem is trying to restart a stalled wound and Interfyl is trying to rebuild soft tissue without kicking off fibrosis.
 
-**2. Immunomodulation — opposite aims.** Porcine ECM works partly *through* an inflammatory response: brisk macrophage recruitment, then an M1→M2 shift toward the constructive-remodeling phenotype. Sasse's 2-week biopsy showed that signature — remodeling neutrophil response, macrophage presence, neovascularization, no foreign-body granulomas. Interfyl markets the inverse: decellularized, not cross-linked, human — the pitch is *reduced* immunogenic/inflammatory response. The in vitro work supports it — Mao et al. (PubMed) found Interfyl attenuated pro-inflammatory cytokine, growth-factor, and MMP expression while raising TGF-β3 relative to competing placental matrices. TGF-β3 over TGF-β1 is the scar-free-healing axis, so that's a mechanistically real claim, not just marketing.
+On composition, Xcellistem's selling point is a deliberately low collagen fraction, around 45% collagen with 25% elastin, 14% fibronectin, and 7% laminin, versus roughly 90% collagen for single-tissue ECMs, so you get more integrin-binding variety per milligram. That's why they went with lung and spleen. Interfyl has the same general ingredients but leans on scaffold quality and immune quietness instead of a growth-factor payload. One thing to be careful with: those Xcellistem percentages come off a manufacturer poster, not independent testing, so don't use them with customers as if they'd been third-party verified.
 
-Net: **Xcellistem is trying to restart a stalled wound; Interfyl is trying to rebuild soft tissue without stirring up fibrosis.**
+The cleanest real difference is indication. Xcellistem has cleared Indications for Use that name DFU, VLU, pressure ulcers, and burns. Interfyl is a 361 HCT/P, so it has no cleared indication at all and can only use homologous-use language ("replace or supplement damaged or inadequate integumental tissue," "fill irregular spaces or soft-tissue deficits"). A 361 product legally can't claim to treat a disease. If you're ever putting the two side by side, that's the strongest honest edge Xcellistem has.
 
-**3. Composition.** Xcellistem's differentiator claim is a deliberately low collagen fraction — ~45% collagen, 25% elastin, 14% fibronectin, 7% laminin, vs ~90% collagen for single-tissue ECMs — i.e., more integrin-binding ligand diversity per mg. Lung and spleen were chosen for that (lung is elastin- and basement-membrane-rich; spleen is dense vascular reticular tissue). Interfyl has the same general cast (collagen, elastin, fibronectin, laminins, GAGs) but positions on scaffold quality and immunologic quietness rather than growth-factor payload.
-> ⚠️ **Caveat:** those Xcellistem percentages are from a **manufacturer poster, not independent characterization**. Do not put them in anything customer-facing as if they were third-party verified.
+**Pricing**
 
-**4. Indication — the sharpest legitimate edge.** Xcellistem has cleared Indications for Use naming DFU, VLU, pressure ulcers, and burns. Interfyl, as a 361 HCT/P, has **no cleared indication at all** — its language is homologous-use framing ("replace or supplement damaged or inadequate integumental tissue," "fill irregular spaces or soft-tissue deficits"). A 361 product legally can't claim to treat a disease. If you're ever positioning these head-to-head, that asymmetry is Xcellistem's strongest honest argument.
-
----
-
-## 3. Pricing
-
-**Interfyl (Q4171)** — new sizing guidance
+Interfyl (Q4171), new sizing guidance:
 
 | Part # | Size | Size (mg) | Billable units | Coverage (sq cm) | Invoice |
 |---|---|---|---|---|---|
@@ -70,7 +46,7 @@ Net: **Xcellistem is trying to restart a stalled wound; Interfyl is trying to re
 | HCTM010 | 1.0 mL | 170 | 28 | 4 | $1,400.00 |
 | HCTM015 | 1.5 mL | 275 | 46 | 7 | $2,300.00 |
 
-**Xcellistem (A2004)**
+Xcellistem (A2004):
 
 | Part # | Size | Billable units | Coverage (sq cm) | Invoice |
 |---|---|---|---|---|
@@ -78,17 +54,11 @@ Net: **Xcellistem is trying to restart a stalled wound; Interfyl is trying to re
 | XCS-0500 | 500 mg | 83 | 12 | $4,150.00 |
 | XCS-1000 | 1000 mg | 167 | 24 | $8,350.00 |
 
-Both work out to **$50 per billable unit** — so on economics they're a wash; the decision is clinical (dissolve-and-provoke vs. persist-and-quiet, and the cleared-indication asymmetry above).
+Every line on both comes out to $50 a billable unit, so the money's a wash. The real choice is clinical: dissolve-and-provoke versus persist-and-settle, plus that indication gap.
 
----
+Attached is Microlyte's 510(k) (K153756), IFU, and brochures with the medical-necessity guide; the Interfyl sizing sheet; and the Xcellistem 510(k) (K172593) and studies.
 
-## Attached
-
-- **Microlyte** — 510(k) clearance (K153756), IFU, physician brochure, digital brochure, medical-necessity guide
-- **Interfyl** — new sizing guidance
-- **Xcellistem** — 510(k) (K172593) and associated studies
-
-Let me know what each of you think.
+Let me know what you both think.
 
 Best,
 Gabe
