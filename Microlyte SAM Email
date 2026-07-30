@@ -4,7 +4,7 @@
 
 **Alt subjects:**
 - A single-application antimicrobial matrix: the Microlyte® SAM package
-- Microlyte® SAM: published chronic-wound outcomes + A2005 coding reference
+- Microlyte® SAM: an early-intervention option under NGS (no active skin-substitute LCD)
 
 ---
 
@@ -29,15 +29,17 @@ In the published chronic-wound study, Microlyte replaced patients' prior antimic
 - **Chronic wounds** — *"Efficacy of a Bioresorbable Matrix in Healing Complex Chronic Wounds: An Open-Label Prospective Pilot Study."* Wounds. 2020;32(11):309–318. Among 32 patients (35 wounds), 91% of wounds (29/32) healed completely or improved significantly by 12 weeks, with a 73% average reduction in wound area.
 - **Surgical site infection prevention** — Chatelain R. Wounds. 2021;33(10):245–252. In a prospective clinical case series of at-risk diabetic patients undergoing foot and ankle surgery, prophylactic Microlyte SURGICAL was associated with no surgical site infections in the per-protocol group, against an approximately 13% historical baseline, with favorable healing times. Note this is a small, single-arm case series — worth reviewing in full before presenting to a P&T or formulary committee.
 
-## Coding and coverage
+## Coding and coverage — NGS jurisdiction
 
-Microlyte matrix bills under **HCPCS A2005** (per square centimeter); application is generally reported with the skin-substitute application codes **CPT 15271–15278**.
+Microlyte matrix bills under **HCPCS A2005** (per square centimeter); application is reported with **CPT 15271–15278**.
 
-**Coverage is not uniform, and I don't want to overstate it.** A2005 is payer- and MAC-dependent: several Medicare Administrative Contractors list it as non-covered under their cellular/tissue-based-product (CTP) LCDs, and some commercial payers currently consider it investigational. Before application, I'd recommend confirming the current LCD/coverage article for your MAC and the patient's specific plan. I'm happy to pull the current coverage status for your jurisdiction so there are no surprises at billing.
+In the **NGS (National Government Services)** jurisdiction there is **no active LCD** governing skin substitutes/CTPs. Coverage is therefore governed directly by the statutory standard — **Section 1862(a)(1)(A) of the Social Security Act**, which covers items and services that are "reasonable and necessary for the diagnosis or treatment of illness or injury." There is no LCD-imposed prerequisite (no fixed four-week failed-conservative-care gate, no application cap) to satisfy first.
 
-## Documenting medical necessity
+In practice, that means Microlyte can be considered **earlier in the wound-care course, during the conservative-management phase**, when antimicrobial control is clinically indicated — provided the note establishes medical necessity under the §1862(a)(1)(A) standard (checklist below). One point to set expectations honestly: absent an LCD, determinations are made case-by-case on that statutory standard, so the documentation is what carries the claim. (This framing is specific to NGS; MACs that retained legacy LCDs — Novitas, First Coast, CGS — apply their own coverage criteria.)
 
-Where antimicrobial management is clinically indicated and the product is covered, clear documentation supports the clinical decision. A defensible note typically:
+## Documenting medical necessity (§1862(a)(1)(A))
+
+Because NGS coverage rests on the "reasonable and necessary" standard rather than an LCD checklist, the clinical note is what establishes coverage. A defensible note typically:
 
 1. Identifies the presence — or risk — of microbial contamination or elevated bioburden at the wound site.
 2. States that Microlyte® was applied to reduce wound bioburden through its sustained ionic-silver antimicrobial activity.
@@ -53,7 +55,7 @@ Where antimicrobial management is clinically indicated and the product is covere
 
 ---
 
-Happy to walk through the current coverage picture for your specific MAC, or to stop by with samples for your next wound care clinic. Would [day/time] work for a brief visit?
+Happy to walk through the NGS coverage pathway and the documentation that supports it under §1862(a)(1)(A), or to stop by with samples for your next wound care clinic. Would [day/time] work for a brief visit?
 
 Best regards,
 [Name]
