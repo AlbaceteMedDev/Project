@@ -80,6 +80,11 @@
     }
   ],
   "joint": {
+    "n_pool": 1114,
+    "n_wr1": 10,
+    "n_top5": 50,
+    "first_season": 2016,
+    "last_season": 2025,
     "n_flagged": 29,
     "n_top5_flagged": 19,
     "n_wr1_flagged": 7,

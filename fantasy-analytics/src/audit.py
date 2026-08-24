@@ -61,6 +61,8 @@ def main() -> None:
     for _, col, op, thr in CARD:
         joint &= apply_rule(wr, col, op, thr)
     joint_stats = {
+        "n_pool": int(len(wr)), "n_wr1": int(len(wr1)), "n_top5": int(len(top5)),
+        "first_season": int(wr["season"].min()), "last_season": int(wr["season"].max()),
         "n_flagged": int(joint.sum()),
         "n_top5_flagged": int(wr.loc[joint, "top5"].sum()),
         "n_wr1_flagged": int((wr.loc[joint, "pos_rank"] == 1).sum()),

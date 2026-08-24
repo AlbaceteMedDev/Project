@@ -1,0 +1,3894 @@
+{
+ "meta": {
+  "seasons": [
+   2015,
+   2025
+  ],
+  "n_player_seasons": 5832,
+  "scoring": "full PPR, regular season"
+ },
+ "audit": {
+  "rules": [
+   {
+    "rule": "Under 30 years old",
+    "metric": "age",
+    "op": "<=",
+    "threshold": 29.99,
+    "wr1_pass": 10,
+    "wr1_n": 10,
+    "top5_pass": 46,
+    "top5_n": 50,
+    "pool_pass_rate": 0.8904847396768402,
+    "precision": 0.046370967741935484,
+    "lift": 1.0331451612903226
+   },
+   {
+    "rule": "25%+ target share",
+    "metric": "target_share",
+    "op": ">=",
+    "threshold": 0.25,
+    "wr1_pass": 9,
+    "wr1_n": 10,
+    "top5_pass": 43,
+    "top5_n": 50,
+    "pool_pass_rate": 0.13016157989228008,
+    "precision": 0.296551724137931,
+    "lift": 6.607172413793103
+   },
+   {
+    "rule": "2.3+ yards per route (as stated)",
+    "metric": "yprr_est",
+    "op": ">=",
+    "threshold": 2.3,
+    "wr1_pass": 9,
+    "wr1_n": 10,
+    "top5_pass": 39,
+    "top5_n": 50,
+    "pool_pass_rate": 0.12387791741472172,
+    "precision": 0.2826086956521739,
+    "lift": 6.2965217391304344
+   },
+   {
+    "rule": "2.5+ yards per route (PFF-equivalent)",
+    "metric": "yprr_est",
+    "op": ">=",
+    "threshold": 2.5,
+    "wr1_pass": 9,
+    "wr1_n": 10,
+    "top5_pass": 31,
+    "top5_n": 50,
+    "pool_pass_rate": 0.07989228007181329,
+    "precision": 0.34831460674157305,
+    "lift": 7.760449438202247
+   },
+   {
+    "rule": "Top-11 scoring offense",
+    "metric": "team_scoring_rank",
+    "op": "<=",
+    "threshold": 11,
+    "wr1_pass": 10,
+    "wr1_n": 10,
+    "top5_pass": 33,
+    "top5_n": 50,
+    "pool_pass_rate": 0.3375224416517056,
+    "precision": 0.08776595744680851,
+    "lift": 1.9554255319148937
+   },
+   {
+    "rule": "Top-10 QB in EPA/dropback",
+    "metric": "team_qb_epa_rank",
+    "op": "<=",
+    "threshold": 10,
+    "wr1_pass": 9,
+    "wr1_n": 10,
+    "top5_pass": 28,
+    "top5_n": 50,
+    "pool_pass_rate": 0.2917414721723519,
+    "precision": 0.08615384615384615,
+    "lift": 1.9195076923076921
+   }
+  ],
+  "joint": {
+   "n_pool": 1114,
+   "n_wr1": 10,
+   "n_top5": 50,
+   "first_season": 2016,
+   "last_season": 2025,
+   "n_flagged": 29,
+   "n_top5_flagged": 19,
+   "n_wr1_flagged": 7,
+   "precision_top5": 0.6551724137931034,
+   "recall_top5": 0.38,
+   "recall_wr1": 0.7,
+   "base_rate": 0.04488330341113106
+  },
+  "wr1_misses": [
+   {
+    "season": 2016,
+    "player": "Antonio Brown",
+    "failed": [
+     "2.3+ yards per route (as stated)"
+    ]
+   },
+   {
+    "season": 2018,
+    "player": "Tyreek Hill",
+    "failed": [
+     "25%+ target share"
+    ]
+   },
+   {
+    "season": 2022,
+    "player": "Justin Jefferson",
+    "failed": [
+     "Top-10 QB in EPA/dropback"
+    ]
+   }
+  ]
+ },
+ "positions": {
+  "QB": {
+   "pool": {
+    "n": 368,
+    "seasons": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "rule": {
+     "games": 8,
+     "attempts": 200
+    }
+   },
+   "joint": {
+    "n_pool": 368,
+    "n_elite": 55,
+    "base_rate": 0.14945652173913043,
+    "n_flagged": 80,
+    "hits": 40,
+    "n_seasons": 11,
+    "per_season_flagged": 7.2727272727272725,
+    "precision": 0.5,
+    "recall": 0.7272727272727273,
+    "lift": 3.3454545454545457
+   },
+   "gates": [
+    {
+     "label": "EPA per dropback",
+     "metric": "epa_per_dropback",
+     "direction": ">=",
+     "threshold": 0.1,
+     "precision": 0.35074626865671643,
+     "recall": 0.8545454545454545,
+     "lift": 2.3468113975576665,
+     "per_season_flagged": 12.181818181818182,
+     "n_flagged": 134,
+     "hits": 47
+    },
+    {
+     "label": "Dropbacks",
+     "metric": "dropbacks",
+     "direction": ">=",
+     "threshold": 525.0,
+     "precision": 0.2807017543859649,
+     "recall": 0.8727272727272727,
+     "lift": 1.8781499202551832,
+     "per_season_flagged": 15.545454545454545,
+     "n_flagged": 171,
+     "hits": 48
+    }
+   ],
+   "greens": [
+    {
+     "label": "EPA per dropback",
+     "metric": "epa_per_dropback",
+     "direction": ">=",
+     "threshold": 0.28,
+     "precision": 0.6666666666666666,
+     "recall": 0.18181818181818182,
+     "lift": 4.46060606060606,
+     "per_season_flagged": 1.3636363636363635,
+     "n_flagged": 15,
+     "hits": 10
+    },
+    {
+     "label": "Rushing yards",
+     "metric": "rushing_yards",
+     "direction": ">=",
+     "threshold": 700.0,
+     "precision": 0.6,
+     "recall": 0.16363636363636364,
+     "lift": 4.014545454545455,
+     "per_season_flagged": 1.3636363636363635,
+     "n_flagged": 15,
+     "hits": 9
+    },
+    {
+     "label": "Dropbacks",
+     "metric": "dropbacks",
+     "direction": ">=",
+     "threshold": 650.0,
+     "precision": 0.5416666666666666,
+     "recall": 0.23636363636363636,
+     "lift": 3.624242424242424,
+     "per_season_flagged": 2.1818181818181817,
+     "n_flagged": 24,
+     "hits": 13
+    },
+    {
+     "label": "Rushing TDs",
+     "metric": "rushing_tds",
+     "direction": ">=",
+     "threshold": 8.0,
+     "precision": 0.5294117647058824,
+     "recall": 0.16363636363636364,
+     "lift": 3.542245989304813,
+     "per_season_flagged": 1.5454545454545454,
+     "n_flagged": 17,
+     "hits": 9
+    },
+    {
+     "label": "Seasons of experience",
+     "metric": "exp",
+     "direction": ">=",
+     "threshold": 15.0,
+     "precision": 0.23333333333333334,
+     "recall": 0.12727272727272726,
+     "lift": 1.5612121212121213,
+     "per_season_flagged": 2.727272727272727,
+     "n_flagged": 30,
+     "hits": 7
+    }
+   ],
+   "vacuous": [
+    {
+     "label": "Rushing TDs",
+     "metric": "rushing_tds",
+     "direction": ">=",
+     "threshold": 1.0,
+     "precision": 0.18115942028985507,
+     "recall": 0.9090909090909091,
+     "lift": 1.2121212121212122,
+     "per_season_flagged": 25.09090909090909,
+     "n_flagged": 276,
+     "hits": 50
+    },
+    {
+     "label": "Seasons of experience",
+     "metric": "exp",
+     "direction": ">=",
+     "threshold": 1.0,
+     "precision": 0.16216216216216217,
+     "recall": 0.9818181818181818,
+     "lift": 1.0850122850122852,
+     "per_season_flagged": 30.272727272727273,
+     "n_flagged": 333,
+     "hits": 54
+    }
+   ],
+   "pred": {
+    "pool": {
+     "n": 310,
+     "base_rate": 0.14838709677419354
+    },
+    "joint": {
+     "n_pool": 310,
+     "n_elite": 46,
+     "base_rate": 0.14838709677419354,
+     "n_flagged": 182,
+     "hits": 37,
+     "n_seasons": 11,
+     "per_season_flagged": 16.545454545454547,
+     "precision": 0.2032967032967033,
+     "recall": 0.8043478260869565,
+     "lift": 1.3700430004777833
+    },
+    "gates": [
+     {
+      "label": "Last year's rushing yards",
+      "metric": "prev_rushing_yards",
+      "direction": ">=",
+      "threshold": 118.0,
+      "precision": 0.2032967032967033,
+      "recall": 0.8043478260869565,
+      "lift": 1.3700430004777833,
+      "per_season_flagged": 16.545454545454547,
+      "n_flagged": 182,
+      "hits": 37
+     }
+    ],
+    "greens": [
+     {
+      "label": "Last year's PPR per game (shrunk)",
+      "metric": "prev_ppg_shrunk",
+      "direction": ">=",
+      "threshold": 21.0,
+      "precision": 0.5333333333333333,
+      "recall": 0.17391304347826086,
+      "lift": 3.5942028985507246,
+      "per_season_flagged": 1.3636363636363635,
+      "n_flagged": 15,
+      "hits": 8
+     },
+     {
+      "label": "Last year's rushing yards",
+      "metric": "prev_rushing_yards",
+      "direction": ">=",
+      "threshold": 731.0,
+      "precision": 0.4666666666666667,
+      "recall": 0.15217391304347827,
+      "lift": 3.1449275362318843,
+      "per_season_flagged": 1.3636363636363635,
+      "n_flagged": 15,
+      "hits": 7
+     },
+     {
+      "label": "Last year's EPA per dropback",
+      "metric": "prev_epa_per_dropback",
+      "direction": ">=",
+      "threshold": 0.25,
+      "precision": 0.3157894736842105,
+      "recall": 0.13043478260869565,
+      "lift": 2.128146453089245,
+      "per_season_flagged": 1.7272727272727273,
+      "n_flagged": 19,
+      "hits": 6
+     },
+     {
+      "label": "New team's scoring rank last year",
+      "metric": "newteam_prev_team_scoring_rank",
+      "direction": "<=",
+      "threshold": 4.0,
+      "precision": 0.2553191489361702,
+      "recall": 0.2608695652173913,
+      "lift": 1.7206290471785384,
+      "per_season_flagged": 4.2727272727272725,
+      "n_flagged": 47,
+      "hits": 12
+     },
+     {
+      "label": "Age",
+      "metric": "age",
+      "direction": "<=",
+      "threshold": 24.0,
+      "precision": 0.2,
+      "recall": 0.13043478260869565,
+      "lift": 1.347826086956522,
+      "per_season_flagged": 2.727272727272727,
+      "n_flagged": 30,
+      "hits": 6
+     }
+    ],
+    "model": {
+     "features": [
+      "prev_rush_att_pg",
+      "prev_epa_per_dropback",
+      "prev_pass_td_rate",
+      "prev_dropbacks",
+      "prev_ppg_shrunk",
+      "prev_games",
+      "age",
+      "newteam_prev_team_scoring_rank"
+     ],
+     "coefficients": {
+      "prev_rush_att_pg": 0.626,
+      "prev_epa_per_dropback": 0.417,
+      "prev_pass_td_rate": -0.229,
+      "prev_dropbacks": 0.483,
+      "prev_ppg_shrunk": 0.266,
+      "prev_games": -0.216,
+      "age": -0.017,
+      "newteam_prev_team_scoring_rank": -0.023
+     },
+     "oos_auc": 0.6755599472990778,
+     "top5_precision": 0.3090909090909091,
+     "top5_recall": 0.3695652173913043,
+     "top10_precision": 0.24545454545454545,
+     "top10_recall": 0.5869565217391305
+    },
+    "persistence": {
+     "prev_top5": {
+      "n": 50,
+      "rate": 0.26
+     },
+     "prev_6_12": {
+      "n": 76,
+      "rate": 0.2236842105263158
+     },
+     "prev_13_24": {
+      "n": 119,
+      "rate": 0.11764705882352941
+     },
+     "prev_25plus": {
+      "n": 65,
+      "rate": 0.03076923076923077
+     }
+    },
+    "coverage": {
+     "n_top5": 55,
+     "n_reachable": 46,
+     "pct_reachable": 0.8363636363636363
+    },
+    "unreachable": [
+     {
+      "season": 2015,
+      "player_display_name": "Carson Palmer",
+      "team": "ARI",
+      "pos_rank": 5.0,
+      "exp": 12
+     },
+     {
+      "season": 2016,
+      "player_display_name": "Andrew Luck",
+      "team": "IND",
+      "pos_rank": 4.0,
+      "exp": 4
+     },
+     {
+      "season": 2018,
+      "player_display_name": "Andrew Luck",
+      "team": "IND",
+      "pos_rank": 5.0,
+      "exp": 6
+     },
+     {
+      "season": 2018,
+      "player_display_name": "Deshaun Watson",
+      "team": "HOU",
+      "pos_rank": 4.0,
+      "exp": 1
+     },
+     {
+      "season": 2018,
+      "player_display_name": "Patrick Mahomes",
+      "team": "KC",
+      "pos_rank": 1.0,
+      "exp": 1
+     },
+     {
+      "season": 2019,
+      "player_display_name": "Lamar Jackson",
+      "team": "BAL",
+      "pos_rank": 1.0,
+      "exp": 1
+     },
+     {
+      "season": 2022,
+      "player_display_name": "Geno Smith",
+      "team": "SEA",
+      "pos_rank": 5.0,
+      "exp": 9
+     },
+     {
+      "season": 2023,
+      "player_display_name": "Jordan Love",
+      "team": "GB",
+      "pos_rank": 5.0,
+      "exp": 3
+     },
+     {
+      "season": 2024,
+      "player_display_name": "Jayden Daniels",
+      "team": "WAS",
+      "pos_rank": 5.0,
+      "exp": 0
+     }
+    ]
+   },
+   "elite": [
+    {
+     "season": 2015,
+     "player_display_name": "Cam Newton",
+     "team": "CAR",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 389.08
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Tom Brady",
+     "team": "NE",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 344.7
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Russell Wilson",
+     "team": "SEA",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 336.26
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Blake Bortles",
+     "team": "JAX",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 316.12
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Carson Palmer",
+     "team": "ARI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 309.24
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Aaron Rodgers",
+     "team": "GB",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 380.02
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Matt Ryan",
+     "team": "ATL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 347.46000000000004
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Drew Brees",
+     "team": "NO",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 332.32
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Andrew Luck",
+     "team": "IND",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 307.7
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Kirk Cousins",
+     "team": "WAS",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 300.28
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Russell Wilson",
+     "team": "SEA",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 347.92
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Cam Newton",
+     "team": "CAR",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 299.48
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Tom Brady",
+     "team": "NE",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 295.88
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Alex Smith",
+     "team": "KC",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 295.18
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Carson Wentz",
+     "team": "PHI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 281.74
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Patrick Mahomes",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 417.08
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Matt Ryan",
+     "team": "ATL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 354.96
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Ben Roethlisberger",
+     "team": "PIT",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 341.86
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Deshaun Watson",
+     "team": "HOU",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 331.7
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Andrew Luck",
+     "team": "IND",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 327.92
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Lamar Jackson",
+     "team": "BAL",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 415.68
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Dak Prescott",
+     "team": "DAL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 337.78
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Russell Wilson",
+     "team": "SEA",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 328.6
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Deshaun Watson",
+     "team": "HOU",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 320.98
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Jameis Winston",
+     "team": "TB",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 305.36
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 396.06
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Aaron Rodgers",
+     "team": "GB",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 383.26
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Kyler Murray",
+     "team": "ARI",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 378.74
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Patrick Mahomes",
+     "team": "KC",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 374.4
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Deshaun Watson",
+     "team": "HOU",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 369.32
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 402.58
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Justin Herbert",
+     "team": "LAC",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 380.76
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Tom Brady",
+     "team": "TB",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 374.74
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Patrick Mahomes",
+     "team": "KC",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 361.66
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Aaron Rodgers",
+     "team": "GB",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 333.3
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Patrick Mahomes",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 417.4
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 395.52
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Jalen Hurts",
+     "team": "PHI",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 378.04
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Joe Burrow",
+     "team": "CIN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 350.7
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Geno Smith",
+     "team": "SEA",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 303.88
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 392.64
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Jalen Hurts",
+     "team": "PHI",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 356.82
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Dak Prescott",
+     "team": "DAL",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 342.84000000000003
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Lamar Jackson",
+     "team": "BAL",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 331.22
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Jordan Love",
+     "team": "GB",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 319.06
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Lamar Jackson",
+     "team": "BAL",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 430.38
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 379.04
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Joe Burrow",
+     "team": "CIN",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 372.82
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Baker Mayfield",
+     "team": "TB",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 365.8
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Jayden Daniels",
+     "team": "WAS",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 355.82
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 364.62
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Drake Maye",
+     "team": "NE",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 351.96
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Matthew Stafford",
+     "team": "LA",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 350.38
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Trevor Lawrence",
+     "team": "JAX",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 338.18
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Caleb Williams",
+     "team": "CHI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 318.68
+    }
+   ],
+   "forecast": [
+    {
+     "rank": 1,
+     "player_display_name": "Drake Maye",
+     "team": "NE",
+     "age": 24.006,
+     "prob": 0.79,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 2.0,
+     "prev_ppg_ppr": 20.704
+    },
+    {
+     "rank": 2,
+     "player_display_name": "Josh Allen",
+     "team": "BUF",
+     "age": 30.281,
+     "prob": 0.775,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 1.0,
+     "prev_ppg_ppr": 22.789
+    },
+    {
+     "rank": 3,
+     "player_display_name": "Bo Nix",
+     "team": "DEN",
+     "age": 26.517,
+     "prob": 0.687,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 7.0,
+     "prev_ppg_ppr": 17.932
+    },
+    {
+     "rank": 4,
+     "player_display_name": "Patrick Mahomes",
+     "team": "KC",
+     "age": 30.958,
+     "prob": 0.673,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 11.0,
+     "prev_ppg_ppr": 20.406
+    },
+    {
+     "rank": 5,
+     "player_display_name": "Trevor Lawrence",
+     "team": "JAX",
+     "age": 26.906,
+     "prob": 0.621,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 4.0,
+     "prev_ppg_ppr": 19.893
+    },
+    {
+     "rank": 6,
+     "player_display_name": "Jalen Hurts",
+     "team": "PHI",
+     "age": 28.069,
+     "prob": 0.615,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 8.0,
+     "prev_ppg_ppr": 18.816
+    },
+    {
+     "rank": 7,
+     "player_display_name": "Dak Prescott",
+     "team": "DAL",
+     "age": 33.093,
+     "prob": 0.599,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 6.0,
+     "prev_ppg_ppr": 18.458
+    },
+    {
+     "rank": 8,
+     "player_display_name": "Caleb Williams",
+     "team": "CHI",
+     "age": 24.786,
+     "prob": 0.593,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 5.0,
+     "prev_ppg_ppr": 18.746
+    },
+    {
+     "rank": 9,
+     "player_display_name": "Justin Herbert",
+     "team": "LAC",
+     "age": 28.48,
+     "prob": 0.562,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 10.0,
+     "prev_ppg_ppr": 17.93
+    },
+    {
+     "rank": 10,
+     "player_display_name": "Justin Fields",
+     "team": "NYJ",
+     "age": 27.494,
+     "prob": 0.483,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 28.0,
+     "prev_ppg_ppr": 15.851
+    },
+    {
+     "rank": 11,
+     "player_display_name": "Jaxson Dart",
+     "team": "NYG",
+     "age": 23.305,
+     "prob": 0.48,
+     "rules_passed": 1,
+     "n_rules": 1,
+     "passes_all": true,
+     "prev_pos_rank": 13.0,
+     "prev_ppg_ppr": 17.256
+    },
+    {
+     "rank": 12,
+     "player_display_name": "Matthew Stafford",
+     "team": "LA",
+     "age": 38.566,
+     "prob": 0.46,
+     "rules_passed": 0,
+     "n_rules": 1,
+     "passes_all": false,
+     "prev_pos_rank": 3.0,
+     "prev_ppg_ppr": 20.611
+    }
+   ],
+   "forecast_n": 36
+  },
+  "RB": {
+   "pool": {
+    "n": 801,
+    "seasons": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "rule": {
+     "games": 8,
+     "touches": 50
+    }
+   },
+   "joint": {
+    "n_pool": 801,
+    "n_elite": 55,
+    "base_rate": 0.0686641697877653,
+    "n_flagged": 65,
+    "hits": 35,
+    "n_seasons": 11,
+    "per_season_flagged": 5.909090909090909,
+    "precision": 0.5384615384615384,
+    "recall": 0.6363636363636364,
+    "lift": 7.8419580419580415
+   },
+   "gates": [
+    {
+     "label": "Weighted opportunities per game",
+     "metric": "weighted_opps_pg",
+     "direction": ">=",
+     "threshold": 22.0,
+     "precision": 0.35036496350364965,
+     "recall": 0.8727272727272727,
+     "lift": 5.1025879230258795,
+     "per_season_flagged": 12.454545454545455,
+     "n_flagged": 137,
+     "hits": 48
+    },
+    {
+     "label": "Snap share",
+     "metric": "snap_pct",
+     "direction": ">=",
+     "threshold": 0.59,
+     "precision": 0.27167630057803466,
+     "recall": 0.8545454545454545,
+     "lift": 3.9565948502364683,
+     "per_season_flagged": 15.727272727272727,
+     "n_flagged": 173,
+     "hits": 47
+    },
+    {
+     "label": "Red-zone carry share",
+     "metric": "rz_carries_share",
+     "direction": ">=",
+     "threshold": 0.46,
+     "precision": 0.24338624338624337,
+     "recall": 0.8363636363636363,
+     "lift": 3.5445887445887445,
+     "per_season_flagged": 17.181818181818183,
+     "n_flagged": 189,
+     "hits": 46
+    },
+    {
+     "label": "Target share",
+     "metric": "target_share",
+     "direction": ">=",
+     "threshold": 0.09,
+     "precision": 0.15282392026578073,
+     "recall": 0.8363636363636363,
+     "lift": 2.2256720024161885,
+     "per_season_flagged": 27.363636363636363,
+     "n_flagged": 301,
+     "hits": 46
+    },
+    {
+     "label": "Yards per target (shrunk)",
+     "metric": "ypt_shrunk",
+     "direction": ">=",
+     "threshold": 5.5,
+     "precision": 0.09352517985611511,
+     "recall": 0.9454545454545454,
+     "lift": 1.3620667102681492,
+     "per_season_flagged": 50.54545454545455,
+     "n_flagged": 556,
+     "hits": 52
+    }
+   ],
+   "greens": [
+    {
+     "label": "Touches per game",
+     "metric": "touches_pg",
+     "direction": ">=",
+     "threshold": 23.0,
+     "precision": 0.8,
+     "recall": 0.21818181818181817,
+     "lift": 11.650909090909092,
+     "per_season_flagged": 1.3636363636363635,
+     "n_flagged": 15,
+     "hits": 12
+    },
+    {
+     "label": "Snap share",
+     "metric": "snap_pct",
+     "direction": ">=",
+     "threshold": 0.82,
+     "precision": 0.6842105263157895,
+     "recall": 0.23636363636363636,
+     "lift": 9.964593301435407,
+     "per_season_flagged": 1.7272727272727273,
+     "n_flagged": 19,
+     "hits": 13
+    },
+    {
+     "label": "Target share",
+     "metric": "target_share",
+     "direction": ">=",
+     "threshold": 0.19,
+     "precision": 0.6,
+     "recall": 0.21818181818181817,
+     "lift": 8.738181818181818,
+     "per_season_flagged": 1.8181818181818181,
+     "n_flagged": 20,
+     "hits": 12
+    },
+    {
+     "label": "Red-zone carry share",
+     "metric": "rz_carries_share",
+     "direction": ">=",
+     "threshold": 0.69,
+     "precision": 0.5555555555555556,
+     "recall": 0.2727272727272727,
+     "lift": 8.090909090909092,
+     "per_season_flagged": 2.4545454545454546,
+     "n_flagged": 27,
+     "hits": 15
+    },
+    {
+     "label": "Yards per target (shrunk)",
+     "metric": "ypt_shrunk",
+     "direction": ">=",
+     "threshold": 7.5,
+     "precision": 0.3157894736842105,
+     "recall": 0.10909090909090909,
+     "lift": 4.599043062200956,
+     "per_season_flagged": 1.7272727272727273,
+     "n_flagged": 19,
+     "hits": 6
+    }
+   ],
+   "vacuous": [
+    {
+     "label": "Seasons of experience",
+     "metric": "exp",
+     "direction": ">=",
+     "threshold": 1.0,
+     "precision": 0.07462686567164178,
+     "recall": 0.9090909090909091,
+     "lift": 1.0868385345997285,
+     "per_season_flagged": 60.90909090909091,
+     "n_flagged": 670,
+     "hits": 50
+    }
+   ],
+   "pred": {
+    "pool": {
+     "n": 669,
+     "base_rate": 0.06278026905829596
+    },
+    "joint": {
+     "n_pool": 669,
+     "n_elite": 42,
+     "base_rate": 0.06278026905829596,
+     "n_flagged": 152,
+     "hits": 22,
+     "n_seasons": 11,
+     "per_season_flagged": 13.818181818181818,
+     "precision": 0.14473684210526316,
+     "recall": 0.5238095238095238,
+     "lift": 2.305451127819549
+    },
+    "gates": [
+     {
+      "label": "Last year's PPR per game (shrunk)",
+      "metric": "prev_ppg_shrunk",
+      "direction": ">=",
+      "threshold": 11.0,
+      "precision": 0.15,
+      "recall": 0.8571428571428571,
+      "lift": 2.3892857142857142,
+      "per_season_flagged": 21.818181818181817,
+      "n_flagged": 240,
+      "hits": 36
+     },
+     {
+      "label": "Last year's opportunity share",
+      "metric": "prev_opportunity_share",
+      "direction": ">=",
+      "threshold": 0.25,
+      "precision": 0.13043478260869565,
+      "recall": 0.7857142857142857,
+      "lift": 2.077639751552795,
+      "per_season_flagged": 23.0,
+      "n_flagged": 253,
+      "hits": 33
+     },
+     {
+      "label": "Last year's snap share",
+      "metric": "prev_snap_pct",
+      "direction": ">=",
+      "threshold": 0.5,
+      "precision": 0.12595419847328243,
+      "recall": 0.7857142857142857,
+      "lift": 2.0062704471101416,
+      "per_season_flagged": 23.818181818181817,
+      "n_flagged": 262,
+      "hits": 33
+     },
+     {
+      "label": "Last year's targets per game",
+      "metric": "prev_targets_pg",
+      "direction": ">=",
+      "threshold": 2.6,
+      "precision": 0.1021021021021021,
+      "recall": 0.8095238095238095,
+      "lift": 1.6263406263406264,
+      "per_season_flagged": 30.272727272727273,
+      "n_flagged": 333,
+      "hits": 34
+     },
+     {
+      "label": "Last year's red-zone carry share",
+      "metric": "prev_rz_carries_share",
+      "direction": ">=",
+      "threshold": 0.28,
+      "precision": 0.09041095890410959,
+      "recall": 0.7857142857142857,
+      "lift": 1.4401174168297457,
+      "per_season_flagged": 33.18181818181818,
+      "n_flagged": 365,
+      "hits": 33
+     }
+    ],
+    "greens": [
+     {
+      "label": "Last year's opportunity share",
+      "metric": "prev_opportunity_share",
+      "direction": ">=",
+      "threshold": 0.4,
+      "precision": 0.3888888888888889,
+      "recall": 0.16666666666666666,
+      "lift": 6.194444444444445,
+      "per_season_flagged": 1.6363636363636365,
+      "n_flagged": 18,
+      "hits": 7
+     },
+     {
+      "label": "Last year's target share",
+      "metric": "prev_target_share",
+      "direction": ">=",
+      "threshold": 0.19,
+      "precision": 0.375,
+      "recall": 0.14285714285714285,
+      "lift": 5.973214285714286,
+      "per_season_flagged": 1.4545454545454546,
+      "n_flagged": 16,
+      "hits": 6
+     },
+     {
+      "label": "Last year's PPR per game (shrunk)",
+      "metric": "prev_ppg_shrunk",
+      "direction": ">=",
+      "threshold": 17.5,
+      "precision": 0.36666666666666664,
+      "recall": 0.2619047619047619,
+      "lift": 5.84047619047619,
+      "per_season_flagged": 2.727272727272727,
+      "n_flagged": 30,
+      "hits": 11
+     },
+     {
+      "label": "Last year's snap share",
+      "metric": "prev_snap_pct",
+      "direction": ">=",
+      "threshold": 0.82,
+      "precision": 0.3333333333333333,
+      "recall": 0.11904761904761904,
+      "lift": 5.309523809523809,
+      "per_season_flagged": 1.3636363636363635,
+      "n_flagged": 15,
+      "hits": 5
+     },
+     {
+      "label": "Last year's carry share inside the 5",
+      "metric": "prev_i5_carries_share",
+      "direction": ">=",
+      "threshold": 0.82,
+      "precision": 0.23529411764705882,
+      "recall": 0.09523809523809523,
+      "lift": 3.7478991596638656,
+      "per_season_flagged": 1.5454545454545454,
+      "n_flagged": 17,
+      "hits": 4
+     }
+    ],
+    "model": {
+     "features": [
+      "prev_weighted_opps_pg",
+      "prev_opportunity_share",
+      "prev_target_share",
+      "prev_rz_carries_share",
+      "prev_snap_pct",
+      "prev_ppg_shrunk",
+      "prev_games",
+      "age",
+      "newteam_prev_team_scoring_rank",
+      "newteam_prev_team_ppg"
+     ],
+     "coefficients": {
+      "prev_weighted_opps_pg": 0.215,
+      "prev_opportunity_share": 0.927,
+      "prev_target_share": -0.099,
+      "prev_rz_carries_share": -0.715,
+      "prev_snap_pct": -0.093,
+      "prev_ppg_shrunk": 0.872,
+      "prev_games": 0.427,
+      "age": -0.557,
+      "newteam_prev_team_scoring_rank": -0.393,
+      "newteam_prev_team_ppg": -0.425
+     },
+     "oos_auc": 0.8071694387483862,
+     "top5_precision": 0.38181818181818183,
+     "top5_recall": 0.5,
+     "top10_precision": 0.21818181818181817,
+     "top10_recall": 0.5714285714285714
+    },
+    "persistence": {
+     "prev_top5": {
+      "n": 50,
+      "rate": 0.24
+     },
+     "prev_6_12": {
+      "n": 73,
+      "rate": 0.1643835616438356
+     },
+     "prev_13_24": {
+      "n": 121,
+      "rate": 0.08264462809917356
+     },
+     "prev_25plus": {
+      "n": 425,
+      "rate": 0.018823529411764704
+     }
+    },
+    "coverage": {
+     "n_top5": 55,
+     "n_reachable": 42,
+     "pct_reachable": 0.7636363636363637
+    },
+    "unreachable": [
+     {
+      "season": 2015,
+      "player_display_name": "DeAngelo Williams",
+      "team": "PIT",
+      "pos_rank": 4.0,
+      "exp": 9
+     },
+     {
+      "season": 2015,
+      "player_display_name": "Adrian Peterson",
+      "team": "MIN",
+      "pos_rank": 2.0,
+      "exp": 8
+     },
+     {
+      "season": 2015,
+      "player_display_name": "Danny Woodhead",
+      "team": "LAC",
+      "pos_rank": 3.0,
+      "exp": 7
+     },
+     {
+      "season": 2016,
+      "player_display_name": "Le'Veon Bell",
+      "team": "PIT",
+      "pos_rank": 3.0,
+      "exp": 3
+     },
+     {
+      "season": 2016,
+      "player_display_name": "Ezekiel Elliott",
+      "team": "DAL",
+      "pos_rank": 2.0,
+      "exp": 0
+     },
+     {
+      "season": 2017,
+      "player_display_name": "Alvin Kamara",
+      "team": "NO",
+      "pos_rank": 3.0,
+      "exp": 0
+     },
+     {
+      "season": 2017,
+      "player_display_name": "Kareem Hunt",
+      "team": "KC",
+      "pos_rank": 4.0,
+      "exp": 0
+     },
+     {
+      "season": 2018,
+      "player_display_name": "Saquon Barkley",
+      "team": "NYG",
+      "pos_rank": 1.0,
+      "exp": 0
+     },
+     {
+      "season": 2021,
+      "player_display_name": "Joe Mixon",
+      "team": "CIN",
+      "pos_rank": 4.0,
+      "exp": 4
+     },
+     {
+      "season": 2021,
+      "player_display_name": "Najee Harris",
+      "team": "PIT",
+      "pos_rank": 3.0,
+      "exp": 0
+     },
+     {
+      "season": 2022,
+      "player_display_name": "Christian McCaffrey",
+      "team": "SF",
+      "pos_rank": 2.0,
+      "exp": 5
+     },
+     {
+      "season": 2023,
+      "player_display_name": "Breece Hall",
+      "team": "NYJ",
+      "pos_rank": 2.0,
+      "exp": 1
+     },
+     {
+      "season": 2025,
+      "player_display_name": "Christian McCaffrey",
+      "team": "SF",
+      "pos_rank": 1.0,
+      "exp": 8
+     }
+    ]
+   },
+   "elite": [
+    {
+     "season": 2015,
+     "player_display_name": "Devonta Freeman",
+     "team": "ATL",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 316.4
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Adrian Peterson",
+     "team": "MIN",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 260.7
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Danny Woodhead",
+     "team": "LAC",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 243.1
+    },
+    {
+     "season": 2015,
+     "player_display_name": "DeAngelo Williams",
+     "team": "PIT",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 233.4
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Doug Martin",
+     "team": "TB",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 232.3
+    },
+    {
+     "season": 2016,
+     "player_display_name": "David Johnson",
+     "team": "ARI",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 407.8
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Ezekiel Elliott",
+     "team": "DAL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 325.4
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Le'Veon Bell",
+     "team": "PIT",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 317.4
+    },
+    {
+     "season": 2016,
+     "player_display_name": "LeSean McCoy",
+     "team": "BUF",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 298.3
+    },
+    {
+     "season": 2016,
+     "player_display_name": "DeMarco Murray",
+     "team": "TEN",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 293.8
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Todd Gurley",
+     "team": "LA",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 383.3
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Le'Veon Bell",
+     "team": "PIT",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 343.4
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Alvin Kamara",
+     "team": "NO",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 320.4
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Kareem Hunt",
+     "team": "KC",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 295.2
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Melvin Gordon",
+     "team": "LAC",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 288.1
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Saquon Barkley",
+     "team": "NYG",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 385.8
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Christian McCaffrey",
+     "team": "CAR",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 385.5
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Todd Gurley",
+     "team": "LA",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 372.1
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Alvin Kamara",
+     "team": "NO",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 354.2
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Ezekiel Elliott",
+     "team": "DAL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 329.1
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Christian McCaffrey",
+     "team": "CAR",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 471.2
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Aaron Jones",
+     "team": "GB",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 314.8
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Ezekiel Elliott",
+     "team": "DAL",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 311.7
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Austin Ekeler",
+     "team": "LAC",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 309.0
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Derrick Henry",
+     "team": "TEN",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 294.6
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Alvin Kamara",
+     "team": "NO",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 377.8
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Dalvin Cook",
+     "team": "MIN",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 337.8
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Derrick Henry",
+     "team": "TEN",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 333.1
+    },
+    {
+     "season": 2020,
+     "player_display_name": "David Montgomery",
+     "team": "CHI",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 264.8
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Aaron Jones",
+     "team": "GB",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 258.90000000000003
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Jonathan Taylor",
+     "team": "IND",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 373.1
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Austin Ekeler",
+     "team": "LAC",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 343.8
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Najee Harris",
+     "team": "PIT",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 300.7
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Joe Mixon",
+     "team": "CIN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 287.9
+    },
+    {
+     "season": 2021,
+     "player_display_name": "James Conner",
+     "team": "ARI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 257.7
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Austin Ekeler",
+     "team": "LAC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 372.7
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Christian McCaffrey",
+     "team": "SF",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 356.36
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Josh Jacobs",
+     "team": "LV",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 328.3
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Derrick Henry",
+     "team": "TEN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 302.76
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Saquon Barkley",
+     "team": "NYG",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 284.0
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Christian McCaffrey",
+     "team": "SF",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 391.3
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Breece Hall",
+     "team": "NYJ",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 290.5
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Travis Etienne",
+     "team": "JAX",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 282.4
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Rachaad White",
+     "team": "TB",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 267.9
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Raheem Mostert",
+     "team": "MIA",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 267.7
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Jahmyr Gibbs",
+     "team": "DET",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 362.9
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Saquon Barkley",
+     "team": "PHI",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 355.3
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Bijan Robinson",
+     "team": "ATL",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 341.7
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Derrick Henry",
+     "team": "BAL",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 336.4
+    },
+    {
+     "season": 2024,
+     "player_display_name": "De'Von Achane",
+     "team": "MIA",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 299.9
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Christian McCaffrey",
+     "team": "SF",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 416.6
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Bijan Robinson",
+     "team": "ATL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 370.8
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Jahmyr Gibbs",
+     "team": "DET",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 366.9
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Jonathan Taylor",
+     "team": "IND",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 362.3
+    },
+    {
+     "season": 2025,
+     "player_display_name": "De'Von Achane",
+     "team": "MIA",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 322.8
+    }
+   ],
+   "forecast": [
+    {
+     "rank": 1,
+     "player_display_name": "Bijan Robinson",
+     "team": "ATL",
+     "age": 24.587,
+     "prob": 0.958,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 2.0,
+     "prev_ppg_ppr": 21.812
+    },
+    {
+     "rank": 2,
+     "player_display_name": "De'Von Achane",
+     "team": "MIA",
+     "age": 24.885,
+     "prob": 0.926,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 5.0,
+     "prev_ppg_ppr": 20.175
+    },
+    {
+     "rank": 3,
+     "player_display_name": "Jahmyr Gibbs",
+     "team": "DET",
+     "age": 24.452,
+     "prob": 0.921,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 3.0,
+     "prev_ppg_ppr": 21.582
+    },
+    {
+     "rank": 4,
+     "player_display_name": "Christian McCaffrey",
+     "team": "SF",
+     "age": 30.235,
+     "prob": 0.882,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 1.0,
+     "prev_ppg_ppr": 24.506
+    },
+    {
+     "rank": 5,
+     "player_display_name": "Jonathan Taylor",
+     "team": "IND",
+     "age": 27.617,
+     "prob": 0.852,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 4.0,
+     "prev_ppg_ppr": 21.312
+    },
+    {
+     "rank": 6,
+     "player_display_name": "James Cook",
+     "team": "BUF",
+     "age": 26.936,
+     "prob": 0.846,
+     "rules_passed": 4,
+     "n_rules": 5,
+     "passes_all": false,
+     "prev_pos_rank": 6.0,
+     "prev_ppg_ppr": 17.776
+    },
+    {
+     "rank": 7,
+     "player_display_name": "Ashton Jeanty",
+     "team": "LV",
+     "age": 22.749,
+     "prob": 0.814,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 11.0,
+     "prev_ppg_ppr": 14.418
+    },
+    {
+     "rank": 8,
+     "player_display_name": "Breece Hall",
+     "team": "NYJ",
+     "age": 25.255,
+     "prob": 0.745,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 19.0,
+     "prev_ppg_ppr": 12.979
+    },
+    {
+     "rank": 9,
+     "player_display_name": "Bucky Irving",
+     "team": "TB",
+     "age": 24.036,
+     "prob": 0.74,
+     "rules_passed": 4,
+     "n_rules": 5,
+     "passes_all": false,
+     "prev_pos_rank": 34.0,
+     "prev_ppg_ppr": 13.85
+    },
+    {
+     "rank": 10,
+     "player_display_name": "Chase Brown",
+     "team": "CIN",
+     "age": 26.448,
+     "prob": 0.706,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 7.0,
+     "prev_ppg_ppr": 16.624
+    },
+    {
+     "rank": 11,
+     "player_display_name": "Quinshon Judkins",
+     "team": "CLE",
+     "age": 22.843,
+     "prob": 0.67,
+     "rules_passed": 4,
+     "n_rules": 5,
+     "passes_all": false,
+     "prev_pos_rank": 26.0,
+     "prev_ppg_ppr": 12.129
+    },
+    {
+     "rank": 12,
+     "player_display_name": "Travis Etienne",
+     "team": "JAX",
+     "age": 27.598,
+     "prob": 0.659,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 10.0,
+     "prev_ppg_ppr": 14.935
+    }
+   ],
+   "forecast_n": 70
+  },
+  "WR": {
+   "pool": {
+    "n": 1232,
+    "seasons": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "rule": {
+     "games": 8,
+     "targets": 30
+    }
+   },
+   "joint": {
+    "n_pool": 1232,
+    "n_elite": 55,
+    "base_rate": 0.044642857142857144,
+    "n_flagged": 29,
+    "hits": 26,
+    "n_seasons": 11,
+    "per_season_flagged": 2.6363636363636362,
+    "precision": 0.896551724137931,
+    "recall": 0.4727272727272727,
+    "lift": 20.082758620689656
+   },
+   "gates": [
+    {
+     "label": "Targets per game",
+     "metric": "targets_pg",
+     "direction": ">=",
+     "threshold": 9.0,
+     "precision": 0.3983050847457627,
+     "recall": 0.8545454545454545,
+     "lift": 8.922033898305084,
+     "per_season_flagged": 10.727272727272727,
+     "n_flagged": 118,
+     "hits": 47
+    },
+    {
+     "label": "Yards per route (est., shrunk)",
+     "metric": "yprr_shrunk",
+     "direction": ">=",
+     "threshold": 2.14,
+     "precision": 0.2883435582822086,
+     "recall": 0.8545454545454545,
+     "lift": 6.458895705521472,
+     "per_season_flagged": 14.818181818181818,
+     "n_flagged": 163,
+     "hits": 47
+    },
+    {
+     "label": "Red-zone target share",
+     "metric": "rz_targets_share",
+     "direction": ">=",
+     "threshold": 0.21,
+     "precision": 0.2072072072072072,
+     "recall": 0.8363636363636363,
+     "lift": 4.641441441441441,
+     "per_season_flagged": 20.181818181818183,
+     "n_flagged": 222,
+     "hits": 46
+    },
+    {
+     "label": "Routes per game (est.)",
+     "metric": "routes_pg",
+     "direction": ">=",
+     "threshold": 31.0,
+     "precision": 0.12534059945504086,
+     "recall": 0.8363636363636363,
+     "lift": 2.8076294277929152,
+     "per_season_flagged": 33.36363636363637,
+     "n_flagged": 367,
+     "hits": 46
+    },
+    {
+     "label": "Team scoring rank",
+     "metric": "team_scoring_rank",
+     "direction": "<=",
+     "threshold": 16.0,
+     "precision": 0.07717569786535304,
+     "recall": 0.8545454545454545,
+     "lift": 1.728735632183908,
+     "per_season_flagged": 55.36363636363637,
+     "n_flagged": 609,
+     "hits": 47
+    }
+   ],
+   "greens": [
+    {
+     "label": "Target share",
+     "metric": "target_share",
+     "direction": ">=",
+     "threshold": 0.31,
+     "precision": 0.7,
+     "recall": 0.2545454545454545,
+     "lift": 15.679999999999998,
+     "per_season_flagged": 1.8181818181818181,
+     "n_flagged": 20,
+     "hits": 14
+    },
+    {
+     "label": "Red-zone target share",
+     "metric": "rz_targets_share",
+     "direction": ">=",
+     "threshold": 0.32,
+     "precision": 0.48148148148148145,
+     "recall": 0.23636363636363636,
+     "lift": 10.785185185185185,
+     "per_season_flagged": 2.4545454545454546,
+     "n_flagged": 27,
+     "hits": 13
+    },
+    {
+     "label": "Snap share",
+     "metric": "snap_pct",
+     "direction": ">=",
+     "threshold": 0.95,
+     "precision": 0.47368421052631576,
+     "recall": 0.16363636363636364,
+     "lift": 10.610526315789473,
+     "per_season_flagged": 1.7272727272727273,
+     "n_flagged": 19,
+     "hits": 9
+    },
+    {
+     "label": "Yards per route (est., shrunk)",
+     "metric": "yprr_shrunk",
+     "direction": ">=",
+     "threshold": 2.37,
+     "precision": 0.3448275862068966,
+     "recall": 0.5454545454545454,
+     "lift": 7.724137931034483,
+     "per_season_flagged": 7.909090909090909,
+     "n_flagged": 87,
+     "hits": 30
+    },
+    {
+     "label": "Team points per game",
+     "metric": "team_ppg",
+     "direction": ">=",
+     "threshold": 33.0,
+     "precision": 0.13333333333333333,
+     "recall": 0.03636363636363636,
+     "lift": 2.9866666666666664,
+     "per_season_flagged": 1.3636363636363635,
+     "n_flagged": 15,
+     "hits": 2
+    }
+   ],
+   "vacuous": [],
+   "pred": {
+    "pool": {
+     "n": 1056,
+     "base_rate": 0.04640151515151515
+    },
+    "joint": {
+     "n_pool": 1056,
+     "n_elite": 49,
+     "base_rate": 0.04640151515151515,
+     "n_flagged": 95,
+     "hits": 27,
+     "n_seasons": 11,
+     "per_season_flagged": 8.636363636363637,
+     "precision": 0.28421052631578947,
+     "recall": 0.5510204081632653,
+     "lift": 6.125026852846402
+    },
+    "gates": [
+     {
+      "label": "Last year's PPR per game (shrunk)",
+      "metric": "prev_ppg_shrunk",
+      "direction": ">=",
+      "threshold": 13.0,
+      "precision": 0.19801980198019803,
+      "recall": 0.8163265306122449,
+      "lift": 4.267528793695696,
+      "per_season_flagged": 18.363636363636363,
+      "n_flagged": 202,
+      "hits": 40
+     },
+     {
+      "label": "Last year's targets per game",
+      "metric": "prev_targets_pg",
+      "direction": ">=",
+      "threshold": 8.0,
+      "precision": 0.18536585365853658,
+      "recall": 0.7755102040816326,
+      "lift": 3.9948232951717273,
+      "per_season_flagged": 18.636363636363637,
+      "n_flagged": 205,
+      "hits": 38
+     },
+     {
+      "label": "Last year's air-yards share",
+      "metric": "prev_air_yards_share",
+      "direction": ">=",
+      "threshold": 0.31,
+      "precision": 0.15234375,
+      "recall": 0.7959183673469388,
+      "lift": 3.2831632653061225,
+      "per_season_flagged": 23.272727272727273,
+      "n_flagged": 256,
+      "hits": 39
+     },
+     {
+      "label": "Last year's yards per route (est., shrunk)",
+      "metric": "prev_yprr_shrunk",
+      "direction": ">=",
+      "threshold": 1.95,
+      "precision": 0.13978494623655913,
+      "recall": 0.7959183673469388,
+      "lift": 3.0125082290980907,
+      "per_season_flagged": 25.363636363636363,
+      "n_flagged": 279,
+      "hits": 39
+     }
+    ],
+    "greens": [
+     {
+      "label": "Last year's PPR per game (shrunk)",
+      "metric": "prev_ppg_shrunk",
+      "direction": ">=",
+      "threshold": 17.5,
+      "precision": 0.4666666666666667,
+      "recall": 0.2857142857142857,
+      "lift": 10.057142857142857,
+      "per_season_flagged": 2.727272727272727,
+      "n_flagged": 30,
+      "hits": 14
+     },
+     {
+      "label": "Last year's target share",
+      "metric": "prev_target_share",
+      "direction": ">=",
+      "threshold": 0.3,
+      "precision": 0.4,
+      "recall": 0.24489795918367346,
+      "lift": 8.620408163265306,
+      "per_season_flagged": 2.727272727272727,
+      "n_flagged": 30,
+      "hits": 12
+     },
+     {
+      "label": "Last year's air-yards share",
+      "metric": "prev_air_yards_share",
+      "direction": ">=",
+      "threshold": 0.44,
+      "precision": 0.3181818181818182,
+      "recall": 0.14285714285714285,
+      "lift": 6.857142857142857,
+      "per_season_flagged": 2.0,
+      "n_flagged": 22,
+      "hits": 7
+     },
+     {
+      "label": "Last year's yards per route (est., shrunk)",
+      "metric": "prev_yprr_shrunk",
+      "direction": ">=",
+      "threshold": 2.47,
+      "precision": 0.24,
+      "recall": 0.3673469387755102,
+      "lift": 5.1722448979591835,
+      "per_season_flagged": 6.818181818181818,
+      "n_flagged": 75,
+      "hits": 18
+     },
+     {
+      "label": "New team's points per game last year",
+      "metric": "newteam_prev_team_ppg",
+      "direction": ">=",
+      "threshold": 31.0,
+      "precision": 0.16129032258064516,
+      "recall": 0.10204081632653061,
+      "lift": 3.4759710335747203,
+      "per_season_flagged": 2.8181818181818183,
+      "n_flagged": 31,
+      "hits": 5
+     }
+    ],
+    "model": {
+     "features": [
+      "prev_target_share",
+      "prev_yprr_shrunk",
+      "prev_rz_targets_share",
+      "prev_air_yards_share",
+      "prev_ppg_shrunk",
+      "prev_snap_pct",
+      "prev_games",
+      "age",
+      "newteam_prev_team_scoring_rank",
+      "newteam_prev_team_qb_epa_rank"
+     ],
+     "coefficients": {
+      "prev_target_share": 0.822,
+      "prev_yprr_shrunk": -0.18,
+      "prev_rz_targets_share": -0.14,
+      "prev_air_yards_share": 0.201,
+      "prev_ppg_shrunk": 1.665,
+      "prev_snap_pct": 0.015,
+      "prev_games": 0.012,
+      "age": -0.555,
+      "newteam_prev_team_scoring_rank": -0.377,
+      "newteam_prev_team_qb_epa_rank": 0.534
+     },
+     "oos_auc": 0.9009585959507934,
+     "top5_precision": 0.36363636363636365,
+     "top5_recall": 0.40816326530612246,
+     "top10_precision": 0.2818181818181818,
+     "top10_recall": 0.6326530612244898
+    },
+    "persistence": {
+     "prev_top5": {
+      "n": 53,
+      "rate": 0.32075471698113206
+     },
+     "prev_6_12": {
+      "n": 77,
+      "rate": 0.16883116883116883
+     },
+     "prev_13_24": {
+      "n": 126,
+      "rate": 0.06349206349206349
+     },
+     "prev_25plus": {
+      "n": 800,
+      "rate": 0.01375
+     }
+    },
+    "coverage": {
+     "n_top5": 55,
+     "n_reachable": 49,
+     "pct_reachable": 0.8909090909090909
+    },
+    "unreachable": [
+     {
+      "season": 2016,
+      "player_display_name": "Jordy Nelson",
+      "team": "GB",
+      "pos_rank": 2.0,
+      "exp": 8
+     },
+     {
+      "season": 2017,
+      "player_display_name": "Keenan Allen",
+      "team": "LAC",
+      "pos_rank": 3.0,
+      "exp": 4
+     },
+     {
+      "season": 2021,
+      "player_display_name": "Deebo Samuel Sr.",
+      "team": "SF",
+      "pos_rank": 3.0,
+      "exp": 2
+     },
+     {
+      "season": 2021,
+      "player_display_name": "Ja'Marr Chase",
+      "team": "CIN",
+      "pos_rank": 5.0,
+      "exp": 0
+     },
+     {
+      "season": 2023,
+      "player_display_name": "Puka Nacua",
+      "team": "LA",
+      "pos_rank": 4.0,
+      "exp": 0
+     },
+     {
+      "season": 2024,
+      "player_display_name": "Brian Thomas Jr.",
+      "team": "JAX",
+      "pos_rank": 4.0,
+      "exp": 0
+     }
+    ]
+   },
+   "elite": [
+    {
+     "season": 2015,
+     "player_display_name": "Antonio Brown",
+     "team": "PIT",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 390.2
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Julio Jones",
+     "team": "ATL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 369.1
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Brandon Marshall",
+     "team": "NYJ",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 339.2
+    },
+    {
+     "season": 2015,
+     "player_display_name": "DeAndre Hopkins",
+     "team": "HOU",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 331.1
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Odell Beckham Jr.",
+     "team": "NYG",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 319.3
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Antonio Brown",
+     "team": "PIT",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 307.3
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Jordy Nelson",
+     "team": "GB",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 304.7
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Mike Evans",
+     "team": "TB",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 304.1
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Odell Beckham Jr.",
+     "team": "NYG",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 296.6
+    },
+    {
+     "season": 2016,
+     "player_display_name": "T.Y. Hilton",
+     "team": "IND",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 273.8
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Antonio Brown",
+     "team": "PIT",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 310.3
+    },
+    {
+     "season": 2017,
+     "player_display_name": "DeAndre Hopkins",
+     "team": "HOU",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 309.8
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Keenan Allen",
+     "team": "LAC",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 278.2
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Larry Fitzgerald",
+     "team": "ARI",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 261.44
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Jarvis Landry",
+     "team": "MIA",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 260.0
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Tyreek Hill",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 334.0
+    },
+    {
+     "season": 2018,
+     "player_display_name": "DeAndre Hopkins",
+     "team": "HOU",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 333.5
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Davante Adams",
+     "team": "GB",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 329.6
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Julio Jones",
+     "team": "ATL",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 325.9
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Antonio Brown",
+     "team": "PIT",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 323.7
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Michael Thomas",
+     "team": "NO",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 374.6
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Chris Godwin Jr.",
+     "team": "TB",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 276.1
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Julio Jones",
+     "team": "ATL",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 274.1
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Cooper Kupp",
+     "team": "LA",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 270.5
+    },
+    {
+     "season": 2019,
+     "player_display_name": "DeAndre Hopkins",
+     "team": "HOU",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 268.54
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Davante Adams",
+     "team": "GB",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 358.40000000000003
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Tyreek Hill",
+     "team": "KC",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 328.9
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Stefon Diggs",
+     "team": "BUF",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 328.6
+    },
+    {
+     "season": 2020,
+     "player_display_name": "DeAndre Hopkins",
+     "team": "ARI",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 287.8
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Calvin Ridley",
+     "team": "ATL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 281.5
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Cooper Kupp",
+     "team": "LA",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 439.5
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Davante Adams",
+     "team": "GB",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 344.3
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Deebo Samuel Sr.",
+     "team": "SF",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 338.96000000000004
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Justin Jefferson",
+     "team": "MIN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 330.4
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Ja'Marr Chase",
+     "team": "CIN",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 304.6
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Justin Jefferson",
+     "team": "MIN",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 368.66
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Tyreek Hill",
+     "team": "MIA",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 341.2
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Davante Adams",
+     "team": "LV",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 335.5
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Stefon Diggs",
+     "team": "BUF",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 316.6
+    },
+    {
+     "season": 2022,
+     "player_display_name": "CeeDee Lamb",
+     "team": "DAL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 301.6
+    },
+    {
+     "season": 2023,
+     "player_display_name": "CeeDee Lamb",
+     "team": "DAL",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 403.2000000000001
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Tyreek Hill",
+     "team": "MIA",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 376.4
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Amon-Ra St. Brown",
+     "team": "DET",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 330.9
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Puka Nacua",
+     "team": "LA",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 298.5
+    },
+    {
+     "season": 2023,
+     "player_display_name": "A.J. Brown",
+     "team": "PHI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 289.6
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Ja'Marr Chase",
+     "team": "CIN",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 403.0
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Justin Jefferson",
+     "team": "MIN",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 317.48
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Amon-Ra St. Brown",
+     "team": "DET",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 316.18
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Brian Thomas Jr.",
+     "team": "JAX",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 284.0
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Drake London",
+     "team": "ATL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 280.8
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Puka Nacua",
+     "team": "LA",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 375.0
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 359.9
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Amon-Ra St. Brown",
+     "team": "DET",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 324.0
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Ja'Marr Chase",
+     "team": "CIN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 313.6
+    },
+    {
+     "season": 2025,
+     "player_display_name": "George Pickens",
+     "team": "DAL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 291.9
+    }
+   ],
+   "forecast": [
+    {
+     "rank": 1,
+     "player_display_name": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "age": 24.546,
+     "prob": 0.992,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 2.0,
+     "prev_ppg_ppr": 21.171
+    },
+    {
+     "rank": 2,
+     "player_display_name": "Puka Nacua",
+     "team": "LA",
+     "age": 25.26,
+     "prob": 0.987,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 1.0,
+     "prev_ppg_ppr": 23.438
+    },
+    {
+     "rank": 3,
+     "player_display_name": "Ja'Marr Chase",
+     "team": "CIN",
+     "age": 26.503,
+     "prob": 0.987,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 4.0,
+     "prev_ppg_ppr": 19.6
+    },
+    {
+     "rank": 4,
+     "player_display_name": "Amon-Ra St. Brown",
+     "team": "DET",
+     "age": 26.856,
+     "prob": 0.933,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 3.0,
+     "prev_ppg_ppr": 19.059
+    },
+    {
+     "rank": 5,
+     "player_display_name": "Drake London",
+     "team": "ATL",
+     "age": 25.107,
+     "prob": 0.889,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 19.0,
+     "prev_ppg_ppr": 16.825
+    },
+    {
+     "rank": 6,
+     "player_display_name": "Chris Olave",
+     "team": "NO",
+     "age": 26.18,
+     "prob": 0.868,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 6.0,
+     "prev_ppg_ppr": 16.75
+    },
+    {
+     "rank": 7,
+     "player_display_name": "Zay Flowers",
+     "team": "BAL",
+     "age": 25.972,
+     "prob": 0.785,
+     "rules_passed": 3,
+     "n_rules": 4,
+     "passes_all": false,
+     "prev_pos_rank": 7.0,
+     "prev_ppg_ppr": 14.312
+    },
+    {
+     "rank": 8,
+     "player_display_name": "Wan'Dale Robinson",
+     "team": "NYG",
+     "age": 25.654,
+     "prob": 0.764,
+     "rules_passed": 1,
+     "n_rules": 4,
+     "passes_all": false,
+     "prev_pos_rank": 14.0,
+     "prev_ppg_ppr": 13.619
+    },
+    {
+     "rank": 9,
+     "player_display_name": "George Pickens",
+     "team": "DAL",
+     "age": 25.496,
+     "prob": 0.741,
+     "rules_passed": 4,
+     "n_rules": 4,
+     "passes_all": true,
+     "prev_pos_rank": 5.0,
+     "prev_ppg_ppr": 17.171
+    },
+    {
+     "rank": 10,
+     "player_display_name": "Rashee Rice",
+     "team": "KC",
+     "age": 26.361,
+     "prob": 0.73,
+     "rules_passed": 3,
+     "n_rules": 4,
+     "passes_all": false,
+     "prev_pos_rank": 40.0,
+     "prev_ppg_ppr": 18.762
+    },
+    {
+     "rank": 11,
+     "player_display_name": "Tetairoa McMillan",
+     "team": "CAR",
+     "age": 23.409,
+     "prob": 0.715,
+     "rules_passed": 1,
+     "n_rules": 4,
+     "passes_all": false,
+     "prev_pos_rank": 15.0,
+     "prev_ppg_ppr": 12.553
+    },
+    {
+     "rank": 12,
+     "player_display_name": "Justin Jefferson",
+     "team": "MIN",
+     "age": 27.212,
+     "prob": 0.674,
+     "rules_passed": 2,
+     "n_rules": 4,
+     "passes_all": false,
+     "prev_pos_rank": 21.0,
+     "prev_ppg_ppr": 11.853
+    }
+   ],
+   "forecast_n": 108
+  },
+  "TE": {
+   "pool": {
+    "n": 626,
+    "seasons": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "rule": {
+     "games": 8,
+     "targets": 20
+    }
+   },
+   "joint": {
+    "n_pool": 626,
+    "n_elite": 55,
+    "base_rate": 0.0878594249201278,
+    "n_flagged": 28,
+    "hits": 24,
+    "n_seasons": 11,
+    "per_season_flagged": 2.5454545454545454,
+    "precision": 0.8571428571428571,
+    "recall": 0.43636363636363634,
+    "lift": 9.755844155844155
+   },
+   "gates": [
+    {
+     "label": "Targets per game",
+     "metric": "targets_pg",
+     "direction": ">=",
+     "threshold": 6.5,
+     "precision": 0.5641025641025641,
+     "recall": 0.8,
+     "lift": 6.42051282051282,
+     "per_season_flagged": 7.090909090909091,
+     "n_flagged": 78,
+     "hits": 44
+    },
+    {
+     "label": "Yards per route (est., shrunk)",
+     "metric": "yprr_shrunk",
+     "direction": ">=",
+     "threshold": 1.41,
+     "precision": 0.304635761589404,
+     "recall": 0.8363636363636363,
+     "lift": 3.467308850090307,
+     "per_season_flagged": 13.727272727272727,
+     "n_flagged": 151,
+     "hits": 46
+    },
+    {
+     "label": "Red-zone target share",
+     "metric": "rz_targets_share",
+     "direction": ">=",
+     "threshold": 0.17,
+     "precision": 0.2987012987012987,
+     "recall": 0.8363636363636363,
+     "lift": 3.3997638724911448,
+     "per_season_flagged": 14.0,
+     "n_flagged": 154,
+     "hits": 46
+    },
+    {
+     "label": "Snap share",
+     "metric": "snap_pct",
+     "direction": ">=",
+     "threshold": 0.73,
+     "precision": 0.26704545454545453,
+     "recall": 0.8545454545454545,
+     "lift": 3.0394628099173553,
+     "per_season_flagged": 16.0,
+     "n_flagged": 176,
+     "hits": 47
+    },
+    {
+     "label": "QB rank in EPA/dropback",
+     "metric": "team_qb_epa_rank",
+     "direction": "<=",
+     "threshold": 22.0,
+     "precision": 0.11910669975186104,
+     "recall": 0.8727272727272727,
+     "lift": 1.355650800812091,
+     "per_season_flagged": 36.63636363636363,
+     "n_flagged": 403,
+     "hits": 48
+    }
+   ],
+   "greens": [
+    {
+     "label": "Targets per game",
+     "metric": "targets_pg",
+     "direction": ">=",
+     "threshold": 8.5,
+     "precision": 0.8666666666666667,
+     "recall": 0.23636363636363636,
+     "lift": 9.864242424242423,
+     "per_season_flagged": 1.3636363636363635,
+     "n_flagged": 15,
+     "hits": 13
+    },
+    {
+     "label": "Red-zone target share",
+     "metric": "rz_targets_share",
+     "direction": ">=",
+     "threshold": 0.25,
+     "precision": 0.6086956521739131,
+     "recall": 0.509090909090909,
+     "lift": 6.928063241106719,
+     "per_season_flagged": 4.181818181818182,
+     "n_flagged": 46,
+     "hits": 28
+    },
+    {
+     "label": "Yards per route (est., shrunk)",
+     "metric": "yprr_shrunk",
+     "direction": ">=",
+     "threshold": 1.69,
+     "precision": 0.5409836065573771,
+     "recall": 0.6,
+     "lift": 6.157377049180329,
+     "per_season_flagged": 5.545454545454546,
+     "n_flagged": 61,
+     "hits": 33
+    },
+    {
+     "label": "Routes per game (est.)",
+     "metric": "routes_pg",
+     "direction": ">=",
+     "threshold": 37.0,
+     "precision": 0.5333333333333333,
+     "recall": 0.14545454545454545,
+     "lift": 6.07030303030303,
+     "per_season_flagged": 1.3636363636363635,
+     "n_flagged": 15,
+     "hits": 8
+    },
+    {
+     "label": "QB rank in EPA/dropback",
+     "metric": "team_qb_epa_rank",
+     "direction": "<=",
+     "threshold": 2.0,
+     "precision": 0.275,
+     "recall": 0.2,
+     "lift": 3.1300000000000003,
+     "per_season_flagged": 3.6363636363636362,
+     "n_flagged": 40,
+     "hits": 11
+    }
+   ],
+   "vacuous": [
+    {
+     "label": "Team points per game",
+     "metric": "team_ppg",
+     "direction": ">=",
+     "threshold": 20.0,
+     "precision": 0.10606060606060606,
+     "recall": 0.8909090909090909,
+     "lift": 1.2071625344352617,
+     "per_season_flagged": 42.0,
+     "n_flagged": 462,
+     "hits": 49
+    },
+    {
+     "label": "Seasons of experience",
+     "metric": "exp",
+     "direction": ">=",
+     "threshold": 2.0,
+     "precision": 0.0975103734439834,
+     "recall": 0.8545454545454545,
+     "lift": 1.109845341380611,
+     "per_season_flagged": 43.81818181818182,
+     "n_flagged": 482,
+     "hits": 47
+    }
+   ],
+   "pred": {
+    "pool": {
+     "n": 538,
+     "base_rate": 0.09107806691449814
+    },
+    "joint": {
+     "n_pool": 538,
+     "n_elite": 49,
+     "base_rate": 0.09107806691449814,
+     "n_flagged": 77,
+     "hits": 30,
+     "n_seasons": 11,
+     "per_season_flagged": 7.0,
+     "precision": 0.38961038961038963,
+     "recall": 0.6122448979591837,
+     "lift": 4.277763053273257
+    },
+    "gates": [
+     {
+      "label": "Last year's yards per route (est., shrunk)",
+      "metric": "prev_yprr_shrunk",
+      "direction": ">=",
+      "threshold": 1.39,
+      "precision": 0.2689655172413793,
+      "recall": 0.7959183673469388,
+      "lift": 2.9531315974665726,
+      "per_season_flagged": 13.181818181818182,
+      "n_flagged": 145,
+      "hits": 39
+     },
+     {
+      "label": "Last year's WOPR",
+      "metric": "prev_wopr",
+      "direction": ">=",
+      "threshold": 0.32,
+      "precision": 0.23493975903614459,
+      "recall": 0.7959183673469388,
+      "lift": 2.579542660437669,
+      "per_season_flagged": 15.090909090909092,
+      "n_flagged": 166,
+      "hits": 39
+     },
+     {
+      "label": "Last year's positional finish",
+      "metric": "prev_pos_rank",
+      "direction": "<=",
+      "threshold": 19.5,
+      "precision": 0.20207253886010362,
+      "recall": 0.7959183673469388,
+      "lift": 2.218673998096648,
+      "per_season_flagged": 17.545454545454547,
+      "n_flagged": 193,
+      "hits": 39
+     },
+     {
+      "label": "Last year's red-zone target share",
+      "metric": "prev_rz_targets_share",
+      "direction": ">=",
+      "threshold": 0.14,
+      "precision": 0.1921182266009852,
+      "recall": 0.7959183673469388,
+      "lift": 2.109379712476123,
+      "per_season_flagged": 18.454545454545453,
+      "n_flagged": 203,
+      "hits": 39
+     },
+     {
+      "label": "Last year's snap share",
+      "metric": "prev_snap_pct",
+      "direction": ">=",
+      "threshold": 0.65,
+      "precision": 0.16666666666666666,
+      "recall": 0.8163265306122449,
+      "lift": 1.8299319727891155,
+      "per_season_flagged": 21.818181818181817,
+      "n_flagged": 240,
+      "hits": 40
+     }
+    ],
+    "greens": [
+     {
+      "label": "Last year's targets per game",
+      "metric": "prev_targets_pg",
+      "direction": ">=",
+      "threshold": 8.5,
+      "precision": 0.6666666666666666,
+      "recall": 0.20408163265306123,
+      "lift": 7.319727891156462,
+      "per_season_flagged": 1.3636363636363635,
+      "n_flagged": 15,
+      "hits": 10
+     },
+     {
+      "label": "Last year's PPR per game (shrunk)",
+      "metric": "prev_ppg_shrunk",
+      "direction": ">=",
+      "threshold": 13.0,
+      "precision": 0.6,
+      "recall": 0.24489795918367346,
+      "lift": 6.587755102040816,
+      "per_season_flagged": 1.8181818181818181,
+      "n_flagged": 20,
+      "hits": 12
+     },
+     {
+      "label": "Last year's yards per route (est., shrunk)",
+      "metric": "prev_yprr_shrunk",
+      "direction": ">=",
+      "threshold": 1.75,
+      "precision": 0.42105263157894735,
+      "recall": 0.4897959183673469,
+      "lift": 4.622986036519871,
+      "per_season_flagged": 5.181818181818182,
+      "n_flagged": 57,
+      "hits": 24
+     },
+     {
+      "label": "Last year's red-zone target share",
+      "metric": "prev_rz_targets_share",
+      "direction": ">=",
+      "threshold": 0.27,
+      "precision": 0.4,
+      "recall": 0.16326530612244897,
+      "lift": 4.391836734693878,
+      "per_season_flagged": 1.8181818181818181,
+      "n_flagged": 20,
+      "hits": 8
+     },
+     {
+      "label": "New team's QB EPA rank last year",
+      "metric": "newteam_prev_team_qb_epa_rank",
+      "direction": "<=",
+      "threshold": 2.0,
+      "precision": 0.30303030303030304,
+      "recall": 0.20408163265306123,
+      "lift": 3.3271490414347555,
+      "per_season_flagged": 3.0,
+      "n_flagged": 33,
+      "hits": 10
+     }
+    ],
+    "model": {
+     "features": [
+      "prev_target_share",
+      "prev_yprr_shrunk",
+      "prev_rz_targets_share",
+      "prev_ppg_shrunk",
+      "prev_snap_pct",
+      "prev_games",
+      "age",
+      "newteam_prev_team_scoring_rank",
+      "newteam_prev_team_qb_epa_rank"
+     ],
+     "coefficients": {
+      "prev_target_share": 1.448,
+      "prev_yprr_shrunk": 0.194,
+      "prev_rz_targets_share": -0.391,
+      "prev_ppg_shrunk": 0.392,
+      "prev_snap_pct": -0.34,
+      "prev_games": 0.361,
+      "age": -0.098,
+      "newteam_prev_team_scoring_rank": 0.078,
+      "newteam_prev_team_qb_epa_rank": 0.001
+     },
+     "oos_auc": 0.8277617795584491,
+     "top5_precision": 0.41818181818181815,
+     "top5_recall": 0.46938775510204084,
+     "top10_precision": 0.3090909090909091,
+     "top10_recall": 0.6938775510204082
+    },
+    "persistence": {
+     "prev_top5": {
+      "n": 54,
+      "rate": 0.42592592592592593
+     },
+     "prev_6_12": {
+      "n": 69,
+      "rate": 0.13043478260869565
+     },
+     "prev_13_24": {
+      "n": 118,
+      "rate": 0.09322033898305085
+     },
+     "prev_25plus": {
+      "n": 297,
+      "rate": 0.020202020202020204
+     }
+    },
+    "coverage": {
+     "n_top5": 55,
+     "n_reachable": 49,
+     "pct_reachable": 0.8909090909090909
+    },
+    "unreachable": [
+     {
+      "season": 2017,
+      "player_display_name": "Evan Engram",
+      "team": "NYG",
+      "pos_rank": 5.0,
+      "exp": 0
+     },
+     {
+      "season": 2019,
+      "player_display_name": "Darren Waller",
+      "team": "LV",
+      "pos_rank": 3.0,
+      "exp": 4
+     },
+     {
+      "season": 2020,
+      "player_display_name": "Robert Tonyan",
+      "team": "GB",
+      "pos_rank": 4.0,
+      "exp": 3
+     },
+     {
+      "season": 2023,
+      "player_display_name": "Sam LaPorta",
+      "team": "DET",
+      "pos_rank": 1.0,
+      "exp": 0
+     },
+     {
+      "season": 2024,
+      "player_display_name": "Brock Bowers",
+      "team": "LV",
+      "pos_rank": 1.0,
+      "exp": 0
+     },
+     {
+      "season": 2025,
+      "player_display_name": "Tyler Warren",
+      "team": "IND",
+      "pos_rank": 4.0,
+      "exp": 0
+     }
+    ]
+   },
+   "elite": [
+    {
+     "season": 2015,
+     "player_display_name": "Rob Gronkowski",
+     "team": "NE",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 255.6
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Delanie Walker",
+     "team": "TEN",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 244.4
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Jordan Reed",
+     "team": "WAS",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 244.2
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Gary Barnidge",
+     "team": "CLE",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 237.3
+    },
+    {
+     "season": 2015,
+     "player_display_name": "Jordan Matthews",
+     "team": "PHI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 230.7
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 223.0
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Kyle Rudolph",
+     "team": "MIN",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 209.0
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Greg Olsen",
+     "team": "CAR",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 207.3
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Jimmy Graham",
+     "team": "SEA",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 189.3
+    },
+    {
+     "season": 2016,
+     "player_display_name": "Delanie Walker",
+     "team": "TEN",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 188.1
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 233.5
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Rob Gronkowski",
+     "team": "NE",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 227.4
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Zach Ertz",
+     "team": "PHI",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 202.4
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Delanie Walker",
+     "team": "TEN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 174.5
+    },
+    {
+     "season": 2017,
+     "player_display_name": "Evan Engram",
+     "team": "NYG",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 173.6
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 294.6
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Zach Ertz",
+     "team": "PHI",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 280.3
+    },
+    {
+     "season": 2018,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 258.7
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Eric Ebron",
+     "team": "IND",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 222.2
+    },
+    {
+     "season": 2018,
+     "player_display_name": "Jared Cook",
+     "team": "LV",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 193.6
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 254.3
+    },
+    {
+     "season": 2019,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 222.5
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Darren Waller",
+     "team": "LV",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 221.0
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Zach Ertz",
+     "team": "PHI",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 215.6
+    },
+    {
+     "season": 2019,
+     "player_display_name": "Mark Andrews",
+     "team": "BAL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 207.2
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 312.76
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Darren Waller",
+     "team": "LV",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 278.6
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Logan Thomas",
+     "team": "WAS",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 176.62
+    },
+    {
+     "season": 2020,
+     "player_display_name": "Robert Tonyan",
+     "team": "GB",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 176.6
+    },
+    {
+     "season": 2020,
+     "player_display_name": "T.J. Hockenson",
+     "team": "DET",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 175.3
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Mark Andrews",
+     "team": "BAL",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 301.1
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 262.8
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Dalton Schultz",
+     "team": "DAL",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 208.8
+    },
+    {
+     "season": 2021,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 198.0
+    },
+    {
+     "season": 2021,
+     "player_display_name": "Zach Ertz",
+     "team": "ARI",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 180.7
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 316.3
+    },
+    {
+     "season": 2022,
+     "player_display_name": "T.J. Hockenson",
+     "team": "MIN",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 217.4
+    },
+    {
+     "season": 2022,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 200.5
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Mark Andrews",
+     "team": "BAL",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 190.5
+    },
+    {
+     "season": 2022,
+     "player_display_name": "Evan Engram",
+     "team": "JAX",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 176.9
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Sam LaPorta",
+     "team": "DET",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 239.3
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Evan Engram",
+     "team": "JAX",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 230.3
+    },
+    {
+     "season": 2023,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 219.4
+    },
+    {
+     "season": 2023,
+     "player_display_name": "T.J. Hockenson",
+     "team": "MIN",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 219.0
+    },
+    {
+     "season": 2023,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 203.2
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Brock Bowers",
+     "team": "LV",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 262.7
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Trey McBride",
+     "team": "ARI",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 243.8
+    },
+    {
+     "season": 2024,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 236.6
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Jonnu Smith",
+     "team": "MIA",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 222.3
+    },
+    {
+     "season": 2024,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 195.4
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Trey McBride",
+     "team": "ARI",
+     "pos_rank": 1.0,
+     "fantasy_points_ppr": 315.9
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Kyle Pitts",
+     "team": "ATL",
+     "pos_rank": 2.0,
+     "fantasy_points_ppr": 210.8
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "pos_rank": 3.0,
+     "fantasy_points_ppr": 193.2
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Tyler Warren",
+     "team": "IND",
+     "pos_rank": 4.0,
+     "fantasy_points_ppr": 188.5
+    },
+    {
+     "season": 2025,
+     "player_display_name": "Jake Ferguson",
+     "team": "DAL",
+     "pos_rank": 5.0,
+     "fantasy_points_ppr": 188.1
+    }
+   ],
+   "forecast": [
+    {
+     "rank": 1,
+     "player_display_name": "Trey McBride",
+     "team": "ARI",
+     "age": 26.777,
+     "prob": 0.96,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 1.0,
+     "prev_ppg_ppr": 18.582
+    },
+    {
+     "rank": 2,
+     "player_display_name": "Kyle Pitts",
+     "team": "ATL",
+     "age": 25.903,
+     "prob": 0.888,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 2.0,
+     "prev_ppg_ppr": 12.4
+    },
+    {
+     "rank": 3,
+     "player_display_name": "Harold Fannin Jr.",
+     "team": "CLE",
+     "age": 22.117,
+     "prob": 0.869,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 6.0,
+     "prev_ppg_ppr": 11.65
+    },
+    {
+     "rank": 4,
+     "player_display_name": "Brock Bowers",
+     "team": "LV",
+     "age": 23.719,
+     "prob": 0.802,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 11.0,
+     "prev_ppg_ppr": 14.683
+    },
+    {
+     "rank": 5,
+     "player_display_name": "Dalton Schultz",
+     "team": "HOU",
+     "age": 30.142,
+     "prob": 0.782,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 10.0,
+     "prev_ppg_ppr": 10.453
+    },
+    {
+     "rank": 6,
+     "player_display_name": "George Kittle",
+     "team": "SF",
+     "age": 32.896,
+     "prob": 0.763,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 13.0,
+     "prev_ppg_ppr": 14.682
+    },
+    {
+     "rank": 7,
+     "player_display_name": "Travis Kelce",
+     "team": "KC",
+     "age": 36.907,
+     "prob": 0.746,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 3.0,
+     "prev_ppg_ppr": 11.365
+    },
+    {
+     "rank": 8,
+     "player_display_name": "Tyler Warren",
+     "team": "IND",
+     "age": 24.274,
+     "prob": 0.746,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 4.0,
+     "prev_ppg_ppr": 11.088
+    },
+    {
+     "rank": 9,
+     "player_display_name": "Juwan Johnson",
+     "team": "NO",
+     "age": 29.966,
+     "prob": 0.745,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 8.0,
+     "prev_ppg_ppr": 10.582
+    },
+    {
+     "rank": 10,
+     "player_display_name": "Zach Ertz",
+     "team": "WAS",
+     "age": 35.809,
+     "prob": 0.659,
+     "rules_passed": 5,
+     "n_rules": 5,
+     "passes_all": true,
+     "prev_pos_rank": 19.0,
+     "prev_ppg_ppr": 9.723
+    },
+    {
+     "rank": 11,
+     "player_display_name": "Dallas Goedert",
+     "team": "PHI",
+     "age": 31.661,
+     "prob": 0.639,
+     "rules_passed": 4,
+     "n_rules": 5,
+     "passes_all": false,
+     "prev_pos_rank": 7.0,
+     "prev_ppg_ppr": 12.34
+    },
+    {
+     "rank": 12,
+     "player_display_name": "Colston Loveland",
+     "team": "CHI",
+     "age": 22.396,
+     "prob": 0.617,
+     "rules_passed": 4,
+     "n_rules": 5,
+     "passes_all": false,
+     "prev_pos_rank": 12.0,
+     "prev_ppg_ppr": 10.319
+    }
+   ],
+   "forecast_n": 62
+  }
+ }
+}

@@ -1,0 +1,1223 @@
+<title>Anatomy of a Top-5 Season</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --ground:#E7EAE8; --surface:#F8F9F7; --surface-2:#EFF2EF; --line:#D2D8D4;
+  --line-strong:#B4BDB8; --ink:#12100C; --ink-2:#3D4441; --muted:#697471;
+  --mark:#eda100; --mark-ink:#8A6207; --good:#1baf7a; --good-ink:#0F6B4A;
+  --bad:#e34948; --bad-ink:#9E2C2B; --shadow:0 1px 2px rgba(18,16,12,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0E1211; --surface:#181D1C; --surface-2:#1F2523; --line:#2C3432;
+    --line-strong:#414B48; --ink:#ECEFEC; --ink-2:#C2C9C5; --muted:#8D9895;
+    --mark:#c98500; --mark-ink:#E2B458; --good:#199e70; --good-ink:#54C79B;
+    --bad:#e66767; --bad-ink:#F09189; --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0E1211; --surface:#181D1C; --surface-2:#1F2523; --line:#2C3432;
+  --line-strong:#414B48; --ink:#ECEFEC; --ink-2:#C2C9C5; --muted:#8D9895;
+  --mark:#c98500; --mark-ink:#E2B458; --good:#199e70; --good-ink:#54C79B;
+  --bad:#e66767; --bad-ink:#F09189; --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:Newsreader,Georgia,'Times New Roman',serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px 96px}
+p{margin:0 0 1em; max-width:66ch}
+a{color:var(--mark-ink)}
+h1,h2,h3,h4{margin:0; text-wrap:balance; font-weight:600; letter-spacing:-.011em}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-variant-numeric:tabular-nums}
+.label{font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:500}
+.num{font-family:'Big Shoulders Display',Archivo,Impact,sans-serif; font-weight:700;
+  font-variant-numeric:tabular-nums; line-height:.82; letter-spacing:.01em}
+
+/* hash-mark rule: the yard-line motif, used only as a section divider */
+.hash{height:11px; margin:0;
+  background:repeating-linear-gradient(90deg,var(--line-strong) 0 2px,transparent 2px 14px);
+  border:0; opacity:.85}
+
+header.top{padding:76px 0 40px}
+.eyebrow{display:flex; gap:14px; align-items:center; margin-bottom:22px; flex-wrap:wrap}
+h1{font-size:clamp(38px,6.2vw,68px); line-height:1.02; margin-bottom:20px;
+  font-weight:600; letter-spacing:-.028em}
+.deck{font-size:clamp(18px,2.1vw,21px); color:var(--ink-2); max-width:60ch}
+.meta{display:flex; flex-wrap:wrap; gap:0; margin-top:34px; border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.meta div{flex:1 1 150px; padding:14px 18px 15px; border-right:1px solid var(--line)}
+.meta div:last-child{border-right:0}
+.meta b{display:block; font-family:'IBM Plex Mono',monospace; font-size:19px;
+  font-weight:600; letter-spacing:-.02em; margin-bottom:2px}
+
+section{padding:56px 0 8px}
+h2{font-size:clamp(25px,3.4vw,33px); margin-bottom:8px; letter-spacing:-.02em}
+.sec-intro{color:var(--ink-2); margin-bottom:30px}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  box-shadow:var(--shadow)}
+.pad{padding:24px 26px}
+
+/* audit */
+table{width:100%; border-collapse:collapse; font-size:15px}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+th{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--muted); font-weight:500; text-align:right;
+  padding:0 12px 9px; border-bottom:1px solid var(--line-strong); white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:11px 12px; border-bottom:1px solid var(--line); text-align:right;
+  font-family:'IBM Plex Mono',monospace; font-size:13.5px; white-space:nowrap}
+td:first-child{text-align:left; font-family:Newsreader,Georgia,serif; font-size:16px;
+  white-space:normal}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+.verdict{display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+  padding:3px 9px; border-radius:2px; border:1px solid}
+.v-good{color:var(--good-ink); border-color:var(--good); background:color-mix(in srgb,var(--good) 9%,transparent)}
+.v-bad{color:var(--bad-ink); border-color:var(--bad); background:color-mix(in srgb,var(--bad) 9%,transparent)}
+
+/* rule rows */
+.rules{display:flex; flex-direction:column}
+.rule{display:grid; grid-template-columns:52px minmax(0,1fr) 112px;
+  gap:18px; align-items:center; padding:15px 0; border-bottom:1px solid var(--line)}
+.rule:last-child{border-bottom:0}
+.rule .n{font-size:44px; color:var(--mark-ink); text-align:center}
+.rule .body strong{font-weight:600; font-size:17.5px; display:block}
+.rule .thr{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-2);
+  margin-top:1px}
+.bar-wrap{display:flex; align-items:center; gap:9px}
+.bar{height:9px; border-radius:0 4px 4px 0; background:var(--mark); flex:0 0 auto; min-width:2px}
+.bar-val{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-2);
+  font-variant-numeric:tabular-nums}
+.rule .right{text-align:right}
+.rule .hit{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:600;
+  letter-spacing:-.02em}
+.rule .hit span{font-size:11px; color:var(--muted); letter-spacing:.1em;
+  text-transform:uppercase; display:block; font-weight:500; margin-top:1px}
+
+.joint{display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:1px solid var(--line-strong); background:var(--surface-2)}
+.joint.narrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+.joint>div{padding:15px 18px; border-right:1px solid var(--line)}
+.joint>div:nth-child(4n){border-right:0}
+.joint.narrow>div{border-right:0; border-bottom:1px solid var(--line)}
+.joint.narrow>div:nth-child(odd){border-right:1px solid var(--line)}
+.joint.narrow>div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:760px){.joint{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.joint b{display:block; font-family:'IBM Plex Mono',monospace; font-size:23px;
+  font-weight:600; letter-spacing:-.025em; margin-bottom:1px}
+
+/* position chapter head */
+.chapter{margin-top:14px}
+.chead{display:flex; align-items:flex-end; gap:22px; padding:0 0 18px; flex-wrap:wrap}
+.pmark{font-family:'Big Shoulders Display',Archivo,Impact,sans-serif; font-weight:800;
+  font-size:104px; line-height:.76; letter-spacing:-.01em; color:var(--ink);
+  -webkit-text-stroke:0}
+.chead .txt{flex:1 1 300px; padding-bottom:6px}
+.chead h3{font-size:26px; letter-spacing:-.02em}
+.chead .sub{color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+  margin-top:3px}
+.note{color:var(--ink-2); margin:0 0 26px; max-width:64ch}
+
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:20px;
+  align-items:start}
+.stack{display:flex; flex-direction:column; gap:20px}
+.blockhead{display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+  padding:15px 26px 13px; border-bottom:1px solid var(--line-strong); flex-wrap:wrap}
+.blockhead h4{font-size:18px}
+.green{display:flex; flex-direction:column}
+.narrowcard .rule{grid-template-columns:40px minmax(0,1fr) 92px; gap:12px}
+.narrowcard .rule .n{font-size:36px}
+.narrowcard .rule .body strong{font-size:16px}
+.narrowcard .rule .hit{font-size:18px}
+.green .g{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px;
+  padding:12px 0; border-bottom:1px solid var(--line); align-items:baseline}
+.green .g:last-child{border-bottom:0}
+.green .g em{font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+  color:var(--muted); display:block}
+.green .pct{font-family:'IBM Plex Mono',monospace; font-size:17px; font-weight:600;
+  color:var(--mark-ink); white-space:nowrap}
+
+/* persistence small multiple */
+.pers{display:flex; gap:6px; align-items:flex-end; height:96px; padding-top:8px}
+.pers .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end;
+  align-items:center; gap:5px; height:100%}
+.pers .fill{width:100%; background:var(--mark); border-radius:3px 3px 0 0; min-height:2px}
+.pers .cv{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600}
+.pers .cl{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+  letter-spacing:.04em; white-space:nowrap}
+.cap{font-family:'IBM Plex Mono',monospace; font-size:11px; line-height:1.5;
+  color:var(--muted); margin:14px 0 0; max-width:none}
+
+details{border-top:1px solid var(--line); margin-top:0}
+summary{cursor:pointer; padding:14px 26px; font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+  font-weight:500; list-style:none; display:flex; justify-content:space-between;
+  align-items:center; gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-size:15px; color:var(--line-strong)}
+details[open] summary::after{content:"–"}
+summary:hover{color:var(--ink)}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--mark-ink); outline-offset:2px}
+
+.roll{display:flex; flex-wrap:wrap; gap:0; padding:2px 26px 20px}
+.roll .yr{flex:1 1 168px; padding:11px 12px 11px 0}
+.roll .yr .y{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+  letter-spacing:.1em; margin-bottom:2px}
+.roll .yr .p{font-size:15.5px; line-height:1.32}
+.roll .yr .p b{font-weight:600}
+
+.fc{display:flex; flex-direction:column}
+.fc .r{display:grid; grid-template-columns:24px minmax(0,1fr) auto; gap:0 12px;
+  align-items:center; padding:9px 0; border-bottom:1px solid var(--line)}
+.fc .r:last-child{border-bottom:0}
+.fc .rk{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
+.fc .nm{font-size:16px}
+.fc .nm small{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--muted); letter-spacing:.04em; margin-top:1px}
+.fc .rt{text-align:right}
+.fc .gates{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.07em;
+  color:var(--muted); text-transform:uppercase; margin-top:1px}
+.fc .gates.all{color:var(--good-ink); font-weight:600}
+.fc .pp{font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600;
+  line-height:1.15}
+
+.callout{border-left:3px solid var(--mark); padding:2px 0 2px 20px; margin:26px 0;
+  color:var(--ink-2)}
+.callout b{color:var(--ink)}
+footer{padding:52px 0 0; color:var(--muted); font-size:14.5px}
+footer a{color:var(--mark-ink)}
+ul.tight{margin:0 0 1em; padding-left:20px; max-width:66ch}
+ul.tight li{margin-bottom:.45em}
+@media (max-width:640px){
+  .rule{grid-template-columns:40px minmax(0,1fr); gap:14px}
+  .rule .right{grid-column:2; text-align:left}
+  .rule .hit{display:flex; align-items:baseline; gap:8px}
+  .rule .hit span{display:inline; margin:0}
+  .fc .r{grid-template-columns:22px minmax(0,1fr) auto}
+  .pmark{font-size:76px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow"><span class="label">Fantasy football · 2015–2025</span>
+    <span class="label" style="color:var(--mark-ink)">Full PPR</span></div>
+  <h1>Anatomy of a top-5 season</h1>
+  <p class="deck">Eleven seasons of play-by-play, asked two questions at every
+  position: what did a top-5 fantasy season look like while it was happening, and
+  how much of it could you actually see coming?</p>
+  <div class="meta">
+    <div><b>11</b><span class="label">seasons</span></div>
+    <div><b>5,832</b><span class="label">player-seasons</span></div>
+    <div><b>220</b><span class="label">top-5 finishes</span></div>
+    <div><b>4</b><span class="label">positions</span></div>
+    <div><b>0.90</b><span class="label">best out-of-sample AUC</span></div>
+  </div>
+</header>
+
+<section id="audit">
+  <h2>The card that started this</h2>
+  <p class="sec-intro">Five rules, claimed to describe every overall WR1 since 2016.
+  Scored against all 1,114 qualifying receiver seasons from
+  2016 to 2025. A rule earns its place only if the
+  field does not already clear it.</p>
+  <div class="card"><div class="scroll"><table>
+    <thead><tr><th>Rule as stated</th><th>WR1s passing</th><th>Top-5 seasons</th>
+      <th>Whole pool passing</th><th>Lift</th><th>Verdict</th></tr></thead>
+    <tbody><tr>
+          <td>Under 30 years old</td>
+          <td>10/10</td>
+          <td>46/50</td>
+          <td>89%</td>
+          <td>1.0&times;</td>
+          <td><span class="verdict v-bad">&#10007; no filter</span></td></tr><tr>
+          <td>25%+ target share</td>
+          <td>9/10</td>
+          <td>43/50</td>
+          <td>13%</td>
+          <td>6.6&times;</td>
+          <td><span class="verdict v-good">&#10003; real</span></td></tr><tr>
+          <td>2.3+ yards per route (as stated)</td>
+          <td>9/10</td>
+          <td>39/50</td>
+          <td>12%</td>
+          <td>6.3&times;</td>
+          <td><span class="verdict v-good">&#10003; real</span></td></tr><tr>
+          <td>2.5+ yards per route (PFF-equivalent)</td>
+          <td>9/10</td>
+          <td>31/50</td>
+          <td>8%</td>
+          <td>7.8&times;</td>
+          <td><span class="verdict v-good">&#10003; real</span></td></tr><tr>
+          <td>Top-11 scoring offense</td>
+          <td>10/10</td>
+          <td>33/50</td>
+          <td>34%</td>
+          <td>2.0&times;</td>
+          <td><span class="verdict v-good">&#10003; real</span></td></tr><tr>
+          <td>Top-10 QB in EPA/dropback</td>
+          <td>9/10</td>
+          <td>28/50</td>
+          <td>29%</td>
+          <td>1.9&times;</td>
+          <td><span class="verdict v-good">&#10003; real</span></td></tr></tbody></table></div>
+    <div class="joint">
+      <div><b>2.9</b><span class="label">a season clear all 5 gates</span></div>
+      <div><b>66%</b><span class="label">of them finish top-5</span></div>
+      <div><b>14.6&times;</b><span class="label">the base rate of 4.5%</span></div>
+      <div><b>38%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div>
+  </div>
+  <div class="callout"><p><b>Four of the five rules hold up. One does nothing.</b>
+  Being under 30 describes 89% of the qualifying
+  receiver pool, so it removes almost nobody — a lift of
+  1.0&times;. Age carries an AUC of 0.51 for predicting a
+  top-5 receiver season, which is a coin flip. The two rules doing the real work
+  are target share and route efficiency, at 6.6&times; and 6.3&times;.</p></div>
+  <p>Taken together the five rules flag 29 seasons across the decade
+  and 19 of them finished top-5 — a 66% hit
+  rate. But the card goes 7 for 10
+  on the very list it illustrates:</p>
+  <ul class="tight"><li><b>2016 Antonio Brown</b> — failed 2.3+ yards per route (as stated)</li><li><b>2018 Tyreek Hill</b> — failed 25%+ target share</li><li><b>2022 Justin Jefferson</b> — failed Top-10 QB in EPA/dropback</li></ul>
+</section>
+
+<section>
+  <hr class="hash">
+  <h2 style="margin-top:44px">Two different questions</h2>
+  <p class="sec-intro">Cards like the one above blur them together. They are not
+  the same question and they do not have the same answer.</p>
+  <div class="grid2">
+    <div class="card pad"><span class="label">Gate</span>
+      <p style="margin:8px 0 0"><b>The bar nearly every top-5 season cleared.</b>
+      Loose enough that ~85% of elite seasons sit above it, so failing one is
+      strong evidence against. Clearing all of them at once is rare, and at wide
+      receiver it is close to decisive.</p></div>
+    <div class="card pad"><span class="label">Green flag</span>
+      <p style="margin:8px 0 0"><b>The bar that, once cleared, usually means top-5.</b>
+      Set to maximise hit rate rather than coverage, so most elite seasons miss it —
+      but the ones that clear it are mostly elite.</p></div>
+  </div>
+  <div class="callout"><p>Rules are rejected, not padded. A candidate rule has to
+  beat the base rate by 1.35&times; to make a card, and metrics that merely restate
+  the fantasy score — a quarterback's team points, his touchdown rate — are marked
+  circular and kept out. That is why the quarterback card has two rules and the
+  receiver card has five.</p></div>
+</section>
+
+<section class="chapter" id="wr">
+  <hr class="hash">
+  <div class="chead">
+    <div class="pmark">WR</div>
+    <div class="txt">
+      <h3>Wide receiver</h3>
+      <div class="sub">1,232 qualifying seasons, 2015–2025 &nbsp;·&nbsp;
+        55 of them top-5 &nbsp;·&nbsp; base rate 4.5%</div>
+    </div>
+  </div>
+  <p class="note">The position the original card was about, and the one where the recipe works best. Five gates, cleared by fewer than three receivers a year, and nine in ten of them finish top-5.</p>
+
+  <div class="card"><div class="blockhead"><h4>The gates</h4>
+      <span class="label">cleared by ~85% of top-5 seasons</span></div>
+      <div class="pad rules">
+      <div class="rule" title="Targets per game: at least 9 — 40% of
+           seasons clearing it finished top-5">
+        <div class="n num">1</div>
+        <div class="body">
+          <strong>Targets per game</strong>
+          <div class="thr">at least 9 &nbsp;·&nbsp; cleared by
+            85% of top-5 seasons &nbsp;·&nbsp;
+            ~10.7 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">8.9× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">40%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Yards per route (est., shrunk): at least 2.14 — 29% of
+           seasons clearing it finished top-5">
+        <div class="n num">2</div>
+        <div class="body">
+          <strong>Yards per route (est., shrunk)</strong>
+          <div class="thr">at least 2.14 &nbsp;·&nbsp; cleared by
+            85% of top-5 seasons &nbsp;·&nbsp;
+            ~14.8 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:54px"></div><span class="bar-val">6.5× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">29%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Red-zone target share: at least 21% — 21% of
+           seasons clearing it finished top-5">
+        <div class="n num">3</div>
+        <div class="body">
+          <strong>Red-zone target share</strong>
+          <div class="thr">at least 21% &nbsp;·&nbsp; cleared by
+            84% of top-5 seasons &nbsp;·&nbsp;
+            ~20.2 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:38px"></div><span class="bar-val">4.6× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">21%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Routes per game (est.): at least 31 — 13% of
+           seasons clearing it finished top-5">
+        <div class="n num">4</div>
+        <div class="body">
+          <strong>Routes per game (est.)</strong>
+          <div class="thr">at least 31 &nbsp;·&nbsp; cleared by
+            84% of top-5 seasons &nbsp;·&nbsp;
+            ~33.4 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:23px"></div><span class="bar-val">2.8× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">13%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Team scoring rank: at most 16 — 8% of
+           seasons clearing it finished top-5">
+        <div class="n num">5</div>
+        <div class="body">
+          <strong>Team scoring rank</strong>
+          <div class="thr">at most 16 &nbsp;·&nbsp; cleared by
+            85% of top-5 seasons &nbsp;·&nbsp;
+            ~55.4 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:14px"></div><span class="bar-val">1.7× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">8%<span>finish top-5</span></div></div>
+      </div></div><div class="joint">
+      <div><b>2.6</b><span class="label">a season clear all 5 gates</span></div>
+      <div><b>90%</b><span class="label">of them finish top-5</span></div>
+      <div><b>20.1&times;</b><span class="label">the base rate of 4.5%</span></div>
+      <div><b>47%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><div class="blockhead"><h4>Green flags</h4>
+      <span class="label">hit rate once cleared</span></div>
+      <div class="pad green"><div class="g"><div><strong>Target share</strong>
+        <em>at least 31% &nbsp;·&nbsp; ~1.8 a season</em></div>
+        <div class="pct">70%</div></div><div class="g"><div><strong>Red-zone target share</strong>
+        <em>at least 32% &nbsp;·&nbsp; ~2.5 a season</em></div>
+        <div class="pct">48%</div></div><div class="g"><div><strong>Snap share</strong>
+        <em>at least 95% &nbsp;·&nbsp; ~1.7 a season</em></div>
+        <div class="pct">47%</div></div><div class="g"><div><strong>Yards per route (est., shrunk)</strong>
+        <em>at least 2.37 &nbsp;·&nbsp; ~7.9 a season</em></div>
+        <div class="pct">34%</div></div></div></div>
+    <div class="card"><div class="blockhead"><h4>Does it repeat?</h4>
+      <span class="label">chance of top-5, by last year's finish</span></div>
+      <div class="pad"><div class="pers"><div class="col" title="top 5 last year, n=53:
+        32% finished top-5 the next season">
+        <div class="cv">32%</div>
+        <div class="fill" style="height:58px"></div>
+        <div class="cl">top 5</div></div><div class="col" title="6–12 last year, n=77:
+        17% finished top-5 the next season">
+        <div class="cv">17%</div>
+        <div class="fill" style="height:31px"></div>
+        <div class="cl">6–12</div></div><div class="col" title="13–24 last year, n=126:
+        6% finished top-5 the next season">
+        <div class="cv">6%</div>
+        <div class="fill" style="height:11px"></div>
+        <div class="cl">13–24</div></div><div class="col" title="25+ last year, n=800:
+        1% finished top-5 the next season">
+        <div class="cv">1%</div>
+        <div class="fill" style="height:2px"></div>
+        <div class="cl">25+</div></div></div>
+      <p class="cap">Sample: 53 / 77 /
+      126 / 800 player-seasons per bucket.
+      Elite finishes decay fast — outside last year's top 24 it is close to a
+      standing start.</p></div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card narrowcard"><div class="blockhead">
+        <h4>What last season already told you</h4>
+        <span class="label">prior-year inputs only</span></div>
+        <div class="pad rules"><div class="rule"><div class="n num">1</div><div class="body">
+            <strong>Last year&#x27;s PPR per game (shrunk)</strong><div class="thr">at least 13
+            &nbsp;·&nbsp; true of 82% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">4.3× base rate</span></div></div>
+            <div class="right"><div class="hit">20%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">2</div><div class="body">
+            <strong>Last year&#x27;s targets per game</strong><div class="thr">at least 8
+            &nbsp;·&nbsp; true of 78% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:69px"></div><span class="bar-val">4.0× base rate</span></div></div>
+            <div class="right"><div class="hit">19%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">3</div><div class="body">
+            <strong>Last year&#x27;s air-yards share</strong><div class="thr">at least 31%
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:57px"></div><span class="bar-val">3.3× base rate</span></div></div>
+            <div class="right"><div class="hit">15%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">4</div><div class="body">
+            <strong>Last year&#x27;s yards per route (est., shrunk)</strong><div class="thr">at least 1.95
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:52px"></div><span class="bar-val">3.0× base rate</span></div></div>
+            <div class="right"><div class="hit">14%<span>hit rate</span></div></div>
+            </div></div>
+        <div class="joint narrow">
+      <div><b>8.6</b><span class="label">a season clear all 4 gates</span></div>
+      <div><b>28%</b><span class="label">of them finish top-5</span></div>
+      <div><b>6.1&times;</b><span class="label">the base rate of 4.6%</span></div>
+      <div><b>55%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+    <div class="stack"><div class="card"><div class="blockhead"><h4>Predicting it in August</h4>
+      <span class="label">leave-one-season-out</span></div>
+      <div class="joint narrow" style="border-top:0">
+      <div><b>0.90</b><span class="label">out-of-sample AUC</span></div>
+      <div><b>28%</b><span class="label">of a preseason top-10 list hits</span></div>
+      <div><b>63%</b><span class="label">of top-5s inside that list</span></div>
+      <div><b>89%</b><span class="label">had a qualifying prior season at all</span></div>
+      </div></div>
+      <div class="card"><div class="blockhead"><h4>2026 shortlist</h4>
+      <span class="label">108 returning candidates</span></div>
+      <div class="pad fc"><div class="r">
+          <div class="rk">1</div>
+          <div class="nm">Jaxon Smith-Njigba
+            <small>SEA · 25yo · was WR2</small></div>
+          <div class="rt"><div class="pp">0.99</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">2</div>
+          <div class="nm">Puka Nacua
+            <small>LA · 25yo · was WR1</small></div>
+          <div class="rt"><div class="pp">0.99</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">3</div>
+          <div class="nm">Ja&#x27;Marr Chase
+            <small>CIN · 27yo · was WR4</small></div>
+          <div class="rt"><div class="pp">0.99</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">4</div>
+          <div class="nm">Amon-Ra St. Brown
+            <small>DET · 27yo · was WR3</small></div>
+          <div class="rt"><div class="pp">0.93</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">5</div>
+          <div class="nm">Drake London
+            <small>ATL · 25yo · was WR19</small></div>
+          <div class="rt"><div class="pp">0.89</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">6</div>
+          <div class="nm">Chris Olave
+            <small>NO · 26yo · was WR6</small></div>
+          <div class="rt"><div class="pp">0.87</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">7</div>
+          <div class="nm">Zay Flowers
+            <small>BAL · 26yo · was WR7</small></div>
+          <div class="rt"><div class="pp">0.79</div>
+            <div class="gates">3/4</div></div></div><div class="r">
+          <div class="rk">8</div>
+          <div class="nm">Wan&#x27;Dale Robinson
+            <small>NYG · 26yo · was WR14</small></div>
+          <div class="rt"><div class="pp">0.76</div>
+            <div class="gates">1/4</div></div></div><div class="r">
+          <div class="rk">9</div>
+          <div class="nm">George Pickens
+            <small>DAL · 25yo · was WR5</small></div>
+          <div class="rt"><div class="pp">0.74</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">10</div>
+          <div class="nm">Rashee Rice
+            <small>KC · 26yo · was WR40</small></div>
+          <div class="rt"><div class="pp">0.73</div>
+            <div class="gates">3/4</div></div></div></div>
+      <div class="pad" style="padding-top:0"><p class="label" style="max-width:none">
+      Model probability, not a projection. Anyone who changed teams this offseason
+      still carries his old team's context.</p></div></div></div>
+  </div>
+
+  <div class="card" style="margin-top:20px"><details><summary>Every top-5 WR season, 2015–2025
+      &nbsp;·&nbsp; 55 seasons, position winner in bold</summary>
+      <div class="roll"><div class="yr"><div class="y mono">2015</div><div class="p"><b>Antonio Brown</b><br>Julio Jones<br>Brandon Marshall<br>DeAndre Hopkins<br>Odell Beckham Jr.</div></div><div class="yr"><div class="y mono">2016</div><div class="p"><b>Antonio Brown</b><br>Jordy Nelson<br>Mike Evans<br>Odell Beckham Jr.<br>T.Y. Hilton</div></div><div class="yr"><div class="y mono">2017</div><div class="p"><b>Antonio Brown</b><br>DeAndre Hopkins<br>Keenan Allen<br>Larry Fitzgerald<br>Jarvis Landry</div></div><div class="yr"><div class="y mono">2018</div><div class="p"><b>Tyreek Hill</b><br>DeAndre Hopkins<br>Davante Adams<br>Julio Jones<br>Antonio Brown</div></div><div class="yr"><div class="y mono">2019</div><div class="p"><b>Michael Thomas</b><br>Chris Godwin Jr.<br>Julio Jones<br>Cooper Kupp<br>DeAndre Hopkins</div></div><div class="yr"><div class="y mono">2020</div><div class="p"><b>Davante Adams</b><br>Tyreek Hill<br>Stefon Diggs<br>DeAndre Hopkins<br>Calvin Ridley</div></div><div class="yr"><div class="y mono">2021</div><div class="p"><b>Cooper Kupp</b><br>Davante Adams<br>Deebo Samuel Sr.<br>Justin Jefferson<br>Ja&#x27;Marr Chase</div></div><div class="yr"><div class="y mono">2022</div><div class="p"><b>Justin Jefferson</b><br>Tyreek Hill<br>Davante Adams<br>Stefon Diggs<br>CeeDee Lamb</div></div><div class="yr"><div class="y mono">2023</div><div class="p"><b>CeeDee Lamb</b><br>Tyreek Hill<br>Amon-Ra St. Brown<br>Puka Nacua<br>A.J. Brown</div></div><div class="yr"><div class="y mono">2024</div><div class="p"><b>Ja&#x27;Marr Chase</b><br>Justin Jefferson<br>Amon-Ra St. Brown<br>Brian Thomas Jr.<br>Drake London</div></div><div class="yr"><div class="y mono">2025</div><div class="p"><b>Puka Nacua</b><br>Jaxon Smith-Njigba<br>Amon-Ra St. Brown<br>Ja&#x27;Marr Chase<br>George Pickens</div></div></div></details></div>
+</section><section class="chapter" id="te">
+  <hr class="hash">
+  <div class="chead">
+    <div class="pmark">TE</div>
+    <div class="txt">
+      <h3>Tight end</h3>
+      <div class="sub">626 qualifying seasons, 2015–2025 &nbsp;·&nbsp;
+        55 of them top-5 &nbsp;·&nbsp; base rate 8.8%</div>
+    </div>
+  </div>
+  <p class="note">Almost as sharp as wide receiver, and the position where last year tells you the most: a tight end who finished top-5 repeats at 43%, far above any other position.</p>
+
+  <div class="card"><div class="blockhead"><h4>The gates</h4>
+      <span class="label">cleared by ~85% of top-5 seasons</span></div>
+      <div class="pad rules">
+      <div class="rule" title="Targets per game: at least 6.5 — 56% of
+           seasons clearing it finished top-5">
+        <div class="n num">1</div>
+        <div class="body">
+          <strong>Targets per game</strong>
+          <div class="thr">at least 6.5 &nbsp;·&nbsp; cleared by
+            80% of top-5 seasons &nbsp;·&nbsp;
+            ~7.1 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">6.4× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">56%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Yards per route (est., shrunk): at least 1.41 — 30% of
+           seasons clearing it finished top-5">
+        <div class="n num">2</div>
+        <div class="body">
+          <strong>Yards per route (est., shrunk)</strong>
+          <div class="thr">at least 1.41 &nbsp;·&nbsp; cleared by
+            84% of top-5 seasons &nbsp;·&nbsp;
+            ~13.7 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:40px"></div><span class="bar-val">3.5× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">30%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Red-zone target share: at least 17% — 30% of
+           seasons clearing it finished top-5">
+        <div class="n num">3</div>
+        <div class="body">
+          <strong>Red-zone target share</strong>
+          <div class="thr">at least 17% &nbsp;·&nbsp; cleared by
+            84% of top-5 seasons &nbsp;·&nbsp;
+            ~14.0 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:39px"></div><span class="bar-val">3.4× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">30%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Snap share: at least 73% — 27% of
+           seasons clearing it finished top-5">
+        <div class="n num">4</div>
+        <div class="body">
+          <strong>Snap share</strong>
+          <div class="thr">at least 73% &nbsp;·&nbsp; cleared by
+            85% of top-5 seasons &nbsp;·&nbsp;
+            ~16.0 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:35px"></div><span class="bar-val">3.0× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">27%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="QB rank in EPA/dropback: at most 22 — 12% of
+           seasons clearing it finished top-5">
+        <div class="n num">5</div>
+        <div class="body">
+          <strong>QB rank in EPA/dropback</strong>
+          <div class="thr">at most 22 &nbsp;·&nbsp; cleared by
+            87% of top-5 seasons &nbsp;·&nbsp;
+            ~36.6 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:16px"></div><span class="bar-val">1.4× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">12%<span>finish top-5</span></div></div>
+      </div></div><div class="joint">
+      <div><b>2.5</b><span class="label">a season clear all 5 gates</span></div>
+      <div><b>86%</b><span class="label">of them finish top-5</span></div>
+      <div><b>9.8&times;</b><span class="label">the base rate of 8.8%</span></div>
+      <div><b>44%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><div class="blockhead"><h4>Green flags</h4>
+      <span class="label">hit rate once cleared</span></div>
+      <div class="pad green"><div class="g"><div><strong>Targets per game</strong>
+        <em>at least 8.5 &nbsp;·&nbsp; ~1.4 a season</em></div>
+        <div class="pct">87%</div></div><div class="g"><div><strong>Red-zone target share</strong>
+        <em>at least 25% &nbsp;·&nbsp; ~4.2 a season</em></div>
+        <div class="pct">61%</div></div><div class="g"><div><strong>Yards per route (est., shrunk)</strong>
+        <em>at least 1.69 &nbsp;·&nbsp; ~5.5 a season</em></div>
+        <div class="pct">54%</div></div><div class="g"><div><strong>Routes per game (est.)</strong>
+        <em>at least 37 &nbsp;·&nbsp; ~1.4 a season</em></div>
+        <div class="pct">53%</div></div></div></div>
+    <div class="card"><div class="blockhead"><h4>Does it repeat?</h4>
+      <span class="label">chance of top-5, by last year's finish</span></div>
+      <div class="pad"><div class="pers"><div class="col" title="top 5 last year, n=54:
+        43% finished top-5 the next season">
+        <div class="cv">43%</div>
+        <div class="fill" style="height:58px"></div>
+        <div class="cl">top 5</div></div><div class="col" title="6–12 last year, n=69:
+        13% finished top-5 the next season">
+        <div class="cv">13%</div>
+        <div class="fill" style="height:18px"></div>
+        <div class="cl">6–12</div></div><div class="col" title="13–24 last year, n=118:
+        9% finished top-5 the next season">
+        <div class="cv">9%</div>
+        <div class="fill" style="height:13px"></div>
+        <div class="cl">13–24</div></div><div class="col" title="25+ last year, n=297:
+        2% finished top-5 the next season">
+        <div class="cv">2%</div>
+        <div class="fill" style="height:3px"></div>
+        <div class="cl">25+</div></div></div>
+      <p class="cap">Sample: 54 / 69 /
+      118 / 297 player-seasons per bucket.
+      Elite finishes decay fast — outside last year's top 24 it is close to a
+      standing start.</p></div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card narrowcard"><div class="blockhead">
+        <h4>What last season already told you</h4>
+        <span class="label">prior-year inputs only</span></div>
+        <div class="pad rules"><div class="rule"><div class="n num">1</div><div class="body">
+            <strong>Last year&#x27;s yards per route (est., shrunk)</strong><div class="thr">at least 1.39
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">3.0× base rate</span></div></div>
+            <div class="right"><div class="hit">27%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">2</div><div class="body">
+            <strong>Last year&#x27;s WOPR</strong><div class="thr">at least 0.32
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:65px"></div><span class="bar-val">2.6× base rate</span></div></div>
+            <div class="right"><div class="hit">23%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">3</div><div class="body">
+            <strong>Last year&#x27;s positional finish</strong><div class="thr">at most 19.5
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:56px"></div><span class="bar-val">2.2× base rate</span></div></div>
+            <div class="right"><div class="hit">20%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">4</div><div class="body">
+            <strong>Last year&#x27;s red-zone target share</strong><div class="thr">at least 14%
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:53px"></div><span class="bar-val">2.1× base rate</span></div></div>
+            <div class="right"><div class="hit">19%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">5</div><div class="body">
+            <strong>Last year&#x27;s snap share</strong><div class="thr">at least 65%
+            &nbsp;·&nbsp; true of 82% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:46px"></div><span class="bar-val">1.8× base rate</span></div></div>
+            <div class="right"><div class="hit">17%<span>hit rate</span></div></div>
+            </div></div>
+        <div class="joint narrow">
+      <div><b>7.0</b><span class="label">a season clear all 5 gates</span></div>
+      <div><b>39%</b><span class="label">of them finish top-5</span></div>
+      <div><b>4.3&times;</b><span class="label">the base rate of 9.1%</span></div>
+      <div><b>61%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+    <div class="stack"><div class="card"><div class="blockhead"><h4>Predicting it in August</h4>
+      <span class="label">leave-one-season-out</span></div>
+      <div class="joint narrow" style="border-top:0">
+      <div><b>0.83</b><span class="label">out-of-sample AUC</span></div>
+      <div><b>31%</b><span class="label">of a preseason top-10 list hits</span></div>
+      <div><b>69%</b><span class="label">of top-5s inside that list</span></div>
+      <div><b>89%</b><span class="label">had a qualifying prior season at all</span></div>
+      </div></div>
+      <div class="card"><div class="blockhead"><h4>2026 shortlist</h4>
+      <span class="label">62 returning candidates</span></div>
+      <div class="pad fc"><div class="r">
+          <div class="rk">1</div>
+          <div class="nm">Trey McBride
+            <small>ARI · 27yo · was TE1</small></div>
+          <div class="rt"><div class="pp">0.96</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">2</div>
+          <div class="nm">Kyle Pitts
+            <small>ATL · 26yo · was TE2</small></div>
+          <div class="rt"><div class="pp">0.89</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">3</div>
+          <div class="nm">Harold Fannin Jr.
+            <small>CLE · 22yo · was TE6</small></div>
+          <div class="rt"><div class="pp">0.87</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">4</div>
+          <div class="nm">Brock Bowers
+            <small>LV · 24yo · was TE11</small></div>
+          <div class="rt"><div class="pp">0.80</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">5</div>
+          <div class="nm">Dalton Schultz
+            <small>HOU · 30yo · was TE10</small></div>
+          <div class="rt"><div class="pp">0.78</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">6</div>
+          <div class="nm">George Kittle
+            <small>SF · 33yo · was TE13</small></div>
+          <div class="rt"><div class="pp">0.76</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">7</div>
+          <div class="nm">Travis Kelce
+            <small>KC · 37yo · was TE3</small></div>
+          <div class="rt"><div class="pp">0.75</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">8</div>
+          <div class="nm">Tyler Warren
+            <small>IND · 24yo · was TE4</small></div>
+          <div class="rt"><div class="pp">0.75</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">9</div>
+          <div class="nm">Juwan Johnson
+            <small>NO · 30yo · was TE8</small></div>
+          <div class="rt"><div class="pp">0.74</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">10</div>
+          <div class="nm">Zach Ertz
+            <small>WAS · 36yo · was TE19</small></div>
+          <div class="rt"><div class="pp">0.66</div>
+            <div class="gates all">all gates</div></div></div></div>
+      <div class="pad" style="padding-top:0"><p class="label" style="max-width:none">
+      Model probability, not a projection. Anyone who changed teams this offseason
+      still carries his old team's context.</p></div></div></div>
+  </div>
+
+  <div class="card" style="margin-top:20px"><details><summary>Every top-5 TE season, 2015–2025
+      &nbsp;·&nbsp; 55 seasons, position winner in bold</summary>
+      <div class="roll"><div class="yr"><div class="y mono">2015</div><div class="p"><b>Rob Gronkowski</b><br>Delanie Walker<br>Jordan Reed<br>Gary Barnidge<br>Jordan Matthews</div></div><div class="yr"><div class="y mono">2016</div><div class="p"><b>Travis Kelce</b><br>Kyle Rudolph<br>Greg Olsen<br>Jimmy Graham<br>Delanie Walker</div></div><div class="yr"><div class="y mono">2017</div><div class="p"><b>Travis Kelce</b><br>Rob Gronkowski<br>Zach Ertz<br>Delanie Walker<br>Evan Engram</div></div><div class="yr"><div class="y mono">2018</div><div class="p"><b>Travis Kelce</b><br>Zach Ertz<br>George Kittle<br>Eric Ebron<br>Jared Cook</div></div><div class="yr"><div class="y mono">2019</div><div class="p"><b>Travis Kelce</b><br>George Kittle<br>Darren Waller<br>Zach Ertz<br>Mark Andrews</div></div><div class="yr"><div class="y mono">2020</div><div class="p"><b>Travis Kelce</b><br>Darren Waller<br>Logan Thomas<br>Robert Tonyan<br>T.J. Hockenson</div></div><div class="yr"><div class="y mono">2021</div><div class="p"><b>Mark Andrews</b><br>Travis Kelce<br>Dalton Schultz<br>George Kittle<br>Zach Ertz</div></div><div class="yr"><div class="y mono">2022</div><div class="p"><b>Travis Kelce</b><br>T.J. Hockenson<br>George Kittle<br>Mark Andrews<br>Evan Engram</div></div><div class="yr"><div class="y mono">2023</div><div class="p"><b>Sam LaPorta</b><br>Evan Engram<br>Travis Kelce<br>T.J. Hockenson<br>George Kittle</div></div><div class="yr"><div class="y mono">2024</div><div class="p"><b>Brock Bowers</b><br>Trey McBride<br>George Kittle<br>Jonnu Smith<br>Travis Kelce</div></div><div class="yr"><div class="y mono">2025</div><div class="p"><b>Trey McBride</b><br>Kyle Pitts<br>Travis Kelce<br>Tyler Warren<br>Jake Ferguson</div></div></div></details></div>
+</section><section class="chapter" id="rb">
+  <hr class="hash">
+  <div class="chead">
+    <div class="pmark">RB</div>
+    <div class="txt">
+      <h3>Running back</h3>
+      <div class="sub">801 qualifying seasons, 2015–2025 &nbsp;·&nbsp;
+        55 of them top-5 &nbsp;·&nbsp; base rate 6.9%</div>
+    </div>
+  </div>
+  <p class="note">The gates are looser here because volume is assigned, not earned. A back only needs the job — and the job can be handed to someone who did not have it last year, which is why a quarter of top-5 running back seasons were invisible beforehand.</p>
+
+  <div class="card"><div class="blockhead"><h4>The gates</h4>
+      <span class="label">cleared by ~85% of top-5 seasons</span></div>
+      <div class="pad rules">
+      <div class="rule" title="Weighted opportunities per game: at least 22 — 35% of
+           seasons clearing it finished top-5">
+        <div class="n num">1</div>
+        <div class="body">
+          <strong>Weighted opportunities per game</strong>
+          <div class="thr">at least 22 &nbsp;·&nbsp; cleared by
+            87% of top-5 seasons &nbsp;·&nbsp;
+            ~12.5 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">5.1× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">35%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Snap share: at least 59% — 27% of
+           seasons clearing it finished top-5">
+        <div class="n num">2</div>
+        <div class="body">
+          <strong>Snap share</strong>
+          <div class="thr">at least 59% &nbsp;·&nbsp; cleared by
+            85% of top-5 seasons &nbsp;·&nbsp;
+            ~15.7 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:57px"></div><span class="bar-val">4.0× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">27%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Red-zone carry share: at least 46% — 24% of
+           seasons clearing it finished top-5">
+        <div class="n num">3</div>
+        <div class="body">
+          <strong>Red-zone carry share</strong>
+          <div class="thr">at least 46% &nbsp;·&nbsp; cleared by
+            84% of top-5 seasons &nbsp;·&nbsp;
+            ~17.2 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:51px"></div><span class="bar-val">3.5× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">24%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Target share: at least 9% — 15% of
+           seasons clearing it finished top-5">
+        <div class="n num">4</div>
+        <div class="body">
+          <strong>Target share</strong>
+          <div class="thr">at least 9% &nbsp;·&nbsp; cleared by
+            84% of top-5 seasons &nbsp;·&nbsp;
+            ~27.4 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:32px"></div><span class="bar-val">2.2× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">15%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Yards per target (shrunk): at least 5.5 — 9% of
+           seasons clearing it finished top-5">
+        <div class="n num">5</div>
+        <div class="body">
+          <strong>Yards per target (shrunk)</strong>
+          <div class="thr">at least 5.5 &nbsp;·&nbsp; cleared by
+            95% of top-5 seasons &nbsp;·&nbsp;
+            ~50.5 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:20px"></div><span class="bar-val">1.4× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">9%<span>finish top-5</span></div></div>
+      </div></div><div class="joint">
+      <div><b>5.9</b><span class="label">a season clear all 5 gates</span></div>
+      <div><b>54%</b><span class="label">of them finish top-5</span></div>
+      <div><b>7.8&times;</b><span class="label">the base rate of 6.9%</span></div>
+      <div><b>64%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><div class="blockhead"><h4>Green flags</h4>
+      <span class="label">hit rate once cleared</span></div>
+      <div class="pad green"><div class="g"><div><strong>Touches per game</strong>
+        <em>at least 23 &nbsp;·&nbsp; ~1.4 a season</em></div>
+        <div class="pct">80%</div></div><div class="g"><div><strong>Snap share</strong>
+        <em>at least 82% &nbsp;·&nbsp; ~1.7 a season</em></div>
+        <div class="pct">68%</div></div><div class="g"><div><strong>Target share</strong>
+        <em>at least 19% &nbsp;·&nbsp; ~1.8 a season</em></div>
+        <div class="pct">60%</div></div><div class="g"><div><strong>Red-zone carry share</strong>
+        <em>at least 69% &nbsp;·&nbsp; ~2.5 a season</em></div>
+        <div class="pct">56%</div></div></div></div>
+    <div class="card"><div class="blockhead"><h4>Does it repeat?</h4>
+      <span class="label">chance of top-5, by last year's finish</span></div>
+      <div class="pad"><div class="pers"><div class="col" title="top 5 last year, n=50:
+        24% finished top-5 the next season">
+        <div class="cv">24%</div>
+        <div class="fill" style="height:58px"></div>
+        <div class="cl">top 5</div></div><div class="col" title="6–12 last year, n=73:
+        16% finished top-5 the next season">
+        <div class="cv">16%</div>
+        <div class="fill" style="height:40px"></div>
+        <div class="cl">6–12</div></div><div class="col" title="13–24 last year, n=121:
+        8% finished top-5 the next season">
+        <div class="cv">8%</div>
+        <div class="fill" style="height:20px"></div>
+        <div class="cl">13–24</div></div><div class="col" title="25+ last year, n=425:
+        2% finished top-5 the next season">
+        <div class="cv">2%</div>
+        <div class="fill" style="height:5px"></div>
+        <div class="cl">25+</div></div></div>
+      <p class="cap">Sample: 50 / 73 /
+      121 / 425 player-seasons per bucket.
+      Elite finishes decay fast — outside last year's top 24 it is close to a
+      standing start.</p></div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card narrowcard"><div class="blockhead">
+        <h4>What last season already told you</h4>
+        <span class="label">prior-year inputs only</span></div>
+        <div class="pad rules"><div class="rule"><div class="n num">1</div><div class="body">
+            <strong>Last year&#x27;s PPR per game (shrunk)</strong><div class="thr">at least 11
+            &nbsp;·&nbsp; true of 86% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">2.4× base rate</span></div></div>
+            <div class="right"><div class="hit">15%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">2</div><div class="body">
+            <strong>Last year&#x27;s opportunity share</strong><div class="thr">at least 25%
+            &nbsp;·&nbsp; true of 79% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:64px"></div><span class="bar-val">2.1× base rate</span></div></div>
+            <div class="right"><div class="hit">13%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">3</div><div class="body">
+            <strong>Last year&#x27;s snap share</strong><div class="thr">at least 50%
+            &nbsp;·&nbsp; true of 79% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:62px"></div><span class="bar-val">2.0× base rate</span></div></div>
+            <div class="right"><div class="hit">13%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">4</div><div class="body">
+            <strong>Last year&#x27;s targets per game</strong><div class="thr">at least 2.6
+            &nbsp;·&nbsp; true of 81% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:50px"></div><span class="bar-val">1.6× base rate</span></div></div>
+            <div class="right"><div class="hit">10%<span>hit rate</span></div></div>
+            </div><div class="rule"><div class="n num">5</div><div class="body">
+            <strong>Last year&#x27;s red-zone carry share</strong><div class="thr">at least 28%
+            &nbsp;·&nbsp; true of 79% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:45px"></div><span class="bar-val">1.4× base rate</span></div></div>
+            <div class="right"><div class="hit">9%<span>hit rate</span></div></div>
+            </div></div>
+        <div class="joint narrow">
+      <div><b>13.8</b><span class="label">a season clear all 5 gates</span></div>
+      <div><b>14%</b><span class="label">of them finish top-5</span></div>
+      <div><b>2.3&times;</b><span class="label">the base rate of 6.3%</span></div>
+      <div><b>52%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+    <div class="stack"><div class="card"><div class="blockhead"><h4>Predicting it in August</h4>
+      <span class="label">leave-one-season-out</span></div>
+      <div class="joint narrow" style="border-top:0">
+      <div><b>0.81</b><span class="label">out-of-sample AUC</span></div>
+      <div><b>22%</b><span class="label">of a preseason top-10 list hits</span></div>
+      <div><b>57%</b><span class="label">of top-5s inside that list</span></div>
+      <div><b>76%</b><span class="label">had a qualifying prior season at all</span></div>
+      </div></div>
+      <div class="card"><div class="blockhead"><h4>2026 shortlist</h4>
+      <span class="label">70 returning candidates</span></div>
+      <div class="pad fc"><div class="r">
+          <div class="rk">1</div>
+          <div class="nm">Bijan Robinson
+            <small>ATL · 25yo · was RB2</small></div>
+          <div class="rt"><div class="pp">0.96</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">2</div>
+          <div class="nm">De&#x27;Von Achane
+            <small>MIA · 25yo · was RB5</small></div>
+          <div class="rt"><div class="pp">0.93</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">3</div>
+          <div class="nm">Jahmyr Gibbs
+            <small>DET · 24yo · was RB3</small></div>
+          <div class="rt"><div class="pp">0.92</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">4</div>
+          <div class="nm">Christian McCaffrey
+            <small>SF · 30yo · was RB1</small></div>
+          <div class="rt"><div class="pp">0.88</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">5</div>
+          <div class="nm">Jonathan Taylor
+            <small>IND · 28yo · was RB4</small></div>
+          <div class="rt"><div class="pp">0.85</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">6</div>
+          <div class="nm">James Cook
+            <small>BUF · 27yo · was RB6</small></div>
+          <div class="rt"><div class="pp">0.85</div>
+            <div class="gates">4/5</div></div></div><div class="r">
+          <div class="rk">7</div>
+          <div class="nm">Ashton Jeanty
+            <small>LV · 23yo · was RB11</small></div>
+          <div class="rt"><div class="pp">0.81</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">8</div>
+          <div class="nm">Breece Hall
+            <small>NYJ · 25yo · was RB19</small></div>
+          <div class="rt"><div class="pp">0.74</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">9</div>
+          <div class="nm">Bucky Irving
+            <small>TB · 24yo · was RB34</small></div>
+          <div class="rt"><div class="pp">0.74</div>
+            <div class="gates">4/5</div></div></div><div class="r">
+          <div class="rk">10</div>
+          <div class="nm">Chase Brown
+            <small>CIN · 26yo · was RB7</small></div>
+          <div class="rt"><div class="pp">0.71</div>
+            <div class="gates all">all gates</div></div></div></div>
+      <div class="pad" style="padding-top:0"><p class="label" style="max-width:none">
+      Model probability, not a projection. Anyone who changed teams this offseason
+      still carries his old team's context.</p></div></div></div>
+  </div>
+
+  <div class="card" style="margin-top:20px"><details><summary>Every top-5 RB season, 2015–2025
+      &nbsp;·&nbsp; 55 seasons, position winner in bold</summary>
+      <div class="roll"><div class="yr"><div class="y mono">2015</div><div class="p"><b>Devonta Freeman</b><br>Adrian Peterson<br>Danny Woodhead<br>DeAngelo Williams<br>Doug Martin</div></div><div class="yr"><div class="y mono">2016</div><div class="p"><b>David Johnson</b><br>Ezekiel Elliott<br>Le&#x27;Veon Bell<br>LeSean McCoy<br>DeMarco Murray</div></div><div class="yr"><div class="y mono">2017</div><div class="p"><b>Todd Gurley</b><br>Le&#x27;Veon Bell<br>Alvin Kamara<br>Kareem Hunt<br>Melvin Gordon</div></div><div class="yr"><div class="y mono">2018</div><div class="p"><b>Saquon Barkley</b><br>Christian McCaffrey<br>Todd Gurley<br>Alvin Kamara<br>Ezekiel Elliott</div></div><div class="yr"><div class="y mono">2019</div><div class="p"><b>Christian McCaffrey</b><br>Aaron Jones<br>Ezekiel Elliott<br>Austin Ekeler<br>Derrick Henry</div></div><div class="yr"><div class="y mono">2020</div><div class="p"><b>Alvin Kamara</b><br>Dalvin Cook<br>Derrick Henry<br>David Montgomery<br>Aaron Jones</div></div><div class="yr"><div class="y mono">2021</div><div class="p"><b>Jonathan Taylor</b><br>Austin Ekeler<br>Najee Harris<br>Joe Mixon<br>James Conner</div></div><div class="yr"><div class="y mono">2022</div><div class="p"><b>Austin Ekeler</b><br>Christian McCaffrey<br>Josh Jacobs<br>Derrick Henry<br>Saquon Barkley</div></div><div class="yr"><div class="y mono">2023</div><div class="p"><b>Christian McCaffrey</b><br>Breece Hall<br>Travis Etienne<br>Rachaad White<br>Raheem Mostert</div></div><div class="yr"><div class="y mono">2024</div><div class="p"><b>Jahmyr Gibbs</b><br>Saquon Barkley<br>Bijan Robinson<br>Derrick Henry<br>De&#x27;Von Achane</div></div><div class="yr"><div class="y mono">2025</div><div class="p"><b>Christian McCaffrey</b><br>Bijan Robinson<br>Jahmyr Gibbs<br>Jonathan Taylor<br>De&#x27;Von Achane</div></div></div></details></div>
+</section><section class="chapter" id="qb">
+  <hr class="hash">
+  <div class="chead">
+    <div class="pmark">QB</div>
+    <div class="txt">
+      <h3>Quarterback</h3>
+      <div class="sub">368 qualifying seasons, 2015–2025 &nbsp;·&nbsp;
+        55 of them top-5 &nbsp;·&nbsp; base rate 14.9%</div>
+    </div>
+  </div>
+  <p class="note">The position where the format breaks down. Nearly every quarterback stat is his fantasy score restated in other units, so once the circular ones are removed only two honest gates survive.</p>
+
+  <div class="card"><div class="blockhead"><h4>The gates</h4>
+      <span class="label">cleared by ~85% of top-5 seasons</span></div>
+      <div class="pad rules">
+      <div class="rule" title="EPA per dropback: at least 0.1 — 35% of
+           seasons clearing it finished top-5">
+        <div class="n num">1</div>
+        <div class="body">
+          <strong>EPA per dropback</strong>
+          <div class="thr">at least 0.1 &nbsp;·&nbsp; cleared by
+            85% of top-5 seasons &nbsp;·&nbsp;
+            ~12.2 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">2.3× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">35%<span>finish top-5</span></div></div>
+      </div>
+      <div class="rule" title="Dropbacks: at least 525 — 28% of
+           seasons clearing it finished top-5">
+        <div class="n num">2</div>
+        <div class="body">
+          <strong>Dropbacks</strong>
+          <div class="thr">at least 525 &nbsp;·&nbsp; cleared by
+            87% of top-5 seasons &nbsp;·&nbsp;
+            ~15.5 players a season</div>
+          <div class="bar-wrap"><div class="bar" style="width:59px"></div><span class="bar-val">1.9× base rate</span></div>
+        </div>
+        <div class="right"><div class="hit">28%<span>finish top-5</span></div></div>
+      </div></div><div class="joint">
+      <div><b>7.3</b><span class="label">a season clear all 2 gates</span></div>
+      <div><b>50%</b><span class="label">of them finish top-5</span></div>
+      <div><b>3.3&times;</b><span class="label">the base rate of 14.9%</span></div>
+      <div><b>73%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><div class="blockhead"><h4>Green flags</h4>
+      <span class="label">hit rate once cleared</span></div>
+      <div class="pad green"><div class="g"><div><strong>EPA per dropback</strong>
+        <em>at least 0.28 &nbsp;·&nbsp; ~1.4 a season</em></div>
+        <div class="pct">67%</div></div><div class="g"><div><strong>Rushing yards</strong>
+        <em>at least 700 &nbsp;·&nbsp; ~1.4 a season</em></div>
+        <div class="pct">60%</div></div><div class="g"><div><strong>Dropbacks</strong>
+        <em>at least 650 &nbsp;·&nbsp; ~2.2 a season</em></div>
+        <div class="pct">54%</div></div><div class="g"><div><strong>Rushing TDs</strong>
+        <em>at least 8 &nbsp;·&nbsp; ~1.5 a season</em></div>
+        <div class="pct">53%</div></div></div></div>
+    <div class="card"><div class="blockhead"><h4>Does it repeat?</h4>
+      <span class="label">chance of top-5, by last year's finish</span></div>
+      <div class="pad"><div class="pers"><div class="col" title="top 5 last year, n=50:
+        26% finished top-5 the next season">
+        <div class="cv">26%</div>
+        <div class="fill" style="height:58px"></div>
+        <div class="cl">top 5</div></div><div class="col" title="6–12 last year, n=76:
+        22% finished top-5 the next season">
+        <div class="cv">22%</div>
+        <div class="fill" style="height:50px"></div>
+        <div class="cl">6–12</div></div><div class="col" title="13–24 last year, n=119:
+        12% finished top-5 the next season">
+        <div class="cv">12%</div>
+        <div class="fill" style="height:26px"></div>
+        <div class="cl">13–24</div></div><div class="col" title="25+ last year, n=65:
+        3% finished top-5 the next season">
+        <div class="cv">3%</div>
+        <div class="fill" style="height:7px"></div>
+        <div class="cl">25+</div></div></div>
+      <p class="cap">Sample: 50 / 76 /
+      119 / 65 player-seasons per bucket.
+      Elite finishes decay fast — outside last year's top 24 it is close to a
+      standing start.</p></div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="card narrowcard"><div class="blockhead">
+        <h4>What last season already told you</h4>
+        <span class="label">prior-year inputs only</span></div>
+        <div class="pad rules"><div class="rule"><div class="n num">1</div><div class="body">
+            <strong>Last year&#x27;s rushing yards</strong><div class="thr">at least 118
+            &nbsp;·&nbsp; true of 80% of the next year's top-5</div>
+            <div class="bar-wrap"><div class="bar" style="width:74px"></div><span class="bar-val">1.4× base rate</span></div></div>
+            <div class="right"><div class="hit">20%<span>hit rate</span></div></div>
+            </div></div>
+        <div class="joint narrow">
+      <div><b>16.5</b><span class="label">a season clear the gate</span></div>
+      <div><b>20%</b><span class="label">of them finish top-5</span></div>
+      <div><b>1.4&times;</b><span class="label">the base rate of 14.8%</span></div>
+      <div><b>80%</b><span class="label">of all top-5 seasons caught</span></div>
+    </div></div>
+    <div class="stack"><div class="card"><div class="blockhead"><h4>Predicting it in August</h4>
+      <span class="label">leave-one-season-out</span></div>
+      <div class="joint narrow" style="border-top:0">
+      <div><b>0.68</b><span class="label">out-of-sample AUC</span></div>
+      <div><b>25%</b><span class="label">of a preseason top-10 list hits</span></div>
+      <div><b>59%</b><span class="label">of top-5s inside that list</span></div>
+      <div><b>84%</b><span class="label">had a qualifying prior season at all</span></div>
+      </div></div>
+      <div class="card"><div class="blockhead"><h4>2026 shortlist</h4>
+      <span class="label">36 returning candidates</span></div>
+      <div class="pad fc"><div class="r">
+          <div class="rk">1</div>
+          <div class="nm">Drake Maye
+            <small>NE · 24yo · was QB2</small></div>
+          <div class="rt"><div class="pp">0.79</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">2</div>
+          <div class="nm">Josh Allen
+            <small>BUF · 30yo · was QB1</small></div>
+          <div class="rt"><div class="pp">0.78</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">3</div>
+          <div class="nm">Bo Nix
+            <small>DEN · 27yo · was QB7</small></div>
+          <div class="rt"><div class="pp">0.69</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">4</div>
+          <div class="nm">Patrick Mahomes
+            <small>KC · 31yo · was QB11</small></div>
+          <div class="rt"><div class="pp">0.67</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">5</div>
+          <div class="nm">Trevor Lawrence
+            <small>JAX · 27yo · was QB4</small></div>
+          <div class="rt"><div class="pp">0.62</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">6</div>
+          <div class="nm">Jalen Hurts
+            <small>PHI · 28yo · was QB8</small></div>
+          <div class="rt"><div class="pp">0.61</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">7</div>
+          <div class="nm">Dak Prescott
+            <small>DAL · 33yo · was QB6</small></div>
+          <div class="rt"><div class="pp">0.60</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">8</div>
+          <div class="nm">Caleb Williams
+            <small>CHI · 25yo · was QB5</small></div>
+          <div class="rt"><div class="pp">0.59</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">9</div>
+          <div class="nm">Justin Herbert
+            <small>LAC · 28yo · was QB10</small></div>
+          <div class="rt"><div class="pp">0.56</div>
+            <div class="gates all">all gates</div></div></div><div class="r">
+          <div class="rk">10</div>
+          <div class="nm">Justin Fields
+            <small>NYJ · 27yo · was QB28</small></div>
+          <div class="rt"><div class="pp">0.48</div>
+            <div class="gates all">all gates</div></div></div></div>
+      <div class="pad" style="padding-top:0"><p class="label" style="max-width:none">
+      Model probability, not a projection. Anyone who changed teams this offseason
+      still carries his old team's context.</p></div></div></div>
+  </div>
+
+  <div class="card" style="margin-top:20px"><details><summary>Every top-5 QB season, 2015–2025
+      &nbsp;·&nbsp; 55 seasons, position winner in bold</summary>
+      <div class="roll"><div class="yr"><div class="y mono">2015</div><div class="p"><b>Cam Newton</b><br>Tom Brady<br>Russell Wilson<br>Blake Bortles<br>Carson Palmer</div></div><div class="yr"><div class="y mono">2016</div><div class="p"><b>Aaron Rodgers</b><br>Matt Ryan<br>Drew Brees<br>Andrew Luck<br>Kirk Cousins</div></div><div class="yr"><div class="y mono">2017</div><div class="p"><b>Russell Wilson</b><br>Cam Newton<br>Tom Brady<br>Alex Smith<br>Carson Wentz</div></div><div class="yr"><div class="y mono">2018</div><div class="p"><b>Patrick Mahomes</b><br>Matt Ryan<br>Ben Roethlisberger<br>Deshaun Watson<br>Andrew Luck</div></div><div class="yr"><div class="y mono">2019</div><div class="p"><b>Lamar Jackson</b><br>Dak Prescott<br>Russell Wilson<br>Deshaun Watson<br>Jameis Winston</div></div><div class="yr"><div class="y mono">2020</div><div class="p"><b>Josh Allen</b><br>Aaron Rodgers<br>Kyler Murray<br>Patrick Mahomes<br>Deshaun Watson</div></div><div class="yr"><div class="y mono">2021</div><div class="p"><b>Josh Allen</b><br>Justin Herbert<br>Tom Brady<br>Patrick Mahomes<br>Aaron Rodgers</div></div><div class="yr"><div class="y mono">2022</div><div class="p"><b>Patrick Mahomes</b><br>Josh Allen<br>Jalen Hurts<br>Joe Burrow<br>Geno Smith</div></div><div class="yr"><div class="y mono">2023</div><div class="p"><b>Josh Allen</b><br>Jalen Hurts<br>Dak Prescott<br>Lamar Jackson<br>Jordan Love</div></div><div class="yr"><div class="y mono">2024</div><div class="p"><b>Lamar Jackson</b><br>Josh Allen<br>Joe Burrow<br>Baker Mayfield<br>Jayden Daniels</div></div><div class="yr"><div class="y mono">2025</div><div class="p"><b>Josh Allen</b><br>Drake Maye<br>Matthew Stafford<br>Trevor Lawrence<br>Caleb Williams</div></div></div></details></div>
+</section>
+
+<section>
+  <hr class="hash">
+  <h2 style="margin-top:44px">What none of this can see</h2>
+  <p class="sec-intro">Prior-year metrics cannot describe a role that did not exist
+  yet. These top-5 seasons had no qualifying prior season at all — rookies, and
+  players handed a job they had never held.</p>
+  <div class="card"><div class="scroll"><table>
+    <thead><tr><th>Position</th><th>Unreachable</th><th>Share</th>
+      <th style="text-align:left">Seasons no prior-year model could have flagged</th></tr></thead>
+    <tbody><tr><td style="white-space:nowrap">Wide receiver</td>
+        <td>6</td>
+        <td>11%</td>
+        <td style="text-align:left;white-space:normal;font-size:12.5px">
+        2016 Jordy Nelson, 2017 Keenan Allen, 2021 Deebo Samuel Sr., 2021 Ja&#x27;Marr Chase, 2023 Puka Nacua, 2024 Brian Thomas Jr.</td></tr><tr><td style="white-space:nowrap">Tight end</td>
+        <td>6</td>
+        <td>11%</td>
+        <td style="text-align:left;white-space:normal;font-size:12.5px">
+        2017 Evan Engram, 2019 Darren Waller, 2020 Robert Tonyan, 2023 Sam LaPorta, 2024 Brock Bowers, 2025 Tyler Warren</td></tr><tr><td style="white-space:nowrap">Running back</td>
+        <td>13</td>
+        <td>24%</td>
+        <td style="text-align:left;white-space:normal;font-size:12.5px">
+        2015 DeAngelo Williams, 2015 Adrian Peterson, 2015 Danny Woodhead, 2016 Le&#x27;Veon Bell, 2016 Ezekiel Elliott, 2017 Alvin Kamara, 2017 Kareem Hunt, 2018 Saquon Barkley, 2021 Joe Mixon, 2021 Najee Harris, 2022 Christian McCaffrey, 2023 Breece Hall, 2025 Christian McCaffrey</td></tr><tr><td style="white-space:nowrap">Quarterback</td>
+        <td>9</td>
+        <td>16%</td>
+        <td style="text-align:left;white-space:normal;font-size:12.5px">
+        2015 Carson Palmer, 2016 Andrew Luck, 2018 Andrew Luck, 2018 Deshaun Watson, 2018 Patrick Mahomes, 2019 Lamar Jackson, 2022 Geno Smith, 2023 Jordan Love, 2024 Jayden Daniels</td></tr></tbody></table></div></div>
+  <div class="callout"><p><b>Running back is the position with the biggest blind spot.</b>
+  A quarter of its top-5 seasons came from players the prior year could not see,
+  because a backfield job is assigned in August, not earned in December. That is
+  the same reason its gates are the loosest of the four.</p></div>
+</section>
+
+<section>
+  <hr class="hash">
+  <h2 style="margin-top:44px">Method</h2>
+  <ul class="tight">
+    <li><b>Data.</b> nflverse public releases — weekly player stats, play-by-play,
+      Pro-Football-Reference snap counts, player master file. 2014 is loaded only
+      to supply prior-year inputs for 2015.</li>
+    <li><b>Scoring.</b> Full PPR, regular season totals; positional finish is the
+      rank of total points within position within season. The computed WR1 list for
+      2016–2025 reproduces the source card's ten players exactly, which is the check
+      that the scoring and ranking are right.</li>
+    <li><b>Pools.</b> A season counts if it clears a rosterability floor — receivers
+      8 games and 30 targets, tight ends 8 and 20, backs 8 games and 50 touches,
+      quarterbacks 8 games and 200 attempts. Base rates are quoted against these
+      pools, not against everyone who took a snap.</li>
+    <li><b>Rate stats are shrunk</b> toward the positional mean by sample size, so a
+      tight end with 157 routes and a 3.6 yards-per-route spike does not outrank a
+      680-route starter.</li>
+    <li><b>Prediction is scored leave-one-season-out</b> — every season is predicted
+      by a model that never saw it.</li>
+    <li><b>Yards per route is an estimate.</b> Public data has no route counts, so
+      routes are estimated as snap share × team dropbacks. That runs 10–20% below
+      charted totals, so the figures here read correspondingly high; every rule is
+      therefore also given as players-per-season, which the bias does not touch.</li>
+  </ul>
+  <p style="color:var(--muted); font-size:15px">Eleven seasons give 55 top-5
+  finishes per position. Which metrics matter is stable; the exact threshold values
+  carry real uncertainty. The model is validated out of sample, the gate thresholds
+  are descriptive and are not.</p>
+</section>
+
+<footer>
+  <hr class="hash" style="margin-bottom:26px">
+  <p>Built from <a href="https://github.com/nflverse/nflverse-data">nflverse</a>
+  public data. Full pipeline, thresholds and per-season outputs are in the
+  repository — <span class="mono">python src/run_all.py</span> reproduces every
+  number on this page.</p>
+</footer>
+</div>
