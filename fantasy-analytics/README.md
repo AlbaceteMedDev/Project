@@ -110,6 +110,9 @@ src/analyze.py        gates, green flags, vacuous-rule detection
 src/predict.py        prior-year model, leave-one-season-out scoring
 src/audit.py          score the viral WR1 card against the record
 src/forecast.py       apply everything to the upcoming season
+src/target_board.py   score every returning candidate, tier the board
+src/report.py         render the study as a page
+src/board_report.py   render the target board as a page
 src/run_all.py        all of the above in order
 
 output/player_seasons.csv     5,832 player-seasons, every metric
@@ -118,6 +121,7 @@ output/predictive_cards.json  preseason rules, model, persistence, coverage
 output/viral_rule_audit.csv   the screenshot's five rules, scored
 output/model_scores.csv       leave-one-season-out probabilities
 output/forecast_2026.csv      upcoming-season shortlists
+output/target_board_2026.csv  every candidate, gates cleared, tier
 ```
 
 ## Running it

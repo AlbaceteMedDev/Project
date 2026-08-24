@@ -1,0 +1,1213 @@
+<title>2026 Draft Target Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --ground:#E7EAE8; --surface:#F8F9F7; --surface-2:#EFF2EF; --line:#D2D8D4;
+  --line-strong:#B4BDB8; --ink:#12100C; --ink-2:#3D4441; --muted:#697471;
+  --mark:#eda100; --mark-ink:#8A6207; --good:#1baf7a; --good-ink:#0F6B4A;
+  --bad:#e34948; --bad-ink:#9E2C2B; --shadow:0 1px 2px rgba(18,16,12,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0E1211; --surface:#181D1C; --surface-2:#1F2523; --line:#2C3432;
+    --line-strong:#414B48; --ink:#ECEFEC; --ink-2:#C2C9C5; --muted:#8D9895;
+    --mark:#c98500; --mark-ink:#E2B458; --good:#199e70; --good-ink:#54C79B;
+    --bad:#e66767; --bad-ink:#F09189; --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0E1211; --surface:#181D1C; --surface-2:#1F2523; --line:#2C3432;
+  --line-strong:#414B48; --ink:#ECEFEC; --ink-2:#C2C9C5; --muted:#8D9895;
+  --mark:#c98500; --mark-ink:#E2B458; --good:#199e70; --good-ink:#54C79B;
+  --bad:#e66767; --bad-ink:#F09189; --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:Newsreader,Georgia,'Times New Roman',serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px 96px}
+p{margin:0 0 1em; max-width:66ch}
+a{color:var(--mark-ink)}
+h1,h2,h3,h4{margin:0; text-wrap:balance; font-weight:600; letter-spacing:-.011em}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-variant-numeric:tabular-nums}
+.label{font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:500}
+.num{font-family:'Big Shoulders Display',Archivo,Impact,sans-serif; font-weight:700;
+  font-variant-numeric:tabular-nums; line-height:.82; letter-spacing:.01em}
+
+/* hash-mark rule: the yard-line motif, used only as a section divider */
+.hash{height:11px; margin:0;
+  background:repeating-linear-gradient(90deg,var(--line-strong) 0 2px,transparent 2px 14px);
+  border:0; opacity:.85}
+
+header.top{padding:76px 0 40px}
+.eyebrow{display:flex; gap:14px; align-items:center; margin-bottom:22px; flex-wrap:wrap}
+h1{font-size:clamp(38px,6.2vw,68px); line-height:1.02; margin-bottom:20px;
+  font-weight:600; letter-spacing:-.028em}
+.deck{font-size:clamp(18px,2.1vw,21px); color:var(--ink-2); max-width:60ch}
+.meta{display:flex; flex-wrap:wrap; gap:0; margin-top:34px; border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.meta div{flex:1 1 150px; padding:14px 18px 15px; border-right:1px solid var(--line)}
+.meta div:last-child{border-right:0}
+.meta b{display:block; font-family:'IBM Plex Mono',monospace; font-size:19px;
+  font-weight:600; letter-spacing:-.02em; margin-bottom:2px}
+
+section{padding:56px 0 8px}
+h2{font-size:clamp(25px,3.4vw,33px); margin-bottom:8px; letter-spacing:-.02em}
+.sec-intro{color:var(--ink-2); margin-bottom:30px}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  box-shadow:var(--shadow)}
+.pad{padding:24px 26px}
+
+/* audit */
+table{width:100%; border-collapse:collapse; font-size:15px}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+th{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--muted); font-weight:500; text-align:right;
+  padding:0 12px 9px; border-bottom:1px solid var(--line-strong); white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:11px 12px; border-bottom:1px solid var(--line); text-align:right;
+  font-family:'IBM Plex Mono',monospace; font-size:13.5px; white-space:nowrap}
+td:first-child{text-align:left; font-family:Newsreader,Georgia,serif; font-size:16px;
+  white-space:normal}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+.verdict{display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+  padding:3px 9px; border-radius:2px; border:1px solid}
+.v-good{color:var(--good-ink); border-color:var(--good); background:color-mix(in srgb,var(--good) 9%,transparent)}
+.v-bad{color:var(--bad-ink); border-color:var(--bad); background:color-mix(in srgb,var(--bad) 9%,transparent)}
+
+/* rule rows */
+.rules{display:flex; flex-direction:column}
+.rule{display:grid; grid-template-columns:52px minmax(0,1fr) 112px;
+  gap:18px; align-items:center; padding:15px 0; border-bottom:1px solid var(--line)}
+.rule:last-child{border-bottom:0}
+.rule .n{font-size:44px; color:var(--mark-ink); text-align:center}
+.rule .body strong{font-weight:600; font-size:17.5px; display:block}
+.rule .thr{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-2);
+  margin-top:1px}
+.bar-wrap{display:flex; align-items:center; gap:9px}
+.bar{height:9px; border-radius:0 4px 4px 0; background:var(--mark); flex:0 0 auto; min-width:2px}
+.bar-val{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-2);
+  font-variant-numeric:tabular-nums}
+.rule .right{text-align:right}
+.rule .hit{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:600;
+  letter-spacing:-.02em}
+.rule .hit span{font-size:11px; color:var(--muted); letter-spacing:.1em;
+  text-transform:uppercase; display:block; font-weight:500; margin-top:1px}
+
+.joint{display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:1px solid var(--line-strong); background:var(--surface-2)}
+.joint.narrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+.joint>div{padding:15px 18px; border-right:1px solid var(--line)}
+.joint>div:nth-child(4n){border-right:0}
+.joint.narrow>div{border-right:0; border-bottom:1px solid var(--line)}
+.joint.narrow>div:nth-child(odd){border-right:1px solid var(--line)}
+.joint.narrow>div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:760px){.joint{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.joint b{display:block; font-family:'IBM Plex Mono',monospace; font-size:23px;
+  font-weight:600; letter-spacing:-.025em; margin-bottom:1px}
+
+/* position chapter head */
+.chapter{margin-top:14px}
+.chead{display:flex; align-items:flex-end; gap:22px; padding:0 0 18px; flex-wrap:wrap}
+.pmark{font-family:'Big Shoulders Display',Archivo,Impact,sans-serif; font-weight:800;
+  font-size:104px; line-height:.76; letter-spacing:-.01em; color:var(--ink);
+  -webkit-text-stroke:0}
+.chead .txt{flex:1 1 300px; padding-bottom:6px}
+.chead h3{font-size:26px; letter-spacing:-.02em}
+.chead .sub{color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+  margin-top:3px}
+.note{color:var(--ink-2); margin:0 0 26px; max-width:64ch}
+
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:20px;
+  align-items:start}
+.stack{display:flex; flex-direction:column; gap:20px}
+.blockhead{display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+  padding:15px 26px 13px; border-bottom:1px solid var(--line-strong); flex-wrap:wrap}
+.blockhead h4{font-size:18px}
+.green{display:flex; flex-direction:column}
+.narrowcard .rule{grid-template-columns:40px minmax(0,1fr) 92px; gap:12px}
+.narrowcard .rule .n{font-size:36px}
+.narrowcard .rule .body strong{font-size:16px}
+.narrowcard .rule .hit{font-size:18px}
+.green .g{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px;
+  padding:12px 0; border-bottom:1px solid var(--line); align-items:baseline}
+.green .g:last-child{border-bottom:0}
+.green .g em{font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+  color:var(--muted); display:block}
+.green .pct{font-family:'IBM Plex Mono',monospace; font-size:17px; font-weight:600;
+  color:var(--mark-ink); white-space:nowrap}
+
+/* persistence small multiple */
+.pers{display:flex; gap:6px; align-items:flex-end; height:96px; padding-top:8px}
+.pers .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end;
+  align-items:center; gap:5px; height:100%}
+.pers .fill{width:100%; background:var(--mark); border-radius:3px 3px 0 0; min-height:2px}
+.pers .cv{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600}
+.pers .cl{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+  letter-spacing:.04em; white-space:nowrap}
+.cap{font-family:'IBM Plex Mono',monospace; font-size:11px; line-height:1.5;
+  color:var(--muted); margin:14px 0 0; max-width:none}
+
+details{border-top:1px solid var(--line); margin-top:0}
+summary{cursor:pointer; padding:14px 26px; font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+  font-weight:500; list-style:none; display:flex; justify-content:space-between;
+  align-items:center; gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-size:15px; color:var(--line-strong)}
+details[open] summary::after{content:"–"}
+summary:hover{color:var(--ink)}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--mark-ink); outline-offset:2px}
+
+.roll{display:flex; flex-wrap:wrap; gap:0; padding:2px 26px 20px}
+.roll .yr{flex:1 1 168px; padding:11px 12px 11px 0}
+.roll .yr .y{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+  letter-spacing:.1em; margin-bottom:2px}
+.roll .yr .p{font-size:15.5px; line-height:1.32}
+.roll .yr .p b{font-weight:600}
+
+.fc{display:flex; flex-direction:column}
+.fc .r{display:grid; grid-template-columns:24px minmax(0,1fr) auto; gap:0 12px;
+  align-items:center; padding:9px 0; border-bottom:1px solid var(--line)}
+.fc .r:last-child{border-bottom:0}
+.fc .rk{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
+.fc .nm{font-size:16px}
+.fc .nm small{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--muted); letter-spacing:.04em; margin-top:1px}
+.fc .rt{text-align:right}
+.fc .gates{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.07em;
+  color:var(--muted); text-transform:uppercase; margin-top:1px}
+.fc .gates.all{color:var(--good-ink); font-weight:600}
+.fc .pp{font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600;
+  line-height:1.15}
+
+.callout{border-left:3px solid var(--mark); padding:2px 0 2px 20px; margin:26px 0;
+  color:var(--ink-2)}
+.callout b{color:var(--ink)}
+footer{padding:52px 0 0; color:var(--muted); font-size:14.5px}
+footer a{color:var(--mark-ink)}
+ul.tight{margin:0 0 1em; padding-left:20px; max-width:66ch}
+ul.tight li{margin-bottom:.45em}
+@media (max-width:640px){
+  .rule{grid-template-columns:40px minmax(0,1fr); gap:14px}
+  .rule .right{grid-column:2; text-align:left}
+  .rule .hit{display:flex; align-items:baseline; gap:8px}
+  .rule .hit span{display:inline; margin:0}
+  .fc .r{grid-template-columns:22px minmax(0,1fr) auto}
+  .pmark{font-size:76px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+.tierband{margin:26px 0 0}
+.tierhead{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  padding:0 0 8px; border-bottom:2px solid var(--line-strong)}
+.tiername{font-family:'Big Shoulders Display',Archivo,sans-serif; font-weight:700;
+  font-size:30px; line-height:1; color:var(--mark-ink)}
+.tierdesc{color:var(--ink-2); font-size:15px; flex:1 1 320px; max-width:62ch}
+.row{display:grid; grid-template-columns:56px minmax(0,1fr) 96px 120px;
+  gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--surface-2)}
+.pnum{font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600;
+  text-align:right; letter-spacing:-.02em}
+.pname{font-size:17.5px; font-weight:600}
+.pmeta{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted);
+  letter-spacing:.03em; margin-top:2px}
+.pmiss{font-size:13px; color:var(--ink-2); margin-top:3px}
+.pmiss b{font-weight:600; color:var(--ink)}
+.pips{display:flex; gap:3px; align-items:center}
+.pip{width:11px; height:11px; border-radius:2px; background:var(--line-strong)}
+.pip.on{background:var(--mark)}
+.piplab{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+  letter-spacing:.1em; text-transform:uppercase; margin-top:4px}
+.clean{color:var(--good-ink); font-family:'IBM Plex Mono',monospace; font-size:12px;
+  letter-spacing:.06em; text-transform:uppercase; font-weight:600; margin-top:3px}
+@media (max-width:640px){
+  .row{grid-template-columns:44px minmax(0,1fr); gap:12px}
+  .row .cellpips,.row .cellprob{grid-column:2}
+  .pnum{font-size:19px; text-align:left}
+}
+</style>
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow"><span class="label">2026 season · full PPR</span>
+    <span class="label" style="color:var(--mark-ink)">Every returning candidate, scored</span></div>
+  <h1>Draft target board</h1>
+  <p class="deck">Every player with a qualifying 2025 season, run through the
+  positional model and the top-5 gates. No hand-picking — the tiers fall out of the
+  numbers.</p>
+  <div class="meta">
+    <div><b>276</b><span class="label">candidates scored</span></div>
+    <div><b>91</b><span class="label">make the board</span></div>
+    <div><b>23</b><span class="label">in the target tier</span></div>
+    <div><b>0.90</b><span class="label">best out-of-sample AUC</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>How to read a row</h2>
+  <p class="sec-intro">Three numbers, and they answer different questions.</p>
+  <div class="grid2">
+    <div class="card pad"><span class="label">The big number</span>
+      <p style="margin:8px 0 0"><b>Probability of a top-5 finish</b>, from a model
+      scored leave-one-season-out — every season predicted by a version that never
+      trained on it. This is the only figure here validated out of sample, so it
+      sets the tier.</p></div>
+    <div class="card pad"><span class="label">Gates</span>
+      <p style="margin:8px 0 0"><b>How much of the elite in-season profile his last
+      season already looked like.</b> Descriptive, not held out — a miss is a
+      question to answer, not a disqualification.</p></div>
+    <div class="card pad"><span class="label">Leaper marks</span>
+      <p style="margin:8px 0 0"><b>How closely he matches the players who jumped
+      into the top 5 from outside the prior top 12.</b> Roughly 40% of all elite
+      finishes came from there, so this is the late-round signal.</p></div>
+    <div class="card pad"><span class="label">What is missing</span>
+      <p style="margin:8px 0 0">The specific gates his prior year failed. Read it as
+      the thesis you are buying: something has to change for that line to clear.</p></div>
+  </div>
+  <div class="callout"><p><b>The route estimate is the one metric to discount.</b>
+  Public data has no route counts, so routes come from snap share × team dropbacks.
+  Receivers who leave the field on run downs — Nacua and Smith-Njigba most
+  obviously — run routes on a far higher share of dropbacks than their snap share
+  implies, so a "routes per game" miss on that kind of player is usually the proxy
+  failing, not the player.</p></div>
+</section>
+
+<section class="chapter" id="wr">
+          <hr class="hash">
+          <div class="chead"><div class="pmark">WR</div>
+            <div class="txt"><h3>Wide receiver</h3>
+            <div class="sub">108 returning candidates scored · 20 make the board</div></div>
+          </div>
+          <p class="note">Five gates, ~2.6 receivers a year clear all of them, and 90% of those finish top-5. Out-of-sample AUC 0.90 — the most trustworthy board here.</p>
+          <div class="tierband">
+              <div class="tierhead"><div class="tiername">Target</div>
+              <div class="tierdesc">Draft these. The model has never seen the season it is scoring them for, and this band is where its hit rate lives.</div></div>
+              <div class="row">
+  <div class="pnum">0.99</div>
+  <div>
+    <div class="pname">Jaxon Smith-Njigba</div>
+    <div class="pmeta">SEA · age 24 · was WR2</div>
+    <div class="pmiss">short on <b>routes per game (est.)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.99</div>
+  <div>
+    <div class="pname">Puka Nacua</div>
+    <div class="pmeta">LA · age 25 · was WR1</div>
+    <div class="pmiss">short on <b>red-zone target share; routes per game (est.)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.99</div>
+  <div>
+    <div class="pname">Ja&#x27;Marr Chase</div>
+    <div class="pmeta">CIN · age 26 · was WR4</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.93</div>
+  <div>
+    <div class="pname">Amon-Ra St. Brown</div>
+    <div class="pmeta">DET · age 27 · was WR3</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.89</div>
+  <div>
+    <div class="pname">Drake London</div>
+    <div class="pmeta">ATL · age 25 · was WR19</div>
+    <div class="pmiss">short on <b>team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.87</div>
+  <div>
+    <div class="pname">Chris Olave</div>
+    <div class="pmeta">NO · age 26 · was WR6</div>
+    <div class="pmiss">short on <b>yards per route (est., shrunk); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.79</div>
+  <div>
+    <div class="pname">Zay Flowers</div>
+    <div class="pmeta">BAL · age 26 · was WR7</div>
+    <div class="pmiss">short on <b>targets per game; routes per game (est.)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.76</div>
+  <div>
+    <div class="pname">Wan&#x27;Dale Robinson</div>
+    <div class="pmeta">NYG · age 26 · was WR14</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Strong</div>
+              <div class="tierdesc">Real candidates. Most will not finish top-5 — the base rate is still against everyone — but the profile supports the bet.</div></div>
+              <div class="row">
+  <div class="pnum">0.74</div>
+  <div>
+    <div class="pname">George Pickens</div>
+    <div class="pmeta">DAL · age 26 · was WR5</div>
+    <div class="pmiss">short on <b>targets per game</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.73</div>
+  <div>
+    <div class="pname">Rashee Rice</div>
+    <div class="pmeta">KC · age 26 · was WR40</div>
+    <div class="pmiss">short on <b>yards per route (est., shrunk); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.71</div>
+  <div>
+    <div class="pname">Tetairoa McMillan</div>
+    <div class="pmeta">CAR · age 23 · was WR15</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; routes per game (est.); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.67</div>
+  <div>
+    <div class="pname">Justin Jefferson</div>
+    <div class="pmeta">MIN · age 27 · was WR21</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.63</div>
+  <div>
+    <div class="pname">A.J. Brown</div>
+    <div class="pmeta">PHI · age 29 · was WR11</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); routes per game (est.); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.60</div>
+  <div>
+    <div class="pname">CeeDee Lamb</div>
+    <div class="pmeta">DAL · age 27 · was WR22</div>
+    <div class="pmiss">short on <b>red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.59</div>
+  <div>
+    <div class="pname">Tee Higgins</div>
+    <div class="pmeta">CIN · age 28 · was WR16</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.58</div>
+  <div>
+    <div class="pname">Nico Collins</div>
+    <div class="pmeta">HOU · age 28 · was WR8</div>
+    <div class="pmiss">short on <b>targets per game; routes per game (est.)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Fringe</div>
+              <div class="tierdesc">Enough profile to roster, not enough to target.</div></div>
+              <div class="row">
+  <div class="pnum">0.55</div>
+  <div>
+    <div class="pname">Rome Odunze</div>
+    <div class="pmeta">CHI · age 24 · was WR41</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.55</div>
+  <div>
+    <div class="pname">Emeka Egbuka</div>
+    <div class="pmeta">TB · age 24 · was WR23</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; routes per game (est.); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.45</div>
+  <div>
+    <div class="pname">Michael Wilson</div>
+    <div class="pmeta">ARI · age 26 · was WR10</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.41</div>
+  <div>
+    <div class="pname">Quentin Johnston</div>
+    <div class="pmeta">LAC · age 25 · was WR35</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/5 leaper marks</div></div>
+</div></div>
+        </section><section class="chapter" id="rb">
+          <hr class="hash">
+          <div class="chead"><div class="pmark">RB</div>
+            <div class="txt"><h3>Running back</h3>
+            <div class="sub">70 returning candidates scored · 28 make the board</div></div>
+          </div>
+          <p class="note">Volume is assigned, not earned, so the gates are looser and the blind spot is bigger: 24% of top-5 running back seasons came from players with no qualifying prior year at all.</p>
+          <div class="tierband">
+              <div class="tierhead"><div class="tiername">Target</div>
+              <div class="tierdesc">Draft these. The model has never seen the season it is scoring them for, and this band is where its hit rate lives.</div></div>
+              <div class="row">
+  <div class="pnum">0.96</div>
+  <div>
+    <div class="pname">Bijan Robinson</div>
+    <div class="pmeta">ATL · age 25 · was RB2</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.93</div>
+  <div>
+    <div class="pname">De&#x27;Von Achane</div>
+    <div class="pmeta">MIA · age 25 · was RB5</div>
+    <div class="pmiss">short on <b>red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.92</div>
+  <div>
+    <div class="pname">Jahmyr Gibbs</div>
+    <div class="pmeta">DET · age 24 · was RB3</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.88</div>
+  <div>
+    <div class="pname">Christian McCaffrey</div>
+    <div class="pmeta">SF · age 30 · was RB1</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.85</div>
+  <div>
+    <div class="pname">Jonathan Taylor</div>
+    <div class="pmeta">IND · age 28 · was RB4</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.85</div>
+  <div>
+    <div class="pname">James Cook</div>
+    <div class="pmeta">BUF · age 27 · was RB6</div>
+    <div class="pmiss">short on <b>snap share; target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.81</div>
+  <div>
+    <div class="pname">Ashton Jeanty</div>
+    <div class="pmeta">LV · age 23 · was RB11</div>
+    <div class="pmiss">short on <b>yards per target (shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Strong</div>
+              <div class="tierdesc">Real candidates. Most will not finish top-5 — the base rate is still against everyone — but the profile supports the bet.</div></div>
+              <div class="row">
+  <div class="pnum">0.74</div>
+  <div>
+    <div class="pname">Breece Hall</div>
+    <div class="pmeta">NYJ · age 25 · was RB19</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.74</div>
+  <div>
+    <div class="pname">Bucky Irving</div>
+    <div class="pmeta">TB · age 24 · was RB34</div>
+    <div class="pmiss">short on <b>red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.71</div>
+  <div>
+    <div class="pname">Chase Brown</div>
+    <div class="pmeta">CIN · age 26 · was RB7</div>
+    <div class="pmiss">short on <b>yards per target (shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.67</div>
+  <div>
+    <div class="pname">Quinshon Judkins</div>
+    <div class="pmeta">CLE · age 23 · was RB26</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; target share; yards per target (shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.66</div>
+  <div>
+    <div class="pname">Travis Etienne</div>
+    <div class="pmeta">JAX · age 28 · was RB10</div>
+    <div class="pmiss">short on <b>weighted opportunities per game</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.60</div>
+  <div>
+    <div class="pname">Saquon Barkley</div>
+    <div class="pmeta">PHI · age 30 · was RB14</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.60</div>
+  <div>
+    <div class="pname">Kenneth Walker III</div>
+    <div class="pmeta">SEA · age 26 · was RB22</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share; target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.59</div>
+  <div>
+    <div class="pname">Kyren Williams</div>
+    <div class="pmeta">LA · age 26 · was RB9</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.59</div>
+  <div>
+    <div class="pname">TreVeyon Henderson</div>
+    <div class="pmeta">NE · age 24 · was RB21</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share; target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.58</div>
+  <div>
+    <div class="pname">D&#x27;Andre Swift</div>
+    <div class="pmeta">CHI · age 28 · was RB15</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.56</div>
+  <div>
+    <div class="pname">Omarion Hampton</div>
+    <div class="pmeta">LAC · age 24 · was RB35</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Leaper Watch</div>
+              <div class="tierdesc">Outside last year&#x27;s top 12, but matching the profile of players who jumped into the top 5 anyway. The late-round lane.</div></div>
+              <div class="row">
+  <div class="pnum">0.53</div>
+  <div>
+    <div class="pname">Josh Jacobs</div>
+    <div class="pmeta">GB · age 29 · was RB13</div>
+    <div class="pmiss">short on <b>weighted opportunities per game</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.47</div>
+  <div>
+    <div class="pname">Rico Dowdle</div>
+    <div class="pmeta">CAR · age 28 · was RB18</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.47</div>
+  <div>
+    <div class="pname">Jaylen Warren</div>
+    <div class="pmeta">PIT · age 28 · was RB17</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.43</div>
+  <div>
+    <div class="pname">Tony Pollard</div>
+    <div class="pmeta">TEN · age 29 · was RB23</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; red-zone carry share; target share; yards per target (shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Fringe</div>
+              <div class="tierdesc">Enough profile to roster, not enough to target.</div></div>
+              <div class="row">
+  <div class="pnum">0.53</div>
+  <div>
+    <div class="pname">Cam Skattebo</div>
+    <div class="pmeta">NYG · age 25 · was RB37</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.52</div>
+  <div>
+    <div class="pname">Javonte Williams</div>
+    <div class="pmeta">DAL · age 26 · was RB12</div>
+    <div class="pmiss">short on <b>target share; yards per target (shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.51</div>
+  <div>
+    <div class="pname">Derrick Henry</div>
+    <div class="pmeta">BAL · age 33 · was RB8</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.50</div>
+  <div>
+    <div class="pname">Tyrone Tracy Jr.</div>
+    <div class="pmeta">NYG · age 27 · was RB28</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.46</div>
+  <div>
+    <div class="pname">Kenny Gainwell</div>
+    <div class="pmeta">PIT · age 28 · was RB16</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.42</div>
+  <div>
+    <div class="pname">RJ Harvey</div>
+    <div class="pmeta">DEN · age 26 · was RB20</div>
+    <div class="pmiss">short on <b>weighted opportunities per game; snap share; red-zone carry share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div></div>
+        </section><section class="chapter" id="te">
+          <hr class="hash">
+          <div class="chead"><div class="pmark">TE</div>
+            <div class="txt"><h3>Tight end</h3>
+            <div class="sub">62 returning candidates scored · 28 make the board</div></div>
+          </div>
+          <p class="note">The position where last year tells you the most — a top-5 tight end repeats 43% of the time — and where the leaper bar is lowest.</p>
+          <div class="tierband">
+              <div class="tierhead"><div class="tiername">Target</div>
+              <div class="tierdesc">Draft these. The model has never seen the season it is scoring them for, and this band is where its hit rate lives.</div></div>
+              <div class="row">
+  <div class="pnum">0.96</div>
+  <div>
+    <div class="pname">Trey McBride</div>
+    <div class="pmeta">ARI · age 27 · was TE1</div>
+    <div class="pmiss">short on <b>qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.89</div>
+  <div>
+    <div class="pname">Kyle Pitts</div>
+    <div class="pmeta">ATL · age 26 · was TE2</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.87</div>
+  <div>
+    <div class="pname">Harold Fannin Jr.</div>
+    <div class="pmeta">CLE · age 22 · was TE6</div>
+    <div class="pmiss">short on <b>qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.80</div>
+  <div>
+    <div class="pname">Brock Bowers</div>
+    <div class="pmeta">LV · age 24 · was TE11</div>
+    <div class="pmiss">short on <b>qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.78</div>
+  <div>
+    <div class="pname">Dalton Schultz</div>
+    <div class="pmeta">HOU · age 30 · was TE10</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.76</div>
+  <div>
+    <div class="pname">George Kittle</div>
+    <div class="pmeta">SF · age 33 · was TE13</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Strong</div>
+              <div class="tierdesc">Real candidates. Most will not finish top-5 — the base rate is still against everyone — but the profile supports the bet.</div></div>
+              <div class="row">
+  <div class="pnum">0.75</div>
+  <div>
+    <div class="pname">Travis Kelce</div>
+    <div class="pmeta">KC · age 37 · was TE3</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.75</div>
+  <div>
+    <div class="pname">Tyler Warren</div>
+    <div class="pmeta">IND · age 24 · was TE4</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.74</div>
+  <div>
+    <div class="pname">Juwan Johnson</div>
+    <div class="pmeta">NO · age 30 · was TE8</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share; qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.66</div>
+  <div>
+    <div class="pname">Zach Ertz</div>
+    <div class="pmeta">WAS · age 36 · was TE19</div>
+    <div class="pmiss">short on <b>targets per game; snap share; qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.64</div>
+  <div>
+    <div class="pname">Dallas Goedert</div>
+    <div class="pmeta">PHI · age 32 · was TE7</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.62</div>
+  <div>
+    <div class="pname">Colston Loveland</div>
+    <div class="pmeta">CHI · age 22 · was TE12</div>
+    <div class="pmiss">short on <b>targets per game; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.61</div>
+  <div>
+    <div class="pname">Chig Okonkwo</div>
+    <div class="pmeta">TEN · age 27 · was TE21</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; snap share; qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.60</div>
+  <div>
+    <div class="pname">Dalton Kincaid</div>
+    <div class="pmeta">BUF · age 27 · was TE20</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.58</div>
+  <div>
+    <div class="pname">Jake Ferguson</div>
+    <div class="pmeta">DAL · age 28 · was TE5</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Leaper Watch</div>
+              <div class="tierdesc">Outside last year&#x27;s top 12, but matching the profile of players who jumped into the top 5 anyway. The late-round lane.</div></div>
+              <div class="row">
+  <div class="pnum">0.54</div>
+  <div>
+    <div class="pname">Mason Taylor</div>
+    <div class="pmeta">NYJ · age 22 · was TE32</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.53</div>
+  <div>
+    <div class="pname">Sam LaPorta</div>
+    <div class="pmeta">DET · age 26 · was TE27</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.50</div>
+  <div>
+    <div class="pname">Brenton Strange</div>
+    <div class="pmeta">JAX · age 26 · was TE23</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.48</div>
+  <div>
+    <div class="pname">Tucker Kraft</div>
+    <div class="pmeta">GB · age 26 · was TE24</div>
+    <div class="pmiss">short on <b>targets per game</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.41</div>
+  <div>
+    <div class="pname">Theo Johnson</div>
+    <div class="pmeta">NYG · age 26 · was TE18</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Fringe</div>
+              <div class="tierdesc">Enough profile to roster, not enough to target.</div></div>
+              <div class="row">
+  <div class="pnum">0.51</div>
+  <div>
+    <div class="pname">Cade Otton</div>
+    <div class="pmeta">TB · age 27 · was TE22</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.48</div>
+  <div>
+    <div class="pname">Mark Andrews</div>
+    <div class="pmeta">BAL · age 31 · was TE16</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.47</div>
+  <div>
+    <div class="pname">Evan Engram</div>
+    <div class="pmeta">DEN · age 32 · was TE29</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.46</div>
+  <div>
+    <div class="pname">Oronde Gadsden II</div>
+    <div class="pmeta">LAC · age 23 · was TE15</div>
+    <div class="pmiss">short on <b>targets per game; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.43</div>
+  <div>
+    <div class="pname">Hunter Henry</div>
+    <div class="pmeta">NE · age 32 · was TE9</div>
+    <div class="pmiss">short on <b>targets per game</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.42</div>
+  <div>
+    <div class="pname">Greg Dulcich</div>
+    <div class="pmeta">MIA · age 26 · was TE43</div>
+    <div class="pmiss">short on <b>targets per game; red-zone target share; snap share</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.42</div>
+  <div>
+    <div class="pname">T.J. Hockenson</div>
+    <div class="pmeta">MIN · age 29 · was TE26</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; qb rank in epa/dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.41</div>
+  <div>
+    <div class="pname">AJ Barner</div>
+    <div class="pmeta">SEA · age 24 · was TE14</div>
+    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
+</div></div>
+        </section><section class="chapter" id="qb">
+          <hr class="hash">
+          <div class="chead"><div class="pmark">QB</div>
+            <div class="txt"><h3>Quarterback</h3>
+            <div class="sub">36 returning candidates scored · 15 make the board</div></div>
+          </div>
+          <p class="note">Only two honest gates survive, because nearly every quarterback stat restates the fantasy score. AUC 0.68. Treat this board as the weakest.</p>
+          <div class="tierband">
+              <div class="tierhead"><div class="tiername">Target</div>
+              <div class="tierdesc">Draft these. The model has never seen the season it is scoring them for, and this band is where its hit rate lives.</div></div>
+              <div class="row">
+  <div class="pnum">0.79</div>
+  <div>
+    <div class="pname">Drake Maye</div>
+    <div class="pmeta">NE · age 24 · was QB2</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">2/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">4/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.78</div>
+  <div>
+    <div class="pname">Josh Allen</div>
+    <div class="pmeta">BUF · age 30 · was QB1</div>
+    <div class="pmiss">short on <b>dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">3/4 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Strong</div>
+              <div class="tierdesc">Real candidates. Most will not finish top-5 — the base rate is still against everyone — but the profile supports the bet.</div></div>
+              <div class="row">
+  <div class="pnum">0.69</div>
+  <div>
+    <div class="pname">Bo Nix</div>
+    <div class="pmeta">DEN · age 26 · was QB7</div>
+    <div class="pmiss">short on <b>epa per dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">4/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.67</div>
+  <div>
+    <div class="pname">Patrick Mahomes</div>
+    <div class="pmeta">KC · age 31 · was QB11</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">2/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">4/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.62</div>
+  <div>
+    <div class="pname">Trevor Lawrence</div>
+    <div class="pmeta">JAX · age 27 · was QB4</div>
+    <div class="pmiss">short on <b>epa per dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">4/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.61</div>
+  <div>
+    <div class="pname">Jalen Hurts</div>
+    <div class="pmeta">PHI · age 28 · was QB8</div>
+    <div class="pmiss">short on <b>epa per dropback; dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">3/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.60</div>
+  <div>
+    <div class="pname">Dak Prescott</div>
+    <div class="pmeta">DAL · age 33 · was QB6</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">2/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">3/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.59</div>
+  <div>
+    <div class="pname">Caleb Williams</div>
+    <div class="pmeta">CHI · age 25 · was QB5</div>
+    <div class="pmiss">short on <b>epa per dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">4/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.56</div>
+  <div>
+    <div class="pname">Justin Herbert</div>
+    <div class="pmeta">LAC · age 28 · was QB10</div>
+    <div class="pmiss">short on <b>epa per dropback</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">4/4 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Leaper Watch</div>
+              <div class="tierdesc">Outside last year&#x27;s top 12, but matching the profile of players who jumped into the top 5 anyway. The late-round lane.</div></div>
+              <div class="row">
+  <div class="pnum">0.42</div>
+  <div>
+    <div class="pname">Brock Purdy</div>
+    <div class="pmeta">SF · age 27 · was QB23</div>
+    <div class="pmiss">short on <b>dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">3/4 leaper marks</div></div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Fringe</div>
+              <div class="tierdesc">Enough profile to roster, not enough to target.</div></div>
+              <div class="row">
+  <div class="pnum">0.48</div>
+  <div>
+    <div class="pname">Justin Fields</div>
+    <div class="pmeta">NYJ · age 28 · was QB28</div>
+    <div class="pmiss">short on <b>epa per dropback; dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.48</div>
+  <div>
+    <div class="pname">Jaxson Dart</div>
+    <div class="pmeta">NYG · age 23 · was QB13</div>
+    <div class="pmiss">short on <b>epa per dropback; dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.46</div>
+  <div>
+    <div class="pname">Matthew Stafford</div>
+    <div class="pmeta">LA · age 39 · was QB3</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">2/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">3/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.45</div>
+  <div>
+    <div class="pname">Jordan Love</div>
+    <div class="pmeta">GB · age 28 · was QB15</div>
+    <div class="pmiss">short on <b>dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/4 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.44</div>
+  <div>
+    <div class="pname">Daniel Jones</div>
+    <div class="pmeta">IND · age 29 · was QB18</div>
+    <div class="pmiss">short on <b>dropbacks</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span></div><div class="piplab">1/2 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/4 leaper marks</div></div>
+</div></div>
+        </section>
+
+<section>
+  <hr class="hash">
+  <h2 style="margin-top:44px">Before you use it</h2>
+  <ul class="tight">
+    <li><b>Nobody here is a lock.</b> A 0.96 means players with this prior-year
+      profile finished top-5 about that often. The base rate at wide receiver is
+      4.5%; even the top of this board is a bet.</li>
+    <li><b>It cannot see a job that did not exist yet.</b> Every name needed a
+      qualifying 2025 season to be scored. Rookies and players handed a
+      role in the offseason are structurally invisible — and they accounted for
+      24% of top-5 running back seasons and 16% at quarterback.</li>
+    <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
+      still carries his old offense's scoring rank and quarterback quality.</li>
+    <li><b>Efficiency does not rescue a small role.</b> 176 receiver-seasons had a
+      prior year under a 15% target share and 50% snaps. None finished top-5 the
+      next year. None finished top-12.</li>
+  </ul>
+</section>
+
+<footer>
+  <hr class="hash" style="margin-bottom:26px">
+  <p>Built from <a href="https://github.com/nflverse/nflverse-data">nflverse</a>
+  play-by-play, 2015–2025. Method, thresholds and the full pipeline are in
+  the repository; <span class="mono">python src/target_board.py</span> regenerates
+  every row on this page.</p>
+</footer>
+</div>
