@@ -1,0 +1,1126 @@
+{
+  "QB": {
+    "n_candidates": 36,
+    "n_rules": 1,
+    "n_passing_all_rules": 25,
+    "green_flags": [
+      {
+        "label": "Last year's PPR per game (shrunk)",
+        "metric": "prev_ppg_shrunk",
+        "direction": ">=",
+        "threshold": 21.0,
+        "precision": 0.5333333333333333,
+        "lift": 3.5942028985507246,
+        "per_season_flagged": 1.3636363636363635
+      },
+      {
+        "label": "Last year's rushing yards",
+        "metric": "prev_rushing_yards",
+        "direction": ">=",
+        "threshold": 731.0,
+        "precision": 0.4666666666666667,
+        "lift": 3.1449275362318843,
+        "per_season_flagged": 1.3636363636363635
+      },
+      {
+        "label": "Last year's EPA per dropback",
+        "metric": "prev_epa_per_dropback",
+        "direction": ">=",
+        "threshold": 0.25,
+        "precision": 0.3157894736842105,
+        "lift": 2.128146453089245,
+        "per_season_flagged": 1.7272727272727273
+      },
+      {
+        "label": "New team's scoring rank last year",
+        "metric": "newteam_prev_team_scoring_rank",
+        "direction": "<=",
+        "threshold": 4.0,
+        "precision": 0.2553191489361702,
+        "lift": 1.7206290471785384,
+        "per_season_flagged": 4.2727272727272725
+      },
+      {
+        "label": "Age",
+        "metric": "age",
+        "direction": "<=",
+        "threshold": 24.0,
+        "precision": 0.2,
+        "lift": 1.347826086956522,
+        "per_season_flagged": 2.727272727272727
+      }
+    ],
+    "rules": [
+      {
+        "label": "Last year's rushing yards",
+        "metric": "prev_rushing_yards",
+        "direction": ">=",
+        "threshold": 118.0,
+        "precision": 0.2032967032967033,
+        "recall": 0.8043478260869565,
+        "lift": 1.3700430004777833
+      }
+    ],
+    "model_coefficients": {
+      "prev_rush_att_pg": 0.626,
+      "prev_epa_per_dropback": 0.417,
+      "prev_pass_td_rate": -0.229,
+      "prev_dropbacks": 0.483,
+      "prev_ppg_shrunk": 0.266,
+      "prev_games": -0.216,
+      "age": -0.017,
+      "newteam_prev_team_scoring_rank": -0.023
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "player_display_name": "Drake Maye",
+        "team": "NE",
+        "age": 24.006,
+        "prob": 0.79,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 2.0,
+        "prev_ppg_ppr": 20.704
+      },
+      {
+        "rank": 2,
+        "player_display_name": "Josh Allen",
+        "team": "BUF",
+        "age": 30.281,
+        "prob": 0.775,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 1.0,
+        "prev_ppg_ppr": 22.789
+      },
+      {
+        "rank": 3,
+        "player_display_name": "Bo Nix",
+        "team": "DEN",
+        "age": 26.517,
+        "prob": 0.687,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 7.0,
+        "prev_ppg_ppr": 17.932
+      },
+      {
+        "rank": 4,
+        "player_display_name": "Patrick Mahomes",
+        "team": "KC",
+        "age": 30.958,
+        "prob": 0.673,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 11.0,
+        "prev_ppg_ppr": 20.406
+      },
+      {
+        "rank": 5,
+        "player_display_name": "Trevor Lawrence",
+        "team": "JAX",
+        "age": 26.906,
+        "prob": 0.621,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 4.0,
+        "prev_ppg_ppr": 19.893
+      },
+      {
+        "rank": 6,
+        "player_display_name": "Jalen Hurts",
+        "team": "PHI",
+        "age": 28.069,
+        "prob": 0.615,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 8.0,
+        "prev_ppg_ppr": 18.816
+      },
+      {
+        "rank": 7,
+        "player_display_name": "Dak Prescott",
+        "team": "DAL",
+        "age": 33.093,
+        "prob": 0.599,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 6.0,
+        "prev_ppg_ppr": 18.458
+      },
+      {
+        "rank": 8,
+        "player_display_name": "Caleb Williams",
+        "team": "CHI",
+        "age": 24.786,
+        "prob": 0.593,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 5.0,
+        "prev_ppg_ppr": 18.746
+      },
+      {
+        "rank": 9,
+        "player_display_name": "Justin Herbert",
+        "team": "LAC",
+        "age": 28.48,
+        "prob": 0.562,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 10.0,
+        "prev_ppg_ppr": 17.93
+      },
+      {
+        "rank": 10,
+        "player_display_name": "Justin Fields",
+        "team": "NYJ",
+        "age": 27.494,
+        "prob": 0.483,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 28.0,
+        "prev_ppg_ppr": 15.851
+      },
+      {
+        "rank": 11,
+        "player_display_name": "Jaxson Dart",
+        "team": "NYG",
+        "age": 23.305,
+        "prob": 0.48,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 13.0,
+        "prev_ppg_ppr": 17.256
+      },
+      {
+        "rank": 12,
+        "player_display_name": "Matthew Stafford",
+        "team": "LA",
+        "age": 38.566,
+        "prob": 0.46,
+        "rules_passed": 0,
+        "n_rules": 1,
+        "passes_all": false,
+        "prev_pos_rank": 3.0,
+        "prev_ppg_ppr": 20.611
+      },
+      {
+        "rank": 13,
+        "player_display_name": "Jordan Love",
+        "team": "GB",
+        "age": 27.831,
+        "prob": 0.453,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 15.0,
+        "prev_ppg_ppr": 15.676
+      },
+      {
+        "rank": 14,
+        "player_display_name": "Daniel Jones",
+        "team": "IND",
+        "age": 29.266,
+        "prob": 0.443,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 18.0,
+        "prev_ppg_ppr": 17.418
+      },
+      {
+        "rank": 15,
+        "player_display_name": "Brock Purdy",
+        "team": "SF",
+        "age": 26.681,
+        "prob": 0.42,
+        "rules_passed": 1,
+        "n_rules": 1,
+        "passes_all": true,
+        "prev_pos_rank": 23.0,
+        "prev_ppg_ppr": 19.709
+      }
+    ]
+  },
+  "RB": {
+    "n_candidates": 70,
+    "n_rules": 5,
+    "n_passing_all_rules": 17,
+    "green_flags": [
+      {
+        "label": "Last year's opportunity share",
+        "metric": "prev_opportunity_share",
+        "direction": ">=",
+        "threshold": 0.4,
+        "precision": 0.3888888888888889,
+        "lift": 6.194444444444445,
+        "per_season_flagged": 1.6363636363636365
+      },
+      {
+        "label": "Last year's target share",
+        "metric": "prev_target_share",
+        "direction": ">=",
+        "threshold": 0.19,
+        "precision": 0.375,
+        "lift": 5.973214285714286,
+        "per_season_flagged": 1.4545454545454546
+      },
+      {
+        "label": "Last year's PPR per game (shrunk)",
+        "metric": "prev_ppg_shrunk",
+        "direction": ">=",
+        "threshold": 17.5,
+        "precision": 0.36666666666666664,
+        "lift": 5.84047619047619,
+        "per_season_flagged": 2.727272727272727
+      },
+      {
+        "label": "Last year's snap share",
+        "metric": "prev_snap_pct",
+        "direction": ">=",
+        "threshold": 0.82,
+        "precision": 0.3333333333333333,
+        "lift": 5.309523809523809,
+        "per_season_flagged": 1.3636363636363635
+      },
+      {
+        "label": "Last year's carry share inside the 5",
+        "metric": "prev_i5_carries_share",
+        "direction": ">=",
+        "threshold": 0.82,
+        "precision": 0.23529411764705882,
+        "lift": 3.7478991596638656,
+        "per_season_flagged": 1.5454545454545454
+      }
+    ],
+    "rules": [
+      {
+        "label": "Last year's PPR per game (shrunk)",
+        "metric": "prev_ppg_shrunk",
+        "direction": ">=",
+        "threshold": 11.0,
+        "precision": 0.15,
+        "recall": 0.8571428571428571,
+        "lift": 2.3892857142857142
+      },
+      {
+        "label": "Last year's opportunity share",
+        "metric": "prev_opportunity_share",
+        "direction": ">=",
+        "threshold": 0.25,
+        "precision": 0.13043478260869565,
+        "recall": 0.7857142857142857,
+        "lift": 2.077639751552795
+      },
+      {
+        "label": "Last year's snap share",
+        "metric": "prev_snap_pct",
+        "direction": ">=",
+        "threshold": 0.5,
+        "precision": 0.12595419847328243,
+        "recall": 0.7857142857142857,
+        "lift": 2.0062704471101416
+      },
+      {
+        "label": "Last year's targets per game",
+        "metric": "prev_targets_pg",
+        "direction": ">=",
+        "threshold": 2.6,
+        "precision": 0.1021021021021021,
+        "recall": 0.8095238095238095,
+        "lift": 1.6263406263406264
+      },
+      {
+        "label": "Last year's red-zone carry share",
+        "metric": "prev_rz_carries_share",
+        "direction": ">=",
+        "threshold": 0.28,
+        "precision": 0.09041095890410959,
+        "recall": 0.7857142857142857,
+        "lift": 1.4401174168297457
+      }
+    ],
+    "model_coefficients": {
+      "prev_weighted_opps_pg": 0.215,
+      "prev_opportunity_share": 0.927,
+      "prev_target_share": -0.099,
+      "prev_rz_carries_share": -0.715,
+      "prev_snap_pct": -0.093,
+      "prev_ppg_shrunk": 0.872,
+      "prev_games": 0.427,
+      "age": -0.557,
+      "newteam_prev_team_scoring_rank": -0.393,
+      "newteam_prev_team_ppg": -0.425
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "player_display_name": "Bijan Robinson",
+        "team": "ATL",
+        "age": 24.587,
+        "prob": 0.958,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 2.0,
+        "prev_ppg_ppr": 21.812
+      },
+      {
+        "rank": 2,
+        "player_display_name": "De'Von Achane",
+        "team": "MIA",
+        "age": 24.885,
+        "prob": 0.926,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 5.0,
+        "prev_ppg_ppr": 20.175
+      },
+      {
+        "rank": 3,
+        "player_display_name": "Jahmyr Gibbs",
+        "team": "DET",
+        "age": 24.452,
+        "prob": 0.921,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 3.0,
+        "prev_ppg_ppr": 21.582
+      },
+      {
+        "rank": 4,
+        "player_display_name": "Christian McCaffrey",
+        "team": "SF",
+        "age": 30.235,
+        "prob": 0.882,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 1.0,
+        "prev_ppg_ppr": 24.506
+      },
+      {
+        "rank": 5,
+        "player_display_name": "Jonathan Taylor",
+        "team": "IND",
+        "age": 27.617,
+        "prob": 0.852,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 4.0,
+        "prev_ppg_ppr": 21.312
+      },
+      {
+        "rank": 6,
+        "player_display_name": "James Cook",
+        "team": "BUF",
+        "age": 26.936,
+        "prob": 0.846,
+        "rules_passed": 4,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 6.0,
+        "prev_ppg_ppr": 17.776
+      },
+      {
+        "rank": 7,
+        "player_display_name": "Ashton Jeanty",
+        "team": "LV",
+        "age": 22.749,
+        "prob": 0.814,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 11.0,
+        "prev_ppg_ppr": 14.418
+      },
+      {
+        "rank": 8,
+        "player_display_name": "Breece Hall",
+        "team": "NYJ",
+        "age": 25.255,
+        "prob": 0.745,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 19.0,
+        "prev_ppg_ppr": 12.979
+      },
+      {
+        "rank": 9,
+        "player_display_name": "Bucky Irving",
+        "team": "TB",
+        "age": 24.036,
+        "prob": 0.74,
+        "rules_passed": 4,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 34.0,
+        "prev_ppg_ppr": 13.85
+      },
+      {
+        "rank": 10,
+        "player_display_name": "Chase Brown",
+        "team": "CIN",
+        "age": 26.448,
+        "prob": 0.706,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 7.0,
+        "prev_ppg_ppr": 16.624
+      },
+      {
+        "rank": 11,
+        "player_display_name": "Quinshon Judkins",
+        "team": "CLE",
+        "age": 22.843,
+        "prob": 0.67,
+        "rules_passed": 4,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 26.0,
+        "prev_ppg_ppr": 12.129
+      },
+      {
+        "rank": 12,
+        "player_display_name": "Travis Etienne",
+        "team": "JAX",
+        "age": 27.598,
+        "prob": 0.659,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 10.0,
+        "prev_ppg_ppr": 14.935
+      },
+      {
+        "rank": 13,
+        "player_display_name": "Saquon Barkley",
+        "team": "PHI",
+        "age": 29.559,
+        "prob": 0.604,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 14.0,
+        "prev_ppg_ppr": 14.519
+      },
+      {
+        "rank": 14,
+        "player_display_name": "Kenneth Walker III",
+        "team": "SEA",
+        "age": 25.865,
+        "prob": 0.6,
+        "rules_passed": 2,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 22.0,
+        "prev_ppg_ppr": 11.288
+      },
+      {
+        "rank": 15,
+        "player_display_name": "Kyren Williams",
+        "team": "LA",
+        "age": 26.016,
+        "prob": 0.595,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 9.0,
+        "prev_ppg_ppr": 15.488
+      }
+    ]
+  },
+  "WR": {
+    "n_candidates": 108,
+    "n_rules": 4,
+    "n_passing_all_rules": 11,
+    "green_flags": [
+      {
+        "label": "Last year's PPR per game (shrunk)",
+        "metric": "prev_ppg_shrunk",
+        "direction": ">=",
+        "threshold": 17.5,
+        "precision": 0.4666666666666667,
+        "lift": 10.057142857142857,
+        "per_season_flagged": 2.727272727272727
+      },
+      {
+        "label": "Last year's target share",
+        "metric": "prev_target_share",
+        "direction": ">=",
+        "threshold": 0.3,
+        "precision": 0.4,
+        "lift": 8.620408163265306,
+        "per_season_flagged": 2.727272727272727
+      },
+      {
+        "label": "Last year's air-yards share",
+        "metric": "prev_air_yards_share",
+        "direction": ">=",
+        "threshold": 0.44,
+        "precision": 0.3181818181818182,
+        "lift": 6.857142857142857,
+        "per_season_flagged": 2.0
+      },
+      {
+        "label": "Last year's yards per route (est., shrunk)",
+        "metric": "prev_yprr_shrunk",
+        "direction": ">=",
+        "threshold": 2.47,
+        "precision": 0.24,
+        "lift": 5.1722448979591835,
+        "per_season_flagged": 6.818181818181818
+      },
+      {
+        "label": "New team's points per game last year",
+        "metric": "newteam_prev_team_ppg",
+        "direction": ">=",
+        "threshold": 31.0,
+        "precision": 0.16129032258064516,
+        "lift": 3.4759710335747203,
+        "per_season_flagged": 2.8181818181818183
+      }
+    ],
+    "rules": [
+      {
+        "label": "Last year's PPR per game (shrunk)",
+        "metric": "prev_ppg_shrunk",
+        "direction": ">=",
+        "threshold": 13.0,
+        "precision": 0.19801980198019803,
+        "recall": 0.8163265306122449,
+        "lift": 4.267528793695696
+      },
+      {
+        "label": "Last year's targets per game",
+        "metric": "prev_targets_pg",
+        "direction": ">=",
+        "threshold": 8.0,
+        "precision": 0.18536585365853658,
+        "recall": 0.7755102040816326,
+        "lift": 3.9948232951717273
+      },
+      {
+        "label": "Last year's air-yards share",
+        "metric": "prev_air_yards_share",
+        "direction": ">=",
+        "threshold": 0.31,
+        "precision": 0.15234375,
+        "recall": 0.7959183673469388,
+        "lift": 3.2831632653061225
+      },
+      {
+        "label": "Last year's yards per route (est., shrunk)",
+        "metric": "prev_yprr_shrunk",
+        "direction": ">=",
+        "threshold": 1.95,
+        "precision": 0.13978494623655913,
+        "recall": 0.7959183673469388,
+        "lift": 3.0125082290980907
+      }
+    ],
+    "model_coefficients": {
+      "prev_target_share": 0.822,
+      "prev_yprr_shrunk": -0.18,
+      "prev_rz_targets_share": -0.14,
+      "prev_air_yards_share": 0.201,
+      "prev_ppg_shrunk": 1.665,
+      "prev_snap_pct": 0.015,
+      "prev_games": 0.012,
+      "age": -0.555,
+      "newteam_prev_team_scoring_rank": -0.377,
+      "newteam_prev_team_qb_epa_rank": 0.534
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "player_display_name": "Jaxon Smith-Njigba",
+        "team": "SEA",
+        "age": 24.546,
+        "prob": 0.992,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 2.0,
+        "prev_ppg_ppr": 21.171
+      },
+      {
+        "rank": 2,
+        "player_display_name": "Puka Nacua",
+        "team": "LA",
+        "age": 25.26,
+        "prob": 0.987,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 1.0,
+        "prev_ppg_ppr": 23.438
+      },
+      {
+        "rank": 3,
+        "player_display_name": "Ja'Marr Chase",
+        "team": "CIN",
+        "age": 26.503,
+        "prob": 0.987,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 4.0,
+        "prev_ppg_ppr": 19.6
+      },
+      {
+        "rank": 4,
+        "player_display_name": "Amon-Ra St. Brown",
+        "team": "DET",
+        "age": 26.856,
+        "prob": 0.933,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 3.0,
+        "prev_ppg_ppr": 19.059
+      },
+      {
+        "rank": 5,
+        "player_display_name": "Drake London",
+        "team": "ATL",
+        "age": 25.107,
+        "prob": 0.889,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 19.0,
+        "prev_ppg_ppr": 16.825
+      },
+      {
+        "rank": 6,
+        "player_display_name": "Chris Olave",
+        "team": "NO",
+        "age": 26.18,
+        "prob": 0.868,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 6.0,
+        "prev_ppg_ppr": 16.75
+      },
+      {
+        "rank": 7,
+        "player_display_name": "Zay Flowers",
+        "team": "BAL",
+        "age": 25.972,
+        "prob": 0.785,
+        "rules_passed": 3,
+        "n_rules": 4,
+        "passes_all": false,
+        "prev_pos_rank": 7.0,
+        "prev_ppg_ppr": 14.312
+      },
+      {
+        "rank": 8,
+        "player_display_name": "Wan'Dale Robinson",
+        "team": "NYG",
+        "age": 25.654,
+        "prob": 0.764,
+        "rules_passed": 1,
+        "n_rules": 4,
+        "passes_all": false,
+        "prev_pos_rank": 14.0,
+        "prev_ppg_ppr": 13.619
+      },
+      {
+        "rank": 9,
+        "player_display_name": "George Pickens",
+        "team": "DAL",
+        "age": 25.496,
+        "prob": 0.741,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 5.0,
+        "prev_ppg_ppr": 17.171
+      },
+      {
+        "rank": 10,
+        "player_display_name": "Rashee Rice",
+        "team": "KC",
+        "age": 26.361,
+        "prob": 0.73,
+        "rules_passed": 3,
+        "n_rules": 4,
+        "passes_all": false,
+        "prev_pos_rank": 40.0,
+        "prev_ppg_ppr": 18.762
+      },
+      {
+        "rank": 11,
+        "player_display_name": "Tetairoa McMillan",
+        "team": "CAR",
+        "age": 23.409,
+        "prob": 0.715,
+        "rules_passed": 1,
+        "n_rules": 4,
+        "passes_all": false,
+        "prev_pos_rank": 15.0,
+        "prev_ppg_ppr": 12.553
+      },
+      {
+        "rank": 12,
+        "player_display_name": "Justin Jefferson",
+        "team": "MIN",
+        "age": 27.212,
+        "prob": 0.674,
+        "rules_passed": 2,
+        "n_rules": 4,
+        "passes_all": false,
+        "prev_pos_rank": 21.0,
+        "prev_ppg_ppr": 11.853
+      },
+      {
+        "rank": 13,
+        "player_display_name": "A.J. Brown",
+        "team": "PHI",
+        "age": 29.172,
+        "prob": 0.63,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 11.0,
+        "prev_ppg_ppr": 14.687
+      },
+      {
+        "rank": 14,
+        "player_display_name": "CeeDee Lamb",
+        "team": "DAL",
+        "age": 27.401,
+        "prob": 0.598,
+        "rules_passed": 4,
+        "n_rules": 4,
+        "passes_all": true,
+        "prev_pos_rank": 22.0,
+        "prev_ppg_ppr": 15.454
+      },
+      {
+        "rank": 15,
+        "player_display_name": "Tee Higgins",
+        "team": "CIN",
+        "age": 27.62,
+        "prob": 0.595,
+        "rules_passed": 1,
+        "n_rules": 4,
+        "passes_all": false,
+        "prev_pos_rank": 16.0,
+        "prev_ppg_ppr": 14.107
+      }
+    ]
+  },
+  "TE": {
+    "n_candidates": 62,
+    "n_rules": 5,
+    "n_passing_all_rules": 11,
+    "green_flags": [
+      {
+        "label": "Last year's targets per game",
+        "metric": "prev_targets_pg",
+        "direction": ">=",
+        "threshold": 8.5,
+        "precision": 0.6666666666666666,
+        "lift": 7.319727891156462,
+        "per_season_flagged": 1.3636363636363635
+      },
+      {
+        "label": "Last year's PPR per game (shrunk)",
+        "metric": "prev_ppg_shrunk",
+        "direction": ">=",
+        "threshold": 13.0,
+        "precision": 0.6,
+        "lift": 6.587755102040816,
+        "per_season_flagged": 1.8181818181818181
+      },
+      {
+        "label": "Last year's yards per route (est., shrunk)",
+        "metric": "prev_yprr_shrunk",
+        "direction": ">=",
+        "threshold": 1.75,
+        "precision": 0.42105263157894735,
+        "lift": 4.622986036519871,
+        "per_season_flagged": 5.181818181818182
+      },
+      {
+        "label": "Last year's red-zone target share",
+        "metric": "prev_rz_targets_share",
+        "direction": ">=",
+        "threshold": 0.27,
+        "precision": 0.4,
+        "lift": 4.391836734693878,
+        "per_season_flagged": 1.8181818181818181
+      },
+      {
+        "label": "New team's QB EPA rank last year",
+        "metric": "newteam_prev_team_qb_epa_rank",
+        "direction": "<=",
+        "threshold": 2.0,
+        "precision": 0.30303030303030304,
+        "lift": 3.3271490414347555,
+        "per_season_flagged": 3.0
+      }
+    ],
+    "rules": [
+      {
+        "label": "Last year's yards per route (est., shrunk)",
+        "metric": "prev_yprr_shrunk",
+        "direction": ">=",
+        "threshold": 1.39,
+        "precision": 0.2689655172413793,
+        "recall": 0.7959183673469388,
+        "lift": 2.9531315974665726
+      },
+      {
+        "label": "Last year's WOPR",
+        "metric": "prev_wopr",
+        "direction": ">=",
+        "threshold": 0.32,
+        "precision": 0.23493975903614459,
+        "recall": 0.7959183673469388,
+        "lift": 2.579542660437669
+      },
+      {
+        "label": "Last year's positional finish",
+        "metric": "prev_pos_rank",
+        "direction": "<=",
+        "threshold": 19.5,
+        "precision": 0.20207253886010362,
+        "recall": 0.7959183673469388,
+        "lift": 2.218673998096648
+      },
+      {
+        "label": "Last year's red-zone target share",
+        "metric": "prev_rz_targets_share",
+        "direction": ">=",
+        "threshold": 0.14,
+        "precision": 0.1921182266009852,
+        "recall": 0.7959183673469388,
+        "lift": 2.109379712476123
+      },
+      {
+        "label": "Last year's snap share",
+        "metric": "prev_snap_pct",
+        "direction": ">=",
+        "threshold": 0.65,
+        "precision": 0.16666666666666666,
+        "recall": 0.8163265306122449,
+        "lift": 1.8299319727891155
+      }
+    ],
+    "model_coefficients": {
+      "prev_target_share": 1.448,
+      "prev_yprr_shrunk": 0.194,
+      "prev_rz_targets_share": -0.391,
+      "prev_ppg_shrunk": 0.392,
+      "prev_snap_pct": -0.34,
+      "prev_games": 0.361,
+      "age": -0.098,
+      "newteam_prev_team_scoring_rank": 0.078,
+      "newteam_prev_team_qb_epa_rank": 0.001
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "player_display_name": "Trey McBride",
+        "team": "ARI",
+        "age": 26.777,
+        "prob": 0.96,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 1.0,
+        "prev_ppg_ppr": 18.582
+      },
+      {
+        "rank": 2,
+        "player_display_name": "Kyle Pitts",
+        "team": "ATL",
+        "age": 25.903,
+        "prob": 0.888,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 2.0,
+        "prev_ppg_ppr": 12.4
+      },
+      {
+        "rank": 3,
+        "player_display_name": "Harold Fannin Jr.",
+        "team": "CLE",
+        "age": 22.117,
+        "prob": 0.869,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 6.0,
+        "prev_ppg_ppr": 11.65
+      },
+      {
+        "rank": 4,
+        "player_display_name": "Brock Bowers",
+        "team": "LV",
+        "age": 23.719,
+        "prob": 0.802,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 11.0,
+        "prev_ppg_ppr": 14.683
+      },
+      {
+        "rank": 5,
+        "player_display_name": "Dalton Schultz",
+        "team": "HOU",
+        "age": 30.142,
+        "prob": 0.782,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 10.0,
+        "prev_ppg_ppr": 10.453
+      },
+      {
+        "rank": 6,
+        "player_display_name": "George Kittle",
+        "team": "SF",
+        "age": 32.896,
+        "prob": 0.763,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 13.0,
+        "prev_ppg_ppr": 14.682
+      },
+      {
+        "rank": 7,
+        "player_display_name": "Travis Kelce",
+        "team": "KC",
+        "age": 36.907,
+        "prob": 0.746,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 3.0,
+        "prev_ppg_ppr": 11.365
+      },
+      {
+        "rank": 8,
+        "player_display_name": "Tyler Warren",
+        "team": "IND",
+        "age": 24.274,
+        "prob": 0.746,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 4.0,
+        "prev_ppg_ppr": 11.088
+      },
+      {
+        "rank": 9,
+        "player_display_name": "Juwan Johnson",
+        "team": "NO",
+        "age": 29.966,
+        "prob": 0.745,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 8.0,
+        "prev_ppg_ppr": 10.582
+      },
+      {
+        "rank": 10,
+        "player_display_name": "Zach Ertz",
+        "team": "WAS",
+        "age": 35.809,
+        "prob": 0.659,
+        "rules_passed": 5,
+        "n_rules": 5,
+        "passes_all": true,
+        "prev_pos_rank": 19.0,
+        "prev_ppg_ppr": 9.723
+      },
+      {
+        "rank": 11,
+        "player_display_name": "Dallas Goedert",
+        "team": "PHI",
+        "age": 31.661,
+        "prob": 0.639,
+        "rules_passed": 4,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 7.0,
+        "prev_ppg_ppr": 12.34
+      },
+      {
+        "rank": 12,
+        "player_display_name": "Colston Loveland",
+        "team": "CHI",
+        "age": 22.396,
+        "prob": 0.617,
+        "rules_passed": 4,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 12.0,
+        "prev_ppg_ppr": 10.319
+      },
+      {
+        "rank": 13,
+        "player_display_name": "Chig Okonkwo",
+        "team": "TEN",
+        "age": 26.982,
+        "prob": 0.614,
+        "rules_passed": 0,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 21.0,
+        "prev_ppg_ppr": 7.294
+      },
+      {
+        "rank": 14,
+        "player_display_name": "Dalton Kincaid",
+        "team": "BUF",
+        "age": 26.873,
+        "prob": 0.6,
+        "rules_passed": 2,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 20.0,
+        "prev_ppg_ppr": 10.508
+      },
+      {
+        "rank": 15,
+        "player_display_name": "Jake Ferguson",
+        "team": "DAL",
+        "age": 27.62,
+        "prob": 0.578,
+        "rules_passed": 3,
+        "n_rules": 5,
+        "passes_all": false,
+        "prev_pos_rank": 5.0,
+        "prev_ppg_ppr": 11.065
+      }
+    ]
+  }
+}
