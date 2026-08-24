@@ -8,6 +8,8 @@ from __future__ import annotations
 import html
 import json
 
+import pandas as pd
+
 from config import OUTPUT
 
 POS_ORDER = ["WR", "TE", "RB", "QB"]
@@ -360,7 +362,8 @@ def elite_roll(pos: str, elite: list) -> str:
       <div class="roll">{''.join(cells)}</div></details>"""
 
 
-def forecast_block(pos: str, rows: list, n_cand: int, n_rules: int) -> str:
+def forecast_block(pos: str, rows: list, n_cand: int, n_rules: int,
+                   season: int) -> str:
     out = []
     for r in rows[:10]:
         allp = r["passes_all"] in (True, "True")
@@ -371,7 +374,7 @@ def forecast_block(pos: str, rows: list, n_cand: int, n_rules: int) -> str:
             <small>{e(r['team'])} · {float(r['age']):.0f}yo · was {e(pos)}{int(r['prev_pos_rank'])}</small></div>
           <div class="rt"><div class="pp">{float(r['prob']):.2f}</div>
             <div class="gates{' all' if allp else ''}">{e(gates)}</div></div></div>""")
-    return f"""<div class="card"><div class="blockhead"><h4>2026 shortlist</h4>
+    return f"""<div class="card"><div class="blockhead"><h4>{season} shortlist</h4>
       <span class="label">{n_cand} returning candidates</span></div>
       <div class="pad fc">{''.join(out)}</div>
       <div class="pad" style="padding-top:0"><p class="label" style="max-width:none">
@@ -424,7 +427,7 @@ def audit_section(a: dict) -> str:
 </section>"""
 
 
-def chapter(pos: str, d: dict) -> str:
+def chapter(pos: str, d: dict, season: int) -> str:
     j = d["joint"]
     pj = d["pred"]["joint"]
     n_pred_rules = len(d["pred"]["gates"])
@@ -465,7 +468,7 @@ def chapter(pos: str, d: dict) -> str:
   <div class="grid2" style="margin-top:20px">
     {pred_line}
     <div class="stack">{model_block(pos, d['pred']['model'], d['pred']['coverage'])}
-      {forecast_block(pos, d['forecast'], d['forecast_n'], n_pred_rules)}</div>
+      {forecast_block(pos, d['forecast'], d['forecast_n'], n_pred_rules, season)}</div>
   </div>
 
   <div class="card" style="margin-top:20px">{elite_roll(pos, d['elite'])}</div>
@@ -531,7 +534,7 @@ def build(page: dict) -> str:
   receiver card has five.</p></div>
 </section>
 
-{''.join(chapter(p, page['positions'][p]) for p in POS_ORDER)}
+{''.join(chapter(p, page['positions'][p], m['forecast_season']) for p in POS_ORDER)}
 
 <section>
   <hr class="hash">
@@ -590,8 +593,52 @@ def build(page: dict) -> str:
 </div>"""
 
 
+SLIM = ("label", "metric", "direction", "threshold", "precision", "recall",
+        "lift", "per_season_flagged", "n_flagged", "hits")
+
+
+def assemble() -> dict:
+    """Collect the analysis outputs into the single bundle the page renders from."""
+    prof = json.load(open(OUTPUT / "profile_cards.json"))
+    pred = json.load(open(OUTPUT / "predictive_cards.json"))
+    audit = json.load(open(OUTPUT / "viral_rule_audit.json"))
+    fc_path = next(OUTPUT.glob("forecast_*.json"))
+    fc = json.load(open(fc_path))
+    n_seasons = len(pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False))
+
+    def slim(r):
+        return {k: r[k] for k in SLIM}
+
+    page = {"meta": {"n_player_seasons": n_seasons,
+                     "forecast_season": int(fc_path.stem.split("_")[1])},
+            "audit": audit, "positions": {}}
+    for p in POS_ORDER:
+        pr, pd_ = prof[p]["profile_top5"], pred[p]
+        page["positions"][p] = {
+            "pool": prof[p]["pool"], "joint": pr["joint"],
+            "gates": [slim(r) for r in pr["rules"]],
+            "greens": [slim(r) for r in pr["green_flags"]],
+            "vacuous": [slim(r) for r in pr["vacuous"]],
+            "pred": {
+                "pool": pd_["pool"], "joint": pd_["card"]["joint"],
+                "gates": [slim(r) for r in pd_["card"]["rules"]],
+                "greens": [slim(r) for r in pd_["card"]["green_flags"]],
+                "model": pd_["model"], "persistence": pd_["persistence"],
+                "coverage": {k: v for k, v in pd_["coverage"].items()
+                             if k != "unreachable"},
+                "unreachable": pd_["coverage"]["unreachable"],
+            },
+            "elite": prof[p]["elite_seasons"],
+            "forecast": fc[p]["shortlist"][:12],
+            "forecast_n": fc[p]["n_candidates"],
+        }
+    with open(OUTPUT / "page_data.json", "w") as fh:
+        json.dump(page, fh, indent=1, default=str)
+    return page
+
+
 def main() -> None:
-    page = json.load(open(OUTPUT / "page_data.json"))
+    page = assemble()
     out = OUTPUT / "report.html"
     out.write_text(build(page), encoding="utf-8")
     print(f"wrote {out}  ({out.stat().st_size / 1024:.0f} KB)")
