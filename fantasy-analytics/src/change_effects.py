@@ -184,8 +184,161 @@ def situation_changes(p: pd.DataFrame) -> None:
         print()
 
 
+# --------------------------------------------------------------- study F
+def rookie_split(p: pd.DataFrame) -> None:
+    """A bad rookie year is not one thing either. Split it by why, and by pedigree.
+
+    The headline in study B lumps a first-rounder who tore an ACL in week three
+    together with a seventh-rounder who was inactive because he was not good.
+    Those are different players and deserve different treatment.
+    """
+    hr("F — was the bad rookie year an injury, or was he just bad?")
+
+    def follow(g, pos):
+        best, t5, t12 = [], [], []
+        for _, row in g.iterrows():
+            fut = df[(df["player_id"] == row["player_id"]) &
+                     (df["season"] > row["season"]) &
+                     (df["season"] <= row["season"] + 3) &
+                     (df["fantasy_pos"] == pos)]
+            best.append(fut["pos_rank"].min() if len(fut) else np.nan)
+            t5.append(int((fut["top5"] == 1).any()) if len(fut) else 0)
+            t12.append(int((fut["top12"] == 1).any()) if len(fut) else 0)
+        return np.mean(t5), np.mean(t12), np.nanmedian(best)
+
+    def table(label, buckets):
+        print(f"\n{label}")
+        print(f"{'pos':4s} {'bucket':22s} {'n':>4s} {'ever top-5':>11s} "
+              f"{'ever top-12':>12s} {'best rank (med)':>16s}")
+        for pos in POS:
+            bad = df[(df["fantasy_pos"] == pos) & (df["exp"] == 0) &
+                     (df["season"] <= 2022) & (df["pos_rank"] > 48)].copy()
+            if len(bad) < 20:
+                continue
+            for lab, mask in buckets(bad):
+                g = bad[mask]
+                if len(g) < 10:
+                    continue
+                t5, t12, best = follow(g, pos)
+                print(f"{pos:4s} {lab:22s} {len(g):>4d} {t5:>10.0%} "
+                      f"{t12:>11.0%} {best:>16.0f}")
+            print()
+
+    print("Everyone who finished outside the top 48 as a rookie, split by how much\n"
+          "of the season he was actually available for.\n")
+    table("BY AVAILABILITY", lambda b: [
+        ("hurt/inactive (<8 gm)", b["games"] < 8),
+        ("part-time (8-13 gm)",   (b["games"] >= 8) & (b["games"] <= 13)),
+        ("played 14+ and was bad", b["games"] >= 14),
+    ])
+
+    print("Same group, split by where the NFL drafted him.\n")
+    table("BY DRAFT CAPITAL", lambda b: [
+        ("round 1",        b["draft_round"] == 1),
+        ("round 2-3",      b["draft_round"].isin([2, 3])),
+        ("round 4-7",      b["draft_round"].isin([4, 5, 6, 7])),
+        ("undrafted/unk",  b["draft_round"].isna()),
+    ])
+
+    print("Both at once: the best case a missed rookie year can make for itself.\n")
+    table("PEDIGREE x AVAILABILITY", lambda b: [
+        ("rd 1-3, <8 gm",   b["draft_round"].isin([1, 2, 3]) & (b["games"] < 8)),
+        ("rd 1-3, 8+ gm",   b["draft_round"].isin([1, 2, 3]) & (b["games"] >= 8)),
+        ("rd 4+, <8 gm",    ~b["draft_round"].isin([1, 2, 3]) & (b["games"] < 8)),
+        ("rd 4+, 8+ gm",    ~b["draft_round"].isin([1, 2, 3]) & (b["games"] >= 8)),
+    ])
+
+
+# --------------------------------------------------------------- study G
+def veteran_injury(p: pd.DataFrame) -> None:
+    """The rookie answer does not transfer. Ask the same question of veterans.
+
+    Anchor on an established season (top-24 with 12+ games), bucket the season
+    after it by how much of it he played, then score the two seasons after that.
+    A two-year forward window is the difference between a readable sample and a
+    dozen-player cell nobody should draft off.
+    """
+    hr("G — a veteran who loses a season to injury is a different animal")
+    print("Anchor: a top-24 season on 12+ games. Bucket the NEXT season by how much\n"
+          "of it he played. Score the two seasons after that.\n")
+    print(f"{'pos':6s} {'what happened':26s} {'n':>4s} {'top-5 in next 2':>16s} "
+          f"{'top-12':>8s} {'best rank (med)':>16s}")
+
+    rows = []
+    for pos in POS:
+        q = p[(p["fantasy_pos"] == pos) & (p["pos_rank"] <= 24) &
+              (p["games"] >= 12) & p["n_pos_rank"].notna()].copy()
+        best, t5, t12, any_, back = [], [], [], [], []
+        for _, row in q.iterrows():
+            fut = df[(df["player_id"] == row["player_id"]) &
+                     (df["season"] >= row["season"] + 2) &
+                     (df["season"] <= row["season"] + 3) &
+                     (df["fantasy_pos"] == pos)]
+            best.append(fut["pos_rank"].min() if len(fut) else np.nan)
+            t5.append(int((fut["top5"] == 1).any()) if len(fut) else 0)
+            t12.append(int((fut["top12"] == 1).any()) if len(fut) else 0)
+            # a season that never happened is the single biggest cost of an injury
+            any_.append(int(len(fut) > 0))
+            back.append(int((fut["games"] >= 12).any()) if len(fut) else 0)
+        q["f_best"], q["f_t5"], q["f_t12"] = best, t5, t12
+        q["f_any"], q["f_back"] = any_, back
+        # only anchors old enough for the forward window to exist
+        q = q[q["season"] <= df["season"].max() - 3]
+        q["bucket"] = np.select(
+            [q["n_games"] < 8,
+             q["n_games"] <= 13,
+             q[f"n_{ROLE[pos]}"] >= 0.85 * q[ROLE[pos]]],
+            ["hurt (<8 gm)", "part season (8-13 gm)", "healthy, role kept"],
+            default="healthy, role lost")
+        q["pos"] = pos
+        rows.append(q[["pos", "bucket", "age", "f_best", "f_t5",
+                       "f_t12", "f_any", "f_back"]])
+
+    allrows = pd.concat(rows, ignore_index=True)
+    order = ["hurt (<8 gm)", "part season (8-13 gm)",
+             "healthy, role kept", "healthy, role lost"]
+    for pos in POS:
+        g0 = allrows[allrows["pos"] == pos]
+        for lab in order:
+            g = g0[g0["bucket"] == lab]
+            if len(g) < 10:
+                continue
+            print(f"{pos:6s} {lab:26s} {len(g):>4d} {g['f_t5'].mean():>15.0%} "
+                  f"{g['f_t12'].mean():>7.0%} {g['f_best'].median():>16.0f}")
+        print()
+
+    print("All four positions pooled, where the per-position cells are too thin:\n")
+    for lab in order:
+        g = allrows[allrows["bucket"] == lab]
+        print(f"{'ALL':6s} {lab:26s} {len(g):>4d} {g['f_t5'].mean():>15.0%} "
+              f"{g['f_t12'].mean():>7.0%} {g['f_best'].median():>16.0f}")
+
+    print("\nBut most of that gap is attrition, not decline. How many came back at all:\n")
+    print(f"{'bucket':26s} {'n':>4s} {'never played again':>19s} "
+          f"{'never played 12+ gm':>21s} {'age at anchor':>14s}")
+    for lab in order:
+        g = allrows[allrows["bucket"] == lab]
+        print(f"{lab:26s} {len(g):>4d} {1 - g['f_any'].mean():>18.0%} "
+              f"{1 - g['f_back'].mean():>20.0%} {g['age'].mean():>14.1f}")
+
+    print("\nConditional on playing a full season again — and then, only the young ones.\n")
+    print(f"{'bucket':26s} {'n':>4s} {'top-5':>8s} {'top-12':>8s} {'best rank (med)':>16s}")
+    for lab in order:
+        g = allrows[(allrows["bucket"] == lab) & (allrows["f_back"] == 1)]
+        print(f"{lab:26s} {len(g):>4d} {g['f_t5'].mean():>7.0%} "
+              f"{g['f_t12'].mean():>7.0%} {g['f_best'].median():>16.0f}")
+    print("\n...and of those, the ones who were 26 or younger at the anchor season:\n")
+    for lab in order:
+        g = allrows[(allrows["bucket"] == lab) & (allrows["f_back"] == 1) &
+                    (allrows["age"] <= 26)]
+        print(f"{lab:26s} {len(g):>4d} {g['f_t5'].mean():>7.0%} "
+              f"{g['f_t12'].mean():>7.0%} {g['f_best'].median():>16.0f}")
+
+
 if __name__ == "__main__":
     p = pairs()
     bounce_back(p)
     rookie_year(p)
     situation_changes(p)
+    rookie_split(p)
+    veteran_injury(p)
