@@ -84,7 +84,12 @@ def main() -> None:
                           if not ((p[g["metric"]] <= g["threshold"])
                                   if g["direction"] == "<="
                                   else (p[g["metric"]] >= g["threshold"]))]
-                lhits = sum(1 for k, v in leap.items() if p[k] >= v)
+                # The leaper profile describes players who jumped from OUTSIDE
+                # the prior top 12. Its bars are deliberately low, so every
+                # established starter clears all of them and the count says
+                # nothing. Only score it for players actually in that lane.
+                lhits = (sum(1 for k, v in leap.items() if p[k] >= v)
+                         if r["prev_finish"] > 12 else None)
                 scored_on = int(p["season"])
             else:
                 cleared, missed, lhits = 0, ["no full season to score against"], 0
@@ -96,7 +101,7 @@ def main() -> None:
                 "gates_scored_on": scored_on,
                 "gates_cleared": cleared, "gates_total": len(gates),
                 "leaper_markers": lhits, "leaper_total": len(leap),
-                "tier": tier(float(r["prob"]), lhits, len(leap),
+                "tier": tier(float(r["prob"]), lhits or 0, len(leap),
                              float(r["prev_finish"])),
                 "missing": "; ".join(missed) or "-",
             })
@@ -116,7 +121,7 @@ def main() -> None:
                          else f"  [gates from {int(r['gates_scored_on'])}]")
                 print(f"    {r['player'][:24]:25s} {r['team']:4s} {r['age']:>4.1f} "
                       f"p={r['prob']:.2f}  gates {r['gates_cleared']}/{r['gates_total']} "
-                      f" leap {r['leaper_markers']}/{r['leaper_total']} "
+                      f" leap {'n/a' if pd.isna(r['leaper_markers']) else str(int(r['leaper_markers'])) + '/' + str(r['leaper_total'])} "
                       f" was {pos}{r['last_finish']}{stale}")
     print(f"\nwrote {OUTPUT / f'target_board_{TARGET}.csv'}")
 

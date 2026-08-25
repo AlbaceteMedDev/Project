@@ -63,6 +63,8 @@ EXTRA = """
 .pip.on{background:var(--mark)}
 .piplab{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.1em; text-transform:uppercase; margin-top:4px}
+.na{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+  letter-spacing:.08em; text-transform:uppercase; line-height:1.4}
 .clean{color:var(--good-ink); font-family:'IBM Plex Mono',monospace; font-size:12px;
   letter-spacing:.06em; text-transform:uppercase; font-weight:600; margin-top:3px}
 @media (max-width:640px){
@@ -81,6 +83,9 @@ def pips(n: int, total: int, label: str) -> str:
 
 def row(r: pd.Series, pos: str) -> str:
     miss = r["missing"]
+    leapcell = (pips(int(r["leaper_markers"]), int(r["leaper_total"]), "leaper marks")
+                if pd.notna(r["leaper_markers"])
+                else '<div class="na">already a starter</div>')
     stale = ("" if r["gates_scored_on"] == LAST_SEASON
              else " · no full season to score" if not r["gates_scored_on"]
              else f" · gates from {int(r['gates_scored_on'])}")
@@ -94,7 +99,7 @@ def row(r: pd.Series, pos: str) -> str:
     {body}
   </div>
   <div class="cellpips">{pips(int(r['gates_cleared']), int(r['gates_total']), 'gates')}</div>
-  <div class="cellprob">{pips(int(r['leaper_markers']), int(r['leaper_total']), 'leaper marks')}</div>
+  <div class="cellprob">{leapcell}</div>
 </div>"""
 
 
@@ -161,7 +166,9 @@ def build(board: pd.DataFrame, counts: dict) -> str:
     <div class="card pad"><span class="label">Leaper marks</span>
       <p style="margin:8px 0 0"><b>How closely he matches the players who jumped
       into the top 5 from outside the prior top 12.</b> Roughly 40% of all elite
-      finishes came from there, so this is the late-round signal.</p></div>
+      finishes came from there, so this is the late-round signal. It is shown only
+      for players in that lane — the bars are deliberately low, so an established
+      starter clears all of them and the count would mean nothing.</p></div>
     <div class="card pad"><span class="label">What is missing</span>
       <p style="margin:8px 0 0">The specific gates his prior year failed. Read it as
       the thesis you are buying: something has to change for that line to clear.</p></div>
