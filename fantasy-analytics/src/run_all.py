@@ -10,8 +10,9 @@ import predict
 import board_report
 import report
 import target_board
+import value_lane
 
 for step in (download, build_dataset, __import__("analyze"), predict, audit,
-             report, target_board, board_report):
+             report, target_board, value_lane, board_report):
     print(f"\n{'=' * 70}\n{step.__name__}\n{'=' * 70}")
     step.main()

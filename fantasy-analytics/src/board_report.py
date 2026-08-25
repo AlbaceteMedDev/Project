@@ -64,6 +64,28 @@ EXTRA = """
 .pip.on{background:var(--mark)}
 .piplab{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.1em; text-transform:uppercase; margin-top:4px}
+.lane{width:100%; border-collapse:collapse; font-size:15px}
+.lane td,.lane th{padding:9px 10px}
+.lane .grp td{padding-top:18px; font-family:'Big Shoulders Display',Archivo,sans-serif;
+  font-size:24px; color:var(--mark-ink); border-bottom:2px solid var(--line-strong);
+  text-align:left; font-weight:700}
+.lane .lname{text-align:left; font-family:Newsreader,Georgia,serif; font-size:16px}
+.lane .lname small{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--muted); letter-spacing:.03em}
+.lane .base{color:var(--muted)}
+.lane .hit{font-weight:600}
+.lane .lift{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--mark-ink);
+  font-weight:600}
+.picks{display:grid; grid-template-columns:repeat(auto-fit,minmax(208px,1fr));
+  gap:24px 26px; margin-top:24px}
+.picks .p1{display:grid; grid-template-columns:minmax(0,1fr) 52px; gap:8px;
+  padding:7px 0; border-bottom:1px solid var(--line); align-items:baseline}
+.picks .p1:last-child{border-bottom:0}
+.picks .pn{font-size:15.5px}
+.picks .pn small{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+  color:var(--muted); letter-spacing:.03em}
+.picks .pv{font-family:'IBM Plex Mono',monospace; font-size:14px; text-align:right;
+  font-variant-numeric:tabular-nums}
 .lev{display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
   gap:34px 48px; margin-top:26px}
 .levpos{min-width:0}
@@ -96,6 +118,82 @@ EXTRA = """
   .row .cellpips,.row .cellprob{grid-column:2}
   .pnum{font-size:19px; text-align:left}
 }
+"""
+
+
+LANE_NAME = {
+    "all": ("Everyone scored", "the board as published"),
+    "cheap": ("No top-12 finish last year", "still includes recent stars"),
+    "strict": ("No top-12 in either of the last two", "nobody priced as a star"),
+}
+
+
+def value_section() -> str:
+    """The board sorted by probability is a list of good players. This is the part
+    that answers a draft question: among players nobody is bidding up, does it know
+    anything?"""
+    v = json.loads((OUTPUT / "value_lane.json").read_text())
+    by = {}
+    for r in v["backtest"]:
+        by.setdefault(r["pos"], []).append(r)
+
+    rows = []
+    for pos in POS_ORDER:
+        rows.append(f'<tr class="grp"><td colspan="6">{pos}</td></tr>')
+        for r in by[pos]:
+            nm, sub = LANE_NAME[r["lane"]]
+            lift = r["hit5"] / r["base5"] if r["base5"] else 0
+            rows.append(
+                f'<tr><td class="lname">{e(nm)}<small>{e(sub)} · '
+                f'{r["n_per_season"]}/yr</small></td>'
+                f'<td class="base">{pct(r["base5"])}</td>'
+                f'<td class="hit">{pct(r["hit5"])}</td>'
+                f'<td class="lift">{lift:.1f}×</td>'
+                f'<td class="base">{pct(r["base12"])}</td>'
+                f'<td class="hit">{pct(r["hit12"])}</td></tr>')
+
+    cols = []
+    for pos in POS_ORDER:
+        picks = [x for x in v["upcoming"] if x["pos"] == pos]
+        body = "".join(
+            f'<div class="p1"><div class="pn">{e(x["player"])}'
+            f'<small>{e(x["team"])} · {x["age"]:.0f} · best '
+            f'{pos}{x["best_recent"] if x["best_recent"] else "—"}</small></div>'
+            f'<div class="pv">{x["prob"]:.2f}</div></div>'
+            for x in picks)
+        cols.append(f'<div><div class="levhead"><h4>{pos}</h4></div>{body}</div>')
+
+    return f"""<section>
+  <hr class="hash">
+  <h2>The part that is worth something</h2>
+  <p class="sec-intro">Every feature in this model is a production stat, so it can
+  only rank players who already played — which means the top of the board is a list
+  of people you already know and will pay full price for. The question a draft
+  actually asks is narrower: strip out everyone the market has already bid up, and
+  does the model still know anything? Each lane below takes the model's top
+  {v['take']} picks per season and scores them against that lane's own base rate.</p>
+  <div class="scroll"><table class="lane">
+    <thead><tr><th style="text-align:left"></th>
+      <th colspan="3" style="text-align:center">— top-5 finish —</th>
+      <th colspan="2" style="text-align:center">— top-12 finish —</th></tr>
+    <tr><th style="text-align:left">Lane</th><th>Base</th>
+      <th>Top {v['take']} picks</th><th>Lift</th><th>Base</th>
+      <th>Top {v['take']} picks</th></tr></thead>
+    <tbody>{''.join(rows)}</tbody>
+  </table></div>
+  <div class="callout"><p><b>Read the third row of each block, not the first.</b>
+  Among genuinely cheap players the model's top three hit top-5 about 7-10% of the
+  time. That is five to seven times the lane's base rate and it is still a long
+  shot — a 0.25 profile does not exist down there, because elite seasons
+  overwhelmingly come from players who were already good. Top-12 is the honest
+  target for a late pick: 20-33%, against a base of 5-14%.</p></div>
+  <h3 style="font-size:20px; margin:38px 0 4px">{v['target']}: the cheap lane</h3>
+  <p class="sec-intro" style="margin-bottom:0">Nobody here finished top 12 in
+  {v['target'] - 2} or {v['target'] - 1}; each row shows his best finish across
+  those two years. Ranked by the same model, with the probability shown so you can
+  see how thin it gets past the first name or two.</p>
+  <div class="picks">{''.join(cols)}</div>
+</section>
 """
 
 
@@ -243,6 +341,8 @@ def build(board: pd.DataFrame, counts: dict) -> str:
     <div><b>0.93</b><span class="label">best out-of-sample AUC</span></div>
   </div>
 </header>
+
+{value_section()}
 
 {leverage_section()}
 

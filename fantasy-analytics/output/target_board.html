@@ -233,6 +233,28 @@ ul.tight li{margin-bottom:.45em}
 .pip.on{background:var(--mark)}
 .piplab{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.1em; text-transform:uppercase; margin-top:4px}
+.lane{width:100%; border-collapse:collapse; font-size:15px}
+.lane td,.lane th{padding:9px 10px}
+.lane .grp td{padding-top:18px; font-family:'Big Shoulders Display',Archivo,sans-serif;
+  font-size:24px; color:var(--mark-ink); border-bottom:2px solid var(--line-strong);
+  text-align:left; font-weight:700}
+.lane .lname{text-align:left; font-family:Newsreader,Georgia,serif; font-size:16px}
+.lane .lname small{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--muted); letter-spacing:.03em}
+.lane .base{color:var(--muted)}
+.lane .hit{font-weight:600}
+.lane .lift{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--mark-ink);
+  font-weight:600}
+.picks{display:grid; grid-template-columns:repeat(auto-fit,minmax(208px,1fr));
+  gap:24px 26px; margin-top:24px}
+.picks .p1{display:grid; grid-template-columns:minmax(0,1fr) 52px; gap:8px;
+  padding:7px 0; border-bottom:1px solid var(--line); align-items:baseline}
+.picks .p1:last-child{border-bottom:0}
+.picks .pn{font-size:15.5px}
+.picks .pn small{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+  color:var(--muted); letter-spacing:.03em}
+.picks .pv{font-family:'IBM Plex Mono',monospace; font-size:14px; text-align:right;
+  font-variant-numeric:tabular-nums}
 .lev{display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
   gap:34px 48px; margin-top:26px}
 .levpos{min-width:0}
@@ -281,6 +303,39 @@ ul.tight li{margin-bottom:.45em}
     <div><b>0.93</b><span class="label">best out-of-sample AUC</span></div>
   </div>
 </header>
+
+<section>
+  <hr class="hash">
+  <h2>The part that is worth something</h2>
+  <p class="sec-intro">Every feature in this model is a production stat, so it can
+  only rank players who already played — which means the top of the board is a list
+  of people you already know and will pay full price for. The question a draft
+  actually asks is narrower: strip out everyone the market has already bid up, and
+  does the model still know anything? Each lane below takes the model's top
+  3 picks per season and scores them against that lane's own base rate.</p>
+  <div class="scroll"><table class="lane">
+    <thead><tr><th style="text-align:left"></th>
+      <th colspan="3" style="text-align:center">— top-5 finish —</th>
+      <th colspan="2" style="text-align:center">— top-12 finish —</th></tr>
+    <tr><th style="text-align:left">Lane</th><th>Base</th>
+      <th>Top 3 picks</th><th>Lift</th><th>Base</th>
+      <th>Top 3 picks</th></tr></thead>
+    <tbody><tr class="grp"><td colspan="6">WR</td></tr><tr><td class="lname">Everyone scored<small>the board as published · 110/yr</small></td><td class="base">4%</td><td class="hit">43%</td><td class="lift">10.1×</td><td class="base">10%</td><td class="hit">60%</td></tr><tr><td class="lname">No top-12 finish last year<small>still includes recent stars · 98/yr</small></td><td class="base">2%</td><td class="hit">27%</td><td class="lift">13.1×</td><td class="base">7%</td><td class="hit">47%</td></tr><tr><td class="lname">No top-12 in either of the last two<small>nobody priced as a star · 91/yr</small></td><td class="base">1%</td><td class="hit">7%</td><td class="lift">6.8×</td><td class="base">5%</td><td class="hit">23%</td></tr><tr class="grp"><td colspan="6">RB</td></tr><tr><td class="lname">Everyone scored<small>the board as published · 70/yr</small></td><td class="base">6%</td><td class="hit">43%</td><td class="lift">7.0×</td><td class="base">15%</td><td class="hit">70%</td></tr><tr><td class="lname">No top-12 finish last year<small>still includes recent stars · 59/yr</small></td><td class="base">3%</td><td class="hit">23%</td><td class="lift">7.2×</td><td class="base">9%</td><td class="hit">43%</td></tr><tr><td class="lname">No top-12 in either of the last two<small>nobody priced as a star · 52/yr</small></td><td class="base">2%</td><td class="hit">7%</td><td class="lift">3.2×</td><td class="base">7%</td><td class="hit">20%</td></tr><tr class="grp"><td colspan="6">TE</td></tr><tr><td class="lname">Everyone scored<small>the board as published · 56/yr</small></td><td class="base">8%</td><td class="hit">67%</td><td class="lift">8.5×</td><td class="base">19%</td><td class="hit">73%</td></tr><tr><td class="lname">No top-12 finish last year<small>still includes recent stars · 45/yr</small></td><td class="base">3%</td><td class="hit">13%</td><td class="lift">4.0×</td><td class="base">11%</td><td class="hit">20%</td></tr><tr><td class="lname">No top-12 in either of the last two<small>nobody priced as a star · 40/yr</small></td><td class="base">2%</td><td class="hit">10%</td><td class="lift">4.4×</td><td class="base">9%</td><td class="hit">20%</td></tr><tr class="grp"><td colspan="6">QB</td></tr><tr><td class="lname">Everyone scored<small>the board as published · 32/yr</small></td><td class="base">14%</td><td class="hit">37%</td><td class="lift">2.7×</td><td class="base">32%</td><td class="hit">77%</td></tr><tr><td class="lname">No top-12 finish last year<small>still includes recent stars · 21/yr</small></td><td class="base">8%</td><td class="hit">30%</td><td class="lift">3.9×</td><td class="base">19%</td><td class="hit">57%</td></tr><tr><td class="lname">No top-12 in either of the last two<small>nobody priced as a star · 16/yr</small></td><td class="base">4%</td><td class="hit">10%</td><td class="lift">2.3×</td><td class="base">14%</td><td class="hit">33%</td></tr></tbody>
+  </table></div>
+  <div class="callout"><p><b>Read the third row of each block, not the first.</b>
+  Among genuinely cheap players the model's top three hit top-5 about 7-10% of the
+  time. That is five to seven times the lane's base rate and it is still a long
+  shot — a 0.25 profile does not exist down there, because elite seasons
+  overwhelmingly come from players who were already good. Top-12 is the honest
+  target for a late pick: 20-33%, against a base of 5-14%.</p></div>
+  <h3 style="font-size:20px; margin:38px 0 4px">2026: the cheap lane</h3>
+  <p class="sec-intro" style="margin-bottom:0">Nobody here finished top 12 in
+  2024 or 2025; each row shows his best finish across
+  those two years. Ranked by the same model, with the probability shown so you can
+  see how thin it gets past the first name or two.</p>
+  <div class="picks"><div><div class="levhead"><h4>WR</h4></div><div class="p1"><div class="pn">Wan&#x27;Dale Robinson<small>NYG · 26 · best WR14</small></div><div class="pv">0.20</div></div><div class="p1"><div class="pn">Tee Higgins<small>CIN · 28 · best WR16</small></div><div class="pv">0.12</div></div><div class="p1"><div class="pn">Josh Downs<small>IND · 25 · best WR35</small></div><div class="pv">0.07</div></div><div class="p1"><div class="pn">Khalil Shakir<small>BUF · 27 · best WR36</small></div><div class="pv">0.06</div></div><div class="p1"><div class="pn">Tetairoa McMillan<small>CAR · 23 · best WR15</small></div><div class="pv">0.05</div></div><div class="p1"><div class="pn">DeVonta Smith<small>PHI · 28 · best WR20</small></div><div class="pv">0.05</div></div><div class="p1"><div class="pn">Emeka Egbuka<small>TB · 24 · best WR23</small></div><div class="pv">0.04</div></div></div><div><div class="levhead"><h4>RB</h4></div><div class="p1"><div class="pn">Bucky Irving<small>TB · 24 · best RB13</small></div><div class="pv">0.17</div></div><div class="p1"><div class="pn">Omarion Hampton<small>LAC · 24 · best RB35</small></div><div class="pv">0.15</div></div><div class="p1"><div class="pn">Cam Skattebo<small>NYG · 25 · best RB37</small></div><div class="pv">0.10</div></div><div class="p1"><div class="pn">TreVeyon Henderson<small>NE · 24 · best RB21</small></div><div class="pv">0.09</div></div><div class="p1"><div class="pn">Breece Hall<small>NYJ · 25 · best RB16</small></div><div class="pv">0.07</div></div><div class="p1"><div class="pn">D&#x27;Andre Swift<small>CHI · 28 · best RB15</small></div><div class="pv">0.06</div></div><div class="p1"><div class="pn">Kenneth Walker III<small>SEA · 26 · best RB22</small></div><div class="pv">0.06</div></div></div><div><div class="levhead"><h4>TE</h4></div><div class="p1"><div class="pn">Evan Engram<small>DEN · 32 · best TE29</small></div><div class="pv">0.22</div></div><div class="p1"><div class="pn">Dalton Kincaid<small>BUF · 27 · best TE20</small></div><div class="pv">0.12</div></div><div class="p1"><div class="pn">Cade Otton<small>TB · 27 · best TE14</small></div><div class="pv">0.11</div></div><div class="p1"><div class="pn">Chig Okonkwo<small>TEN · 27 · best TE21</small></div><div class="pv">0.09</div></div><div class="p1"><div class="pn">T.J. Hockenson<small>MIN · 29 · best TE26</small></div><div class="pv">0.09</div></div><div class="p1"><div class="pn">Theo Johnson<small>NYG · 26 · best TE18</small></div><div class="pv">0.08</div></div><div class="p1"><div class="pn">Brenton Strange<small>JAX · 26 · best TE23</small></div><div class="pv">0.06</div></div></div><div><div class="levhead"><h4>QB</h4></div><div class="p1"><div class="pn">Jaxson Dart<small>NYG · 23 · best QB13</small></div><div class="pv">0.13</div></div><div class="p1"><div class="pn">Jordan Love<small>GB · 28 · best QB15</small></div><div class="pv">0.13</div></div><div class="p1"><div class="pn">Brock Purdy<small>SF · 27 · best QB13</small></div><div class="pv">0.12</div></div><div class="p1"><div class="pn">Tyler Shough<small>NO · 27 · best QB26</small></div><div class="pv">0.10</div></div><div class="p1"><div class="pn">Derek Carr<small>NO · 35 · best QB26</small></div><div class="pv">0.07</div></div><div class="p1"><div class="pn">Anthony Richardson<small>IND · 24 · best QB25</small></div><div class="pv">0.06</div></div><div class="p1"><div class="pn">Daniel Jones<small>IND · 29 · best QB18</small></div><div class="pv">0.06</div></div></div></div>
+</section>
+
 
 <section>
   <hr class="hash">

@@ -1,0 +1,2912 @@
+{
+ "take": 3,
+ "target": 2026,
+ "backtest": [
+  {
+   "pos": "WR",
+   "lane": "all",
+   "n_per_season": 110,
+   "base5": 0.042805100182149364,
+   "hit5": 0.43333333333333335,
+   "base12": 0.1029143897996357,
+   "hit12": 0.6,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Antonio Brown",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Odell Beckham Jr.",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Demaryius Thomas",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Julio Jones",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Antonio Brown",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Odell Beckham Jr.",
+     "rank": 83,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Odell Beckham Jr.",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Tyreek Hill",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Mike Evans",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "DeAndre Hopkins",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Keenan Allen",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "JuJu Smith-Schuster",
+     "rank": 65,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Michael Thomas",
+     "rank": 95,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "DeAndre Hopkins",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Davante Adams",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Davante Adams",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "A.J. Brown",
+     "rank": 32,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Chris Godwin Jr.",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Davante Adams",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Justin Jefferson",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Cooper Kupp",
+     "rank": 23,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Justin Jefferson",
+     "rank": 33,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Cooper Kupp",
+     "rank": 40,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Ja'Marr Chase",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "CeeDee Lamb",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Tyreek Hill",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Amon-Ra St. Brown",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "CeeDee Lamb",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Amon-Ra St. Brown",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Ja'Marr Chase",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    }
+   ]
+  },
+  {
+   "pos": "WR",
+   "lane": "cheap",
+   "n_per_season": 98,
+   "base5": 0.020429009193054137,
+   "hit5": 0.26666666666666666,
+   "base12": 0.06639427987742594,
+   "hit12": 0.4666666666666667,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Mike Evans",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Randall Cobb",
+     "rank": 52,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Kelvin Benjamin",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Jarvis Landry",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "DeAndre Hopkins",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "A.J. Green",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Odell Beckham Jr.",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Mike Evans",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Amari Cooper",
+     "rank": 19,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Jarvis Landry",
+     "rank": 12,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Brandin Cooks",
+     "rank": 62,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Will Fuller",
+     "rank": 53,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Davante Adams",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Mike Evans",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Tyreek Hill",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Chris Godwin Jr.",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "DJ Moore",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Marquise Brown",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "A.J. Brown",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "CeeDee Lamb",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "DK Metcalf",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Cooper Kupp",
+     "rank": 40,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Deebo Samuel Sr.",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Tee Higgins",
+     "rank": 51,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Justin Jefferson",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Chris Olave",
+     "rank": 94,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Jaylen Waddle",
+     "rank": 46,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "A.J. Brown",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Rashee Rice",
+     "rank": 40,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Puka Nacua",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    }
+   ]
+  },
+  {
+   "pos": "WR",
+   "lane": "strict",
+   "n_per_season": 91,
+   "base5": 0.009857612267250822,
+   "hit5": 0.06666666666666667,
+   "base12": 0.047097480832420595,
+   "hit12": 0.23333333333333334,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Mike Evans",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Kelvin Benjamin",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Brandin Cooks",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Amari Cooper",
+     "rank": 36,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Martavis Bryant",
+     "rank": 48,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Sammy Watkins",
+     "rank": 41,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Amari Cooper",
+     "rank": 19,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Allen Robinson",
+     "rank": 40,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Tyrell Williams",
+     "rank": 49,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Brandin Cooks",
+     "rank": 62,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Will Fuller",
+     "rank": 53,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Odell Beckham Jr.",
+     "rank": 25,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Odell Beckham Jr.",
+     "rank": 91,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "DJ Moore",
+     "rank": 25,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Tyler Boyd",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "DJ Moore",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Marquise Brown",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Diontae Johnson",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "CeeDee Lamb",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Tee Higgins",
+     "rank": 19,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Keke Coutee",
+     "rank": 217,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Tee Higgins",
+     "rank": 51,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "DK Metcalf",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "DJ Moore",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Chris Olave",
+     "rank": 94,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Garrett Wilson",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Michael Pittman",
+     "rank": 41,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Rashee Rice",
+     "rank": 40,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Chris Godwin Jr.",
+     "rank": 78,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Zay Flowers",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    }
+   ]
+  },
+  {
+   "pos": "RB",
+   "lane": "all",
+   "n_per_season": 70,
+   "base5": 0.06160458452722063,
+   "hit5": 0.43333333333333335,
+   "base12": 0.14756446991404013,
+   "hit12": 0.7,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Le'Veon Bell",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Devonta Freeman",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "LeSean McCoy",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Le'Veon Bell",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Ezekiel Elliott",
+     "rank": 12,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Theo Riddick",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Ezekiel Elliott",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Todd Gurley",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Melvin Gordon",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Ezekiel Elliott",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Todd Gurley",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Saquon Barkley",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Alvin Kamara",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Leonard Fournette",
+     "rank": 35,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Dalvin Cook",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Alvin Kamara",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Dalvin Cook",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Derrick Henry",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Derrick Henry",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Dalvin Cook",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Jonathan Taylor",
+     "rank": 33,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Christian McCaffrey",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Derrick Henry",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Javonte Williams",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Christian McCaffrey",
+     "rank": 69,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Bijan Robinson",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Josh Jacobs",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Jahmyr Gibbs",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Saquon Barkley",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "De'Von Achane",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    }
+   ]
+  },
+  {
+   "pos": "RB",
+   "lane": "cheap",
+   "n_per_season": 59,
+   "base5": 0.03236797274275979,
+   "hit5": 0.23333333333333334,
+   "base12": 0.08858603066439523,
+   "hit12": 0.43333333333333335,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Le'Veon Bell",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "LeSean McCoy",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "T.J. Yeldon",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Theo Riddick",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Giovani Bernard",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Tevin Coleman",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Jay Ajayi",
+     "rank": 83,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Jordan Howard",
+     "rank": 20,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Tevin Coleman",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Dalvin Cook",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Leonard Fournette",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Kerryon Johnson",
+     "rank": 54,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Kareem Hunt",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Le'Veon Bell",
+     "rank": 63,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Devin Singletary",
+     "rank": 31,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Joe Mixon",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Clyde Edwards-Helaire",
+     "rank": 44,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "D'Andre Swift",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Derrick Henry",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Dalvin Cook",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "D'Andre Swift",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Javonte Williams",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Jonathan Taylor",
+     "rank": 33,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Alvin Kamara",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Josh Jacobs",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Saquon Barkley",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "De'Von Achane",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Kenneth Walker III",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Breece Hall",
+     "rank": 19,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Christian McCaffrey",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    }
+   ]
+  },
+  {
+   "pos": "RB",
+   "lane": "strict",
+   "n_per_season": 52,
+   "base5": 0.02111324376199616,
+   "hit5": 0.06666666666666667,
+   "base12": 0.06525911708253358,
+   "hit12": 0.2,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "T.J. Yeldon",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Duke Johnson",
+     "rank": 31,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Giovani Bernard",
+     "rank": 40,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Theo Riddick",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Giovani Bernard",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Tevin Coleman",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Tevin Coleman",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Joe Mixon",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Tarik Cohen",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Dalvin Cook",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Kerryon Johnson",
+     "rank": 54,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Nyheim Hines",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Le'Veon Bell",
+     "rank": 63,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Devin Singletary",
+     "rank": 31,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Josh Jacobs",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Joe Mixon",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Clyde Edwards-Helaire",
+     "rank": 44,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "D'Andre Swift",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "D'Andre Swift",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Elijah Mitchell",
+     "rank": 79,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Javonte Williams",
+     "rank": 82,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Javonte Williams",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "David Montgomery",
+     "rank": 17,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "D'Andre Swift",
+     "rank": 20,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "De'Von Achane",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Kenneth Walker III",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Tyjae Spears",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Kenneth Walker III",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Bucky Irving",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Chuba Hubbard",
+     "rank": 38,
+     "hit5": false,
+     "hit12": false
+    }
+   ]
+  },
+  {
+   "pos": "TE",
+   "lane": "all",
+   "n_per_season": 56,
+   "base5": 0.07815275310834814,
+   "hit5": 0.6666666666666666,
+   "base12": 0.1882770870337478,
+   "hit12": 0.7333333333333333,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Rob Gronkowski",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Delanie Walker",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Jordan Reed",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Delanie Walker",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Travis Kelce",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Greg Olsen",
+     "rank": 51,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Travis Kelce",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Jared Cook",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Zach Ertz",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Travis Kelce",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Zach Ertz",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Jared Cook",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Darren Waller",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "George Kittle",
+     "rank": 20,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Travis Kelce",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Travis Kelce",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Evan Engram",
+     "rank": 24,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Mark Andrews",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Travis Kelce",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "George Kittle",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Mark Andrews",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Travis Kelce",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Mark Andrews",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "T.J. Hockenson",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "T.J. Hockenson",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Kyle Pitts",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Travis Kelce",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Trey McBride",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Travis Kelce",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "George Kittle",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    }
+   ]
+  },
+  {
+   "pos": "TE",
+   "lane": "cheap",
+   "n_per_season": 45,
+   "base5": 0.03325942350332594,
+   "hit5": 0.13333333333333333,
+   "base12": 0.11086474501108648,
+   "hit12": 0.2,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Jimmy Graham",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Martellus Bennett",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Julius Thomas",
+     "rank": 33,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Charles Clay",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Hunter Henry",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Eric Ebron",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Eric Ebron",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Charles Clay",
+     "rank": 55,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Jordan Matthews",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Evan Engram",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Ricky Seals-Jones",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Delanie Walker",
+     "rank": 44,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Evan Engram",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Jack Doyle",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Eric Ebron",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Evan Engram",
+     "rank": 24,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "George Kittle",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Austin Hooper",
+     "rank": 25,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Darren Waller",
+     "rank": 31,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "T.J. Hockenson",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Tyler Conklin",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Kyle Pitts",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Tyler Conklin",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Chig Okonkwo",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Kyle Pitts",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Mark Andrews",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Tyler Conklin",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Evan Engram",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "T.J. Hockenson",
+     "rank": 26,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Dalton Kincaid",
+     "rank": 20,
+     "hit5": false,
+     "hit12": false
+    }
+   ]
+  },
+  {
+   "pos": "TE",
+   "lane": "strict",
+   "n_per_season": 40,
+   "base5": 0.022556390977443608,
+   "hit5": 0.1,
+   "base12": 0.08771929824561403,
+   "hit12": 0.2,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Charles Clay",
+     "rank": 17,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Ladarius Green",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Clive Walford",
+     "rank": 32,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Charles Clay",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Hunter Henry",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Eric Ebron",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Eric Ebron",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Charles Clay",
+     "rank": 55,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Vernon Davis",
+     "rank": 26,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Ricky Seals-Jones",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Hunter Henry",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Mark Andrews",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Evan Engram",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Jack Doyle",
+     "rank": 42,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "O.J. Howard",
+     "rank": 60,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Evan Engram",
+     "rank": 24,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Jonnu Smith",
+     "rank": 36,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Jacob Hollister",
+     "rank": 72,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Tyler Conklin",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Tyler Higbee",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Gerald Everett",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Tyler Conklin",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Chig Okonkwo",
+     "rank": 21,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Darren Waller",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Kyle Pitts",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Tyler Conklin",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Greg Dulcich",
+     "rank": 92,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Kyle Pitts",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Dallas Goedert",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Darren Waller",
+     "rank": 33,
+     "hit5": false,
+     "hit12": false
+    }
+   ]
+  },
+  {
+   "pos": "QB",
+   "lane": "all",
+   "n_per_season": 32,
+   "base5": 0.13580246913580246,
+   "hit5": 0.36666666666666664,
+   "base12": 0.32407407407407407,
+   "hit12": 0.7666666666666667,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Russell Wilson",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Cam Newton",
+     "rank": 17,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Tyrod Taylor",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Aaron Rodgers",
+     "rank": 29,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Tom Brady",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Blake Bortles",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Cam Newton",
+     "rank": 13,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Russell Wilson",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Aaron Rodgers",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Patrick Mahomes",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Deshaun Watson",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Carson Wentz",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Patrick Mahomes",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Deshaun Watson",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Russell Wilson",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Lamar Jackson",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Patrick Mahomes",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Kyler Murray",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Patrick Mahomes",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Josh Allen",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Kyler Murray",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Josh Allen",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Patrick Mahomes",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Jalen Hurts",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Jalen Hurts",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Josh Allen",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Patrick Mahomes",
+     "rank": 12,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Lamar Jackson",
+     "rank": 20,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Josh Allen",
+     "rank": 1,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Jalen Hurts",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    }
+   ]
+  },
+  {
+   "pos": "QB",
+   "lane": "cheap",
+   "n_per_season": 21,
+   "base5": 0.0761904761904762,
+   "hit5": 0.3,
+   "base12": 0.18571428571428572,
+   "hit12": 0.5666666666666667,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Tyrod Taylor",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Jameis Winston",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Andrew Luck",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Tom Brady",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Marcus Mariota",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Cam Newton",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Aaron Rodgers",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Andrew Luck",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Matt Ryan",
+     "rank": 2,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Carson Wentz",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Josh Allen",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Tom Brady",
+     "rank": 12,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Jared Goff",
+     "rank": 19,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Ryan Fitzpatrick",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Ben Roethlisberger",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Cam Newton",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Dak Prescott",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Joe Burrow",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2022,
+     "player": "Lamar Jackson",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Russell Wilson",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Deshaun Watson",
+     "rank": 36,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Kyler Murray",
+     "rank": 26,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Lamar Jackson",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Dak Prescott",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Justin Fields",
+     "rank": 31,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Joe Burrow",
+     "rank": 3,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Justin Herbert",
+     "rank": 11,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Brock Purdy",
+     "rank": 23,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Caleb Williams",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Jordan Love",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    }
+   ]
+  },
+  {
+   "pos": "QB",
+   "lane": "strict",
+   "n_per_season": 16,
+   "base5": 0.043209876543209874,
+   "hit5": 0.1,
+   "base12": 0.13580246913580246,
+   "hit12": 0.3333333333333333,
+   "picks": [
+    {
+     "season": 2016,
+     "player": "Tyrod Taylor",
+     "rank": 9,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2016,
+     "player": "Jameis Winston",
+     "rank": 16,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2016,
+     "player": "Andy Dalton",
+     "rank": 12,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2017,
+     "player": "Marcus Mariota",
+     "rank": 18,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Jameis Winston",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2017,
+     "player": "Ben Roethlisberger",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2018,
+     "player": "Jameis Winston",
+     "rank": 22,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Marcus Mariota",
+     "rank": 24,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2018,
+     "player": "Jacoby Brissett",
+     "rank": 70,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Josh Allen",
+     "rank": 6,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2019,
+     "player": "Baker Mayfield",
+     "rank": 20,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2019,
+     "player": "Jameis Winston",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2020,
+     "player": "Ryan Fitzpatrick",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Cam Newton",
+     "rank": 15,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2020,
+     "player": "Gardner Minshew",
+     "rank": 26,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Cam Newton",
+     "rank": 34,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2021,
+     "player": "Joe Burrow",
+     "rank": 8,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2021,
+     "player": "Daniel Jones",
+     "rank": 27,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Carson Wentz",
+     "rank": 31,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Derek Carr",
+     "rank": 17,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2022,
+     "player": "Trevor Lawrence",
+     "rank": 7,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Lamar Jackson",
+     "rank": 4,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2023,
+     "player": "Russell Wilson",
+     "rank": 14,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2023,
+     "player": "Kenny Pickett",
+     "rank": 30,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Kyler Murray",
+     "rank": 10,
+     "hit5": false,
+     "hit12": true
+    },
+    {
+     "season": 2024,
+     "player": "Russell Wilson",
+     "rank": 24,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2024,
+     "player": "Will Levis",
+     "rank": 30,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Caleb Williams",
+     "rank": 5,
+     "hit5": true,
+     "hit12": true
+    },
+    {
+     "season": 2025,
+     "player": "Justin Fields",
+     "rank": 28,
+     "hit5": false,
+     "hit12": false
+    },
+    {
+     "season": 2025,
+     "player": "Jake Browning",
+     "rank": 45,
+     "hit5": false,
+     "hit12": false
+    }
+   ]
+  }
+ ],
+ "upcoming": [
+  {
+   "pos": "WR",
+   "player": "Wan'Dale Robinson",
+   "team": "NYG",
+   "age": 25.7,
+   "prob": 0.19907038642961147,
+   "best_recent": 14,
+   "last_games": 16
+  },
+  {
+   "pos": "WR",
+   "player": "Tee Higgins",
+   "team": "CIN",
+   "age": 27.6,
+   "prob": 0.11638487395910918,
+   "best_recent": 16,
+   "last_games": 15
+  },
+  {
+   "pos": "WR",
+   "player": "Josh Downs",
+   "team": "IND",
+   "age": 25.1,
+   "prob": 0.06843311858305409,
+   "best_recent": 35,
+   "last_games": 16
+  },
+  {
+   "pos": "WR",
+   "player": "Khalil Shakir",
+   "team": "BUF",
+   "age": 26.6,
+   "prob": 0.055564417461467744,
+   "best_recent": 36,
+   "last_games": 16
+  },
+  {
+   "pos": "WR",
+   "player": "Tetairoa McMillan",
+   "team": "CAR",
+   "age": 23.4,
+   "prob": 0.04936376049059736,
+   "best_recent": 15,
+   "last_games": 17
+  },
+  {
+   "pos": "WR",
+   "player": "DeVonta Smith",
+   "team": "PHI",
+   "age": 27.8,
+   "prob": 0.04554468607818165,
+   "best_recent": 20,
+   "last_games": 17
+  },
+  {
+   "pos": "WR",
+   "player": "Emeka Egbuka",
+   "team": "TB",
+   "age": 23.9,
+   "prob": 0.039479711113770875,
+   "best_recent": 23,
+   "last_games": 17
+  },
+  {
+   "pos": "RB",
+   "player": "Bucky Irving",
+   "team": "TB",
+   "age": 24.0,
+   "prob": 0.17338432795699393,
+   "best_recent": 13,
+   "last_games": 10
+  },
+  {
+   "pos": "RB",
+   "player": "Omarion Hampton",
+   "team": "LAC",
+   "age": 23.5,
+   "prob": 0.14934079597278643,
+   "best_recent": 35,
+   "last_games": 9
+  },
+  {
+   "pos": "RB",
+   "player": "Cam Skattebo",
+   "team": "NYG",
+   "age": 24.6,
+   "prob": 0.10429302155986812,
+   "best_recent": 37,
+   "last_games": 8
+  },
+  {
+   "pos": "RB",
+   "player": "TreVeyon Henderson",
+   "team": "NE",
+   "age": 23.9,
+   "prob": 0.09174533515659727,
+   "best_recent": 21,
+   "last_games": 17
+  },
+  {
+   "pos": "RB",
+   "player": "Breece Hall",
+   "team": "NYJ",
+   "age": 25.3,
+   "prob": 0.07261023678020063,
+   "best_recent": 16,
+   "last_games": 16
+  },
+  {
+   "pos": "RB",
+   "player": "D'Andre Swift",
+   "team": "CHI",
+   "age": 27.6,
+   "prob": 0.06413558543661524,
+   "best_recent": 15,
+   "last_games": 16
+  },
+  {
+   "pos": "RB",
+   "player": "Kenneth Walker III",
+   "team": "SEA",
+   "age": 25.9,
+   "prob": 0.06094188366663054,
+   "best_recent": 22,
+   "last_games": 17
+  },
+  {
+   "pos": "TE",
+   "player": "Evan Engram",
+   "team": "DEN",
+   "age": 32.0,
+   "prob": 0.21910666228371306,
+   "best_recent": 29,
+   "last_games": 16
+  },
+  {
+   "pos": "TE",
+   "player": "Dalton Kincaid",
+   "team": "BUF",
+   "age": 26.9,
+   "prob": 0.12387711195883161,
+   "best_recent": 20,
+   "last_games": 12
+  },
+  {
+   "pos": "TE",
+   "player": "Cade Otton",
+   "team": "TB",
+   "age": 27.4,
+   "prob": 0.10950369562127037,
+   "best_recent": 14,
+   "last_games": 15
+  },
+  {
+   "pos": "TE",
+   "player": "Chig Okonkwo",
+   "team": "TEN",
+   "age": 27.0,
+   "prob": 0.09478688777584711,
+   "best_recent": 21,
+   "last_games": 17
+  },
+  {
+   "pos": "TE",
+   "player": "T.J. Hockenson",
+   "team": "MIN",
+   "age": 29.2,
+   "prob": 0.0854375442256777,
+   "best_recent": 26,
+   "last_games": 15
+  },
+  {
+   "pos": "TE",
+   "player": "Theo Johnson",
+   "team": "NYG",
+   "age": 25.5,
+   "prob": 0.08271205806086458,
+   "best_recent": 18,
+   "last_games": 15
+  },
+  {
+   "pos": "TE",
+   "player": "Brenton Strange",
+   "team": "JAX",
+   "age": 25.7,
+   "prob": 0.05920493538106995,
+   "best_recent": 23,
+   "last_games": 12
+  },
+  {
+   "pos": "QB",
+   "player": "Jaxson Dart",
+   "team": "NYG",
+   "age": 23.3,
+   "prob": 0.13457340460372685,
+   "best_recent": 13,
+   "last_games": 14
+  },
+  {
+   "pos": "QB",
+   "player": "Jordan Love",
+   "team": "GB",
+   "age": 27.8,
+   "prob": 0.1257057801124739,
+   "best_recent": 15,
+   "last_games": 15
+  },
+  {
+   "pos": "QB",
+   "player": "Brock Purdy",
+   "team": "SF",
+   "age": 26.7,
+   "prob": 0.12271881257463134,
+   "best_recent": 13,
+   "last_games": 9
+  },
+  {
+   "pos": "QB",
+   "player": "Tyler Shough",
+   "team": "NO",
+   "age": 26.9,
+   "prob": 0.10178659945190122,
+   "best_recent": 26,
+   "last_games": 11
+  },
+  {
+   "pos": "QB",
+   "player": "Derek Carr",
+   "team": "NO",
+   "age": 35.4,
+   "prob": 0.06862667802369105,
+   "best_recent": 26,
+   "last_games": 0
+  },
+  {
+   "pos": "QB",
+   "player": "Anthony Richardson",
+   "team": "IND",
+   "age": 24.3,
+   "prob": 0.06244641126894128,
+   "best_recent": 25,
+   "last_games": 0
+  },
+  {
+   "pos": "QB",
+   "player": "Daniel Jones",
+   "team": "IND",
+   "age": 29.3,
+   "prob": 0.05898964707213409,
+   "best_recent": 18,
+   "last_games": 13
+  }
+ ]
+}
