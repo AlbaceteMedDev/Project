@@ -161,12 +161,12 @@ def disagreement_section() -> str:
     return f"""<section>
   <hr class="hash">
   <h2>Where the model disagrees with last season</h2>
-  <p class="sec-intro">Everything above is a list of players who were good and will
-  be priced like it. This is the one cut that says something else: players whose
-  <b>last season finished outside the top 12</b>, whom the model still rates highly
-  in absolute terms. Not cheap players — a tight end who finished 18th is cheap
-  because he is not good, and the model says so. These are starters whose last
-  season understates them.</p>
+  <p class="sec-intro">Everything above is ordered by probability, which puts the
+  best players on top. This cut asks the opposite question: among players whose
+  <b>last season finished outside the top 12</b>, which ones does the model still
+  rate highly anyway? Those two facts pull against each other, and where they
+  conflict is the only place on this page the model says something the previous
+  season does not.</p>
   <div class="scroll"><table class="lane">
     <thead><tr><th style="text-align:left">Among players who finished outside the
       top 12 last year…</th><th>Top-5</th><th>Top-12</th><th>n</th></tr></thead>
@@ -273,7 +273,9 @@ def row(r: pd.Series, pos: str) -> str:
     miss = r["missing"]
     leapcell = (pips(int(r["leaper_markers"]), int(r["leaper_total"]), "leaper marks")
                 if pd.notna(r["leaper_markers"])
-                else '<div class="na">already a starter</div>')
+                # Leaper marks only mean something for players coming from
+                # outside the prior top 12. Say which, not what he is.
+                else f'<div class="na">top 12 in {LAST_SEASON}</div>')
     stale = ("" if r["gates_scored_on"] == LAST_SEASON
              else " · no full season to score" if not r["gates_scored_on"]
              else f" · gates from {int(r['gates_scored_on'])}")
@@ -359,8 +361,8 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       <p style="margin:8px 0 0"><b>How closely he matches the players who jumped
       into the top 5 from outside the prior top 12.</b> Roughly 40% of all elite
       finishes came from there, so this is the late-round signal. It is shown only
-      for players in that lane — the bars are deliberately low, so an established
-      starter clears all of them and the count would mean nothing.</p></div>
+      for players in that lane — the bars sit at the leapers' own medians, so anyone
+      who was already top-12 clears all of them and the count would mean nothing.</p></div>
     <div class="card pad"><span class="label">What is missing</span>
       <p style="margin:8px 0 0">The specific gates his prior year failed. Read it as
       the thesis you are buying: something has to change for that line to clear.</p></div>

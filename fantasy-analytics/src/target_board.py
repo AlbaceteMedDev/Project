@@ -86,7 +86,7 @@ def main() -> None:
                                   else (p[g["metric"]] >= g["threshold"]))]
                 # The leaper profile describes players who jumped from OUTSIDE
                 # the prior top 12. Its bars are deliberately low, so every
-                # established starter clears all of them and the count says
+                # player who was already top-12 clears all of them and the count says
                 # nothing. Only score it for players actually in that lane.
                 lhits = (sum(1 for k, v in leap.items() if p[k] >= v)
                          if r["prev_finish"] > 12 else None)
