@@ -37,6 +37,11 @@ def main() -> None:
     if not (RAW / "depth_preseason.csv").exists():
         import depth
         depth.main()
+    # Week-one rosters answer whether a player is employed at all, which no
+    # production feed can. Fetched and reduced by their own module.
+    if not (RAW / "week1_rosters.csv").exists():
+        import availability
+        availability.fetch()
     print(f"raw data ready in {RAW}")
 
 

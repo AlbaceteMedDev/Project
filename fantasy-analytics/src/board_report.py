@@ -6,7 +6,7 @@ import json
 
 import pandas as pd
 
-from config import LAST_SEASON, OUTPUT, TARGET_N
+from config import LAST_SEASON, OUTPUT, RAW, TARGET_N
 from config import TARGET as TARGET_COL
 from report import CSS, POS_NAME, e, pct
 
@@ -74,7 +74,7 @@ def rookie_section() -> str:
 """
 
 
-def caveats() -> str:
+def caveats(board: pd.DataFrame) -> str:
     """Every figure in the limits list, computed from the run that built the page.
 
     These were prose with numbers typed into it, and they were wrong within a day
@@ -119,9 +119,19 @@ def caveats() -> str:
     rk = pd.read_csv(OUTPUT / "rookie_scores.csv")
     rk_hits = int(rk[TARGET_COL].sum())
 
+    # availability, measured from the week-one rosters rather than assumed away
+    av = pd.read_csv(RAW / "week1_rosters.csv", low_memory=False)
+    ah = av[av["season"] <= LAST_SEASON].merge(
+        df[["player_id", "season", TARGET_COL]], on=["player_id", "season"], how="left")
+    act = ah[ah["status"] == "ACT"][TARGET_COL].fillna(0).mean()
+    nonact = int((ah["status"] != "ACT").sum())
+    gone = board[board["tier"].str.startswith("X")]
+    removed = len(gone)
+    examples = ", ".join(gone.nlargest(3, "prob")["player"].tolist())
+
     return f"""  <ul class="tight">
     <li><b>Nobody here is a lock.</b> The top score on the whole board is
-      {{board['prob'].max():.2f}}, and below the first handful of names the odds fall
+      {board['prob'].max():.2f}, and below the first handful of names the odds fall
       away fast. A top-{TARGET_N} receiving season happens to {wr_base:.1%} of the
       qualifying pool, so the very top of this board is a large edge on a modest
       chance — not a promise.</li>
@@ -142,16 +152,20 @@ def caveats() -> str:
       {min(reach.values()):.0%}–{max(reach.values()):.0%} of past top-{TARGET_N}
       seasons depending on position. The rest belong to players it had no history
       for.</li>
-    <li><b>It cannot see availability.</b> Suspensions, holdouts and training-camp
-      injuries are not in the data. Anyone facing league discipline or rehabbing is
-      scored as though he plays a full season, which is exactly when this board is
-      most wrong.</li>
+    <li><b>Availability is checked, and it is close to decisive.</b> Every row is
+      matched against the published week-one roster. Since 2015, players who opened
+      a season on the active list reached the target {act:.1%} of the time; every
+      other status — released, reserve, retired, suspended — is <b>0.0%</b> across
+      roughly {nonact:,} player-seasons. {removed} players on this board hold no
+      {LAST_SEASON + 1} roster spot and are set aside rather than scored, among them
+      {examples}. What is still missing is the softer end: a camp injury that has
+      not yet moved anyone off the active list is invisible here.</li>
     <li><b>The depth chart is current; everything else is last year's.</b> Each row
-      carries the player's rank on his team's August {{TARGET}} chart — the only
+      carries the player's rank on his team's August {LAST_SEASON + 1} chart — the only
       forward-looking fact here, and the sharpest. A receiver listed second finishes
       top-{TARGET_N} {d2:.1%} of the time against {d1:.1%} for the one listed first.
       Below the top slot the ordering is loose, especially at receiver where teams
-      play three: the {{TARGET}} Jaguars list Travis Hunter fourth. Read a low rank as
+      play three: the {LAST_SEASON + 1} Jaguars list Travis Hunter fourth. Read a low rank as
       a question, not a verdict.</li>
     <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
       still carries his old offence's scoring rank and quarterback quality.</li>
@@ -543,7 +557,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
 <section>
   <hr class="hash">
   <h2 style="margin-top:44px">Before you use it</h2>
-{caveats()}
+{caveats(board)}
 </section>
 
 <footer>

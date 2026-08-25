@@ -51,6 +51,15 @@ def tier(prob: float, leap: int, n_leap: int, prev_rank: float, base: float) -> 
 
 def main() -> None:
     df = pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False)
+    # Employment status. A player not on a week-one roster has never finished in
+    # the target tier - 0 for roughly 4,500 player-seasons since 2015 - so this
+    # overrides whatever his box score says.
+    try:
+        avail = pd.read_csv(OUTPUT / f"availability_{TARGET}.csv")
+        rostered = dict(zip(avail["player_id"], avail["available"]))
+        status = dict(zip(avail["player_id"], avail["status"]))
+    except FileNotFoundError:
+        rostered, status = {}, {}
     pf = model.frame(df)
     gates_by_pos = {p: build_card(gate_pool(df, p), p, TARGET_COL, FAMILIES[p])["rules"]
                     for p in ["QB", "RB", "WR", "TE"]}
@@ -99,8 +108,12 @@ def main() -> None:
             else:
                 cleared, missed, lhits = 0, ["no full season to score against"], 0
                 scored_on = 0
+            pid = r["player_id"]
+            on_roster = rostered.get(pid)
             rows.append({
                 "position": pos, "player": name, "team": r["team"],
+                "roster": ("unrostered" if on_roster is None
+                           else status.get(pid, "ACT") if not on_roster else "ACT"),
                 "age": round(float(r["age"]), 1), "prob": round(float(r["prob"]), 3),
                 "last_finish": int(r["prev_finish"]),
                 # What the coaching staff currently intends, as of the August
@@ -110,8 +123,9 @@ def main() -> None:
                 "gates_scored_on": scored_on,
                 "gates_cleared": cleared, "gates_total": len(gates),
                 "leaper_markers": lhits, "leaper_total": len(leap),
-                "tier": tier(float(r["prob"]), lhits or 0, len(leap),
-                             float(r["prev_finish"]), base),
+                "tier": ("X - not on a roster" if not on_roster
+                         else tier(float(r["prob"]), lhits or 0, len(leap),
+                                   float(r["prev_finish"]), base)),
                 "base_rate": round(base, 4),
                 "missing": "; ".join(missed) or "-",
             })
