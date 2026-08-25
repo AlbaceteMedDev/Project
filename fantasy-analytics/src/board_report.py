@@ -285,9 +285,11 @@ def build(board: pd.DataFrame, counts: dict) -> str:
   <hr class="hash">
   <h2 style="margin-top:44px">Before you use it</h2>
   <ul class="tight">
-    <li><b>Nobody here is a lock.</b> The top score on the whole board is 0.77 —
-      three in four of those seasons still missed. The base rate at wide receiver
-      is 4.6%, so the very top of this board is a large edge on a small chance.</li>
+    <li><b>Nobody here is a lock.</b> The top score on the whole board is
+      {board['prob'].max():.2f} — even that one misses roughly one year in ten, and
+      below the first handful of names the odds fall away fast. The base rate at
+      wide receiver is 4.6%, so the very top of this board is a large edge on a
+      small chance.</li>
     <li><b>The pool quietly drops the injured.</b> A player has to log a scoreable
       season to be counted, so 173 receiver-seasons, 138 running backs and 82
       tight ends vanished from the denominator after one qualifying year. Counting
@@ -303,6 +305,11 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       board is most wrong.</li>
     <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
       still carries his old offense's scoring rank and quarterback quality.</li>
+    <li><b>Story lines are not in it, and mostly should not be.</b> A coaching
+      change, a move to a better quarterback and a change of team were each tested
+      as model features. A coaching change made the model <i>worse</i> at every
+      position. The one narrative that earned a place is a receiver who missed most
+      of last season, which the box-score features over-punish on their own.</li>
     <li><b>Efficiency does not rescue a small role.</b> 176 receiver-seasons had a
       prior year under a 15% target share and 50% snaps. None finished top-5 the
       next year. None finished top-12.</li>
