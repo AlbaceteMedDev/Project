@@ -13,25 +13,31 @@ TARGET = LAST_SEASON + 1
 POS_ORDER = ["WR", "RB", "TE", "QB"]
 
 TIER_NOTE = {
-    "A - target": "Draft these. The model has never seen the season it is scoring "
-                  "them for, and this band is where its hit rate lives.",
-    "B - strong": "Real candidates. Most will not finish top-5 — the base rate is "
-                  "still against everyone — but the profile supports the bet.",
+    "A - target": "One in four or better. The model never saw the season it is "
+                  "scoring, and this band is where its hit rate lives.",
+    "B - strong": "Between one in eight and one in four. Most will miss — the base "
+                  "rate is 5-15% depending on position — but the profile supports "
+                  "the bet.",
     "C - leaper watch": "Outside last year's top 12, but matching the profile of "
                         "players who jumped into the top 5 anyway. The late-round lane.",
     "D - fringe": "Enough profile to roster, not enough to target.",
 }
 
 POS_NOTE = {
-    "WR": "Five gates, ~2.6 receivers a year clear all of them, and 90% of those "
-          "finish top-5. Out-of-sample AUC 0.90 — the most trustworthy board here.",
+    "WR": "Five gates, ~2.6 receivers a year clear all of them. 90% of those "
+          "finished top-5 with thresholds fitted on every season — 78% when each "
+          "season is scored by gates that never saw it. Model AUC 0.90, the most "
+          "trustworthy board here.",
     "RB": "Volume is assigned, not earned, so the gates are looser and the blind "
           "spot is bigger: 24% of top-5 running back seasons came from players with "
           "no qualifying prior year at all.",
     "TE": "The position where last year tells you the most — a top-5 tight end "
-          "repeats 43% of the time — and where the leaper bar is lowest.",
+          "repeats 43% of the time — and where the leaper bar is lowest. The only "
+          "position whose gates did not degrade out of sample (86% fitted, 88% "
+          "held out).",
     "QB": "Only two honest gates survive, because nearly every quarterback stat "
-          "restates the fantasy score. AUC 0.68. Treat this board as the weakest.",
+          "restates the fantasy score. AUC 0.68, and the gates fall to a 45% hit "
+          "rate out of sample against a 15% base rate. The weakest board here.",
 }
 
 EXTRA = """
@@ -141,8 +147,9 @@ def build(board: pd.DataFrame, counts: dict) -> str:
     <div class="card pad"><span class="label">The big number</span>
       <p style="margin:8px 0 0"><b>Probability of a top-5 finish</b>, from a model
       scored leave-one-season-out — every season predicted by a version that never
-      trained on it. This is the only figure here validated out of sample, so it
-      sets the tier.</p></div>
+      trained on it. It is calibrated: across eleven seasons, players scored near
+      0.30 finished top-5 about 30% of the time. This is the only figure here
+      validated out of sample, so it sets the tier.</p></div>
     <div class="card pad"><span class="label">Gates</span>
       <p style="margin:8px 0 0"><b>How much of the elite in-season profile his last
       season already looked like.</b> Descriptive, not held out — a miss is a
@@ -169,9 +176,14 @@ def build(board: pd.DataFrame, counts: dict) -> str:
   <hr class="hash">
   <h2 style="margin-top:44px">Before you use it</h2>
   <ul class="tight">
-    <li><b>Nobody here is a lock.</b> A 0.96 means players with this prior-year
-      profile finished top-5 about that often. The base rate at wide receiver is
-      4.5%; even the top of this board is a bet.</li>
+    <li><b>Nobody here is a lock.</b> The top score on the whole board is 0.77 —
+      three in four of those seasons still missed. The base rate at wide receiver
+      is 4.6%, so the very top of this board is a large edge on a small chance.</li>
+    <li><b>The pool quietly drops the injured.</b> A player has to log a scoreable
+      season to be counted, so 173 receiver-seasons, 138 running backs and 82
+      tight ends vanished from the denominator after one qualifying year. Counting
+      those as failures, the real receiver base rate is 4.0%, not 4.6% — and every
+      probability here is a shade optimistic for the same reason.</li>
     <li><b>It cannot see a job that did not exist yet.</b> Every name needed a
       qualifying {LAST_SEASON} season to be scored. Rookies and players handed a
       role in the offseason are structurally invisible — and they accounted for

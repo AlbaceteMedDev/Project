@@ -41,6 +41,36 @@ trained on it.
 | RB | 0.807 | 57% | 76% |
 | QB | **0.676** | 59% | 84% |
 
+### What survived a check
+
+Every headline was fitted on all eleven seasons at once, so each was re-derived
+under conditions that could break it (`python src/audit_robustness.py`).
+
+| Position | Gates fitted on all 11 | Refitted leave-one-season-out | Base rate |
+|---|---|---|---|
+| WR | 90% | **78%** | 4.5% |
+| TE | 86% | **88%** | 8.8% |
+| RB | 54% | 54% | 6.9% |
+| QB | 50% | 45% | 14.9% |
+
+- **The receiver card was flattering itself.** 78% is still 17x the base rate, but
+  the published 90% was partly the thresholds having seen the answer. Tight end did
+  not degrade at all.
+- **Scoring format barely matters.** Half-PPR keeps 89-93% of the same top-5
+  finishers, standard keeps 82-85%, quarterback is identical in all three.
+- **One threshold is soft.** Refitting eleven times, the receiver target bar never
+  moves off 9.0 — but *routes per game* survives into the card in only 4 of 11
+  refits. It is the gate the route estimate handles worst.
+- **The pool drops the injured.** 173 receiver-seasons, 138 backs and 82 tight ends
+  vanish from the denominator after one qualifying year. Counting those as failures
+  moves the receiver base rate from 4.6% to 4.0%.
+- **A real error, found and fixed.** The model used balanced class weights, which
+  lifts scores toward 1 and strips them of meaning — an earlier target board
+  published 0.99s whose actual top-5 rate was 33%. Removing the weighting gives the
+  same AUC at roughly a quarter of the Brier score. Hand-picking the feature list
+  did *not* inflate anything: selecting features inside each training fold returns
+  the same AUCs.
+
 ### Findings worth the trouble
 
 1. **"Under 30" is not a rule.** 89% of the qualifying WR pool is already under
@@ -109,6 +139,7 @@ src/build_dataset.py  season-level player + team dataset
 src/analyze.py        gates, green flags, vacuous-rule detection
 src/predict.py        prior-year model, leave-one-season-out scoring
 src/audit.py          score the viral WR1 card against the record
+src/audit_robustness.py  adversarial checks on this project's own claims
 src/forecast.py       apply everything to the upcoming season
 src/target_board.py   score every returning candidate, tier the board
 src/report.py         render the study as a page

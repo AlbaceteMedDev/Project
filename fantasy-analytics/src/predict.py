@@ -127,7 +127,14 @@ def pred_pool(pf: pd.DataFrame, pos: str) -> pd.DataFrame:
 
 
 def loso_scores(d: pd.DataFrame, feats: list[str], target: str = "top5") -> pd.DataFrame:
-    """Leave-one-season-out probabilities - never trained on the year it scores."""
+    """Leave-one-season-out probabilities - never trained on the year it scores.
+
+    No class weighting. Re-weighting the rare class lifts scores toward 1 and
+    destroys their meaning: an earlier version used class_weight="balanced" and
+    produced 0.99s whose real top-5 rate was 33%. Plain logistic regression gives
+    the same AUC with roughly a quarter of the Brier score, so a published number
+    can be read as what it claims to be.
+    """
     d = d.dropna(subset=feats + [target]).copy()
     out = []
     for season in sorted(d["season"].unique()):
@@ -136,7 +143,7 @@ def loso_scores(d: pd.DataFrame, feats: list[str], target: str = "top5") -> pd.D
             continue
         model = make_pipeline(
             StandardScaler(),
-            LogisticRegression(max_iter=2000, C=0.5, class_weight="balanced"))
+            LogisticRegression(max_iter=2000, C=0.5))
         model.fit(tr[feats], tr[target])
         p = model.predict_proba(te[feats])[:, 1]
         chunk = te[["season", "player_id", "player_display_name", "team", "age",
@@ -153,7 +160,7 @@ def full_model(d: pd.DataFrame, feats: list[str], target: str = "top5"):
     d = d.dropna(subset=feats + [target])
     model = make_pipeline(
         StandardScaler(),
-        LogisticRegression(max_iter=2000, C=0.5, class_weight="balanced"))
+        LogisticRegression(max_iter=2000, C=0.5))
     model.fit(d[feats], d[target])
     lr = model.named_steps["logisticregression"]
     coefs = dict(zip(feats, lr.coef_[0].round(3).tolist()))

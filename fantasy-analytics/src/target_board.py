@@ -34,11 +34,11 @@ def tier(gates_cleared: int, n_gates: int, leap: int, n_leap: int,
     a tier rather than set it - a player can miss a gate on a metric the route
     estimate handles badly and still be the best bet on the board.
     """
-    if prob >= 0.75:
+    if prob >= 0.25:
         return "A - target"
-    if prob >= 0.55:
+    if prob >= 0.12:
         return "B - strong"
-    if prob >= 0.40:
+    if prob >= 0.06:
         if prev_rank > 12 and leap >= n_leap - 1:
             return "C - leaper watch"
         return "D - fringe"

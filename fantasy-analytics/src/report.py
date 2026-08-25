@@ -554,6 +554,59 @@ def build(page: dict) -> str:
 
 <section>
   <hr class="hash">
+  <h2 style="margin-top:44px">What survived a check</h2>
+  <p class="sec-intro">Every headline above was fitted on all eleven seasons at
+  once. That is fine for describing what happened and wrong for predicting, so
+  each claim was re-derived under conditions that could break it.</p>
+
+  <div class="card"><div class="blockhead"><h4>Gates, refitted without the season
+  they score</h4><span class="label">leave-one-season-out</span></div>
+  <div class="scroll"><table>
+    <thead><tr><th style="text-align:left">Position</th><th>Fitted on all 11</th>
+      <th>Held out</th><th>Change</th><th>Base rate</th></tr></thead>
+    <tbody>
+      <tr><td style="text-align:left">Wide receiver</td><td>90%</td><td>78%</td>
+        <td>&minus;12 pts</td><td>4.5%</td></tr>
+      <tr><td style="text-align:left">Tight end</td><td>86%</td><td>88%</td>
+        <td>+2 pts</td><td>8.8%</td></tr>
+      <tr><td style="text-align:left">Running back</td><td>54%</td><td>54%</td>
+        <td>&minus;1 pt</td><td>6.9%</td></tr>
+      <tr><td style="text-align:left">Quarterback</td><td>50%</td><td>45%</td>
+        <td>&minus;5 pts</td><td>14.9%</td></tr>
+    </tbody></table></div></div>
+
+  <div class="callout"><p><b>The receiver card is the one that was flattering
+  itself.</b> 78% is still seventeen times the base rate, but the published 90%
+  was partly the thresholds having seen the answer. Tight end did not degrade at
+  all, which is the strongest single result in the study.</p></div>
+
+  <p>Three other checks, and one thing they caught:</p>
+  <ul class="tight">
+    <li><b>The scoring format barely matters.</b> Re-ranking every season in
+      half-PPR keeps 89–93% of the same top-5 finishers, standard keeps 82–85%,
+      and quarterback is identical in all three. These are not PPR artifacts.</li>
+    <li><b>Most thresholds are stable, one is not.</b> Refitting eleven times,
+      each dropping a season, moves the receiver target bar not at all (9.0 every
+      time) and the running-back gates by less than a tenth. But <i>routes per
+      game</i> survived into the card in only 4 of 11 refits — the same gate the
+      route estimate handles worst. Treat it as the soft one.</li>
+    <li><b>The pool quietly drops the injured.</b> A player needs a scoreable
+      season to be counted, so 173 receiver-seasons, 138 running backs and 82
+      tight ends disappear from the denominator after one qualifying year — mostly
+      injuries and lost jobs. Counting those as failures moves the receiver base
+      rate from 4.6% to 4.0% and the running back from 6.3% to 5.2%.</li>
+    <li><b>A real error, found and fixed.</b> The model was fitted with balanced
+      class weights, which lifts scores toward 1 and strips them of meaning: an
+      earlier version of the target board published 0.99s whose actual top-5 rate
+      was 33%. Removing the weighting gives the same AUC with roughly a quarter of
+      the Brier score, and the numbers now mean what they say. Selecting the
+      feature list by hand did <i>not</i> inflate anything — picking features
+      inside each training fold instead returns the same AUCs.</li>
+  </ul>
+</section>
+
+<section>
+  <hr class="hash">
   <h2 style="margin-top:44px">Method</h2>
   <ul class="tight">
     <li><b>Data.</b> nflverse public releases — weekly player stats, play-by-play,
