@@ -31,6 +31,11 @@ def main() -> None:
     RAW.mkdir(parents=True, exist_ok=True)
     for remote, name in FILES:
         fetch(remote, RAW / name)
+    # Depth charts ship one large file per season in two different schemas, so
+    # they are fetched and reduced by their own module rather than copied whole.
+    if not (RAW / "depth_preseason.csv").exists():
+        import depth
+        depth.main()
     print(f"raw data ready in {RAW}")
 
 

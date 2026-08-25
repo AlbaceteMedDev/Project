@@ -23,7 +23,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from analyze import POOL_RULES
-from config import LAST_SEASON, OUTPUT
+from config import LAST_SEASON, OUTPUT, RAW
 
 # Everything carried forward from a past season onto the season being predicted.
 CARRY = [
@@ -46,7 +46,30 @@ TEAM_CTX = ["team_ppg", "team_scoring_rank", "team_qb_epa_rank"]
 # Only the first goes in. Next season's roster is not in this data, so a
 # quarterback's move cannot be observed at forecast time; it stays a manual
 # overlay rather than a feature that is silently zero for everyone.
-SITUATIONAL = {"WR": ["p1_missed"], "TE": [], "RB": [], "QB": []}
+#   QB  listed first on the preseason chart   0.710 -> 0.728
+#
+# The chart is descriptively the sharpest fact on the board at every position -
+# a receiver listed second finishes top-5 0.4% of the time against 7.1% for the
+# one listed first - but only quarterback gains from it as a feature. Everywhere
+# else the production stats already say who the starter is. It is carried on the
+# board regardless, because "he is second on the depth chart" is something a
+# reader needs to see even when the model has priced it.
+SITUATIONAL = {"WR": ["p1_missed"], "TE": [], "RB": [], "QB": ["is_dc1"]}
+
+
+def depth_chart() -> pd.DataFrame:
+    """Preseason depth-chart rank, published in August and so known at draft time."""
+    d = pd.read_csv(RAW / "depth_preseason.csv")
+    d["depth_rank"] = pd.to_numeric(d["depth_rank"], errors="coerce")
+    return (d.sort_values("depth_rank")
+             .drop_duplicates(["player_id", "season"], keep="first")
+             [["player_id", "season", "depth_rank"]])
+
+
+def add_depth(d: pd.DataFrame) -> pd.DataFrame:
+    out = d.merge(depth_chart(), on=["player_id", "season"], how="left")
+    out["is_dc1"] = (out["depth_rank"] == 1).astype(float)
+    return out
 
 FEATURES = {
     "WR": ["target_share", "yprr_shrunk", "rz_targets_share", "air_yards_share",
@@ -77,7 +100,7 @@ def frame(df: pd.DataFrame) -> pd.DataFrame:
     tp["season"] = tp["season"] + 1
     out = out.merge(tp.rename(columns={c: f"nt_{c}" for c in TEAM_CTX}),
                     on=["season", "team"], how="left")
-    return add_situational(out)
+    return add_depth(add_situational(out))
 
 
 def qualifies(d: pd.DataFrame, pos: str) -> np.ndarray:
@@ -152,6 +175,6 @@ def upcoming(df: pd.DataFrame, pos: str) -> pd.DataFrame:
             .groupby("team")[TEAM_CTX].first().reset_index())
     out = out.merge(tp.rename(columns={c: f"nt_{c}" for c in TEAM_CTX}),
                     on="team", how="left")
-    out = add_situational(out)
+    out = add_depth(add_situational(out))
     out = out[out["fantasy_pos"] == pos]
     return out[qualifies(out, pos)].dropna(subset=["age"])

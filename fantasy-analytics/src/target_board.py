@@ -98,6 +98,10 @@ def main() -> None:
                 "position": pos, "player": name, "team": r["team"],
                 "age": round(float(r["age"]), 1), "prob": round(float(r["prob"]), 3),
                 "last_finish": int(r["prev_finish"]),
+                # What the coaching staff currently intends, as of the August
+                # chart. A player listed second almost never finishes top-5.
+                "depth_rank": (int(r["depth_rank"])
+                               if pd.notna(r.get("depth_rank")) else None),
                 "gates_scored_on": scored_on,
                 "gates_cleared": cleared, "gates_total": len(gates),
                 "leaper_markers": lhits, "leaper_total": len(leap),

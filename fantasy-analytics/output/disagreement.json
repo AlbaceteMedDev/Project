@@ -656,24 +656,24 @@
     },
     {
      "threshold": 0.1,
-     "n": 57,
-     "per_season": 5.7,
-     "hit5": 0.17543859649122806,
-     "hit12": 0.42105263157894735
+     "n": 63,
+     "per_season": 6.3,
+     "hit5": 0.1746031746031746,
+     "hit12": 0.3968253968253968
     },
     {
      "threshold": 0.15,
-     "n": 30,
-     "per_season": 3.0,
-     "hit5": 0.26666666666666666,
-     "hit12": 0.5
+     "n": 34,
+     "per_season": 3.4,
+     "hit5": 0.23529411764705882,
+     "hit12": 0.5588235294117647
     },
     {
      "threshold": 0.2,
-     "n": 12,
-     "per_season": 1.2,
-     "hit5": 0.08333333333333333,
-     "hit12": 0.3333333333333333
+     "n": 13,
+     "per_season": 1.3,
+     "hit5": 0.15384615384615385,
+     "hit12": 0.5384615384615384
     }
    ],
    "floor": 0.15,
@@ -681,7 +681,7 @@
     {
      "season": 2016,
      "player": "Tyrod Taylor",
-     "prob": 0.23,
+     "prob": 0.26,
      "prior": 14,
      "rank": 9,
      "hit5": false
@@ -689,7 +689,7 @@
     {
      "season": 2016,
      "player": "Jameis Winston",
-     "prob": 0.18,
+     "prob": 0.2,
      "prior": 13,
      "rank": 16,
      "hit5": false
@@ -697,7 +697,7 @@
     {
      "season": 2016,
      "player": "Andrew Luck",
-     "prob": 0.16,
+     "prob": 0.18,
      "prior": 28,
      "rank": 4,
      "hit5": true
@@ -705,15 +705,23 @@
     {
      "season": 2016,
      "player": "Matt Ryan",
-     "prob": 0.16,
+     "prob": 0.18,
      "prior": 19,
      "rank": 2,
      "hit5": true
     },
     {
+     "season": 2016,
+     "player": "Andy Dalton",
+     "prob": 0.15,
+     "prior": 18,
+     "rank": 12,
+     "hit5": false
+    },
+    {
      "season": 2017,
      "player": "Tom Brady",
-     "prob": 0.29,
+     "prob": 0.3,
      "prior": 15,
      "rank": 3,
      "hit5": true
@@ -721,7 +729,7 @@
     {
      "season": 2017,
      "player": "Marcus Mariota",
-     "prob": 0.24,
+     "prob": 0.26,
      "prior": 13,
      "rank": 18,
      "hit5": false
@@ -736,16 +744,16 @@
     },
     {
      "season": 2017,
-     "player": "Jameis Winston",
+     "player": "Ben Roethlisberger",
      "prob": 0.16,
-     "prior": 16,
-     "rank": 22,
+     "prior": 18,
+     "rank": 10,
      "hit5": false
     },
     {
      "season": 2018,
      "player": "Aaron Rodgers",
-     "prob": 0.2,
+     "prob": 0.21,
      "prior": 29,
      "rank": 6,
      "hit5": false
@@ -753,7 +761,7 @@
     {
      "season": 2018,
      "player": "Andrew Luck",
-     "prob": 0.19,
+     "prob": 0.2,
      "prior": null,
      "rank": 5,
      "hit5": true
@@ -761,55 +769,79 @@
     {
      "season": 2018,
      "player": "Matt Ryan",
-     "prob": 0.15,
+     "prob": 0.17,
      "prior": 15,
      "rank": 2,
      "hit5": true
     },
     {
+     "season": 2018,
+     "player": "Blake Bortles",
+     "prob": 0.15,
+     "prior": 13,
+     "rank": 26,
+     "hit5": false
+    },
+    {
+     "season": 2018,
+     "player": "Tyrod Taylor",
+     "prob": 0.15,
+     "prior": 16,
+     "rank": 41,
+     "hit5": false
+    },
+    {
      "season": 2019,
      "player": "Carson Wentz",
-     "prob": 0.19,
+     "prob": 0.21,
      "prior": 23,
      "rank": 10,
      "hit5": false
     },
     {
-     "season": 2020,
-     "player": "Jared Goff",
+     "season": 2019,
+     "player": "Josh Allen",
      "prob": 0.18,
-     "prior": 13,
-     "rank": 19,
+     "prior": 21,
+     "rank": 6,
      "hit5": false
     },
     {
      "season": 2020,
      "player": "Ryan Fitzpatrick",
-     "prob": 0.16,
+     "prob": 0.2,
      "prior": 17,
      "rank": 27,
      "hit5": false
     },
     {
      "season": 2020,
+     "player": "Jared Goff",
+     "prob": 0.19,
+     "prior": 13,
+     "rank": 19,
+     "hit5": false
+    },
+    {
+     "season": 2020,
      "player": "Ben Roethlisberger",
-     "prob": 0.16,
+     "prob": 0.17,
      "prior": null,
      "rank": 14,
      "hit5": false
     },
     {
-     "season": 2021,
-     "player": "Cam Newton",
-     "prob": 0.34,
-     "prior": 15,
-     "rank": 34,
+     "season": 2020,
+     "player": "Drew Brees",
+     "prob": 0.17,
+     "prior": 21,
+     "rank": 21,
      "hit5": false
     },
     {
      "season": 2021,
      "player": "Dak Prescott",
-     "prob": 0.32,
+     "prob": 0.36,
      "prior": 30,
      "rank": 7,
      "hit5": false
@@ -817,7 +849,7 @@
     {
      "season": 2021,
      "player": "Joe Burrow",
-     "prob": 0.19,
+     "prob": 0.22,
      "prior": 25,
      "rank": 8,
      "hit5": false
@@ -825,7 +857,7 @@
     {
      "season": 2021,
      "player": "Daniel Jones",
-     "prob": 0.19,
+     "prob": 0.21,
      "prior": 24,
      "rank": 27,
      "hit5": false
@@ -833,7 +865,7 @@
     {
      "season": 2021,
      "player": "Matthew Stafford",
-     "prob": 0.17,
+     "prob": 0.19,
      "prior": 16,
      "rank": 6,
      "hit5": false
@@ -841,7 +873,7 @@
     {
      "season": 2021,
      "player": "Jameis Winston",
-     "prob": 0.15,
+     "prob": 0.18,
      "prior": null,
      "rank": 32,
      "hit5": false
@@ -849,7 +881,7 @@
     {
      "season": 2022,
      "player": "Lamar Jackson",
-     "prob": 0.52,
+     "prob": 0.54,
      "prior": 16,
      "rank": 14,
      "hit5": false
@@ -857,31 +889,23 @@
     {
      "season": 2022,
      "player": "Russell Wilson",
-     "prob": 0.41,
+     "prob": 0.42,
      "prior": 15,
      "rank": 16,
      "hit5": false
     },
     {
      "season": 2022,
-     "player": "Deshaun Watson",
-     "prob": 0.35,
-     "prior": null,
-     "rank": 36,
-     "hit5": false
-    },
-    {
-     "season": 2023,
-     "player": "Kyler Murray",
-     "prob": 0.23,
-     "prior": 18,
-     "rank": 26,
+     "player": "Carson Wentz",
+     "prob": 0.16,
+     "prior": 13,
+     "rank": 31,
      "hit5": false
     },
     {
      "season": 2023,
      "player": "Lamar Jackson",
-     "prob": 0.16,
+     "prob": 0.19,
      "prior": 14,
      "rank": 4,
      "hit5": true
@@ -889,7 +913,7 @@
     {
      "season": 2024,
      "player": "Justin Fields",
-     "prob": 0.25,
+     "prob": 0.29,
      "prior": 18,
      "rank": 31,
      "hit5": false
@@ -897,7 +921,7 @@
     {
      "season": 2024,
      "player": "Joe Burrow",
-     "prob": 0.18,
+     "prob": 0.21,
      "prior": 25,
      "rank": 3,
      "hit5": true
@@ -905,15 +929,23 @@
     {
      "season": 2024,
      "player": "Justin Herbert",
-     "prob": 0.16,
+     "prob": 0.18,
      "prior": 17,
      "rank": 11,
      "hit5": false
     },
     {
+     "season": 2024,
+     "player": "Kyler Murray",
+     "prob": 0.16,
+     "prior": 26,
+     "rank": 10,
+     "hit5": false
+    },
+    {
      "season": 2025,
      "player": "Brock Purdy",
-     "prob": 0.2,
+     "prob": 0.22,
      "prior": 13,
      "rank": 23,
      "hit5": false
@@ -1023,21 +1055,30 @@
   },
   {
    "pos": "QB",
+   "player": "Jayden Daniels",
+   "team": "WAS",
+   "age": 25.7,
+   "prob": 0.23077645066357488,
+   "prior": 34,
+   "last_games": 7
+  },
+  {
+   "pos": "QB",
    "player": "Lamar Jackson",
    "team": "BAL",
    "age": 29.6,
-   "prob": 0.21894410482511098,
+   "prob": 0.22277054104841018,
    "prior": 20,
    "last_games": 13
   },
   {
    "pos": "QB",
-   "player": "Jayden Daniels",
-   "team": "WAS",
-   "age": 25.7,
-   "prob": 0.1952265839066283,
-   "prior": 34,
-   "last_games": 7
+   "player": "Jaxson Dart",
+   "team": "NYG",
+   "age": 23.3,
+   "prob": 0.1559268168552025,
+   "prior": 13,
+   "last_games": 14
   }
  ]
 }

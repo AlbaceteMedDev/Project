@@ -276,16 +276,24 @@ def row(r: pd.Series, pos: str) -> str:
                 # Leaper marks only mean something for players coming from
                 # outside the prior top 12. Say which, not what he is.
                 else f'<div class="na">top 12 in {LAST_SEASON}</div>')
+    dr = r.get("depth_rank")
+    depth = ("" if pd.isna(dr) else f' · {pos}{int(dr)} on the chart')
     stale = ("" if r["gates_scored_on"] == LAST_SEASON
              else " · no full season to score" if not r["gates_scored_on"]
              else f" · gates from {int(r['gates_scored_on'])}")
-    body = (f'<div class="clean">clears every gate</div>' if miss == "-"
+    if pd.notna(dr) and int(dr) > 1:
+        body = (f'<div class="pmiss"><b>Listed {pos}{int(dr)} on the August depth '
+                f'chart.</b> Players listed second finish top-5 roughly 1% of the '
+                f'time.</div>')
+    else:
+        body = ""
+    body += (f'<div class="clean">clears every gate</div>' if miss == "-"
             else f'<div class="pmiss">short on <b>{e(miss.lower())}</b></div>')
     return f"""<div class="row">
   <div class="pnum">{r['prob']:.2f}</div>
   <div>
     <div class="pname">{e(r['player'])}</div>
-    <div class="pmeta">{e(r['team'])} · age {r['age']:.0f} · was {e(pos)}{int(r['last_finish'])}{stale}</div>
+    <div class="pmeta">{e(r['team'])} · age {r['age']:.0f} · was {e(pos)}{int(r['last_finish'])}{depth}{stale}</div>
     {body}
   </div>
   <div class="cellpips">{pips(int(r['gates_cleared']), int(r['gates_total']), 'gates')}</div>
@@ -399,6 +407,13 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       injuries are not in the data. Anyone facing league discipline or rehabbing an
       injury is scored as though he plays a full season, which is exactly when this
       board is most wrong.</li>
+    <li><b>The depth chart is current; everything else is last year's.</b> Each row
+      carries the player's rank on his team's August {TARGET} chart, which is the
+      only forward-looking fact here. It is also the sharpest one — a receiver
+      listed second finishes top-5 0.4% of the time against 7.1% for the one listed
+      first. Below the top slot the ordering is loose, especially at receiver where
+      teams play three: the {TARGET} Jaguars list Travis Hunter fourth. Read a low
+      rank as a question, not a verdict.</li>
     <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
       still carries his old offense's scoring rank and quarterback quality.</li>
     <li><b>Story lines are not in it, and mostly should not be.</b> A coaching
