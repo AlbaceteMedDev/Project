@@ -1,0 +1,1043 @@
+{
+ "floor": 0.15,
+ "target": 2026,
+ "backtest": [
+  {
+   "pos": "WR",
+   "rows": [
+    {
+     "threshold": null,
+     "n": 979,
+     "per_season": 97.9,
+     "hit5": 0.020429009193054137,
+     "hit12": 0.06639427987742594
+    },
+    {
+     "threshold": 0.1,
+     "n": 46,
+     "per_season": 4.6,
+     "hit5": 0.1956521739130435,
+     "hit12": 0.43478260869565216
+    },
+    {
+     "threshold": 0.15,
+     "n": 29,
+     "per_season": 2.9,
+     "hit5": 0.2413793103448276,
+     "hit12": 0.4827586206896552
+    },
+    {
+     "threshold": 0.2,
+     "n": 19,
+     "per_season": 1.9,
+     "hit5": 0.3684210526315789,
+     "hit12": 0.631578947368421
+    },
+    {
+     "threshold": 0.25,
+     "n": 13,
+     "per_season": 1.3,
+     "hit5": 0.46153846153846156,
+     "hit12": 0.6923076923076923
+    }
+   ],
+   "floor": 0.15,
+   "names": [
+    {
+     "season": 2016,
+     "player": "Mike Evans",
+     "prob": 0.35,
+     "prior": 21,
+     "rank": 3,
+     "hit5": true
+    },
+    {
+     "season": 2016,
+     "player": "Randall Cobb",
+     "prob": 0.22,
+     "prior": 25,
+     "rank": 52,
+     "hit5": false
+    },
+    {
+     "season": 2017,
+     "player": "Jarvis Landry",
+     "prob": 0.37,
+     "prior": 13,
+     "rank": 5,
+     "hit5": true
+    },
+    {
+     "season": 2017,
+     "player": "DeAndre Hopkins",
+     "prob": 0.35,
+     "prior": 27,
+     "rank": 2,
+     "hit5": true
+    },
+    {
+     "season": 2018,
+     "player": "Odell Beckham Jr.",
+     "prob": 0.41,
+     "prior": 83,
+     "rank": 15,
+     "hit5": false
+    },
+    {
+     "season": 2018,
+     "player": "Mike Evans",
+     "prob": 0.27,
+     "prior": 17,
+     "rank": 9,
+     "hit5": false
+    },
+    {
+     "season": 2018,
+     "player": "Amari Cooper",
+     "prob": 0.15,
+     "prior": 36,
+     "rank": 19,
+     "hit5": false
+    },
+    {
+     "season": 2019,
+     "player": "Jarvis Landry",
+     "prob": 0.23,
+     "prior": 18,
+     "rank": 12,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Davante Adams",
+     "prob": 0.44,
+     "prior": 23,
+     "rank": 1,
+     "hit5": true
+    },
+    {
+     "season": 2020,
+     "player": "Mike Evans",
+     "prob": 0.16,
+     "prior": 15,
+     "rank": 11,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Chris Godwin Jr.",
+     "prob": 0.2,
+     "prior": 31,
+     "rank": 15,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "DJ Moore",
+     "prob": 0.16,
+     "prior": 25,
+     "rank": 18,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "A.J. Brown",
+     "prob": 0.22,
+     "prior": 32,
+     "rank": 6,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "CeeDee Lamb",
+     "prob": 0.2,
+     "prior": 19,
+     "rank": 5,
+     "hit5": true
+    },
+    {
+     "season": 2023,
+     "player": "Cooper Kupp",
+     "prob": 0.83,
+     "prior": 23,
+     "rank": 40,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Deebo Samuel Sr.",
+     "prob": 0.21,
+     "prior": 37,
+     "rank": 15,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Tee Higgins",
+     "prob": 0.17,
+     "prior": 19,
+     "rank": 51,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "DK Metcalf",
+     "prob": 0.16,
+     "prior": 16,
+     "rank": 21,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Justin Jefferson",
+     "prob": 0.41,
+     "prior": 33,
+     "rank": 2,
+     "hit5": true
+    },
+    {
+     "season": 2024,
+     "player": "Chris Olave",
+     "prob": 0.24,
+     "prior": 16,
+     "rank": 94,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Jaylen Waddle",
+     "prob": 0.17,
+     "prior": 34,
+     "rank": 46,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "DeVonta Smith",
+     "prob": 0.17,
+     "prior": 19,
+     "rank": 27,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Garrett Wilson",
+     "prob": 0.15,
+     "prior": 26,
+     "rank": 10,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "A.J. Brown",
+     "prob": 0.4,
+     "prior": 20,
+     "rank": 11,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Rashee Rice",
+     "prob": 0.4,
+     "prior": 100,
+     "rank": 40,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Puka Nacua",
+     "prob": 0.36,
+     "prior": 26,
+     "rank": 1,
+     "hit5": true
+    },
+    {
+     "season": 2025,
+     "player": "Tyreek Hill",
+     "prob": 0.34,
+     "prior": 18,
+     "rank": 104,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Nico Collins",
+     "prob": 0.31,
+     "prior": 23,
+     "rank": 8,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Chris Godwin Jr.",
+     "prob": 0.16,
+     "prior": 53,
+     "rank": 78,
+     "hit5": false
+    }
+   ]
+  },
+  {
+   "pos": "RB",
+   "rows": [
+    {
+     "threshold": null,
+     "n": 587,
+     "per_season": 58.7,
+     "hit5": 0.03236797274275979,
+     "hit12": 0.08858603066439523
+    },
+    {
+     "threshold": 0.1,
+     "n": 44,
+     "per_season": 4.4,
+     "hit5": 0.20454545454545456,
+     "hit12": 0.36363636363636365
+    },
+    {
+     "threshold": 0.15,
+     "n": 22,
+     "per_season": 2.2,
+     "hit5": 0.2727272727272727,
+     "hit12": 0.5
+    },
+    {
+     "threshold": 0.2,
+     "n": 13,
+     "per_season": 1.3,
+     "hit5": 0.3076923076923077,
+     "hit12": 0.5384615384615384
+    },
+    {
+     "threshold": 0.25,
+     "n": 8,
+     "per_season": 0.8,
+     "hit5": 0.375,
+     "hit12": 0.75
+    }
+   ],
+   "floor": 0.15,
+   "names": [
+    {
+     "season": 2016,
+     "player": "Le'Veon Bell",
+     "prob": 0.59,
+     "prior": 47,
+     "rank": 3,
+     "hit5": true
+    },
+    {
+     "season": 2016,
+     "player": "LeSean McCoy",
+     "prob": 0.2,
+     "prior": 19,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2017,
+     "player": "Theo Riddick",
+     "prob": 0.2,
+     "prior": 25,
+     "rank": 27,
+     "hit5": false
+    },
+    {
+     "season": 2018,
+     "player": "Jay Ajayi",
+     "prob": 0.17,
+     "prior": 36,
+     "rank": 83,
+     "hit5": false
+    },
+    {
+     "season": 2019,
+     "player": "Dalvin Cook",
+     "prob": 0.16,
+     "prior": 30,
+     "rank": 6,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Kareem Hunt",
+     "prob": 0.27,
+     "prior": 47,
+     "rank": 10,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Le'Veon Bell",
+     "prob": 0.2,
+     "prior": 16,
+     "rank": 63,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Devin Singletary",
+     "prob": 0.16,
+     "prior": 32,
+     "rank": 31,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Joe Mixon",
+     "prob": 0.25,
+     "prior": 49,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2021,
+     "player": "Clyde Edwards-Helaire",
+     "prob": 0.2,
+     "prior": 22,
+     "rank": 44,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Derrick Henry",
+     "prob": 0.37,
+     "prior": 22,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2022,
+     "player": "Dalvin Cook",
+     "prob": 0.3,
+     "prior": 16,
+     "rank": 11,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "D'Andre Swift",
+     "prob": 0.24,
+     "prior": 15,
+     "rank": 21,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Elijah Mitchell",
+     "prob": 0.22,
+     "prior": 26,
+     "rank": 79,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Javonte Williams",
+     "prob": 0.19,
+     "prior": 17,
+     "rank": 82,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Javonte Williams",
+     "prob": 0.32,
+     "prior": 82,
+     "rank": 29,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Jonathan Taylor",
+     "prob": 0.29,
+     "prior": 33,
+     "rank": 33,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Alvin Kamara",
+     "prob": 0.17,
+     "prior": 16,
+     "rank": 11,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Josh Jacobs",
+     "prob": 0.33,
+     "prior": 28,
+     "rank": 6,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Saquon Barkley",
+     "prob": 0.18,
+     "prior": 13,
+     "rank": 2,
+     "hit5": true
+    },
+    {
+     "season": 2024,
+     "player": "De'Von Achane",
+     "prob": 0.16,
+     "prior": 24,
+     "rank": 5,
+     "hit5": true
+    },
+    {
+     "season": 2025,
+     "player": "Kenneth Walker III",
+     "prob": 0.25,
+     "prior": 27,
+     "rank": 22,
+     "hit5": false
+    }
+   ]
+  },
+  {
+   "pos": "TE",
+   "rows": [
+    {
+     "threshold": null,
+     "n": 451,
+     "per_season": 45.1,
+     "hit5": 0.03325942350332594,
+     "hit12": 0.11086474501108648
+    },
+    {
+     "threshold": 0.1,
+     "n": 25,
+     "per_season": 2.5,
+     "hit5": 0.2,
+     "hit12": 0.32
+    },
+    {
+     "threshold": 0.15,
+     "n": 14,
+     "per_season": 1.4,
+     "hit5": 0.14285714285714285,
+     "hit12": 0.21428571428571427
+    },
+    {
+     "threshold": 0.2,
+     "n": 9,
+     "per_season": 0.9,
+     "hit5": 0.2222222222222222,
+     "hit12": 0.3333333333333333
+    }
+   ],
+   "floor": 0.15,
+   "names": [
+    {
+     "season": 2016,
+     "player": "Jimmy Graham",
+     "prob": 0.22,
+     "prior": 21,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2017,
+     "player": "Charles Clay",
+     "prob": 0.3,
+     "prior": 17,
+     "rank": 18,
+     "hit5": false
+    },
+    {
+     "season": 2017,
+     "player": "Hunter Henry",
+     "prob": 0.17,
+     "prior": 20,
+     "rank": 14,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Evan Engram",
+     "prob": 0.16,
+     "prior": 18,
+     "rank": 16,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Evan Engram",
+     "prob": 0.41,
+     "prior": 16,
+     "rank": 24,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "George Kittle",
+     "prob": 0.23,
+     "prior": 20,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2021,
+     "player": "Austin Hooper",
+     "prob": 0.17,
+     "prior": 22,
+     "rank": 25,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Darren Waller",
+     "prob": 0.28,
+     "prior": 17,
+     "rank": 31,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Kyle Pitts",
+     "prob": 0.22,
+     "prior": 33,
+     "rank": 13,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Kyle Pitts",
+     "prob": 0.62,
+     "prior": 13,
+     "rank": 15,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Mark Andrews",
+     "prob": 0.3,
+     "prior": 15,
+     "rank": 6,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Evan Engram",
+     "prob": 0.29,
+     "prior": 33,
+     "rank": 29,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "T.J. Hockenson",
+     "prob": 0.2,
+     "prior": 34,
+     "rank": 26,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Dalton Kincaid",
+     "prob": 0.15,
+     "prior": 30,
+     "rank": 20,
+     "hit5": false
+    }
+   ]
+  },
+  {
+   "pos": "QB",
+   "rows": [
+    {
+     "threshold": null,
+     "n": 210,
+     "per_season": 21.0,
+     "hit5": 0.0761904761904762,
+     "hit12": 0.18571428571428572
+    },
+    {
+     "threshold": 0.1,
+     "n": 57,
+     "per_season": 5.7,
+     "hit5": 0.17543859649122806,
+     "hit12": 0.42105263157894735
+    },
+    {
+     "threshold": 0.15,
+     "n": 30,
+     "per_season": 3.0,
+     "hit5": 0.26666666666666666,
+     "hit12": 0.5
+    },
+    {
+     "threshold": 0.2,
+     "n": 12,
+     "per_season": 1.2,
+     "hit5": 0.08333333333333333,
+     "hit12": 0.3333333333333333
+    }
+   ],
+   "floor": 0.15,
+   "names": [
+    {
+     "season": 2016,
+     "player": "Tyrod Taylor",
+     "prob": 0.23,
+     "prior": 14,
+     "rank": 9,
+     "hit5": false
+    },
+    {
+     "season": 2016,
+     "player": "Jameis Winston",
+     "prob": 0.18,
+     "prior": 13,
+     "rank": 16,
+     "hit5": false
+    },
+    {
+     "season": 2016,
+     "player": "Andrew Luck",
+     "prob": 0.16,
+     "prior": 28,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2016,
+     "player": "Matt Ryan",
+     "prob": 0.16,
+     "prior": 19,
+     "rank": 2,
+     "hit5": true
+    },
+    {
+     "season": 2017,
+     "player": "Tom Brady",
+     "prob": 0.29,
+     "prior": 15,
+     "rank": 3,
+     "hit5": true
+    },
+    {
+     "season": 2017,
+     "player": "Marcus Mariota",
+     "prob": 0.24,
+     "prior": 13,
+     "rank": 18,
+     "hit5": false
+    },
+    {
+     "season": 2017,
+     "player": "Cam Newton",
+     "prob": 0.18,
+     "prior": 17,
+     "rank": 2,
+     "hit5": true
+    },
+    {
+     "season": 2017,
+     "player": "Jameis Winston",
+     "prob": 0.16,
+     "prior": 16,
+     "rank": 22,
+     "hit5": false
+    },
+    {
+     "season": 2018,
+     "player": "Aaron Rodgers",
+     "prob": 0.2,
+     "prior": 29,
+     "rank": 6,
+     "hit5": false
+    },
+    {
+     "season": 2018,
+     "player": "Andrew Luck",
+     "prob": 0.19,
+     "prior": null,
+     "rank": 5,
+     "hit5": true
+    },
+    {
+     "season": 2018,
+     "player": "Matt Ryan",
+     "prob": 0.15,
+     "prior": 15,
+     "rank": 2,
+     "hit5": true
+    },
+    {
+     "season": 2019,
+     "player": "Carson Wentz",
+     "prob": 0.19,
+     "prior": 23,
+     "rank": 10,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Jared Goff",
+     "prob": 0.18,
+     "prior": 13,
+     "rank": 19,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Ryan Fitzpatrick",
+     "prob": 0.16,
+     "prior": 17,
+     "rank": 27,
+     "hit5": false
+    },
+    {
+     "season": 2020,
+     "player": "Ben Roethlisberger",
+     "prob": 0.16,
+     "prior": null,
+     "rank": 14,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Cam Newton",
+     "prob": 0.34,
+     "prior": 15,
+     "rank": 34,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Dak Prescott",
+     "prob": 0.32,
+     "prior": 30,
+     "rank": 7,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Joe Burrow",
+     "prob": 0.19,
+     "prior": 25,
+     "rank": 8,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Daniel Jones",
+     "prob": 0.19,
+     "prior": 24,
+     "rank": 27,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Matthew Stafford",
+     "prob": 0.17,
+     "prior": 16,
+     "rank": 6,
+     "hit5": false
+    },
+    {
+     "season": 2021,
+     "player": "Jameis Winston",
+     "prob": 0.15,
+     "prior": null,
+     "rank": 32,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Lamar Jackson",
+     "prob": 0.52,
+     "prior": 16,
+     "rank": 14,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Russell Wilson",
+     "prob": 0.41,
+     "prior": 15,
+     "rank": 16,
+     "hit5": false
+    },
+    {
+     "season": 2022,
+     "player": "Deshaun Watson",
+     "prob": 0.35,
+     "prior": null,
+     "rank": 36,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Kyler Murray",
+     "prob": 0.23,
+     "prior": 18,
+     "rank": 26,
+     "hit5": false
+    },
+    {
+     "season": 2023,
+     "player": "Lamar Jackson",
+     "prob": 0.16,
+     "prior": 14,
+     "rank": 4,
+     "hit5": true
+    },
+    {
+     "season": 2024,
+     "player": "Justin Fields",
+     "prob": 0.25,
+     "prior": 18,
+     "rank": 31,
+     "hit5": false
+    },
+    {
+     "season": 2024,
+     "player": "Joe Burrow",
+     "prob": 0.18,
+     "prior": 25,
+     "rank": 3,
+     "hit5": true
+    },
+    {
+     "season": 2024,
+     "player": "Justin Herbert",
+     "prob": 0.16,
+     "prior": 17,
+     "rank": 11,
+     "hit5": false
+    },
+    {
+     "season": 2025,
+     "player": "Brock Purdy",
+     "prob": 0.2,
+     "prior": 13,
+     "rank": 23,
+     "hit5": false
+    }
+   ]
+  }
+ ],
+ "upcoming": [
+  {
+   "pos": "WR",
+   "player": "Malik Nabers",
+   "team": "NYG",
+   "age": 23.1,
+   "prob": 0.6896567980424746,
+   "prior": 101,
+   "last_games": 4
+  },
+  {
+   "pos": "WR",
+   "player": "Drake London",
+   "team": "ATL",
+   "age": 25.1,
+   "prob": 0.3579903062424306,
+   "prior": 19,
+   "last_games": 12
+  },
+  {
+   "pos": "WR",
+   "player": "Garrett Wilson",
+   "team": "NYJ",
+   "age": 26.1,
+   "prob": 0.28314177176327415,
+   "prior": 62,
+   "last_games": 7
+  },
+  {
+   "pos": "WR",
+   "player": "Brian Thomas Jr.",
+   "team": "JAX",
+   "age": 23.9,
+   "prob": 0.27605216808169253,
+   "prior": 42,
+   "last_games": 14
+  },
+  {
+   "pos": "WR",
+   "player": "Justin Jefferson",
+   "team": "MIN",
+   "age": 27.2,
+   "prob": 0.26285768684553573,
+   "prior": 21,
+   "last_games": 17
+  },
+  {
+   "pos": "WR",
+   "player": "CeeDee Lamb",
+   "team": "DAL",
+   "age": 27.4,
+   "prob": 0.2113355725382579,
+   "prior": 22,
+   "last_games": 13
+  },
+  {
+   "pos": "WR",
+   "player": "Wan'Dale Robinson",
+   "team": "NYG",
+   "age": 25.7,
+   "prob": 0.19907038642961147,
+   "prior": 14,
+   "last_games": 16
+  },
+  {
+   "pos": "RB",
+   "player": "Saquon Barkley",
+   "team": "PHI",
+   "age": 29.6,
+   "prob": 0.18497301803115476,
+   "prior": 14,
+   "last_games": 16
+  },
+  {
+   "pos": "RB",
+   "player": "Bucky Irving",
+   "team": "TB",
+   "age": 24.0,
+   "prob": 0.17338432795699393,
+   "prior": 34,
+   "last_games": 10
+  },
+  {
+   "pos": "TE",
+   "player": "Evan Engram",
+   "team": "DEN",
+   "age": 32.0,
+   "prob": 0.21910666228371306,
+   "prior": 29,
+   "last_games": 16
+  },
+  {
+   "pos": "TE",
+   "player": "George Kittle",
+   "team": "SF",
+   "age": 32.9,
+   "prob": 0.21642615414096517,
+   "prior": 13,
+   "last_games": 11
+  },
+  {
+   "pos": "QB",
+   "player": "Lamar Jackson",
+   "team": "BAL",
+   "age": 29.6,
+   "prob": 0.21894410482511098,
+   "prior": 20,
+   "last_games": 13
+  },
+  {
+   "pos": "QB",
+   "player": "Jayden Daniels",
+   "team": "WAS",
+   "age": 25.7,
+   "prob": 0.1952265839066283,
+   "prior": 34,
+   "last_games": 7
+  }
+ ]
+}

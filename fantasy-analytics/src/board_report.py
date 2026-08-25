@@ -121,77 +121,66 @@ EXTRA = """
 """
 
 
-LANE_NAME = {
-    "all": ("Everyone scored", "the board as published"),
-    "cheap": ("No top-12 finish last year", "still includes recent stars"),
-    "strict": ("No top-12 in either of the last two", "nobody priced as a star"),
-}
-
-
-def value_section() -> str:
-    """The board sorted by probability is a list of good players. This is the part
-    that answers a draft question: among players nobody is bidding up, does it know
-    anything?"""
-    v = json.loads((OUTPUT / "value_lane.json").read_text())
-    by = {}
-    for r in v["backtest"]:
-        by.setdefault(r["pos"], []).append(r)
+def disagreement_section() -> str:
+    """The one cut on this board that is not just a list of good players."""
+    v = json.loads((OUTPUT / "disagreement.json").read_text())
+    by = {b["pos"]: b for b in v["backtest"]}
 
     rows = []
     for pos in POS_ORDER:
-        rows.append(f'<tr class="grp"><td colspan="6">{pos}</td></tr>')
-        for r in by[pos]:
-            nm, sub = LANE_NAME[r["lane"]]
-            lift = r["hit5"] / r["base5"] if r["base5"] else 0
+        b = by[pos]
+        rows.append(f'<tr class="grp"><td colspan="4">{pos}</td></tr>')
+        base = b["rows"][0]
+        for r in b["rows"]:
+            if r["threshold"] is None:
+                lab, sub = "Every one of them", "the whole lane, unfiltered"
+                cls = "base"
+            else:
+                lab = f'Model says {r["threshold"]:.2f} or better'
+                sub = f'{r["per_season"]:.1f} players a year'
+                cls = "hit"
+            lift = r["hit5"] / base["hit5"] if base["hit5"] else 0
+            liftx = "" if r["threshold"] is None else f' <span class="lift">{lift:.0f}×</span>'
             rows.append(
-                f'<tr><td class="lname">{e(nm)}<small>{e(sub)} · '
-                f'{r["n_per_season"]}/yr</small></td>'
-                f'<td class="base">{pct(r["base5"])}</td>'
-                f'<td class="hit">{pct(r["hit5"])}</td>'
-                f'<td class="lift">{lift:.1f}×</td>'
-                f'<td class="base">{pct(r["base12"])}</td>'
-                f'<td class="hit">{pct(r["hit12"])}</td></tr>')
+                f'<tr><td class="lname">{e(lab)}<small>{e(sub)}</small></td>'
+                f'<td class="{cls}">{pct(r["hit5"])}{liftx}</td>'
+                f'<td class="{cls}">{pct(r["hit12"])}</td>'
+                f'<td class="base">{r["n"]}</td></tr>')
 
     cols = []
     for pos in POS_ORDER:
         picks = [x for x in v["upcoming"] if x["pos"] == pos]
         body = "".join(
             f'<div class="p1"><div class="pn">{e(x["player"])}'
-            f'<small>{e(x["team"])} · {x["age"]:.0f} · best '
-            f'{pos}{x["best_recent"] if x["best_recent"] else "—"}</small></div>'
-            f'<div class="pv">{x["prob"]:.2f}</div></div>'
-            for x in picks)
+            f'<small>{e(x["team"])} · {x["age"]:.0f} · was {pos}{x["prior"]}, '
+            f'{x["last_games"]} gm</small></div>'
+            f'<div class="pv">{x["prob"]:.2f}</div></div>' for x in picks) or \
+            '<p class="levnote">Nobody clears the bar this year.</p>'
         cols.append(f'<div><div class="levhead"><h4>{pos}</h4></div>{body}</div>')
 
     return f"""<section>
   <hr class="hash">
-  <h2>The part that is worth something</h2>
-  <p class="sec-intro">Every feature in this model is a production stat, so it can
-  only rank players who already played — which means the top of the board is a list
-  of people you already know and will pay full price for. The question a draft
-  actually asks is narrower: strip out everyone the market has already bid up, and
-  does the model still know anything? Each lane below takes the model's top
-  {v['take']} picks per season and scores them against that lane's own base rate.</p>
+  <h2>Where the model disagrees with last season</h2>
+  <p class="sec-intro">Everything above is a list of players who were good and will
+  be priced like it. This is the one cut that says something else: players whose
+  <b>last season finished outside the top 12</b>, whom the model still rates highly
+  in absolute terms. Not cheap players — a tight end who finished 18th is cheap
+  because he is not good, and the model says so. These are starters whose last
+  season understates them.</p>
   <div class="scroll"><table class="lane">
-    <thead><tr><th style="text-align:left"></th>
-      <th colspan="3" style="text-align:center">— top-5 finish —</th>
-      <th colspan="2" style="text-align:center">— top-12 finish —</th></tr>
-    <tr><th style="text-align:left">Lane</th><th>Base</th>
-      <th>Top {v['take']} picks</th><th>Lift</th><th>Base</th>
-      <th>Top {v['take']} picks</th></tr></thead>
+    <thead><tr><th style="text-align:left">Among players who finished outside the
+      top 12 last year…</th><th>Top-5</th><th>Top-12</th><th>n</th></tr></thead>
     <tbody>{''.join(rows)}</tbody>
   </table></div>
-  <div class="callout"><p><b>Read the third row of each block, not the first.</b>
-  Among genuinely cheap players the model's top three hit top-5 about 7-10% of the
-  time. That is five to seven times the lane's base rate and it is still a long
-  shot — a 0.25 profile does not exist down there, because elite seasons
-  overwhelmingly come from players who were already good. Top-12 is the honest
-  target for a late pick: 20-33%, against a base of 5-14%.</p></div>
-  <h3 style="font-size:20px; margin:38px 0 4px">{v['target']}: the cheap lane</h3>
-  <p class="sec-intro" style="margin-bottom:0">Nobody here finished top 12 in
-  {v['target'] - 2} or {v['target'] - 1}; each row shows his best finish across
-  those two years. Ranked by the same model, with the probability shown so you can
-  see how thin it gets past the first name or two.</p>
+  <div class="callout"><p><b>This is the sharpest thing on the page.</b> A receiver
+  coming off a season outside the top 12 finishes top-5 about 2% of the time. The
+  ones this model rates at 0.20 or better did it <b>37% of the time</b> — roughly
+  two players a year, over eleven seasons. Tight end is the exception and the
+  numbers there wobble with the threshold, which is what a sample of nine looks
+  like; treat the TE row as unproven.</p></div>
+  <h3 style="font-size:20px; margin:38px 0 4px">{v['target']}: who clears it</h3>
+  <p class="sec-intro" style="margin-bottom:0">Everyone rated {v['floor']:.2f} or
+  better whose {v['target'] - 1} finish was outside the top 12.</p>
   <div class="picks">{''.join(cols)}</div>
 </section>
 """
@@ -263,7 +252,12 @@ def leverage_section() -> str:
       0.696). A quarterback upgrade was worth nothing once the box score was known.
       Two survived: a receiver who <b>missed most of last season</b> (0.922 → 0.929,
       now in the model) and a <b>quarterback changing teams</b> (0.710 → 0.737, left
-      out — next year's roster is not in this data).</p></div>
+      out — next year's roster is not in this data).</p>
+      <p style="margin:12px 0 0"><b>Also rejected: how he finished.</b> Season
+      totals hide whether a player was steady or surging, so the last six games of
+      each prior season were rebuilt from the weekly files and tested. They add
+      nothing at any position — WR 0.929 → 0.928, TE 0.881 → 0.862 with all five
+      late-window features. "He finished strong" is a story, not a signal.</p></div>
   </div>
 </section>
 """
@@ -342,7 +336,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
   </div>
 </header>
 
-{value_section()}
+{disagreement_section()}
 
 {leverage_section()}
 
