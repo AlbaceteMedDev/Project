@@ -9,10 +9,11 @@ import download
 import predict
 import board_report
 import report
+import rookies
 import target_board
 import disagreement
 
 for step in (download, build_dataset, __import__("analyze"), predict, audit,
-             report, target_board, disagreement, board_report):
+             report, target_board, rookies, disagreement, board_report):
     print(f"\n{'=' * 70}\n{step.__name__}\n{'=' * 70}")
     step.main()

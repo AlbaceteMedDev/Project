@@ -31,7 +31,7 @@ def _modern(d: pd.DataFrame, season: int) -> pd.DataFrame | None:
     pre = (pre.sort_values("dt")
               .drop_duplicates(["team", "pos_abb", "gsis_id"], keep="last"))
     print(f"  {season}: {len(pre):>5,} rows, chart of {pre['dt'].max().date()}")
-    return pre[["gsis_id", "team", "pos_abb", "pos_rank"]].rename(
+    return pre[["gsis_id", "player_name", "team", "pos_abb", "pos_rank"]].rename(
         columns={"gsis_id": "player_id", "pos_abb": "pos", "pos_rank": "depth_rank"})
 
 
@@ -43,7 +43,9 @@ def _legacy(d: pd.DataFrame, season: int) -> pd.DataFrame | None:
         return None
     pre = pre.drop_duplicates(["club_code", "position", "gsis_id"], keep="first")
     print(f"  {season}: {len(pre):>5,} rows, week 1 chart")
-    return pre[["gsis_id", "club_code", "position", "depth_team"]].rename(
+    pre = pre.copy()
+    pre["player_name"] = pre["full_name"]
+    return pre[["gsis_id", "player_name", "club_code", "position", "depth_team"]].rename(
         columns={"gsis_id": "player_id", "club_code": "team",
                  "position": "pos", "depth_team": "depth_rank"})
 

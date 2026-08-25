@@ -10,7 +10,8 @@ from pathlib import Path
 
 from config import NFLVERSE, RAW, SEASONS
 
-FILES = [("players/players.csv", "players.csv")]
+FILES = [("players/players.csv", "players.csv"),
+         ("draft_picks/draft_picks.csv", "draft_picks.csv")]
 for _s in SEASONS:
     FILES += [
         (f"stats_player/stats_player_week_{_s}.csv", f"stats_{_s}.csv"),

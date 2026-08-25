@@ -40,6 +40,129 @@ POS_SHAPE = {
 }
 
 
+def rookie_section() -> str:
+    """The class the main model cannot score at all."""
+    r = pd.read_csv(OUTPUT / f"rookie_board_{TARGET}.csv")
+    cols = []
+    for pos in POS_ORDER:
+        g = r[r["pos"] == pos].nlargest(5, "raw_prob")
+        body = "".join(
+            f'<div class="p1"><div class="pn">{e(x.player)}'
+            f'<small>{e(str(x.team))} · pick {int(x["pick"])} · '
+            f'{pos}{int(x.depth_rank) if pd.notna(x.depth_rank) else "?"} on the chart · '
+            f'{x.vacated_share:.0%} vacated</small></div>'
+            f'<div class="pv">{x.prob:.2f}{"*" if x.above_tested_range else ""}</div>'
+            f'</div>' for _, x in g.iterrows())
+        cols.append(f'<div><div class="levhead"><h4>{pos}</h4></div>{body}</div>')
+    return f"""<section>
+  <hr class="hash">
+  <h2>The rookies</h2>
+  <p class="sec-intro">A first-year player has no NFL box score, so the main model
+  cannot see him and drops him from every table above. He is scored here instead on
+  the four things that <i>are</i> knowable in August: where the league drafted him,
+  where he sits on his team's depth chart, how much work at his position just left
+  the building, and how good the offence around him was. None of it is his own
+  production, because he has none.</p>
+  <div class="picks">{''.join(cols)}</div>
+  <div class="callout"><p><b>Read these more sceptically than anything else here.</b>
+  The model separates rookies well — AUC 0.76 at receiver to 0.92 at tight end, and
+  it is calibrated by draft round — but elite rookie seasons are rare enough that it
+  is fitted on a few dozen of them. Above 0.35 it has three historical observations,
+  so scores are published capped at that line and marked with an asterisk. Two of
+  those three did hit: Kyle Pitts and Brock Bowers.</p></div>
+</section>
+"""
+
+
+def caveats() -> str:
+    """Every figure in the limits list, computed from the run that built the page.
+
+    These were prose with numbers typed into it, and they were wrong within a day
+    of the target moving from top-5 to top-8 - quoting a 4.6% base rate under a
+    table that said 6.7%. Nothing here is remembered.
+    """
+    import model as M
+    df = pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False)
+    pf = M.frame(df)
+
+    wr = M.pool(pf, "WR")
+    wr_base = wr[TARGET_COL].mean()
+
+    # players who logged one qualifying season and never appeared again: they
+    # leave the denominator, which flatters every rate on this page
+    dropped = {}
+    for pos in POS_ORDER:
+        d = df[df["fantasy_pos"] == pos]
+        last = d.groupby("player_id")["season"].max()
+        once = d.groupby("player_id").size() == 1
+        gone = ((last < LAST_SEASON) & once).sum()
+        dropped[pos] = int(gone)
+    wr_adj = wr[TARGET_COL].sum() / (len(wr) + dropped["WR"])
+
+    # how much of the historical target the two-year frame can even reach
+    reach = {}
+    for pos in POS_ORDER:
+        d = pf[(pf["fantasy_pos"] == pos) & pf["season"].between(2016, LAST_SEASON)]
+        elite = df[(df["fantasy_pos"] == pos) & df["season"].between(2016, LAST_SEASON)
+                   & (df[TARGET_COL] == 1)]
+        seen = d[M.qualifies(d, pos)]
+        reach[pos] = len(seen.merge(elite[["player_id", "season"]],
+                                    on=["player_id", "season"])) / max(len(elite), 1)
+
+    # depth chart separation, measured rather than recalled (frame() already
+    # carries depth_rank, so re-merging would only produce suffixed duplicates)
+    w = pf[(pf["fantasy_pos"] == "WR") & pf["season"].between(2016, LAST_SEASON)]
+    w = w[M.qualifies(w, "WR")]
+    d1 = w[w["depth_rank"] == 1][TARGET_COL].mean()
+    d2 = w[w["depth_rank"] == 2][TARGET_COL].mean()
+
+    rk = pd.read_csv(OUTPUT / "rookie_scores.csv")
+    rk_hits = int(rk[TARGET_COL].sum())
+
+    return f"""  <ul class="tight">
+    <li><b>Nobody here is a lock.</b> The top score on the whole board is
+      {{board['prob'].max():.2f}}, and below the first handful of names the odds fall
+      away fast. A top-{TARGET_N} receiving season happens to {wr_base:.1%} of the
+      qualifying pool, so the very top of this board is a large edge on a modest
+      chance — not a promise.</li>
+    <li><b>The pool quietly drops the injured.</b> A player has to log a scoreable
+      season to be counted, so {dropped['WR']} receivers, {dropped['RB']} running
+      backs and {dropped['TE']} tight ends who managed one qualifying year and never
+      another have left the denominator. Counting them as failures puts the real
+      receiver base rate at {wr_adj:.1%} rather than {wr_base:.1%}, and every
+      probability here is optimistic by roughly that ratio.</li>
+    <li><b>Rookies are scored separately, and badly.</b> They have no NFL history,
+      so the main model cannot see them at all; a second model scores them on draft
+      capital, depth-chart rank, vacated opportunity and offence quality. It works
+      — AUC 0.76 to 0.92, and calibrated by round — but it is built on
+      {rk_hits} hits in eleven years, and above 0.35 it has three observations
+      total. Rookie scores are published capped at that line and flagged, because
+      the number above it would be invented.</li>
+    <li><b>Two seasons of lookback still miss some of it.</b> The frame can reach
+      {min(reach.values()):.0%}–{max(reach.values()):.0%} of past top-{TARGET_N}
+      seasons depending on position. The rest belong to players it had no history
+      for.</li>
+    <li><b>It cannot see availability.</b> Suspensions, holdouts and training-camp
+      injuries are not in the data. Anyone facing league discipline or rehabbing is
+      scored as though he plays a full season, which is exactly when this board is
+      most wrong.</li>
+    <li><b>The depth chart is current; everything else is last year's.</b> Each row
+      carries the player's rank on his team's August {{TARGET}} chart — the only
+      forward-looking fact here, and the sharpest. A receiver listed second finishes
+      top-{TARGET_N} {d2:.1%} of the time against {d1:.1%} for the one listed first.
+      Below the top slot the ordering is loose, especially at receiver where teams
+      play three: the {{TARGET}} Jaguars list Travis Hunter fourth. Read a low rank as
+      a question, not a verdict.</li>
+    <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
+      still carries his old offence's scoring rank and quarterback quality.</li>
+    <li><b>Story lines are not in it, and mostly should not be.</b> A coaching
+      change, a move to a better quarterback and a change of team were each tested
+      as features. A coaching change made the model worse at every position. Two
+      earned a place: a receiver who missed most of last season, and — at
+      quarterback only — the depth chart.</li>
+  </ul>"""
+
+
 AUCS: dict[str, float] = {}
 
 
@@ -378,6 +501,8 @@ def build(board: pd.DataFrame, counts: dict) -> str:
 
 {disagreement_section()}
 
+{rookie_section()}
+
 {leverage_section()}
 
 <section>
@@ -418,43 +543,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
 <section>
   <hr class="hash">
   <h2 style="margin-top:44px">Before you use it</h2>
-  <ul class="tight">
-    <li><b>Nobody here is a lock.</b> The top score on the whole board is
-      {board['prob'].max():.2f} — even that one misses roughly one year in ten, and
-      below the first handful of names the odds fall away fast. The base rate at
-      wide receiver is 4.6%, so the very top of this board is a large edge on a
-      small chance.</li>
-    <li><b>The pool quietly drops the injured.</b> A player has to log a scoreable
-      season to be counted, so 173 receiver-seasons, 138 running backs and 82
-      tight ends vanished from the denominator after one qualifying year. Counting
-      those as failures, the real receiver base rate is 4.0%, not 4.6% — and every
-      probability here is a shade optimistic for the same reason.</li>
-    <li><b>It cannot see a job that did not exist yet.</b> Rookies have no NFL
-      history to score and are structurally invisible. Two seasons of lookback
-      closed most of the injury gap — 86–94% of past top-{TARGET_N} seasons are now
-      reachable — but a first-year player never will be.</li>
-    <li><b>It cannot see availability.</b> Suspensions, holdouts and training-camp
-      injuries are not in the data. Anyone facing league discipline or rehabbing an
-      injury is scored as though he plays a full season, which is exactly when this
-      board is most wrong.</li>
-    <li><b>The depth chart is current; everything else is last year's.</b> Each row
-      carries the player's rank on his team's August {TARGET} chart, which is the
-      only forward-looking fact here. It is also the sharpest one — a receiver
-      listed second finishes top-{TARGET_N} 0.4% of the time against 7.1% for the one listed
-      first. Below the top slot the ordering is loose, especially at receiver where
-      teams play three: the {TARGET} Jaguars list Travis Hunter fourth. Read a low
-      rank as a question, not a verdict.</li>
-    <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
-      still carries his old offense's scoring rank and quarterback quality.</li>
-    <li><b>Story lines are not in it, and mostly should not be.</b> A coaching
-      change, a move to a better quarterback and a change of team were each tested
-      as model features. A coaching change made the model <i>worse</i> at every
-      position. The one narrative that earned a place is a receiver who missed most
-      of last season, which the box-score features over-punish on their own.</li>
-    <li><b>Efficiency does not rescue a small role.</b> 176 receiver-seasons had a
-      prior year under a 15% target share and 50% snaps. None finished top-{TARGET_N} the
-      next year. None finished top-12.</li>
-  </ul>
+{caveats()}
 </section>
 
 <footer>

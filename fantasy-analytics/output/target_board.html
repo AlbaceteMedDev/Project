@@ -330,6 +330,25 @@ ul.tight li{margin-bottom:.45em}
 
 <section>
   <hr class="hash">
+  <h2>The rookies</h2>
+  <p class="sec-intro">A first-year player has no NFL box score, so the main model
+  cannot see him and drops him from every table above. He is scored here instead on
+  the four things that <i>are</i> knowable in August: where the league drafted him,
+  where he sits on his team's depth chart, how much work at his position just left
+  the building, and how good the offence around him was. None of it is his own
+  production, because he has none.</p>
+  <div class="picks"><div><div class="levhead"><h4>WR</h4></div><div class="p1"><div class="pn">Carnell Tate<small>TEN · pick 4 · WR1 on the chart · 27% vacated</small></div><div class="pv">0.14</div></div><div class="p1"><div class="pn">KC Concepcion<small>CLE · pick 24 · WR2 on the chart · 0% vacated</small></div><div class="pv">0.03</div></div><div class="p1"><div class="pn">Jordyn Tyson<small>NO · pick 8 · WR2 on the chart · 18% vacated</small></div><div class="pv">0.02</div></div><div class="p1"><div class="pn">Caleb Douglas<small>MIA · pick 75 · WR3 on the chart · 81% vacated</small></div><div class="pv">0.01</div></div><div class="p1"><div class="pn">Makai Lemon<small>PHI · pick 20 · WR3 on the chart · 54% vacated</small></div><div class="pv">0.01</div></div></div><div><div class="levhead"><h4>RB</h4></div><div class="p1"><div class="pn">Jeremiyah Love<small>ARI · pick 3 · RB1 on the chart · 39% vacated</small></div><div class="pv">0.17</div></div><div class="p1"><div class="pn">Jadarian Price<small>SEA · pick 32 · RB2 on the chart · 50% vacated</small></div><div class="pv">0.10</div></div><div class="p1"><div class="pn">Kaelon Black<small>SF · pick 90 · RB2 on the chart · 24% vacated</small></div><div class="pv">0.04</div></div><div class="p1"><div class="pn">Mike Washington Jr.<small>LV · pick 122 · RB2 on the chart · 23% vacated</small></div><div class="pv">0.02</div></div><div class="p1"><div class="pn">Emmett Johnson<small>KC · pick 161 · RB3 on the chart · 83% vacated</small></div><div class="pv">0.01</div></div></div><div><div class="levhead"><h4>TE</h4></div><div class="p1"><div class="pn">Kenyon Sadiq<small>NYJ · pick 16 · TE1 on the chart · 18% vacated</small></div><div class="pv">0.35*</div></div><div class="p1"><div class="pn">Eli Stowers<small>PHI · pick 54 · TE2 on the chart · 10% vacated</small></div><div class="pv">0.08</div></div><div class="p1"><div class="pn">Nate Boerkircher<small>JAX · pick 56 · TE2 on the chart · 16% vacated</small></div><div class="pv">0.04</div></div><div class="p1"><div class="pn">Eli Raridon<small>NE · pick 95 · TE2 on the chart · 26% vacated</small></div><div class="pv">0.04</div></div><div class="p1"><div class="pn">Will Kacmarek<small>MIA · pick 87 · TE2 on the chart · 64% vacated</small></div><div class="pv">0.03</div></div></div><div><div class="levhead"><h4>QB</h4></div><div class="p1"><div class="pn">Fernando Mendoza<small>LV · pick 1 · QB2 on the chart · 100% vacated</small></div><div class="pv">0.06</div></div><div class="p1"><div class="pn">Cade Klubnik<small>NYJ · pick 110 · QB2 on the chart · 69% vacated</small></div><div class="pv">0.03</div></div><div class="p1"><div class="pn">Taylen Green<small>CLE · pick 182 · QB4 on the chart · 0% vacated</small></div><div class="pv">0.00</div></div><div class="p1"><div class="pn">Garrett Nussmeier<small>KC · pick 249 · QB3 on the chart · 2% vacated</small></div><div class="pv">0.00</div></div><div class="p1"><div class="pn">Athan Kaliakmanis<small>WAS · pick 223 · QB4 on the chart · 0% vacated</small></div><div class="pv">0.00</div></div></div></div>
+  <div class="callout"><p><b>Read these more sceptically than anything else here.</b>
+  The model separates rookies well — AUC 0.76 at receiver to 0.92 at tight end, and
+  it is calibrated by draft round — but elite rookie seasons are rare enough that it
+  is fitted on a few dozen of them. Above 0.35 it has three historical observations,
+  so scores are published capped at that line and marked with an asterisk. Two of
+  those three did hit: Kyle Pitts and Brock Bowers.</p></div>
+</section>
+
+
+<section>
+  <hr class="hash">
   <h2>What actually predicts it</h2>
   <p class="sec-intro">Every indicator, scored alone, leave-one-season-out. The
   number is the area under the ROC curve — 0.50 is a coin flip, 0.90 means that
@@ -1058,40 +1077,45 @@ ul.tight li{margin-bottom:.45em}
   <h2 style="margin-top:44px">Before you use it</h2>
   <ul class="tight">
     <li><b>Nobody here is a lock.</b> The top score on the whole board is
-      0.87 — even that one misses roughly one year in ten, and
-      below the first handful of names the odds fall away fast. The base rate at
-      wide receiver is 4.6%, so the very top of this board is a large edge on a
-      small chance.</li>
+      {board['prob'].max():.2f}, and below the first handful of names the odds fall
+      away fast. A top-8 receiving season happens to 6.7% of the
+      qualifying pool, so the very top of this board is a large edge on a modest
+      chance — not a promise.</li>
     <li><b>The pool quietly drops the injured.</b> A player has to log a scoreable
-      season to be counted, so 173 receiver-seasons, 138 running backs and 82
-      tight ends vanished from the denominator after one qualifying year. Counting
-      those as failures, the real receiver base rate is 4.0%, not 4.6% — and every
-      probability here is a shade optimistic for the same reason.</li>
-    <li><b>It cannot see a job that did not exist yet.</b> Rookies have no NFL
-      history to score and are structurally invisible. Two seasons of lookback
-      closed most of the injury gap — 86–94% of past top-8 seasons are now
-      reachable — but a first-year player never will be.</li>
+      season to be counted, so 128 receivers, 93 running
+      backs and 53 tight ends who managed one qualifying year and never
+      another have left the denominator. Counting them as failures puts the real
+      receiver base rate at 6.0% rather than 6.7%, and every
+      probability here is optimistic by roughly that ratio.</li>
+    <li><b>Rookies are scored separately, and badly.</b> They have no NFL history,
+      so the main model cannot see them at all; a second model scores them on draft
+      capital, depth-chart rank, vacated opportunity and offence quality. It works
+      — AUC 0.76 to 0.92, and calibrated by round — but it is built on
+      21 hits in eleven years, and above 0.35 it has three observations
+      total. Rookie scores are published capped at that line and flagged, because
+      the number above it would be invented.</li>
+    <li><b>Two seasons of lookback still miss some of it.</b> The frame can reach
+      86%–92% of past top-8
+      seasons depending on position. The rest belong to players it had no history
+      for.</li>
     <li><b>It cannot see availability.</b> Suspensions, holdouts and training-camp
-      injuries are not in the data. Anyone facing league discipline or rehabbing an
-      injury is scored as though he plays a full season, which is exactly when this
-      board is most wrong.</li>
+      injuries are not in the data. Anyone facing league discipline or rehabbing is
+      scored as though he plays a full season, which is exactly when this board is
+      most wrong.</li>
     <li><b>The depth chart is current; everything else is last year's.</b> Each row
-      carries the player's rank on his team's August 2026 chart, which is the
-      only forward-looking fact here. It is also the sharpest one — a receiver
-      listed second finishes top-8 0.4% of the time against 7.1% for the one listed
-      first. Below the top slot the ordering is loose, especially at receiver where
-      teams play three: the 2026 Jaguars list Travis Hunter fourth. Read a low
-      rank as a question, not a verdict.</li>
+      carries the player's rank on his team's August {TARGET} chart — the only
+      forward-looking fact here, and the sharpest. A receiver listed second finishes
+      top-8 1.1% of the time against 10.9% for the one listed first.
+      Below the top slot the ordering is loose, especially at receiver where teams
+      play three: the {TARGET} Jaguars list Travis Hunter fourth. Read a low rank as
+      a question, not a verdict.</li>
     <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
-      still carries his old offense's scoring rank and quarterback quality.</li>
+      still carries his old offence's scoring rank and quarterback quality.</li>
     <li><b>Story lines are not in it, and mostly should not be.</b> A coaching
       change, a move to a better quarterback and a change of team were each tested
-      as model features. A coaching change made the model <i>worse</i> at every
-      position. The one narrative that earned a place is a receiver who missed most
-      of last season, which the box-score features over-punish on their own.</li>
-    <li><b>Efficiency does not rescue a small role.</b> 176 receiver-seasons had a
-      prior year under a 15% target share and 50% snaps. None finished top-8 the
-      next year. None finished top-12.</li>
+      as features. A coaching change made the model worse at every position. Two
+      earned a place: a receiver who missed most of last season, and — at
+      quarterback only — the depth chart.</li>
   </ul>
 </section>
 
