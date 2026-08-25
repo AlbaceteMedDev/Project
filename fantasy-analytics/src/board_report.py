@@ -152,14 +152,17 @@ def caveats(board: pd.DataFrame) -> str:
       {min(reach.values()):.0%}–{max(reach.values()):.0%} of past top-{TARGET_N}
       seasons depending on position. The rest belong to players it had no history
       for.</li>
-    <li><b>Availability is checked, and it is close to decisive.</b> Every row is
-      matched against the published week-one roster. Since 2015, players who opened
-      a season on the active list reached the target {act:.1%} of the time; every
-      other status — released, reserve, retired, suspended — is <b>0.0%</b> across
-      roughly {nonact:,} player-seasons. {removed} players on this board hold no
-      {LAST_SEASON + 1} roster spot and are set aside rather than scored, among them
-      {examples}. What is still missing is the softer end: a camp injury that has
-      not yet moved anyone off the active list is invisible here.</li>
+    <li><b>Availability is checked against two feeds, because one of them lags.</b>
+      Since 2015, players who opened a season on the active list reached the target
+      {act:.1%} of the time; every other week-one status — released, reserve,
+      retired, suspended — is <b>0.0%</b> across roughly {nonact:,} player-seasons.
+      But the roster feed carries no date and runs behind: Stefon Diggs is WR2 on
+      Washington's 24 August chart and absent from it entirely. A player on
+      <i>either</i> the dated depth chart or the roster counts as employed, and the
+      {removed} set aside here appear on neither — {examples} among them, none of
+      whom show up on a single {LAST_SEASON + 1} chart from March onward. Read that
+      as strong evidence rather than proof. What is still missing is the softer end:
+      a camp injury that has not yet moved anyone off a roster is invisible.</li>
     <li><b>The depth chart is current; everything else is last year's.</b> Each row
       carries the player's rank on his team's August {LAST_SEASON + 1} chart — the only
       forward-looking fact here, and the sharpest. A receiver listed second finishes

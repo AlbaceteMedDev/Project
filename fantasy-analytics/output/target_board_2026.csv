@@ -42,10 +42,10 @@ QB,Joe Flacco,CIN,ACT,41.6,0.005,27,2.0,2025,0,2,0.0,4,E - profile does not supp
 QB,Mac Jones,SF,ACT,28.0,0.004,30,2.0,2025,1,2,1.0,4,E - profile does not support it,0.216,Dropbacks
 QB,Michael Penix Jr.,ATL,ACT,26.3,0.004,33,2.0,2025,0,2,0.0,4,E - profile does not support it,0.216,EPA per dropback; Dropbacks
 QB,Mason Rudolph,PIT,ACT,31.1,0.002,54,2.0,2024,0,2,0.0,4,E - profile does not support it,0.216,EPA per dropback; Dropbacks
+QB,Cooper Rush,BAL,ACT,32.8,0.001,69,3.0,2024,0,2,0.0,4,E - profile does not support it,0.216,EPA per dropback; Dropbacks
 QB,Gardner Minshew,KC,ACT,30.3,0.001,79,2.0,2024,0,2,0.0,4,E - profile does not support it,0.216,EPA per dropback; Dropbacks
 QB,Derek Carr,NO,unrostered,35.4,0.011,26,,2024,1,2,2.0,4,X - not on a roster,0.216,Dropbacks
 QB,Russell Wilson,NYG,unrostered,37.8,0.006,44,,2024,0,2,2.0,4,X - not on a roster,0.216,EPA per dropback; Dropbacks
-QB,Cooper Rush,BAL,unrostered,32.8,0.001,69,3.0,2024,0,2,0.0,4,X - not on a roster,0.216,EPA per dropback; Dropbacks
 RB,Christian McCaffrey,SF,ACT,30.2,0.707,1,1.0,2025,4,4,,5,A - target,0.0989,-
 RB,Bijan Robinson,ATL,ACT,24.6,0.694,2,1.0,2025,4,4,,5,A - target,0.0989,-
 RB,Jahmyr Gibbs,DET,ACT,24.5,0.676,3,1.0,2025,4,4,,5,A - target,0.0989,-
@@ -82,7 +82,9 @@ RB,Kenny Gainwell,PIT,ACT,27.5,0.042,16,2.0,2025,1,4,1.0,5,E - profile does not 
 RB,Jaylen Warren,PIT,ACT,27.8,0.038,17,1.0,2025,2,4,4.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share
 RB,Kyle Monangai,CHI,ACT,24.2,0.037,29,2.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Devin Neal,NO,ACT,23.1,0.031,64,4.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
+RB,Trey Sermon,IND,ACT,27.6,0.028,67,6.0,2024,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Zach Charbonnet,SEA,ACT,25.6,0.028,24,1.0,2025,1,4,1.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Target share
+RB,Najee Harris,PIT,ACT,28.5,0.026,20,4.0,2024,3,4,4.0,5,E - profile does not support it,0.0989,Snap share
 RB,David Montgomery,DET,ACT,29.2,0.026,27,1.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Kimani Vidal,LAC,ACT,25.0,0.026,42,3.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Brashard Smith,KC,ACT,23.4,0.026,62,4.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
@@ -118,6 +120,7 @@ RB,Ty Johnson,BUF,ACT,29.0,0.004,47,3.0,2025,0,4,0.0,5,E - profile does not supp
 RB,Sean Tucker,TB,ACT,24.9,0.004,52,3.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Justice Hill,BAL,ACT,28.8,0.003,60,2.0,2024,1,4,1.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share
 RB,Jerome Ford,CLE,ACT,27.0,0.003,72,7.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
+RB,Zamir White,LV,ACT,27.0,0.003,110,6.0,2024,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Isaiah Davis,NYJ,ACT,24.5,0.003,59,3.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Jeremy McNichols,WAS,ACT,30.7,0.002,58,4.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Emari Demercado,ARI,ACT,27.6,0.002,65,2.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
@@ -126,8 +129,6 @@ RB,Ameer Abdullah,IND,ACT,33.2,0.001,75,4.0,2024,1,4,1.0,5,E - profile does not 
 RB,Samaje Perine,CIN,ACT,31.0,0.001,57,2.0,2025,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Roschon Johnson,CHI,ACT,25.6,0.001,133,3.0,2024,0,4,0.0,5,E - profile does not support it,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Joe Mixon,HOU,unrostered,30.1,0.028,17,,2024,4,4,5.0,5,X - not on a roster,0.0989,-
-RB,Trey Sermon,IND,unrostered,27.6,0.028,67,6.0,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
-RB,Najee Harris,PIT,unrostered,28.5,0.026,20,4.0,2024,3,4,4.0,5,X - not on a roster,0.0989,Snap share
 RB,Kareem Hunt,KC,unrostered,31.1,0.017,30,,2025,0,4,1.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Ezekiel Elliott,DAL,unrostered,31.1,0.016,63,,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Gus Edwards,LAC,unrostered,31.4,0.016,58,,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
@@ -139,7 +140,6 @@ RB,Miles Sanders,DAL,unrostered,29.3,0.008,86,,2024,1,4,1.0,5,X - not on a roste
 RB,Jamaal Williams,NO,unrostered,31.4,0.007,76,,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Austin Ekeler,WAS,unrostered,31.3,0.005,34,,2024,1,4,1.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share
 RB,D'Onta Foreman,CLE,unrostered,30.4,0.005,83,,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
-RB,Zamir White,LV,unrostered,27.0,0.003,110,6.0,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Cam Akers,MIN,unrostered,27.2,0.001,117,,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 RB,Raheem Mostert,LV,unrostered,34.4,0.0,84,,2024,0,4,0.0,5,X - not on a roster,0.0989,Weighted opportunities per game; Snap share; Red-zone carry share; Target share
 TE,Trey McBride,ARI,ACT,26.8,0.87,1,1.0,2025,4,4,,5,A - target,0.1297,-
@@ -180,6 +180,7 @@ TE,Jake Tonges,SF,ACT,27.2,0.054,30,2.0,2025,0,4,0.0,5,E - profile does not supp
 TE,Isaiah Likely,BAL,ACT,26.4,0.054,45,1.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Mike Gesicki,CIN,ACT,30.9,0.05,41,1.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Greg Dulcich,MIA,ACT,26.4,0.049,43,1.0,2025,1,4,2.0,5,E - profile does not support it,0.1297,WOPR (weighted opportunity); Red-zone target share; Snap share
+TE,Darren Waller,MIA,ACT,34.0,0.048,33,2.0,2025,1,4,1.0,5,E - profile does not support it,0.1297,WOPR (weighted opportunity); Red-zone target share; Snap share
 TE,Elijah Arroyo,SEA,ACT,23.4,0.039,60,2.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Erick All,CIN,ACT,26.0,0.038,54,4.0,2024,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Ja'Tavion Sanders,CAR,ACT,23.4,0.038,50,4.0,2025,0,4,1.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
@@ -194,10 +195,12 @@ TE,Noah Gray,KC,ACT,27.3,0.026,59,2.0,2025,0,4,0.0,5,E - profile does not suppor
 TE,Mitchell Evans,CAR,ACT,23.3,0.026,54,3.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Daniel Bellinger,NYG,ACT,25.9,0.025,46,2.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Jeremy Ruckert,NYJ,ACT,26.1,0.024,56,3.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
+TE,Nick Vannett,TEN,ACT,33.5,0.023,46,4.0,2024,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Davis Allen,LA,ACT,25.6,0.022,43,5.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Luke Schoonmaker,DAL,ACT,27.9,0.02,70,3.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Luke Musgrave,GB,ACT,26.0,0.017,53,2.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Josh Oliver,MIN,ACT,29.4,0.015,49,2.0,2024,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
+TE,Julian Hill,MIA,ACT,26.1,0.013,65,6.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Adam Trautman,DEN,ACT,29.6,0.011,57,2.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Brock Wright,DET,ACT,27.8,0.011,61,2.0,2025,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Johnny Mundt,JAX,ACT,31.8,0.01,76,3.0,2024,0,4,0.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
@@ -212,10 +215,7 @@ TE,Drew Sample,CIN,ACT,30.4,0.007,64,2.0,2025,0,4,0.0,5,E - profile does not sup
 TE,Foster Moreau,NO,ACT,29.3,0.004,86,2.0,2024,2,4,2.0,5,E - profile does not support it,0.1297,"WOPR (weighted opportunity); Yards per route (est., shrunk)"
 TE,Zach Ertz,WAS,unrostered,35.8,0.122,19,,2025,3,4,5.0,5,X - not on a roster,0.1297,Snap share
 TE,Jonnu Smith,PIT,unrostered,31.0,0.084,35,,2025,0,4,0.0,5,X - not on a roster,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
-TE,Darren Waller,MIA,unrostered,34.0,0.048,33,2.0,2025,1,4,1.0,5,X - not on a roster,0.1297,WOPR (weighted opportunity); Red-zone target share; Snap share
 TE,Jordan Akins,CLE,unrostered,34.4,0.036,32,,2024,0,4,0.0,5,X - not on a roster,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
-TE,Nick Vannett,TEN,unrostered,33.5,0.023,46,4.0,2024,0,4,0.0,5,X - not on a roster,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
-TE,Julian Hill,MIA,RES,26.1,0.013,65,6.0,2025,0,4,0.0,5,X - not on a roster,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 TE,Will Dissly,LAC,unrostered,30.1,0.011,75,,2024,1,4,3.0,5,X - not on a roster,0.1297,WOPR (weighted opportunity); Red-zone target share; Snap share
 TE,Taysom Hill,NO,unrostered,36.0,0.01,58,,2024,0,4,0.0,5,X - not on a roster,0.1297,"WOPR (weighted opportunity); Red-zone target share; Yards per route (est., shrunk); Snap share"
 WR,Ja'Marr Chase,CIN,ACT,26.5,0.873,4,1.0,2025,5,5,,5,A - target,0.0674,-
@@ -273,6 +273,7 @@ WR,Elic Ayomanor,TEN,ACT,23.2,0.02,54,5.0,2025,1,5,0.0,5,E - profile does not su
 WR,Keon Coleman,BUF,ACT,23.3,0.019,60,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Mike Evans,TB,ACT,33.0,0.017,75,1.0,2025,1,5,1.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Matthew Golden,GB,ACT,23.1,0.017,88,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
+WR,Deebo Samuel Sr.,WAS,ACT,30.6,0.016,25,2.0,2025,1,5,1.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Snap share; Team scoring rank"
 WR,Kayshon Boutte,NE,ACT,24.3,0.016,51,4.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Adonai Mitchell,IND,ACT,23.9,0.016,73,2.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Christian Watson,GB,ACT,27.3,0.015,46,1.0,2025,2,5,2.0,5,E - profile does not support it,0.0674,Target share; Red-zone target share; Snap share
@@ -281,10 +282,12 @@ WR,Pat Bryant,DEN,ACT,23.7,0.013,85,5.0,2025,1,5,0.0,5,E - profile does not supp
 WR,Romeo Doubs,GB,ACT,26.4,0.012,37,2.0,2025,2,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Snap share"
 WR,Dontayvion Wicks,GB,ACT,25.2,0.012,83,2.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Tez Johnson,TB,ACT,24.3,0.012,67,5.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
+WR,Stefon Diggs,NE,ACT,32.8,0.011,17,2.0,2025,2,5,1.0,5,E - profile does not support it,0.0674,Target share; Red-zone target share; Snap share
 WR,Jaylin Noel,HOU,ACT,24.0,0.011,91,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Tre Tucker,LV,ACT,25.5,0.009,38,1.0,2025,1,5,1.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Team scoring rank"
 WR,Ricky Pearsall,SF,ACT,26.0,0.009,72,14.0,2025,2,5,1.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share"
 WR,Isaiah Bond,CLE,ACT,22.5,0.009,103,5.0,2025,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
+WR,Keenan Allen,LAC,ACT,34.3,0.008,29,3.0,2025,2,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Snap share"
 WR,Calvin Austin III,PIT,ACT,27.4,0.008,74,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Chimere Dike,TEN,ACT,24.7,0.008,48,4.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Snap share; Team scoring rank"
 WR,Tre Harris,LAC,ACT,24.5,0.008,90,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
@@ -314,15 +317,18 @@ WR,Greg Dortch,ARI,ACT,28.3,0.003,84,4.0,2025,0,5,0.0,5,E - profile does not sup
 WR,Dyami Brown,JAX,ACT,26.8,0.003,111,6.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Elijah Moore,BUF,ACT,26.4,0.003,140,5.0,2024,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Jalen Nailor,MIN,ACT,27.5,0.003,61,2.0,2025,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
+WR,Ray-Ray McCloud,ATL,ACT,29.9,0.002,170,7.0,2024,2,5,1.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share"
 WR,Darius Slayton,NYG,ACT,29.6,0.002,63,2.0,2025,2,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share"
 WR,John Metchie III,NYJ,ACT,26.1,0.002,87,5.0,2025,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Xavier Hutchinson,HOU,ACT,26.3,0.002,64,2.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Jonathan Mingo,DAL,ACT,25.4,0.002,205,6.0,2024,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Ryan Flournoy,DAL,ACT,26.8,0.002,57,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Devaughn Vele,NO,ACT,28.7,0.002,95,3.0,2025,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
+WR,Sterling Shepard,TB,ACT,33.6,0.001,80,7.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Kalif Raymond,DET,ACT,32.1,0.001,94,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Demarcus Robinson,SF,ACT,31.9,0.001,99,5.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Kendrick Bourne,SF,ACT,31.1,0.001,68,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
+WR,Noah Brown,WAS,ACT,30.7,0.001,173,6.0,2024,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Christian Kirk,HOU,ACT,29.8,0.001,100,3.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,David Sills,ATL,ACT,31.3,0.001,113,7.0,2025,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Nick Westbrook-Ikhine,MIA,ACT,29.4,0.001,154,5.0,2024,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
@@ -337,20 +343,14 @@ WR,Tim Patrick,JAX,ACT,32.8,0.0,107,5.0,2024,1,5,0.0,5,E - profile does not supp
 WR,JuJu Smith-Schuster,KC,ACT,29.8,0.0,86,6.0,2025,1,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Marquez Valdes-Scantling,PIT,ACT,31.9,0.0,130,5.0,2024,0,5,0.0,5,E - profile does not support it,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Tyreek Hill,MIA,unrostered,32.5,0.024,104,,2024,2,5,1.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Team scoring rank"
-WR,Deebo Samuel Sr.,WAS,unrostered,30.6,0.016,25,2.0,2025,1,5,1.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Snap share; Team scoring rank"
-WR,Stefon Diggs,NE,unrostered,32.8,0.011,17,2.0,2025,2,5,1.0,5,X - not on a roster,0.0674,Target share; Red-zone target share; Snap share
 WR,Amari Cooper,BUF,unrostered,32.2,0.009,63,,2024,1,5,1.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
-WR,Keenan Allen,LAC,unrostered,34.3,0.008,29,3.0,2025,2,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Snap share"
 WR,Diontae Johnson,CAR,unrostered,30.2,0.006,86,,2024,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Tyler Boyd,TEN,unrostered,31.8,0.003,93,,2024,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Robert Woods,HOU,unrostered,34.4,0.002,121,,2024,1,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Mike Williams,NYJ,unrostered,31.9,0.002,107,,2024,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,DeAndre Hopkins,BAL,unrostered,34.2,0.002,93,,2025,1,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Curtis Samuel,BUF,unrostered,30.1,0.002,150,,2024,1,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
-WR,Ray-Ray McCloud,ATL,unrostered,29.9,0.002,170,7.0,2024,2,5,1.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share"
 WR,Tyler Lockett,LV,unrostered,33.9,0.001,92,,2025,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
-WR,Sterling Shepard,TB,unrostered,33.6,0.001,80,7.0,2025,1,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
-WR,Noah Brown,WAS,unrostered,30.7,0.001,173,6.0,2024,1,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share"
 WR,Gabe Davis,BUF,unrostered,27.5,0.001,134,,2024,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Adam Thielen,MIN,RET,36.0,0.0,120,,2025,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"
 WR,Brandin Cooks,NO,unrostered,32.9,0.0,106,,2025,0,5,0.0,5,X - not on a roster,0.0674,"Target share; Yards per route (est., shrunk); Red-zone target share; Snap share; Team scoring rank"

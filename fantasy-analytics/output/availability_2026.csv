@@ -117,7 +117,7 @@ player_id,full_name,position,team,status,status_description_abbr,available
 00-0035639,Parris Campbell,WR,DAL,RET,R02,False
 00-0035640,DK Metcalf,WR,PIT,ACT,A01,True
 00-0035644,Noah Fant,TE,NO,ACT,A01,True
-00-0035645,Gunner Olszewski,WR,NYG,RES,R36,False
+00-0035645,Gunner Olszewski,WR,NYG,RES,R36,True
 00-0035659,Terry McLaurin,WR,WAS,ACT,A01,True
 00-0035662,Marquise Brown,WR,PHI,ACT,A01,True
 00-0035676,A.J. Brown,WR,NE,ACT,A01,True
@@ -341,7 +341,7 @@ player_id,full_name,position,team,status,status_description_abbr,available
 00-0038576,Charlie Jones,WR,CIN,ACT,A01,True
 00-0038579,Aidan O'Connell,QB,LV,ACT,A01,True
 00-0038589,Josh Whyle,TE,GB,ACT,A01,True
-00-0038590,Justin Shorter,WR,LV,RES,R36,False
+00-0038590,Justin Shorter,WR,LV,RES,R36,True
 00-0038597,Chase Brown,RB,CIN,ACT,A01,True
 00-0038606,Parker Washington,WR,JAX,ACT,A01,True
 00-0038608,Kayshon Boutte,WR,NE,ACT,A01,True
@@ -357,12 +357,12 @@ player_id,full_name,position,team,status,status_description_abbr,available
 00-0038643,Brayden Willis,TE,SF,ACT,A01,True
 00-0038647,Ronnie Bell,WR,NO,ACT,A01,True
 00-0038658,Adrian Martinez,QB,SF,ACT,A01,True
-00-0038678,Jordan Mims,RB,SF,CUT,W03,False
+00-0038678,Jordan Mims,RB,SF,CUT,W03,True
 00-0038679,Tyrell Shavers,WR,BUF,ACT,A01,True
 00-0038685,Chris Brooks,RB,GB,ACT,A01,True
 00-0038705,Emari Demercado,RB,KC,ACT,A01,True
 00-0038710,Blake Whiteheart,TE,CLE,ACT,A01,True
-00-0038720,Julian Hill,TE,NE,RES,R36,False
+00-0038720,Julian Hill,TE,NE,RES,R36,True
 00-0038728,Jared Wayne,WR,HOU,ACT,A01,True
 00-0038735,Princeton Fant,TE,DAL,ACT,A01,True
 00-0038738,Hunter Luepke,RB,DAL,ACT,A01,True
@@ -603,7 +603,7 @@ player_id,full_name,position,team,status,status_description_abbr,available
 00-0040398,Brady Cook,QB,NYJ,ACT,A01,True
 00-0040400,Donovan Edwards,RB,MIA,ACT,A01,True
 00-0040405,Jamaal Pritchett,WR,NYJ,ACT,A01,True
-00-0040406,Quentin Skinner,WR,NYJ,RES,R34,False
+00-0040406,Quentin Skinner,WR,NYJ,RES,R34,True
 00-0040415,Connor Bazelak,QB,TB,ACT,A01,True
 00-0040419,Garrett Greene,WR,TB,ACT,A01,True
 00-0040429,Josh Williams,RB,TB,ACT,A01,True
@@ -735,7 +735,7 @@ player_id,full_name,position,team,status,status_description_abbr,available
 00-0040996,Jacob Clark,QB,LV,ACT,A01,True
 00-0040998,Roman Hemby,RB,LV,ACT,A01,True
 00-0041004,Chase Roberts,WR,LV,ACT,A01,True
-00-0041005,Corey Rucker,WR,LV,RES,R36,False
+00-0041005,Corey Rucker,WR,LV,RES,R36,True
 00-0041011,E.J. Williams,WR,LV,ACT,A01,True
 00-0041013,Emmett Johnson,RB,KC,ACT,A01,True
 00-0041016,Patrick Gurd,TE,LV,ACT,A01,True
@@ -913,4 +913,100 @@ player_id,full_name,position,team,status,status_description_abbr,available
 00-0041558,Sam Roush,TE,CHI,RES,R09,True
 00-0041565,Drew Allar,QB,PIT,RES,R09,True
 00-0041550,Brenen Thompson,WR,LAC,RES,R09,True
-00-0041579,Seydou Traore,TE,MIA,E14,E14,False
+00-0041579,Seydou Traore,TE,MIA,E14,E14,True
+00-0023500,,,,CHART,,True
+00-0030279,,,,CHART,,True
+00-0031588,,,,CHART,,True
+00-0031610,,,,CHART,,True
+00-0032385,,,,CHART,,True
+00-0032394,,,,CHART,,True
+00-0032398,,,,CHART,,True
+00-0033439,,,,CHART,,True
+00-0033591,,,,CHART,,True
+00-0033662,,,,CHART,,True
+00-0033854,,,,CHART,,True
+00-0033891,,,,CHART,,True
+00-0033949,,,,CHART,,True
+00-0034054,,,,CHART,,True
+00-0034407,,,,CHART,,True
+00-0034854,,,,CHART,,True
+00-0034860,,,,CHART,,True
+00-0034955,,,,CHART,,True
+00-0035045,,,,CHART,,True
+00-0035291,,,,CHART,,True
+00-0035341,,,,CHART,,True
+00-0035345,,,,CHART,,True
+00-0035529,,,,CHART,,True
+00-0035567,,,,CHART,,True
+00-0035589,,,,CHART,,True
+00-0035593,,,,CHART,,True
+00-0035602,,,,CHART,,True
+00-0035628,,,,CHART,,True
+00-0035719,,,,CHART,,True
+00-0035806,,,,CHART,,True
+00-0035924,,,,CHART,,True
+00-0036183,,,,CHART,,True
+00-0036255,,,,CHART,,True
+00-0036261,,,,CHART,,True
+00-0036332,,,,CHART,,True
+00-0036491,,,,CHART,,True
+00-0036510,,,,CHART,,True
+00-0036527,,,,CHART,,True
+00-0036647,,,,CHART,,True
+00-0036670,,,,CHART,,True
+00-0036893,,,,CHART,,True
+00-0036906,,,,CHART,,True
+00-0036928,,,,CHART,,True
+00-0036984,,,,CHART,,True
+00-0037011,,,,CHART,,True
+00-0037091,,,,CHART,,True
+00-0037272,,,,CHART,,True
+00-0037317,,,,CHART,,True
+00-0037380,,,,CHART,,True
+00-0037410,,,,CHART,,True
+00-0037429,,,,CHART,,True
+00-0037487,,,,CHART,,True
+00-0037524,,,,CHART,,True
+00-0037617,,,,CHART,,True
+00-0038040,,,,CHART,,True
+00-0038092,,,,CHART,,True
+00-0038181,,,,CHART,,True
+00-0038406,,,,CHART,,True
+00-0038458,,,,CHART,,True
+00-0038622,,,,CHART,,True
+00-0038667,,,,CHART,,True
+00-0038740,,,,CHART,,True
+00-0038883,,,,CHART,,True
+00-0038998,,,,CHART,,True
+00-0039263,,,,CHART,,True
+00-0039316,,,,CHART,,True
+00-0039329,,,,CHART,,True
+00-0039399,,,,CHART,,True
+00-0039464,,,,CHART,,True
+00-0039466,,,,CHART,,True
+00-0039550,,,,CHART,,True
+00-0039702,,,,CHART,,True
+00-0039936,,,,CHART,,True
+00-0040060,,,,CHART,,True
+00-0040239,,,,CHART,,True
+00-0040250,,,,CHART,,True
+00-0040324,,,,CHART,,True
+00-0040332,,,,CHART,,True
+00-0040392,,,,CHART,,True
+00-0040438,,,,CHART,,True
+00-0040443,,,,CHART,,True
+00-0040457,,,,CHART,,True
+00-0040526,,,,CHART,,True
+00-0040531,,,,CHART,,True
+00-0040553,,,,CHART,,True
+00-0040616,,,,CHART,,True
+00-0040633,,,,CHART,,True
+00-0040656,,,,CHART,,True
+00-0040702,,,,CHART,,True
+00-0040976,,,,CHART,,True
+00-0041099,,,,CHART,,True
+00-0041264,,,,CHART,,True
+00-0041274,,,,CHART,,True
+HAY480600,,,,CHART,,True
+PRY456541,,,,CHART,,True
+WAS569019,,,,CHART,,True

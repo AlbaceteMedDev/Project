@@ -15,6 +15,12 @@ Two traps, both of which caught me before I checked:
   Codes are not stable across years. Only the coarse status - ACT, RES, RET, CUT
   - is validated here, because the fine-grained abbreviations turn over and
   several in the current file have three observations in five prior seasons.
+
+And one the roster file cannot fix on its own: it lags. Stefon Diggs is WR2 on
+Washington's 24 August depth chart and absent from the week-one roster entirely,
+along with twelve others an earlier version of this module struck off the board.
+Employment is therefore the union of the two sources - a player on either is
+employed - and only someone missing from both is set aside.
 """
 from __future__ import annotations
 
@@ -70,6 +76,12 @@ def rookie_codes(r: pd.DataFrame, season: int) -> set[str]:
     return out
 
 
+def charted(season: int) -> set[str]:
+    """Everyone on a recent depth chart - the dated, and fresher, of the two feeds."""
+    d = pd.read_csv(RAW / "depth_preseason.csv")
+    return set(d[d["season"] == season]["player_id"].dropna())
+
+
 def main() -> None:
     r = fetch()
     ps = pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False)
@@ -95,9 +107,21 @@ def main() -> None:
     if ok:
         print(f"\nTreated as neutral for {nxt} (held only by that draft class): "
               f"{', '.join(sorted(ok))}")
+    chart = charted(nxt)
     cur = cur.assign(
-        available=lambda d: (d["status"] == "ACT") |
-                            d["status_description_abbr"].isin(ok))
+        available=lambda d: (d["status"] == "ACT")
+                            | d["status_description_abbr"].isin(ok)
+                            | d["player_id"].isin(chart))
+    # players the roster feed never mentions but a current chart does
+    extra = pd.DataFrame({"player_id": sorted(chart - set(cur["player_id"]))})
+    if len(extra):
+        extra = extra.assign(full_name=None, position=None, team=None,
+                             status="CHART", status_description_abbr=None,
+                             available=True)
+        cur = pd.concat([cur, extra], ignore_index=True)
+        print(f"\n{len(extra)} players are on a {nxt} depth chart but absent from "
+              f"the roster feed; the chart is dated and the roster file is not, "
+              f"so they count as employed.")
     cur[["player_id", "full_name", "position", "team", "status",
          "status_description_abbr", "available"]].to_csv(
         OUTPUT / f"availability_{nxt}.csv", index=False)
