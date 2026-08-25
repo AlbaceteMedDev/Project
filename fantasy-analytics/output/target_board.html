@@ -233,6 +233,29 @@ ul.tight li{margin-bottom:.45em}
 .pip.on{background:var(--mark)}
 .piplab{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.1em; text-transform:uppercase; margin-top:4px}
+.lev{display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:34px 48px; margin-top:26px}
+.levpos{min-width:0}
+.levhead{display:flex; align-items:baseline; gap:10px; padding-bottom:7px;
+  border-bottom:2px solid var(--line-strong); margin-bottom:12px}
+.levpos h4{font-family:'Big Shoulders Display',Archivo,sans-serif; font-weight:700;
+  font-size:26px; line-height:1; margin:0; color:var(--mark-ink)}
+.levauc{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+  letter-spacing:.05em; margin-left:auto; white-space:nowrap}
+.meter{display:grid; grid-template-columns:minmax(0,1fr) 46px; gap:10px;
+  align-items:center; padding:5px 0}
+.mlab{font-size:14px; line-height:1.3; min-width:0}
+.mlab .yr{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+  letter-spacing:.06em; text-transform:uppercase; margin-left:5px}
+.mval{font-family:'IBM Plex Mono',monospace; font-size:13px; text-align:right;
+  font-variant-numeric:tabular-nums}
+.mtrack{grid-column:1/-1; height:6px; border-radius:3px; background:var(--surface-2);
+  border:1px solid var(--line); position:relative; overflow:hidden; margin-top:-2px}
+.mfill{position:absolute; inset:0 auto 0 0; background:var(--mark); border-radius:3px}
+.mfill.dead{background:var(--line-strong)}
+.levnote{font-size:13.5px; color:var(--ink-2); margin:14px 0 0; max-width:46ch}
+.deadlist{margin-top:16px; padding-top:12px; border-top:1px dashed var(--line-strong)}
+.deadlist .label{display:block; margin-bottom:6px}
 .na{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.08em; text-transform:uppercase; line-height:1.4}
 .clean{color:var(--good-ink); font-family:'IBM Plex Mono',monospace; font-size:12px;
@@ -253,11 +276,64 @@ ul.tight li{margin-bottom:.45em}
   the tiers fall out of the numbers.</p>
   <div class="meta">
     <div><b>356</b><span class="label">candidates scored</span></div>
-    <div><b>81</b><span class="label">make the board</span></div>
-    <div><b>20</b><span class="label">in the target tier</span></div>
-    <div><b>0.90</b><span class="label">best out-of-sample AUC</span></div>
+    <div><b>79</b><span class="label">make the board</span></div>
+    <div><b>21</b><span class="label">in the target tier</span></div>
+    <div><b>0.93</b><span class="label">best out-of-sample AUC</span></div>
   </div>
 </header>
+
+<section>
+  <hr class="hash">
+  <h2>What actually predicts it</h2>
+  <p class="sec-intro">Every indicator, scored alone, leave-one-season-out. The
+  number is the area under the ROC curve — 0.50 is a coin flip, 0.90 means that
+  given one top-5 season and one that was not, the indicator ranks them correctly
+  nine times in ten. This is the honest ranking: in-sample lift flatters anything
+  that correlates with volume, and out of sample most of it does not survive.</p>
+  <div class="lev"><div class="levpos">
+          <div class="levhead"><h4>WR</h4>
+            <span class="levauc">full model 0.929 · n=1098</span></div>
+          <div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">last yr</span></div><div class="mval">0.892</div><div class="mtrack"><div class="mfill" style="width:88.4%"></div></div></div><div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">two yrs ago</span></div><div class="mval">0.888</div><div class="mtrack"><div class="mfill" style="width:87.5%"></div></div></div><div class="meter"><div class="mlab">target share<span class="yr">last yr</span></div><div class="mval">0.880</div><div class="mtrack"><div class="mfill" style="width:86.1%"></div></div></div><div class="meter"><div class="mlab">target share<span class="yr">two yrs ago</span></div><div class="mval">0.854</div><div class="mtrack"><div class="mfill" style="width:80.7%"></div></div></div><div class="meter"><div class="mlab">yards per route (shrunk)<span class="yr">two yrs ago</span></div><div class="mval">0.852</div><div class="mtrack"><div class="mfill" style="width:80.4%"></div></div></div><div class="meter"><div class="mlab">yards per route (shrunk)<span class="yr">last yr</span></div><div class="mval">0.840</div><div class="mtrack"><div class="mfill" style="width:78.1%"></div></div></div><div class="meter"><div class="mlab">career-best finish so far</div><div class="mval">0.835</div><div class="mtrack"><div class="mfill" style="width:77.1%"></div></div></div>
+          <div class="deadlist"><span class="label">No signal on its own</span>
+            <p class="levnote">age, changed head coach, changed teams, missed most of last year, moved to a better QB room, own team QB play improving, team QB EPA rank</p></div>
+        </div><div class="levpos">
+          <div class="levhead"><h4>RB</h4>
+            <span class="levauc">full model 0.860 · n=698</span></div>
+          <div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">last yr</span></div><div class="mval">0.863</div><div class="mtrack"><div class="mfill" style="width:82.5%"></div></div></div><div class="meter"><div class="mlab">weighted opportunities/gm<span class="yr">last yr</span></div><div class="mval">0.843</div><div class="mtrack"><div class="mfill" style="width:78.7%"></div></div></div><div class="meter"><div class="mlab">opportunity share<span class="yr">last yr</span></div><div class="mval">0.827</div><div class="mtrack"><div class="mfill" style="width:75.5%"></div></div></div><div class="meter"><div class="mlab">snap rate<span class="yr">last yr</span></div><div class="mval">0.824</div><div class="mtrack"><div class="mfill" style="width:74.8%"></div></div></div><div class="meter"><div class="mlab">target share<span class="yr">last yr</span></div><div class="mval">0.787</div><div class="mtrack"><div class="mfill" style="width:67.5%"></div></div></div><div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">two yrs ago</span></div><div class="mval">0.725</div><div class="mtrack"><div class="mfill" style="width:55.0%"></div></div></div><div class="meter"><div class="mlab">red-zone carry share<span class="yr">last yr</span></div><div class="mval">0.723</div><div class="mtrack"><div class="mfill" style="width:54.7%"></div></div></div>
+          <div class="deadlist"><span class="label">No signal on its own</span>
+            <p class="levnote">changed head coach, changed teams, games played, missed most of last year, moved to a better QB room, own team QB play improving, team scoring rank, years since a top-12</p></div>
+        </div><div class="levpos">
+          <div class="levhead"><h4>TE</h4>
+            <span class="levauc">full model 0.881 · n=563</span></div>
+          <div class="meter"><div class="mlab">target share<span class="yr">last yr</span></div><div class="mval">0.874</div><div class="mtrack"><div class="mfill" style="width:84.9%"></div></div></div><div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">last yr</span></div><div class="mval">0.864</div><div class="mtrack"><div class="mfill" style="width:82.8%"></div></div></div><div class="meter"><div class="mlab">yards per route (shrunk)<span class="yr">last yr</span></div><div class="mval">0.851</div><div class="mtrack"><div class="mfill" style="width:80.3%"></div></div></div><div class="meter"><div class="mlab">snap rate<span class="yr">last yr</span></div><div class="mval">0.808</div><div class="mtrack"><div class="mfill" style="width:71.7%"></div></div></div><div class="meter"><div class="mlab">red-zone target share<span class="yr">last yr</span></div><div class="mval">0.807</div><div class="mtrack"><div class="mfill" style="width:71.4%"></div></div></div><div class="meter"><div class="mlab">target share<span class="yr">two yrs ago</span></div><div class="mval">0.805</div><div class="mtrack"><div class="mfill" style="width:71.1%"></div></div></div><div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">two yrs ago</span></div><div class="mval">0.801</div><div class="mtrack"><div class="mfill" style="width:70.2%"></div></div></div>
+          <div class="deadlist"><span class="label">No signal on its own</span>
+            <p class="levnote">age, changed head coach, changed teams, missed most of last year, moved to a better QB room, own team QB play improving, team scoring rank</p></div>
+        </div><div class="levpos">
+          <div class="levhead"><h4>QB</h4>
+            <span class="levauc">full model 0.710 · n=324</span></div>
+          <div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">two yrs ago</span></div><div class="mval">0.736</div><div class="mtrack"><div class="mfill" style="width:57.2%"></div></div></div><div class="meter"><div class="mlab">points per game (shrunk)<span class="yr">last yr</span></div><div class="mval">0.714</div><div class="mtrack"><div class="mfill" style="width:52.8%"></div></div></div><div class="meter"><div class="mlab">career-best finish so far</div><div class="mval">0.677</div><div class="mtrack"><div class="mfill" style="width:45.3%"></div></div></div><div class="meter"><div class="mlab">rush attempts per game<span class="yr">last yr</span></div><div class="mval">0.669</div><div class="mtrack"><div class="mfill" style="width:43.9%"></div></div></div><div class="meter"><div class="mlab">EPA per dropback<span class="yr">last yr</span></div><div class="mval">0.645</div><div class="mtrack"><div class="mfill" style="width:38.9%"></div></div></div><div class="meter"><div class="mlab">rush attempts per game<span class="yr">two yrs ago</span></div><div class="mval">0.637</div><div class="mtrack"><div class="mfill" style="width:37.3%"></div></div></div><div class="meter"><div class="mlab">pass TD rate<span class="yr">two yrs ago</span></div><div class="mval">0.621</div><div class="mtrack"><div class="mfill" style="width:34.3%"></div></div></div>
+          <div class="deadlist"><span class="label">No signal on its own</span>
+            <p class="levnote">age, changed head coach, changed teams, draft round, dropbacks, games played, missed most of last year, moved to a better QB room, own team QB play improving, team QB EPA rank, team scoring rank, years since a top-12</p></div>
+        </div></div>
+  <div class="grid2" style="margin-top:36px">
+    <div class="card pad"><span class="label">The uncomfortable finding</span>
+      <p style="margin:8px 0 0">The strongest single indicator at three of four
+      positions is <b>last year's points per game</b>. Not an efficiency metric, not
+      a usage rate — the fantasy score itself. Everything else on this page earns its
+      place by telling you <i>which</i> good season was real: target share and yards
+      per route separate a receiver who earned his points from one who caught six
+      touchdowns on forty targets.</p></div>
+    <div class="card pad"><span class="label">Tested and rejected</span>
+      <p style="margin:8px 0 0">A coaching change, a move to a better quarterback,
+      a team change and a player's draft round were all tested as features. Adding
+      a <b>coaching change made the model worse at every position</b> (QB 0.710 →
+      0.696). A quarterback upgrade was worth nothing once the box score was known.
+      Two survived: a receiver who <b>missed most of last season</b> (0.922 → 0.929,
+      now in the model) and a <b>quarterback changing teams</b> (0.710 → 0.737, left
+      out — next year's roster is not in this data).</p></div>
+  </div>
+</section>
+
 
 <section>
   <h2>How to read a row</h2>
@@ -296,14 +372,14 @@ ul.tight li{margin-bottom:.45em}
           <hr class="hash">
           <div class="chead"><div class="pmark">WR</div>
             <div class="txt"><h3>Wide receiver</h3>
-            <div class="sub">137 returning candidates scored · 19 make the board</div></div>
+            <div class="sub">137 returning candidates scored · 17 make the board</div></div>
           </div>
-          <p class="note">Five gates, ~2.6 receivers a year clear all of them. 90% of those finished top-5 with thresholds fitted on every season — 78% when each season is scored by gates that never saw it. Model AUC 0.92, the most trustworthy board here.</p>
+          <p class="note">Five gates, ~2.6 receivers a year clear all of them. 90% of those finished top-5 with thresholds fitted on every season — 78% when each season is scored by gates that never saw it. Model AUC 0.93 — the most trustworthy board here, and the only position where a lost season is scored as its own fact rather than as bad production.</p>
           <div class="tierband">
               <div class="tierhead"><div class="tiername">Target</div>
               <div class="tierdesc">One in four or better. The model never saw the season it is scoring, and this band is where its hit rate lives.</div></div>
               <div class="row">
-  <div class="pnum">0.88</div>
+  <div class="pnum">0.89</div>
   <div>
     <div class="pname">Ja&#x27;Marr Chase</div>
     <div class="pmeta">CIN · age 26 · was WR4</div>
@@ -312,7 +388,7 @@ ul.tight li{margin-bottom:.45em}
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
   <div class="cellprob"><div class="na">already a starter</div></div>
 </div><div class="row">
-  <div class="pnum">0.80</div>
+  <div class="pnum">0.78</div>
   <div>
     <div class="pname">Puka Nacua</div>
     <div class="pmeta">LA · age 25 · was WR1</div>
@@ -321,25 +397,7 @@ ul.tight li{margin-bottom:.45em}
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
   <div class="cellprob"><div class="na">already a starter</div></div>
 </div><div class="row">
-  <div class="pnum">0.63</div>
-  <div>
-    <div class="pname">Jaxon Smith-Njigba</div>
-    <div class="pmeta">SEA · age 24 · was WR2</div>
-    <div class="pmiss">short on <b>routes per game (est.)</b></div>
-  </div>
-  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
-  <div class="cellprob"><div class="na">already a starter</div></div>
-</div><div class="row">
-  <div class="pnum">0.53</div>
-  <div>
-    <div class="pname">Amon-Ra St. Brown</div>
-    <div class="pmeta">DET · age 27 · was WR3</div>
-    <div class="clean">clears every gate</div>
-  </div>
-  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
-  <div class="cellprob"><div class="na">already a starter</div></div>
-</div><div class="row">
-  <div class="pnum">0.46</div>
+  <div class="pnum">0.69</div>
   <div>
     <div class="pname">Malik Nabers</div>
     <div class="pmeta">NYG · age 23 · was WR101 · gates from 2024</div>
@@ -348,7 +406,25 @@ ul.tight li{margin-bottom:.45em}
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
   <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
 </div><div class="row">
-  <div class="pnum">0.40</div>
+  <div class="pnum">0.67</div>
+  <div>
+    <div class="pname">Jaxon Smith-Njigba</div>
+    <div class="pmeta">SEA · age 24 · was WR2</div>
+    <div class="pmiss">short on <b>routes per game (est.)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
+  <div class="cellprob"><div class="na">already a starter</div></div>
+</div><div class="row">
+  <div class="pnum">0.56</div>
+  <div>
+    <div class="pname">Amon-Ra St. Brown</div>
+    <div class="pmeta">DET · age 27 · was WR3</div>
+    <div class="clean">clears every gate</div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 gates</div></div>
+  <div class="cellprob"><div class="na">already a starter</div></div>
+</div><div class="row">
+  <div class="pnum">0.36</div>
   <div>
     <div class="pname">Drake London</div>
     <div class="pmeta">ATL · age 25 · was WR19</div>
@@ -357,7 +433,16 @@ ul.tight li{margin-bottom:.45em}
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 gates</div></div>
   <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><div class="piplab">5/5 leaper marks</div></div>
 </div><div class="row">
-  <div class="pnum">0.32</div>
+  <div class="pnum">0.28</div>
+  <div>
+    <div class="pname">Garrett Wilson</div>
+    <div class="pmeta">NYJ · age 26 · was WR62 · gates from 2024</div>
+    <div class="pmiss">short on <b>yards per route (est., shrunk); team scoring rank</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
+</div><div class="row">
+  <div class="pnum">0.28</div>
   <div>
     <div class="pname">Brian Thomas Jr.</div>
     <div class="pmeta">JAX · age 24 · was WR42</div>
@@ -378,7 +463,7 @@ ul.tight li{margin-bottom:.45em}
               <div class="tierhead"><div class="tiername">Strong</div>
               <div class="tierdesc">Between one in eight and one in four. Most will miss — the base rate is 5-15% depending on position — but the profile supports the bet.</div></div>
               <div class="row">
-  <div class="pnum">0.25</div>
+  <div class="pnum">0.21</div>
   <div>
     <div class="pname">CeeDee Lamb</div>
     <div class="pmeta">DAL · age 27 · was WR22</div>
@@ -396,7 +481,16 @@ ul.tight li{margin-bottom:.45em}
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
   <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 leaper marks</div></div>
 </div><div class="row">
-  <div class="pnum">0.14</div>
+  <div class="pnum">0.13</div>
+  <div>
+    <div class="pname">Zay Flowers</div>
+    <div class="pmeta">BAL · age 26 · was WR7</div>
+    <div class="pmiss">short on <b>targets per game; routes per game (est.)</b></div>
+  </div>
+  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
+  <div class="cellprob"><div class="na">already a starter</div></div>
+</div><div class="row">
+  <div class="pnum">0.12</div>
   <div>
     <div class="pname">Nico Collins</div>
     <div class="pmeta">HOU · age 28 · was WR8</div>
@@ -404,8 +498,11 @@ ul.tight li{margin-bottom:.45em}
   </div>
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
   <div class="cellprob"><div class="na">already a starter</div></div>
-</div><div class="row">
-  <div class="pnum">0.14</div>
+</div></div><div class="tierband">
+              <div class="tierhead"><div class="tiername">Fringe</div>
+              <div class="tierdesc">Enough profile to roster, not enough to target.</div></div>
+              <div class="row">
+  <div class="pnum">0.12</div>
   <div>
     <div class="pname">Tee Higgins</div>
     <div class="pmeta">CIN · age 28 · was WR16</div>
@@ -414,44 +511,11 @@ ul.tight li{margin-bottom:.45em}
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">2/5 gates</div></div>
   <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 leaper marks</div></div>
 </div><div class="row">
-  <div class="pnum">0.12</div>
-  <div>
-    <div class="pname">Zay Flowers</div>
-    <div class="pmeta">BAL · age 26 · was WR7</div>
-    <div class="pmiss">short on <b>targets per game; routes per game (est.)</b></div>
-  </div>
-  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
-  <div class="cellprob"><div class="na">already a starter</div></div>
-</div></div><div class="tierband">
-              <div class="tierhead"><div class="tiername">Leaper Watch</div>
-              <div class="tierdesc">Outside last year&#x27;s top 12, but matching the profile of players who jumped into the top 5 anyway. The late-round lane.</div></div>
-              <div class="row">
   <div class="pnum">0.11</div>
-  <div>
-    <div class="pname">Garrett Wilson</div>
-    <div class="pmeta">NYJ · age 26 · was WR62 · gates from 2024</div>
-    <div class="pmiss">short on <b>yards per route (est., shrunk); team scoring rank</b></div>
-  </div>
-  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">3/5 gates</div></div>
-  <div class="cellprob"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><div class="piplab">4/5 leaper marks</div></div>
-</div></div><div class="tierband">
-              <div class="tierhead"><div class="tiername">Fringe</div>
-              <div class="tierdesc">Enough profile to roster, not enough to target.</div></div>
-              <div class="row">
-  <div class="pnum">0.12</div>
   <div>
     <div class="pname">Ladd McConkey</div>
     <div class="pmeta">LAC · age 25 · was WR30</div>
     <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; team scoring rank</b></div>
-  </div>
-  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
-  <div class="cellprob"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/5 leaper marks</div></div>
-</div><div class="row">
-  <div class="pnum">0.08</div>
-  <div>
-    <div class="pname">Josh Downs</div>
-    <div class="pmeta">IND · age 25 · was WR43</div>
-    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; routes per game (est.)</b></div>
   </div>
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
   <div class="cellprob"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">0/5 leaper marks</div></div>
@@ -467,17 +531,8 @@ ul.tight li{margin-bottom:.45em}
 </div><div class="row">
   <div class="pnum">0.07</div>
   <div>
-    <div class="pname">A.J. Brown</div>
-    <div class="pmeta">PHI · age 29 · was WR11</div>
-    <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); routes per game (est.); team scoring rank</b></div>
-  </div>
-  <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>
-  <div class="cellprob"><div class="na">already a starter</div></div>
-</div><div class="row">
-  <div class="pnum">0.06</div>
-  <div>
-    <div class="pname">Khalil Shakir</div>
-    <div class="pmeta">BUF · age 27 · was WR36</div>
+    <div class="pname">Josh Downs</div>
+    <div class="pmeta">IND · age 25 · was WR43</div>
     <div class="pmiss">short on <b>targets per game; yards per route (est., shrunk); red-zone target share; routes per game (est.)</b></div>
   </div>
   <div class="cellpips"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><div class="piplab">1/5 gates</div></div>

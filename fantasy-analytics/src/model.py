@@ -35,6 +35,19 @@ CARRY = [
 ]
 TEAM_CTX = ["team_ppg", "team_scoring_rank", "team_qb_epa_rank"]
 
+# Situational variables earn a place only where they raise out-of-sample AUC on
+# their own. leverage.py tests all of them; almost none survive. A coaching
+# change makes the model worse at every position, and a quarterback-room upgrade
+# is worth nothing once the box score is known. Two survive:
+#
+#   WR  missed most of last year   0.922 -> 0.929
+#   QB  changed teams              0.710 -> 0.737
+#
+# Only the first goes in. Next season's roster is not in this data, so a
+# quarterback's move cannot be observed at forecast time; it stays a manual
+# overlay rather than a feature that is silently zero for everyone.
+SITUATIONAL = {"WR": ["p1_missed"], "TE": [], "RB": [], "QB": []}
+
 FEATURES = {
     "WR": ["target_share", "yprr_shrunk", "rz_targets_share", "air_yards_share",
            "ppg_shrunk", "snap_pct", "games"],
@@ -62,8 +75,9 @@ def frame(df: pd.DataFrame) -> pd.DataFrame:
     tp = (df.dropna(subset=["team"]).groupby(["season", "team"])[TEAM_CTX]
             .first().reset_index())
     tp["season"] = tp["season"] + 1
-    return out.merge(tp.rename(columns={c: f"nt_{c}" for c in TEAM_CTX}),
-                     on=["season", "team"], how="left")
+    out = out.merge(tp.rename(columns={c: f"nt_{c}" for c in TEAM_CTX}),
+                    on=["season", "team"], how="left")
+    return add_situational(out)
 
 
 def qualifies(d: pd.DataFrame, pos: str) -> np.ndarray:
@@ -76,9 +90,18 @@ def qualifies(d: pd.DataFrame, pos: str) -> np.ndarray:
     return ok1 | ok2
 
 
+def add_situational(d: pd.DataFrame) -> pd.DataFrame:
+    """A season cut short is different evidence from a season played badly."""
+    d = d.copy()
+    d["p1_missed"] = (d["p1_games"] < 8).astype(float)
+    d.loc[d["p1_games"].isna(), "p1_missed"] = 1.0
+    return d
+
+
 def features(pos: str) -> list[str]:
     return ([f"p1_{x}" for x in FEATURES[pos]] + [f"p2_{x}" for x in FEATURES[pos]]
-            + ["age", "nt_team_scoring_rank", "nt_team_qb_epa_rank"])
+            + ["age", "nt_team_scoring_rank", "nt_team_qb_epa_rank"]
+            + SITUATIONAL[pos])
 
 
 def make_model():
@@ -129,5 +152,6 @@ def upcoming(df: pd.DataFrame, pos: str) -> pd.DataFrame:
             .groupby("team")[TEAM_CTX].first().reset_index())
     out = out.merge(tp.rename(columns={c: f"nt_{c}" for c in TEAM_CTX}),
                     on="team", how="left")
+    out = add_situational(out)
     out = out[out["fantasy_pos"] == pos]
     return out[qualifies(out, pos)].dropna(subset=["age"])

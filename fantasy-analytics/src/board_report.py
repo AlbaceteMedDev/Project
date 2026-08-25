@@ -26,8 +26,9 @@ TIER_NOTE = {
 POS_NOTE = {
     "WR": "Five gates, ~2.6 receivers a year clear all of them. 90% of those "
           "finished top-5 with thresholds fitted on every season — 78% when each "
-          "season is scored by gates that never saw it. Model AUC 0.92, the most "
-          "trustworthy board here.",
+          "season is scored by gates that never saw it. Model AUC 0.93 — the most "
+          "trustworthy board here, and the only position where a lost season is "
+          "scored as its own fact rather than as bad production.",
     "RB": "Volume is assigned, not earned, so the gates are looser and the blind "
           "spot is bigger: 14% of top-5 running back seasons came from players the "
           "last two years could not see at all. Model AUC 0.86.",
@@ -63,6 +64,29 @@ EXTRA = """
 .pip.on{background:var(--mark)}
 .piplab{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.1em; text-transform:uppercase; margin-top:4px}
+.lev{display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:34px 48px; margin-top:26px}
+.levpos{min-width:0}
+.levhead{display:flex; align-items:baseline; gap:10px; padding-bottom:7px;
+  border-bottom:2px solid var(--line-strong); margin-bottom:12px}
+.levpos h4{font-family:'Big Shoulders Display',Archivo,sans-serif; font-weight:700;
+  font-size:26px; line-height:1; margin:0; color:var(--mark-ink)}
+.levauc{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+  letter-spacing:.05em; margin-left:auto; white-space:nowrap}
+.meter{display:grid; grid-template-columns:minmax(0,1fr) 46px; gap:10px;
+  align-items:center; padding:5px 0}
+.mlab{font-size:14px; line-height:1.3; min-width:0}
+.mlab .yr{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+  letter-spacing:.06em; text-transform:uppercase; margin-left:5px}
+.mval{font-family:'IBM Plex Mono',monospace; font-size:13px; text-align:right;
+  font-variant-numeric:tabular-nums}
+.mtrack{grid-column:1/-1; height:6px; border-radius:3px; background:var(--surface-2);
+  border:1px solid var(--line); position:relative; overflow:hidden; margin-top:-2px}
+.mfill{position:absolute; inset:0 auto 0 0; background:var(--mark); border-radius:3px}
+.mfill.dead{background:var(--line-strong)}
+.levnote{font-size:13.5px; color:var(--ink-2); margin:14px 0 0; max-width:46ch}
+.deadlist{margin-top:16px; padding-top:12px; border-top:1px dashed var(--line-strong)}
+.deadlist .label{display:block; margin-bottom:6px}
 .na{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
   letter-spacing:.08em; text-transform:uppercase; line-height:1.4}
 .clean{color:var(--good-ink); font-family:'IBM Plex Mono',monospace; font-size:12px;
@@ -72,6 +96,78 @@ EXTRA = """
   .row .cellpips,.row .cellprob{grid-column:2}
   .pnum{font-size:19px; text-align:left}
 }
+"""
+
+
+LEV_ORDER = ["WR", "RB", "TE", "QB"]
+# AUC 0.50 is a coin flip and nothing below it means anything, so the bar starts
+# just under it rather than at zero - a scale from 0 would make every indicator
+# look strong.
+LEV_LO, LEV_HI = 0.45, 0.95
+
+
+def meter(label: str, tag: str, auc: float) -> str:
+    w = max(0.0, min(1.0, (auc - LEV_LO) / (LEV_HI - LEV_LO))) * 100
+    dead = " dead" if auc < 0.60 else ""
+    yr = f'<span class="yr">{e(tag)}</span>' if tag else ""
+    return (f'<div class="meter"><div class="mlab">{e(label)}{yr}</div>'
+            f'<div class="mval">{auc:.3f}</div>'
+            f'<div class="mtrack"><div class="mfill{dead}" style="width:{w:.1f}%">'
+            f'</div></div></div>')
+
+
+def leverage_section() -> str:
+    """Rank the indicators the only way that survives contact with a new season."""
+    lev = pd.read_csv(OUTPUT / "leverage.csv")
+    cols = []
+    for pos in LEV_ORDER:
+        g = lev[lev["pos"] == pos].sort_values("solo", ascending=False)
+        live, dead = g[g["solo"] >= 0.60].head(7), g[g["solo"] < 0.60]
+        bars = []
+        for _, x in live.iterrows():
+            name = x["label"].replace(" ()", "")
+            tag = ""
+            for suffix in (" (last yr)", " (two yrs ago)"):
+                if name.endswith(suffix):
+                    name, tag = name[: -len(suffix)], suffix.strip(" ()")
+            bars.append(meter(name, tag, x["solo"]))
+        names = ", ".join(sorted({x["label"].replace(" ()", "")
+                                  .replace(" (last yr)", "").replace(" (two yrs ago)", "")
+                                  for _, x in dead.iterrows()}))
+        cols.append(f"""<div class="levpos">
+          <div class="levhead"><h4>{pos}</h4>
+            <span class="levauc">full model {g['auc_base'].iat[0]:.3f} · n={g['n'].iat[0]}</span></div>
+          {''.join(bars)}
+          <div class="deadlist"><span class="label">No signal on its own</span>
+            <p class="levnote">{e(names)}</p></div>
+        </div>""")
+    return f"""<section>
+  <hr class="hash">
+  <h2>What actually predicts it</h2>
+  <p class="sec-intro">Every indicator, scored alone, leave-one-season-out. The
+  number is the area under the ROC curve — 0.50 is a coin flip, 0.90 means that
+  given one top-5 season and one that was not, the indicator ranks them correctly
+  nine times in ten. This is the honest ranking: in-sample lift flatters anything
+  that correlates with volume, and out of sample most of it does not survive.</p>
+  <div class="lev">{''.join(cols)}</div>
+  <div class="grid2" style="margin-top:36px">
+    <div class="card pad"><span class="label">The uncomfortable finding</span>
+      <p style="margin:8px 0 0">The strongest single indicator at three of four
+      positions is <b>last year's points per game</b>. Not an efficiency metric, not
+      a usage rate — the fantasy score itself. Everything else on this page earns its
+      place by telling you <i>which</i> good season was real: target share and yards
+      per route separate a receiver who earned his points from one who caught six
+      touchdowns on forty targets.</p></div>
+    <div class="card pad"><span class="label">Tested and rejected</span>
+      <p style="margin:8px 0 0">A coaching change, a move to a better quarterback,
+      a team change and a player's draft round were all tested as features. Adding
+      a <b>coaching change made the model worse at every position</b> (QB 0.710 →
+      0.696). A quarterback upgrade was worth nothing once the box score was known.
+      Two survived: a receiver who <b>missed most of last season</b> (0.922 → 0.929,
+      now in the model) and a <b>quarterback changing teams</b> (0.710 → 0.737, left
+      out — next year's roster is not in this data).</p></div>
+  </div>
+</section>
 """
 
 
@@ -144,9 +240,11 @@ def build(board: pd.DataFrame, counts: dict) -> str:
     <div><b>{sum(counts.values())}</b><span class="label">candidates scored</span></div>
     <div><b>{len(board[board['tier'] < 'E - '])}</b><span class="label">make the board</span></div>
     <div><b>{len(board[board['tier'].str.startswith('A')])}</b><span class="label">in the target tier</span></div>
-    <div><b>0.90</b><span class="label">best out-of-sample AUC</span></div>
+    <div><b>0.93</b><span class="label">best out-of-sample AUC</span></div>
   </div>
 </header>
+
+{leverage_section()}
 
 <section>
   <h2>How to read a row</h2>
