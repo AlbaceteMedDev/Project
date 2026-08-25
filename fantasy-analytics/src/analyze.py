@@ -20,7 +20,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import OUTPUT, STUDY_SEASONS
+from config import OUTPUT, STUDY_SEASONS, TARGET
 
 # Higher is better unless the metric is listed here (ranks: lower is better).
 LOWER_IS_BETTER = {"team_scoring_rank", "team_qb_epa_rank", "age", "team_pace_rank"}
@@ -316,7 +316,7 @@ def main() -> None:
 
     for pos in ["QB", "RB", "WR", "TE"]:
         d = pool(df, pos)
-        prof = build_card(d, pos, "top5", FAMILIES[pos])
+        prof = build_card(d, pos, TARGET, FAMILIES[pos])
         prof1 = build_card(d, pos, "top1", FAMILIES[pos], min_recall=0.8)
         flagged = d.loc[prof["flagged_index"]]
         results[pos] = {
@@ -326,7 +326,7 @@ def main() -> None:
             "flagged_seasons": flagged[[
                 "season", "player_display_name", "team", "pos_rank",
                 "fantasy_points_ppr"]].sort_values(["season", "pos_rank"]).to_dict("records"),
-            "elite_seasons": d[d["top5"] == 1][[
+            "elite_seasons": d[d[TARGET] == 1][[
                 "season", "player_display_name", "team", "pos_rank",
                 "fantasy_points_ppr"]].sort_values(["season", "pos_rank"]).to_dict("records"),
         }

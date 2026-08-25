@@ -303,7 +303,7 @@ def main() -> None:
     ppg_pool = df[df["games"] >= 8]
     df["pos_rank_ppg"] = ppg_pool.groupby(["season", "fantasy_pos"])["ppg_ppr"].rank(
         ascending=False, method="min")
-    for n in (1, 3, 5, 12, 24):
+    for n in (1, 3, 5, 8, 12, 24):
         df[f"top{n}"] = (df["pos_rank"] <= n).astype(int)
 
     df = df[df["games"] >= MIN_GAMES].copy()

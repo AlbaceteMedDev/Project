@@ -6,40 +6,61 @@ import json
 
 import pandas as pd
 
-from config import LAST_SEASON, OUTPUT
+from config import LAST_SEASON, OUTPUT, TARGET_N
+from config import TARGET as TARGET_COL
 from report import CSS, POS_NAME, e, pct
 
 TARGET = LAST_SEASON + 1
 POS_ORDER = ["WR", "RB", "TE", "QB"]
 
-TIER_NOTE = {
-    "A - target": "One in four or better. The model never saw the season it is "
-                  "scoring, and this band is where its hit rate lives.",
-    "B - strong": "Between one in eight and one in four. Most will miss — the base "
-                  "rate is 5-15% depending on position — but the profile supports "
-                  "the bet.",
+TIER_NOTE = {k: v.format(N=TARGET_N) for k, v in {
+    "A - target": "Three times the rate of the field at this position or better. "
+                  "The model never saw the season it is scoring, and this band is "
+                  "where its hit rate lives.",
+    "B - strong": "Twice the field or better. Most will still miss — a top-{N} "
+                  "finish happens to 7-22% of the pool depending on position — but "
+                  "the profile supports the bet.",
     "C - leaper watch": "Outside last year's top 12, but matching the profile of "
-                        "players who jumped into the top 5 anyway. The late-round lane.",
-    "D - fringe": "Enough profile to roster, not enough to target.",
+                        "players who jumped into the top {N} anyway. The late-round lane.",
+    "D - fringe": "Above the field but not by much. Enough profile to roster, not "
+                  "enough to target.",
+}.items()}
+
+POS_SHAPE = {
+    "WR": "Five gates, and about two or three receivers a year clear all of them. "
+          "The most trustworthy board here.",
+    "RB": "Volume is assigned rather than earned, so the gates are looser and the "
+          "blind spot is bigger — a share of elite back seasons come from players "
+          "the last two years could not see at all.",
+    "TE": "The position where last year tells you the most, and where the leaper "
+          "bar sits lowest.",
+    "QB": "Only two honest gates survive, because nearly every quarterback stat "
+          "restates the fantasy score. The weakest board here — though the "
+          "preseason depth chart helps more at this position than any other.",
 }
 
-POS_NOTE = {
-    "WR": "Five gates, ~2.6 receivers a year clear all of them. 90% of those "
-          "finished top-5 with thresholds fitted on every season — 78% when each "
-          "season is scored by gates that never saw it. Model AUC 0.93 — the most "
-          "trustworthy board here, and the only position where a lost season is "
-          "scored as its own fact rather than as bad production.",
-    "RB": "Volume is assigned, not earned, so the gates are looser and the blind "
-          "spot is bigger: 14% of top-5 running back seasons came from players the "
-          "last two years could not see at all. Model AUC 0.86.",
-    "TE": "The position where last year tells you the most — a top-5 tight end "
-          "repeats 43% of the time — and where the leaper bar is lowest. The only "
-          "position whose gates did not degrade out of sample (86% fitted, 88% "
-          "held out). Model AUC 0.88.",
-    "QB": "Only two honest gates survive, because nearly every quarterback stat "
-          "restates the fantasy score. AUC 0.71, and the gates fall to a 45% hit "
-          "rate out of sample against a 15% base rate. The weakest board here.",
-}
+
+AUCS: dict[str, float] = {}
+
+
+def pos_notes() -> dict[str, str]:
+    """Model quality per position, measured now rather than remembered."""
+    import model as M
+    from sklearn.metrics import roc_auc_score
+    df = pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False)
+    pf = M.frame(df)
+    out = {}
+    for pos in POS_ORDER:
+        d = M.pool(pf, pos)
+        r = M.loso(d, pos)
+        auc = roc_auc_score(r[TARGET_COL], r["prob"])
+        AUCS[pos] = auc
+        out[pos] = (f"{POS_SHAPE[pos]} A top-{TARGET_N} finish happens to "
+                    f"{r[TARGET_COL].mean():.1%} of the qualifying pool in a given year; "
+                    f"the model separates them at AUC {auc:.2f} out of sample, over "
+                    f"{len(r):,} scored player-seasons.")
+    return out
+
 
 EXTRA = """
 .tierband{margin:26px 0 0}
@@ -125,6 +146,16 @@ def disagreement_section() -> str:
     """The one cut on this board that is not just a list of good players."""
     v = json.loads((OUTPUT / "disagreement.json").read_text())
     by = {b["pos"]: b for b in v["backtest"]}
+    # The headline sentence is built from the table rather than typed underneath it,
+    # so it cannot disagree with the numbers directly above it.
+    wr = by["WR"]["rows"]
+    base = wr[0]
+    best = max(wr[1:], key=lambda r: r["hit5"]) if len(wr) > 1 else base
+    wr_line = (f'A receiver coming off a season outside the top 12 finishes '
+               f'top-{TARGET_N} {base["hit5"]:.0%} of the time. The ones this model '
+               f'rates at {best["threshold"]:.2f} or better did it '
+               f'<b>{best["hit5"]:.0%} of the time</b> — about '
+               f'{best["per_season"]:.0f} a year, across eleven seasons.')
 
     rows = []
     for pos in POS_ORDER:
@@ -172,12 +203,9 @@ def disagreement_section() -> str:
       top 12 last year…</th><th>Top-5</th><th>Top-12</th><th>n</th></tr></thead>
     <tbody>{''.join(rows)}</tbody>
   </table></div>
-  <div class="callout"><p><b>This is the sharpest thing on the page.</b> A receiver
-  coming off a season outside the top 12 finishes top-5 about 2% of the time. The
-  ones this model rates at 0.20 or better did it <b>37% of the time</b> — roughly
-  two players a year, over eleven seasons. Tight end is the exception and the
-  numbers there wobble with the threshold, which is what a sample of nine looks
-  like; treat the TE row as unproven.</p></div>
+  <div class="callout"><p><b>This is the sharpest thing on the page.</b> {wr_line}
+  Tight end is the exception and the numbers there move around with the threshold,
+  which is what a sample this size looks like; treat the TE rows as unproven.</p></div>
   <h3 style="font-size:20px; margin:38px 0 4px">{v['target']}: who clears it</h3>
   <p class="sec-intro" style="margin-bottom:0">Everyone rated {v['floor']:.2f} or
   better whose {v['target'] - 1} finish was outside the top 12.</p>
@@ -233,7 +261,7 @@ def leverage_section() -> str:
   <h2>What actually predicts it</h2>
   <p class="sec-intro">Every indicator, scored alone, leave-one-season-out. The
   number is the area under the ROC curve — 0.50 is a coin flip, 0.90 means that
-  given one top-5 season and one that was not, the indicator ranks them correctly
+  given one top-{TARGET_N} season and one that was not, the indicator ranks them correctly
   nine times in ten. This is the honest ranking: in-sample lift flatters anything
   that correlates with volume, and out of sample most of it does not survive.</p>
   <div class="lev">{''.join(cols)}</div>
@@ -283,7 +311,7 @@ def row(r: pd.Series, pos: str) -> str:
              else f" · gates from {int(r['gates_scored_on'])}")
     if pd.notna(dr) and int(dr) > 1:
         body = (f'<div class="pmiss"><b>Listed {pos}{int(dr)} on the August depth '
-                f'chart.</b> Players listed second finish top-5 roughly 1% of the '
+                f'chart.</b> Players listed second finish top-{TARGET_N} roughly 1% of the '
                 f'time.</div>')
     else:
         body = ""
@@ -302,6 +330,8 @@ def row(r: pd.Series, pos: str) -> str:
 
 
 def build(board: pd.DataFrame, counts: dict) -> str:
+    POS_NOTE = pos_notes()
+    best_auc = max(AUCS.values())
     secs = []
     for pos in POS_ORDER:
         b = board[board["position"] == pos]
@@ -336,13 +366,13 @@ def build(board: pd.DataFrame, counts: dict) -> str:
     <span class="label" style="color:var(--mark-ink)">Every returning candidate, scored</span></div>
   <h1>Draft target board</h1>
   <p class="deck">Every player who cleared a volume floor in either of the last two
-  seasons, run through the positional model and the top-5 gates. No hand-picking —
+  seasons, run through the positional model and the top-{TARGET_N} gates. No hand-picking —
   the tiers fall out of the numbers.</p>
   <div class="meta">
     <div><b>{sum(counts.values())}</b><span class="label">candidates scored</span></div>
     <div><b>{len(board[board['tier'] < 'E - '])}</b><span class="label">make the board</span></div>
     <div><b>{len(board[board['tier'].str.startswith('A')])}</b><span class="label">in the target tier</span></div>
-    <div><b>0.93</b><span class="label">best out-of-sample AUC</span></div>
+    <div><b>{best_auc:.2f}</b><span class="label">best out-of-sample AUC</span></div>
   </div>
 </header>
 
@@ -355,10 +385,10 @@ def build(board: pd.DataFrame, counts: dict) -> str:
   <p class="sec-intro">Three numbers, and they answer different questions.</p>
   <div class="grid2">
     <div class="card pad"><span class="label">The big number</span>
-      <p style="margin:8px 0 0"><b>Probability of a top-5 finish</b>, from a model
+      <p style="margin:8px 0 0"><b>Probability of a top-{TARGET_N} finish</b>, from a model
       scored leave-one-season-out — every season predicted by a version that never
       trained on it. It is calibrated: across eleven seasons, players scored near
-      0.30 finished top-5 about 30% of the time. This is the only figure here
+      0.30 finished top-{TARGET_N} about 30% of the time. This is the only figure here
       validated out of sample, so it sets the tier.</p></div>
     <div class="card pad"><span class="label">Gates</span>
       <p style="margin:8px 0 0"><b>How much of the elite in-season profile his most
@@ -367,7 +397,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       scored on the one before, and the row says so.</p></div>
     <div class="card pad"><span class="label">Leaper marks</span>
       <p style="margin:8px 0 0"><b>How closely he matches the players who jumped
-      into the top 5 from outside the prior top 12.</b> Roughly 40% of all elite
+      into the top {TARGET_N} from outside the prior top 12.</b> Roughly 40% of all elite
       finishes came from there, so this is the late-round signal. It is shown only
       for players in that lane — the bars sit at the leapers' own medians, so anyone
       who was already top-12 clears all of them and the count would mean nothing.</p></div>
@@ -401,7 +431,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       probability here is a shade optimistic for the same reason.</li>
     <li><b>It cannot see a job that did not exist yet.</b> Rookies have no NFL
       history to score and are structurally invisible. Two seasons of lookback
-      closed most of the injury gap — 86–94% of past top-5 seasons are now
+      closed most of the injury gap — 86–94% of past top-{TARGET_N} seasons are now
       reachable — but a first-year player never will be.</li>
     <li><b>It cannot see availability.</b> Suspensions, holdouts and training-camp
       injuries are not in the data. Anyone facing league discipline or rehabbing an
@@ -410,7 +440,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
     <li><b>The depth chart is current; everything else is last year's.</b> Each row
       carries the player's rank on his team's August {TARGET} chart, which is the
       only forward-looking fact here. It is also the sharpest one — a receiver
-      listed second finishes top-5 0.4% of the time against 7.1% for the one listed
+      listed second finishes top-{TARGET_N} 0.4% of the time against 7.1% for the one listed
       first. Below the top slot the ordering is loose, especially at receiver where
       teams play three: the {TARGET} Jaguars list Travis Hunter fourth. Read a low
       rank as a question, not a verdict.</li>
@@ -422,7 +452,7 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       position. The one narrative that earned a place is a receiver who missed most
       of last season, which the box-score features over-punish on their own.</li>
     <li><b>Efficiency does not rescue a small role.</b> 176 receiver-seasons had a
-      prior year under a 15% target share and 50% snaps. None finished top-5 the
+      prior year under a 15% target share and 50% snaps. None finished top-{TARGET_N} the
       next year. None finished top-12.</li>
   </ul>
 </section>

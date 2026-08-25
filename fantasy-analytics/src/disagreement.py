@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 import model as M
-from config import LAST_SEASON, OUTPUT
+from config import LAST_SEASON, OUTPUT, TARGET, TARGET_N
 
 POS = ["WR", "RB", "TE", "QB"]
 STEPS = [0.10, 0.15, 0.20, 0.25]
@@ -43,20 +43,20 @@ def backtest(df: pd.DataFrame, pf: pd.DataFrame) -> list[dict]:
         lane = r[behind(r)]
         seasons = r["season"].nunique()
         rows = [dict(threshold=None, n=len(lane), per_season=len(lane) / seasons,
-                     hit5=lane["top5"].mean(), hit12=lane["top12"].mean())]
+                     hit5=lane[TARGET].mean(), hit12=lane["top12"].mean())]
         for th in STEPS:
             g = lane[lane["prob"] >= th]
             if len(g) < 8:      # below this the cell is a rounding error
                 continue
             rows.append(dict(threshold=th, n=len(g), per_season=len(g) / seasons,
-                             hit5=g["top5"].mean(), hit12=g["top12"].mean()))
+                             hit5=g[TARGET].mean(), hit12=g["top12"].mean()))
         picked = lane[lane["prob"] >= FLOOR].sort_values(["season", "prob"],
                                                          ascending=[True, False])
         out.append(dict(pos=pos, rows=rows, floor=FLOOR,
                         names=[dict(season=int(x.season), player=x.player_display_name,
                                     prob=round(float(x.prob), 2),
                                     prior=int(x.p1_pos_rank) if pd.notna(x.p1_pos_rank) else None,
-                                    rank=int(x.pos_rank), hit5=bool(x.top5))
+                                    rank=int(x.pos_rank), hit5=bool(x[TARGET]))
                                for _, x in picked.iterrows()]))
     return out
 
@@ -67,7 +67,7 @@ def upcoming(df: pd.DataFrame, pf: pd.DataFrame) -> list[dict]:
         d = M.pool(pf, pos)
         f = M.features(pos)
         m = M.make_model()
-        m.fit(d[f], d["top5"])
+        m.fit(d[f], d[TARGET])
         up = M.upcoming(df, pos).copy()
         up["prob"] = m.predict_proba(up[f])[:, 1]
         g = up[(up["prev_finish"] > 12) & (up["prob"] >= FLOOR)]
@@ -91,7 +91,7 @@ def main() -> None:
         for r in b["rows"]:
             lab = "any (base rate)" if r["threshold"] is None else f">= {r['threshold']:.2f}"
             print(f"   {lab:16s} {r['per_season']:>5.1f}/yr  "
-                  f"top-5 {r['hit5']:>6.1%}  top-12 {r['hit12']:>6.1%}")
+                  f"top-{TARGET_N} {r['hit5']:>6.1%}  top-12 {r['hit12']:>6.1%}")
     print(f"\nwrote {OUTPUT / 'disagreement.json'}")
 
 

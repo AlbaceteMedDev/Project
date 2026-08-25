@@ -16,7 +16,7 @@ import pandas as pd
 from sklearn.metrics import roc_auc_score
 
 import model as M
-from config import LAST_SEASON, OUTPUT
+from config import LAST_SEASON, OUTPUT, TARGET
 
 df = pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False)
 POS = ["QB", "RB", "WR", "TE"]
@@ -125,11 +125,11 @@ def loso_auc(d: pd.DataFrame, feats: list[str]) -> float:
     y, p = [], []
     for s in sorted(d["season"].unique()):
         tr, te = d[d["season"] != s], d[d["season"] == s]
-        if tr["top5"].sum() < 5 or te["top5"].nunique() < 1 or not len(te):
+        if tr[TARGET].sum() < 5 or te[TARGET].nunique() < 1 or not len(te):
             continue
         m = M.make_model()
-        m.fit(tr[feats], tr["top5"])
-        y.append(te["top5"].values)
+        m.fit(tr[feats], tr[TARGET])
+        y.append(te[TARGET].values)
         p.append(m.predict_proba(te[feats])[:, 1])
     y, p = np.concatenate(y), np.concatenate(p)
     return roc_auc_score(y, p) if len(np.unique(y)) > 1 else np.nan
@@ -140,13 +140,13 @@ def run() -> pd.DataFrame:
     rows = []
     for pos in POS:
         d = pf[(pf["fantasy_pos"] == pos) & pf["season"].between(2016, LAST_SEASON)].copy()
-        d = d[M.qualifies(d, pos)].dropna(subset=["age", "top5"])
+        d = d[M.qualifies(d, pos)].dropna(subset=["age", TARGET])
         base = M.features(pos)
         full = base + [f for f in EXTRA if f not in base]
         auc_full = loso_auc(d, full)
         auc_base = loso_auc(d, base)
-        print(f"\n{'=' * 92}\n{pos}  —  n={len(d)}, top-5 seasons={int(d['top5'].sum())}, "
-              f"base rate={d['top5'].mean():.1%}")
+        print(f"\n{'=' * 92}\n{pos}  —  n={len(d)}, top-5 seasons={int(d[TARGET].sum())}, "
+              f"base rate={d[TARGET].mean():.1%}")
         print(f"      published model AUC {auc_base:.3f}   "
               f"with situational features {auc_full:.3f}\n{'=' * 92}")
         print(f"{'indicator':32s} {'alone':>8s} {'marginal':>10s}  {'reading':<28s}")

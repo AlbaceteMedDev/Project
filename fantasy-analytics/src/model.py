@@ -23,7 +23,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from analyze import POOL_RULES
-from config import LAST_SEASON, OUTPUT, RAW
+from config import LAST_SEASON, OUTPUT, RAW, TARGET
 
 # Everything carried forward from a past season onto the season being predicted.
 CARRY = [
@@ -92,7 +92,7 @@ def _lag(df: pd.DataFrame, k: int, tag: str) -> pd.DataFrame:
 def frame(df: pd.DataFrame) -> pd.DataFrame:
     """One row per player-season, carrying the two seasons before it."""
     base = df[["player_id", "player_display_name", "fantasy_pos", "team", "season",
-               "age", "top5", "pos_rank"]].copy()
+               "age", TARGET, "pos_rank"]].copy()
     out = (base.merge(_lag(df, 1, "p1"), on=["player_id", "season"], how="left")
                 .merge(_lag(df, 2, "p2"), on=["player_id", "season"], how="left"))
     tp = (df.dropna(subset=["team"]).groupby(["season", "team"])[TEAM_CTX]
@@ -135,7 +135,7 @@ def make_model():
 
 def pool(pf: pd.DataFrame, pos: str) -> pd.DataFrame:
     d = pf[(pf["fantasy_pos"] == pos) & pf["season"].between(2016, LAST_SEASON)].copy()
-    return d[qualifies(d, pos)].dropna(subset=["age", "top5"])
+    return d[qualifies(d, pos)].dropna(subset=["age", TARGET])
 
 
 def loso(d: pd.DataFrame, pos: str) -> pd.DataFrame:
@@ -144,12 +144,12 @@ def loso(d: pd.DataFrame, pos: str) -> pd.DataFrame:
     out = []
     for season in sorted(d["season"].unique()):
         tr, te = d[d["season"] != season], d[d["season"] == season]
-        if tr["top5"].sum() < 5 or not len(te):
+        if tr[TARGET].sum() < 5 or not len(te):
             continue
         m = make_model()
-        m.fit(tr[f], tr["top5"])
+        m.fit(tr[f], tr[TARGET])
         chunk = te[["season", "player_id", "player_display_name", "team", "age",
-                    "pos_rank", "top5"]].copy()
+                    "pos_rank", TARGET]].copy()
         chunk["prob"] = m.predict_proba(te[f])[:, 1]
         out.append(chunk)
     res = pd.concat(out, ignore_index=True)

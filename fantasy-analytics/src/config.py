@@ -9,6 +9,11 @@ LAST_SEASON = 2025
 SEASONS = list(range(FIRST_PRIOR_SEASON, LAST_SEASON + 1))
 STUDY_SEASONS = list(range(FIRST_SEASON, LAST_SEASON + 1))
 
+# The finish this study tries to predict. Everything downstream - gates, model
+# target, board tiers - reads it from here, so moving it moves the whole study.
+TARGET_N = 8
+TARGET = f"top{TARGET_N}"
+
 POSITIONS = ["QB", "RB", "WR", "TE"]
 # nflverse position codes that map onto a fantasy position
 POSITION_MAP = {"QB": "QB", "RB": "RB", "HB": "RB", "FB": "RB", "WR": "WR", "TE": "TE"}

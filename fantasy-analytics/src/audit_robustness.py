@@ -16,7 +16,7 @@ import pandas as pd
 sys.path.insert(0, str(__file__.rsplit("/", 1)[0]))
 
 from analyze import FAMILIES, POOL_RULES, build_card, pool
-from config import OUTPUT, STUDY_SEASONS
+from config import OUTPUT, STUDY_SEASONS, TARGET
 from predict import MODEL_FEATURES, pred_pool, predictive_frame
 
 df = pd.read_csv(OUTPUT / "player_seasons.csv", low_memory=False)
@@ -37,23 +37,23 @@ def gates_out_of_sample() -> None:
           f"{'drop':>7s} {'flagged':>9s} {'caught':>8s}")
     for pos in ["WR", "TE", "RB", "QB"]:
         full = pool(df, pos)
-        ins = build_card(full, pos, "top5", FAMILIES[pos])["joint"]
+        ins = build_card(full, pos, TARGET, FAMILIES[pos])["joint"]
         hits = flagged = elite_caught = elite_total = 0
         for season in STUDY_SEASONS:
             train = full[full["season"] != season]
             test = full[full["season"] == season]
             if not len(test):
                 continue
-            card = build_card(train, pos, "top5", FAMILIES[pos])
+            card = build_card(train, pos, TARGET, FAMILIES[pos])
             mask = pd.Series(True, index=test.index)
             for r in card["rules"]:
                 col = test[r["metric"]]
                 m = (col <= r["threshold"]) if r["direction"] == "<=" else (col >= r["threshold"])
                 mask &= m.fillna(False)
             flagged += int(mask.sum())
-            hits += int((mask & (test["top5"] == 1)).sum())
-            elite_caught += int((mask & (test["top5"] == 1)).sum())
-            elite_total += int((test["top5"] == 1).sum())
+            hits += int((mask & (test[TARGET] == 1)).sum())
+            elite_caught += int((mask & (test[TARGET] == 1)).sum())
+            elite_total += int((test[TARGET] == 1).sum())
         oos = hits / flagged if flagged else np.nan
         print(f"{pos:4s} {ins['precision']:>13.0%} {oos:>17.0%} "
               f"{ins['precision'] - oos:>+6.0%} {flagged:>9d} "
@@ -83,9 +83,9 @@ def survivorship() -> None:
         elig["appeared"] = [(p, s) in joined for p, s in
                             zip(elig["player_id"], elig["next"])]
         vanished = int((~elig["appeared"]).sum())
-        honest = d["top5"].sum() / (len(d) + vanished)
+        honest = d[TARGET].sum() / (len(d) + vanished)
         print(f"{pos:4s} {len(d):>12d} {vanished:>11d} "
-              f"{d['top5'].mean():>18.1%} {honest:>18.1%}")
+              f"{d[TARGET].mean():>18.1%} {honest:>18.1%}")
     print("\nA vanished season is a player who cleared the volume bar one year and "
           "then did\nnot play enough to be scored the next. Those are mostly "
           "injuries and lost jobs —\nreal outcomes for anyone holding the player.")
@@ -122,11 +122,11 @@ def threshold_stability() -> None:
     for pos in ["WR", "TE", "RB", "QB"]:
         full = pool(df, pos)
         published = {r["metric"]: r["threshold"]
-                     for r in build_card(full, pos, "top5", FAMILIES[pos])["rules"]}
+                     for r in build_card(full, pos, TARGET, FAMILIES[pos])["rules"]}
         spread: dict[str, list] = {m: [] for m in published}
         chosen: dict[str, int] = {m: 0 for m in published}
         for season in STUDY_SEASONS:
-            card = build_card(full[full["season"] != season], pos, "top5", FAMILIES[pos])
+            card = build_card(full[full["season"] != season], pos, TARGET, FAMILIES[pos])
             for r in card["rules"]:
                 if r["metric"] in spread:
                     spread[r["metric"]].append(r["threshold"])
