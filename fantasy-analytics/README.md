@@ -36,10 +36,20 @@ trained on it.
 
 | Position | Out-of-sample AUC | Preseason top-10 catches | Top-5 finishes reachable at all |
 |---|---|---|---|
-| WR | **0.901** | 63% of top-5s | 89% |
-| TE | 0.828 | 69% | 89% |
-| RB | 0.807 | 57% | 76% |
-| QB | **0.676** | 59% | 84% |
+| WR | **0.922** | 66% of top-5s | 94% |
+| TE | 0.881 | 70% | 88% |
+| RB | 0.860 | 60% | 86% |
+| QB | **0.710** | 66% | 88% |
+
+Those figures are the two-year model. The first version looked back one season
+and required that season to clear a volume floor, which deleted exactly the
+players the market cares about — a WR6 who played four games, a QB5 who played
+seven. Two fixes, both measured:
+
+- **Two years of history rather than one** lifts WR AUC 0.901 → 0.929 and the
+  share of top-5 finishers inside a preseason top-10 list from 59% to 75%.
+- **Entry on either of the last two seasons** lifts QB AUC 0.664 → 0.710 and RB
+  0.837 → 0.860, and raises reachable top-5 seasons to 86–94%.
 
 ### What survived a check
 
@@ -137,10 +147,10 @@ PFF-equivalent 2.5.
 src/download.py       fetch the nflverse releases
 src/build_dataset.py  season-level player + team dataset
 src/analyze.py        gates, green flags, vacuous-rule detection
+src/model.py          two-year predictive frame and the model itself
 src/predict.py        prior-year model, leave-one-season-out scoring
 src/audit.py          score the viral WR1 card against the record
 src/audit_robustness.py  adversarial checks on this project's own claims
-src/forecast.py       apply everything to the upcoming season
 src/target_board.py   score every returning candidate, tier the board
 src/report.py         render the study as a page
 src/board_report.py   render the target board as a page

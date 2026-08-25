@@ -26,17 +26,17 @@ TIER_NOTE = {
 POS_NOTE = {
     "WR": "Five gates, ~2.6 receivers a year clear all of them. 90% of those "
           "finished top-5 with thresholds fitted on every season — 78% when each "
-          "season is scored by gates that never saw it. Model AUC 0.90, the most "
+          "season is scored by gates that never saw it. Model AUC 0.92, the most "
           "trustworthy board here.",
     "RB": "Volume is assigned, not earned, so the gates are looser and the blind "
-          "spot is bigger: 24% of top-5 running back seasons came from players with "
-          "no qualifying prior year at all.",
+          "spot is bigger: 14% of top-5 running back seasons came from players the "
+          "last two years could not see at all. Model AUC 0.86.",
     "TE": "The position where last year tells you the most — a top-5 tight end "
           "repeats 43% of the time — and where the leaper bar is lowest. The only "
           "position whose gates did not degrade out of sample (86% fitted, 88% "
-          "held out).",
+          "held out). Model AUC 0.88.",
     "QB": "Only two honest gates survive, because nearly every quarterback stat "
-          "restates the fantasy score. AUC 0.68, and the gates fall to a 45% hit "
+          "restates the fantasy score. AUC 0.71, and the gates fall to a 45% hit "
           "rate out of sample against a 15% base rate. The weakest board here.",
 }
 
@@ -81,13 +81,16 @@ def pips(n: int, total: int, label: str) -> str:
 
 def row(r: pd.Series, pos: str) -> str:
     miss = r["missing"]
+    stale = ("" if r["gates_scored_on"] == LAST_SEASON
+             else " · no full season to score" if not r["gates_scored_on"]
+             else f" · gates from {int(r['gates_scored_on'])}")
     body = (f'<div class="clean">clears every gate</div>' if miss == "-"
             else f'<div class="pmiss">short on <b>{e(miss.lower())}</b></div>')
     return f"""<div class="row">
   <div class="pnum">{r['prob']:.2f}</div>
   <div>
     <div class="pname">{e(r['player'])}</div>
-    <div class="pmeta">{e(r['team'])} · age {r['age']:.0f} · was {e(pos)}{int(r[f'{LAST_SEASON}_finish'])}</div>
+    <div class="pmeta">{e(r['team'])} · age {r['age']:.0f} · was {e(pos)}{int(r['last_finish'])}{stale}</div>
     {body}
   </div>
   <div class="cellpips">{pips(int(r['gates_cleared']), int(r['gates_total']), 'gates')}</div>
@@ -129,9 +132,9 @@ def build(board: pd.DataFrame, counts: dict) -> str:
   <div class="eyebrow"><span class="label">{TARGET} season · full PPR</span>
     <span class="label" style="color:var(--mark-ink)">Every returning candidate, scored</span></div>
   <h1>Draft target board</h1>
-  <p class="deck">Every player with a qualifying {LAST_SEASON} season, run through the
-  positional model and the top-5 gates. No hand-picking — the tiers fall out of the
-  numbers.</p>
+  <p class="deck">Every player who cleared a volume floor in either of the last two
+  seasons, run through the positional model and the top-5 gates. No hand-picking —
+  the tiers fall out of the numbers.</p>
   <div class="meta">
     <div><b>{sum(counts.values())}</b><span class="label">candidates scored</span></div>
     <div><b>{len(board[board['tier'] < 'E - '])}</b><span class="label">make the board</span></div>
@@ -151,9 +154,10 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       0.30 finished top-5 about 30% of the time. This is the only figure here
       validated out of sample, so it sets the tier.</p></div>
     <div class="card pad"><span class="label">Gates</span>
-      <p style="margin:8px 0 0"><b>How much of the elite in-season profile his last
-      season already looked like.</b> Descriptive, not held out — a miss is a
-      question to answer, not a disqualification.</p></div>
+      <p style="margin:8px 0 0"><b>How much of the elite in-season profile his most
+      recent played season looked like.</b> Descriptive, not held out — a miss is a
+      question to answer, not a disqualification. A player who missed last season is
+      scored on the one before, and the row says so.</p></div>
     <div class="card pad"><span class="label">Leaper marks</span>
       <p style="margin:8px 0 0"><b>How closely he matches the players who jumped
       into the top 5 from outside the prior top 12.</b> Roughly 40% of all elite
@@ -184,10 +188,14 @@ def build(board: pd.DataFrame, counts: dict) -> str:
       tight ends vanished from the denominator after one qualifying year. Counting
       those as failures, the real receiver base rate is 4.0%, not 4.6% — and every
       probability here is a shade optimistic for the same reason.</li>
-    <li><b>It cannot see a job that did not exist yet.</b> Every name needed a
-      qualifying {LAST_SEASON} season to be scored. Rookies and players handed a
-      role in the offseason are structurally invisible — and they accounted for
-      24% of top-5 running back seasons and 16% at quarterback.</li>
+    <li><b>It cannot see a job that did not exist yet.</b> Rookies have no NFL
+      history to score and are structurally invisible. Two seasons of lookback
+      closed most of the injury gap — 86–94% of past top-5 seasons are now
+      reachable — but a first-year player never will be.</li>
+    <li><b>It cannot see availability.</b> Suspensions, holdouts and training-camp
+      injuries are not in the data. Anyone facing league discipline or rehabbing an
+      injury is scored as though he plays a full season, which is exactly when this
+      board is most wrong.</li>
     <li><b>Team context is last year's.</b> Anyone who changed teams this offseason
       still carries his old offense's scoring rank and quarterback quality.</li>
     <li><b>Efficiency does not rescue a small role.</b> 176 receiver-seasons had a
