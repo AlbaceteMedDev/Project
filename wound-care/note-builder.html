@@ -1562,19 +1562,97 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     copyText(S.map(function(s){ return s[0].toUpperCase()+"\n"+s[1]; }).join("\n\n"),"All sections copied");
   });
 
-  function noteHTML(){
-    var d=$("noteDoc").cloneNode(true), pt=v("ptName")||"Wound care note";
-    return '<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" '+
-      'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
-      '<head><meta charset="utf-8"><title>'+esc(pt)+' — '+esc(dstr("dos"))+'</title><style>'+
-      '@page{margin:18mm 16mm}'+
-      'body{font-family:Calibri,Arial,sans-serif; font-size:10.5pt; line-height:1.45; color:#000}'+
-      'h4{font-size:9pt; letter-spacing:.08em; text-transform:uppercase; margin:16pt 0 5pt;'+
-      ' border-bottom:1px solid #888; padding-bottom:3pt; page-break-after:avoid}'+
-      'h4:first-child{margin-top:0}'+
-      '.para{white-space:pre-wrap; margin:0}'+
-      '.ph{color:#555; font-style:italic}'+
-      '</style></head><body>'+d.innerHTML+'</body></html>';
+  /* ---------- .docx writer ----------
+     A Word file is a ZIP of OOXML parts. Written by hand rather than pulled from
+     a library so the page stays one self-contained file that works offline.
+     .doc is not on the viewer's download allowlist; .docx is. */
+  function crc32(u8){
+    var t=crc32.t;
+    if(!t){
+      t=crc32.t=new Uint32Array(256);
+      for(var i=0;i<256;i++){ var c=i; for(var k=0;k<8;k++) c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1); t[i]=c>>>0; }
+    }
+    var c=0xFFFFFFFF;
+    for(var j=0;j<u8.length;j++) c=t[(c^u8[j])&0xFF]^(c>>>8);
+    return (c^0xFFFFFFFF)>>>0;
+  }
+  function zipStore(files){
+    var enc=new TextEncoder(), parts=[], central=[], offset=0;
+    function u16(v){ return [v&0xFF,(v>>>8)&0xFF]; }
+    function u32(v){ return [v&0xFF,(v>>>8)&0xFF,(v>>>16)&0xFF,(v>>>24)&0xFF]; }
+    files.forEach(function(f){
+      var name=enc.encode(f.name), data=f.data, crc=crc32(data), sz=data.length;
+      var lfh=new Uint8Array([].concat(
+        u32(0x04034b50),u16(20),u16(0),u16(0),u16(0),u16(0),
+        u32(crc),u32(sz),u32(sz),u16(name.length),u16(0)));
+      parts.push(lfh,name,data);
+      central.push(new Uint8Array([].concat(
+        u32(0x02014b50),u16(20),u16(20),u16(0),u16(0),u16(0),u16(0),
+        u32(crc),u32(sz),u32(sz),u16(name.length),u16(0),u16(0),u16(0),u16(0),
+        u32(0),u32(offset))), name);
+      offset+=lfh.length+name.length+sz;
+    });
+    var cdSize=central.reduce(function(a,b){ return a+b.length; },0);
+    var eocd=new Uint8Array([].concat(
+      u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),
+      u32(cdSize),u32(offset),u16(0)));
+    var all=parts.concat(central,[eocd]);
+    var total=all.reduce(function(a,b){ return a+b.length; },0);
+    var out=new Uint8Array(total), pos=0;
+    all.forEach(function(a){ out.set(a,pos); pos+=a.length; });
+    return out;
+  }
+  function xmlEsc(t){
+    return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+                    .replace(/"/g,"&quot;").replace(/'/g,"&apos;");
+  }
+  function docxBytes(){
+    var enc=new TextEncoder(), body=[];
+    function para(text,opts){
+      opts=opts||{};
+      var pPr='<w:pPr>'+
+        (opts.heading?'<w:pBdr><w:bottom w:val="single" w:sz="6" w:space="2" w:color="888888"/></w:pBdr>'+
+                      '<w:spacing w:before="260" w:after="70"/>'
+                     :'<w:spacing w:after="0"/>')+
+        '</w:pPr>';
+      var rPr='<w:rPr>'+
+        (opts.heading?'<w:b/>':'')+
+        (opts.grey?'<w:i/>':'')+
+        (opts.heading?'<w:caps/>':'')+
+        '<w:color w:val="'+(opts.grey?'555555':'000000')+'"/>'+
+        '<w:sz w:val="'+(opts.heading?'17':'21')+'"/>'+
+        '</w:rPr>';
+      body.push('<w:p>'+pPr+'<w:r>'+rPr+'<w:t xml:space="preserve">'+xmlEsc(text)+'</w:t></w:r></w:p>');
+    }
+    Array.prototype.forEach.call($("noteDoc").children,function(el){
+      if(el.tagName==="H4"){ para(el.textContent,{heading:true}); return; }
+      var grey=el.classList.contains("ph");
+      String(el.textContent).split("\n").forEach(function(line){ para(line,{grey:grey}); });
+    });
+    var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+      '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+
+      body.join("")+
+      '<w:sectPr><w:pgSz w:w="12240" w:h="15840"/>'+
+      '<w:pgMar w:top="1080" w:right="1080" w:bottom="1080" w:left="1080"/></w:sectPr>'+
+      '</w:body></w:document>';
+    var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+      '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+      '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+
+      '<Default Extension="xml" ContentType="application/xml"/>'+
+      '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'+
+      '</Types>';
+    var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>'+
+      '</Relationships>';
+    var docRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>';
+    return zipStore([
+      {name:"[Content_Types].xml",          data:enc.encode(ct)},
+      {name:"_rels/.rels",                  data:enc.encode(rels)},
+      {name:"word/document.xml",            data:enc.encode(doc)},
+      {name:"word/_rels/document.xml.rels", data:enc.encode(docRels)}
+    ]);
   }
   function hasNote(){
     var t=$("noteDoc").innerText.trim();
@@ -1591,23 +1669,35 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     if(!docView) setView(true);
     setTimeout(function(){
       try{ window.print(); }
-      catch(e){ toast("Printing is blocked here — open the standalone file"); }
+      catch(e){ toast("Printing is blocked here — use Word, or open the standalone file"); }
     },60);
   });
 
   $("btnWord").addEventListener("click",function(){
     if(!hasNote()){ toast("Nothing to export yet"); return; }
     if(!docView) setView(true);
-    try{
-      var blob=new Blob(["\ufeff"+noteHTML()],{type:"application/msword"});
-      var url=URL.createObjectURL(blob), a=document.createElement("a");
-      a.href=url; a.download=fileStem()+".doc";
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      setTimeout(function(){ URL.revokeObjectURL(url); },1500);
-      toast("Word file saved");
-    }catch(e){
-      toast("Download blocked here — open the standalone file");
-    }
+    setTimeout(function(){
+      var bytes, name=fileStem()+".docx";
+      try{ bytes=docxBytes(); }
+      catch(e){ toast("Could not build the Word file"); return; }
+      if(dlCap){
+        dlCap.save({filename:name, data:bytes}).then(function(){ toast("Word file saved"); },
+          function(err){
+            var c=err&&err.code;
+            if(c==="declined") return;
+            toast(c==="too_large"?"Note is too large to save":"Saving is unavailable here — use Copy note");
+          });
+        return;
+      }
+      try{
+        var blob=new Blob([bytes],{type:"application/vnd.openxmlformats-officedocument.wordprocessingml.document"});
+        var url=URL.createObjectURL(blob), a=document.createElement("a");
+        a.href=url; a.download=name;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function(){ URL.revokeObjectURL(url); },1500);
+        toast("Word file saved");
+      }catch(e){ toast("Download blocked here — use Copy note"); }
+    },60);
   });
 
   function setView(doc){
@@ -1659,9 +1749,20 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 
   // In an embedded preview the sandbox blocks page-initiated downloads, so say so
   // rather than leaving two buttons that quietly do nothing.
-  var framed=false;
+  var framed=false, dlCap=null;
   try{ framed = window.self !== window.top; }catch(e){ framed = true; }
   if(framed) $("framedNote").hidden=false;
+  // The viewer can grant file saving; printing it cannot. Ask, and adjust what
+  // the page claims once the answer arrives — it never arrives synchronously.
+  if(window.claude && typeof window.claude.use==="function"){
+    window.claude.use("downloads").then(function(d){
+      if(!d) return;
+      dlCap=d;
+      $("framedNote").innerHTML='<b>You\u2019re viewing this embedded.</b> <b>Copy note</b> and <b>Word</b> work here '+
+        '(saving asks you to confirm). <b>Print / PDF</b> needs the standalone file \u2014 download '+
+        '<code>wound-care/note-builder.html</code> and open it in any browser.';
+    },function(){});
+  }
 
   renderImpediments();
   syncEtio();

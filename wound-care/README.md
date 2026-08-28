@@ -46,14 +46,13 @@ usable with real patients.
 | Button | What it produces |
 | --- | --- |
 | **Print / PDF** | Opens the browser's print dialog — choose **Save as PDF** for a clean, black-on-white clinical note with proper page breaks. Only the note prints; the form does not. |
-| **Word** | Saves a `.doc` file named for the patient and date, which opens in Word, Pages, or Google Docs and can be edited further. |
+| **Word** | Saves a real `.docx` named for the patient and date, which opens in Word, Pages, or Google Docs and can be edited further. |
 | **Copy note** | Puts the note on the clipboard as plain text, for pasting into the EMR. |
 
-> **One caveat about the embedded preview.** If you're looking at this inside a
-> preview pane rather than as a downloaded file, the sandbox blocks
-> page-initiated downloads and printing. **Copy note** still works there.
-> **Print / PDF** and **Word** need the standalone file. The page detects this
-> and says so, so nobody is left clicking a dead button.
+> **In an embedded preview**, **Copy note** and **Word** both work — saving asks
+> you to confirm first. **Print / PDF** needs the standalone file, because a
+> preview sandbox cannot open a print dialog. The page checks which it can do and
+> says so, rather than leaving a dead button.
 
 ### Using the builder
 
