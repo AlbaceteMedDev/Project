@@ -1,0 +1,1133 @@
+<title>Wound Note Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#EEF2F1; --surface:#FFFFFF; --surface-2:#F7FAF9; --surface-3:#E7EEEC;
+  --border:#D3DEDC; --border-strong:#B0C2BF;
+  --ink:#131F1E; --ink-2:#455855; --ink-3:#6E827F;
+  --accent:#14615C; --accent-2:#0E4844; --accent-soft:#DCEBE9;
+  --good:#2C6E49; --good-soft:#DDEFE4;
+  --warn:#8A5A12; --warn-soft:#F6EAD3;
+  --crit:#9C3327; --crit-soft:#F8E0DC;
+  --on-accent:#FFFFFF;
+  --shadow:0 1px 2px rgba(19,31,30,.06), 0 8px 24px -16px rgba(19,31,30,.28);
+  --r:7px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1413; --surface:#141E1D; --surface-2:#1A2524; --surface-3:#22302E;
+    --border:#293836; --border-strong:#3B4D4A;
+    --ink:#E5EEEC; --ink-2:#A4B6B3; --ink-3:#7A8E8B;
+    --accent:#54B8AF; --accent-2:#77CEC5; --accent-soft:#123230;
+    --on-accent:#08201E;
+    --good:#74C293; --good-soft:#132A1E;
+    --warn:#DCAB53; --warn-soft:#2F2514;
+    --crit:#E37E6E; --crit-soft:#341B17;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1413; --surface:#141E1D; --surface-2:#1A2524; --surface-3:#22302E;
+  --border:#293836; --border-strong:#3B4D4A;
+  --ink:#E5EEEC; --ink-2:#A4B6B3; --ink-3:#7A8E8B;
+  --accent:#54B8AF; --accent-2:#77CEC5; --accent-soft:#123230;
+  --on-accent:#08201E;
+    --good:#74C293; --good-soft:#132A1E;
+  --warn:#DCAB53; --warn-soft:#2F2514;
+  --crit:#E37E6E; --crit-soft:#341B17;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0; text-wrap:balance; letter-spacing:-.01em}
+p{margin:0}
+button{font-family:inherit; font-size:inherit; cursor:pointer}
+input,select,textarea{font-family:inherit; font-size:inherit; color:inherit}
+
+/* ---------- shell ---------- */
+.wrap{max-width:1400px; margin:0 auto; padding:0 20px 72px}
+
+.masthead{
+  border-bottom:1px solid var(--border);
+  padding:26px 0 20px; margin-bottom:24px;
+  display:flex; flex-wrap:wrap; gap:20px; align-items:flex-end; justify-content:space-between;
+}
+.mast-l{display:flex; flex-direction:column; gap:7px; min-width:min(100%,420px)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+}
+h1{font-size:clamp(26px,3.4vw,36px); font-weight:700; letter-spacing:-.025em}
+.sub{color:var(--ink-2); font-size:14px; max-width:58ch}
+.privacy{
+  display:flex; gap:9px; align-items:flex-start;
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
+  padding:11px 14px; max-width:420px; color:var(--ink-2); font-size:12.5px; line-height:1.45;
+}
+.privacy svg{flex:none; margin-top:2px; color:var(--accent)}
+
+.layout{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,520px); gap:26px; align-items:start}
+@media (max-width:1080px){ .layout{grid-template-columns:minmax(0,1fr)} }
+
+/* ---------- form ---------- */
+.steps{display:flex; flex-direction:column; gap:14px}
+.step{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.step > summary{
+  list-style:none; cursor:pointer; padding:14px 16px;
+  display:flex; align-items:center; gap:12px;
+  background:var(--surface); user-select:none;
+}
+.step > summary::-webkit-details-marker{display:none}
+.step > summary:hover{background:var(--surface-2)}
+.step > summary:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
+.num{
+  flex:none; width:26px; height:26px; border-radius:5px;
+  background:var(--accent-soft); color:var(--accent);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; font-weight:600;
+  display:grid; place-items:center;
+}
+.step h2{font-size:15px; font-weight:600; flex:1}
+.chev{flex:none; color:var(--ink-3); transition:transform .18s ease}
+.step[open] .chev{transform:rotate(90deg)}
+.step-body{padding:4px 16px 18px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:16px}
+
+fieldset{border:0; margin:0; padding:0; display:flex; flex-direction:column; gap:9px}
+legend{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; font-weight:600;
+  letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3);
+  padding:0; margin-top:12px;
+}
+.grid{display:grid; gap:10px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:640px){ .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+label.f{display:flex; flex-direction:column; gap:4px; min-width:0}
+label.f > span{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; font-weight:500;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3);
+}
+input[type=text],input[type=number],input[type=date],select,textarea{
+  width:100%; background:var(--surface-2); border:1px solid var(--border);
+  border-radius:5px; padding:7px 9px; min-width:0;
+}
+input[type=number]{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+textarea{resize:vertical; min-height:60px; line-height:1.5}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline-offset:-1px; background:var(--surface)}
+::placeholder{color:var(--ink-3); opacity:.75}
+
+.checks{display:flex; flex-wrap:wrap; gap:7px}
+.chk{
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  background:var(--surface-2); border:1px solid var(--border); border-radius:100px;
+  padding:5px 11px 5px 8px; font-size:13px; color:var(--ink-2);
+}
+.chk:hover{border-color:var(--border-strong)}
+.chk input{accent-color:var(--accent); margin:0; width:14px; height:14px}
+.chk:has(input:checked){background:var(--accent-soft); border-color:var(--accent); color:var(--accent)}
+.chk:has(input:focus-visible){outline:2px solid var(--accent); outline-offset:2px}
+
+.hint{font-size:12px; color:var(--ink-3); line-height:1.45}
+.hint b{color:var(--ink-2); font-weight:600}
+
+/* tissue bar */
+.tbar{display:flex; height:10px; border-radius:100px; overflow:hidden; background:var(--surface-3); border:1px solid var(--border)}
+.tbar i{display:block; height:100%}
+.tsum{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; font-weight:600}
+
+/* ---------- readout ---------- */
+.panel{position:sticky; top:16px; display:flex; flex-direction:column; gap:14px}
+@media (max-width:1080px){ .panel{position:static} }
+
+.readout{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
+  box-shadow:var(--shadow); padding:16px; display:flex; flex-direction:column; gap:14px;
+}
+.ro-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px}
+.ro-head h3{font-size:13px; font-weight:600}
+.pill{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; font-weight:600;
+  letter-spacing:.05em; text-transform:uppercase; padding:4px 9px; border-radius:100px; white-space:nowrap;
+}
+.p-good{background:var(--good-soft); color:var(--good)}
+.p-warn{background:var(--warn-soft); color:var(--warn)}
+.p-crit{background:var(--crit-soft); color:var(--crit)}
+.p-idle{background:var(--surface-3); color:var(--ink-3)}
+
+.stats{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden}
+.stat{background:var(--surface); padding:10px 11px; display:flex; flex-direction:column; gap:3px}
+.stat .k{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:9.5px; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3)}
+.stat .v{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:19px; font-weight:600; font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.stat .u{font-size:11px; color:var(--ink-3); font-weight:400}
+
+.meter{display:flex; flex-direction:column; gap:6px}
+.meter-track{position:relative; height:8px; background:var(--surface-3); border-radius:100px; overflow:visible}
+.meter-fill{height:100%; border-radius:100px; background:var(--accent); transition:width .25s ease}
+.meter-mark{position:absolute; top:-4px; width:2px; height:16px; background:var(--ink-3); border-radius:2px}
+.meter-legend{display:flex; justify-content:space-between; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; color:var(--ink-3)}
+
+.flags{display:flex; flex-direction:column; gap:6px}
+.flag{display:flex; gap:8px; align-items:flex-start; font-size:12.5px; line-height:1.45; padding:8px 10px; border-radius:5px; border:1px solid transparent}
+.flag b{font-weight:600}
+.f-crit{background:var(--crit-soft); color:var(--crit); border-color:color-mix(in srgb, var(--crit) 25%, transparent)}
+.f-warn{background:var(--warn-soft); color:var(--warn); border-color:color-mix(in srgb, var(--warn) 25%, transparent)}
+.f-good{background:var(--good-soft); color:var(--good); border-color:color-mix(in srgb, var(--good) 25%, transparent)}
+.flag .dot{flex:none; width:6px; height:6px; border-radius:50%; background:currentColor; margin-top:6px}
+
+/* note output */
+.note{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
+  box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden;
+}
+.note-bar{display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--border); background:var(--surface-2)}
+.note-bar h3{font-size:13px; font-weight:600; flex:1}
+.btn{
+  border:1px solid var(--border-strong); background:var(--surface); color:var(--ink);
+  border-radius:5px; padding:5px 11px; font-size:12.5px; font-weight:500; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.btn-primary{background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent-2); border-color:var(--accent-2)}
+
+.note-body{max-height:min(62vh,760px); overflow-y:auto; padding:4px 0}
+@media (max-width:1080px){ .note-body{max-height:none} }
+.sec{border-bottom:1px solid var(--border)}
+.sec:last-child{border-bottom:0}
+.sec-head{display:flex; align-items:center; gap:8px; padding:9px 14px 5px}
+.sec-head h4{
+  margin:0; flex:1; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+}
+.copy{
+  border:0; background:transparent; color:var(--ink-3); font-size:11px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; letter-spacing:.05em;
+  padding:3px 6px; border-radius:4px;
+}
+.copy:hover{color:var(--accent); background:var(--accent-soft)}
+.copy:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.sec pre{
+  margin:0; padding:0 14px 12px; white-space:pre-wrap; word-wrap:break-word;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; line-height:1.65; color:var(--ink-2);
+}
+.empty{padding:26px 14px; text-align:center; color:var(--ink-3); font-size:13px}
+
+.toast{
+  position:fixed; left:50%; bottom:22px; transform:translate(-50%,14px);
+  background:var(--ink); color:var(--bg); padding:9px 16px; border-radius:100px;
+  font-size:13px; font-weight:500; opacity:0; pointer-events:none; transition:opacity .18s, transform .18s; z-index:50;
+}
+.toast.on{opacity:1; transform:translate(-50%,0)}
+
+.foot{margin-top:26px; padding-top:16px; border-top:1px solid var(--border); color:var(--ink-3); font-size:12px; line-height:1.6; max-width:80ch}
+.foot b{color:var(--ink-2)}
+
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="mast-l">
+      <div class="eyebrow">Serial debridement &amp; matrix application</div>
+      <h1>Wound Note Builder</h1>
+      <p class="sub">Enter the visit as you work through it. The measurements, trajectory, tissue split, protein target, and infection tally are computed for you, and the note assembles on the right — section by section, ready to paste.</p>
+    </div>
+    <div class="privacy">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span><b style="color:var(--ink)">Nothing leaves this page.</b> No data is saved, stored, or transmitted — everything lives in the browser tab and is gone when you close it. Paste into your EMR before leaving.</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- ============ FORM ============ -->
+    <form class="steps" id="form" autocomplete="off">
+
+      <details class="step" open>
+        <summary><span class="num">1</span><h2>Visit &amp; wound</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <div class="grid g3">
+            <label class="f"><span>Date of service</span><input type="date" id="dos"></label>
+            <label class="f"><span>Visit # this episode</span><input type="number" id="visitNo" min="1" placeholder="7"></label>
+            <label class="f"><span>Weeks in treatment</span><input type="number" id="weeks" min="0" placeholder="6"></label>
+          </div>
+          <div class="grid g2">
+            <label class="f"><span>Wound location</span><input type="text" id="loc" placeholder="right greater trochanter"></label>
+            <label class="f"><span>Etiology</span>
+              <select id="etio">
+                <option value="pressure">Pressure injury</option>
+                <option value="venous">Venous</option>
+                <option value="diabetic">Diabetic neuropathic</option>
+                <option value="arterial">Arterial</option>
+                <option value="mixed">Mixed</option>
+                <option value="surgical">Surgical dehiscence</option>
+                <option value="trauma">Trauma</option>
+              </select>
+            </label>
+          </div>
+          <label class="f"><span>Stage / classification</span><input type="text" id="stage" placeholder="Stage 4 pressure injury"></label>
+        </div>
+      </details>
+
+      <details class="step" open>
+        <summary><span class="num">2</span><h2>Measurements</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <p class="hint">Measure <b>before</b> debridement. Length is the longest head-to-toe dimension; width is the greatest dimension at 90° to it. Post-debridement numbers go in step 7.</p>
+          <fieldset><legend>Today — pre-debridement</legend>
+            <div class="grid g3">
+              <label class="f"><span>Length cm</span><input type="number" step="0.1" id="cl" placeholder="4.5"></label>
+              <label class="f"><span>Width cm</span><input type="number" step="0.1" id="cw" placeholder="3.4"></label>
+              <label class="f"><span>Depth cm</span><input type="number" step="0.1" id="cd" placeholder="1.1"></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Last visit</legend>
+            <div class="grid g4">
+              <label class="f"><span>Date</span><input type="date" id="pdate"></label>
+              <label class="f"><span>Length</span><input type="number" step="0.1" id="pl" placeholder="4.6"></label>
+              <label class="f"><span>Width</span><input type="number" step="0.1" id="pw" placeholder="3.4"></label>
+              <label class="f"><span>Depth</span><input type="number" step="0.1" id="pd" placeholder="0.9"></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Four weeks ago — the benchmark is a four-week threshold</legend>
+            <div class="grid g3">
+              <label class="f"><span>Date</span><input type="date" id="fdate"></label>
+              <label class="f"><span>Length</span><input type="number" step="0.1" id="fl" placeholder="3.2"></label>
+              <label class="f"><span>Width</span><input type="number" step="0.1" id="fw" placeholder="2.5"></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Baseline</legend>
+            <div class="grid g4">
+              <label class="f"><span>Date</span><input type="date" id="bdate"></label>
+              <label class="f"><span>Length</span><input type="number" step="0.1" id="bl" placeholder="6.2"></label>
+              <label class="f"><span>Width</span><input type="number" step="0.1" id="bw" placeholder="4.8"></label>
+              <label class="f"><span>Depth</span><input type="number" step="0.1" id="bd" placeholder="1.4"></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Undermining / tunneling / structures</legend>
+            <div class="grid g3">
+              <label class="f"><span>Undermining cm</span><input type="number" step="0.1" id="umCm" placeholder="2.2"></label>
+              <label class="f"><span>From o'clock</span><input type="number" min="1" max="12" id="umA" placeholder="2"></label>
+              <label class="f"><span>To o'clock</span><input type="number" min="1" max="12" id="umB" placeholder="5"></label>
+            </div>
+            <div class="grid g3">
+              <label class="f"><span>Prior undermining cm</span><input type="number" step="0.1" id="umPrior" placeholder="1.6"></label>
+              <label class="f"><span>Tunneling cm</span><input type="number" step="0.1" id="tunCm" placeholder="0"></label>
+              <label class="f"><span>Tunneling o'clock</span><input type="number" min="1" max="12" id="tunAt"></label>
+            </div>
+            <div class="grid g2">
+              <label class="f"><span>Exposed structures</span>
+                <select id="exposed">
+                  <option value="none">None</option>
+                  <option value="subcutaneous tissue">Subcutaneous tissue</option>
+                  <option value="subcutaneous tissue and fascia">Subcutaneous tissue and fascia</option>
+                  <option value="muscle">Muscle</option>
+                  <option value="tendon">Tendon</option>
+                  <option value="bone">Bone</option>
+                </select>
+              </label>
+              <label class="f"><span>Probe to bone</span>
+                <select id="ptb"><option value="">Not assessed</option><option value="negative">Negative</option><option value="positive">POSITIVE</option></select>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">3</span><h2>Characteristics</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <fieldset><legend>Tissue composition — must total 100%</legend>
+            <div class="grid g4">
+              <label class="f"><span>Granulation %</span><input type="number" min="0" max="100" id="tG" placeholder="45"></label>
+              <label class="f"><span>Slough %</span><input type="number" min="0" max="100" id="tS" placeholder="45"></label>
+              <label class="f"><span>Eschar %</span><input type="number" min="0" max="100" id="tE" placeholder="10"></label>
+              <label class="f"><span>Epithelial %</span><input type="number" min="0" max="100" id="tP" placeholder="0"></label>
+            </div>
+            <div class="tbar" id="tbar" aria-hidden="true"></div>
+            <div class="tsum" id="tsum">—</div>
+            <div class="grid g2">
+              <label class="f"><span>Granulation quality</span>
+                <select id="gq">
+                  <option value="">—</option>
+                  <option value="beefy red and healthy">Beefy red, healthy</option>
+                  <option value="pink-red, healthy, not friable">Pink-red, healthy</option>
+                  <option value="pale pink">Pale pink</option>
+                  <option value="dusky, friable, bleeds on light contact">Dusky, friable</option>
+                  <option value="hypergranulation above the level of the surrounding skin">Hypergranulation</option>
+                </select>
+              </label>
+              <label class="f"><span>Prior granulation %</span><input type="number" min="0" max="100" id="tGprior" placeholder="60"></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Edges &amp; periwound</legend>
+            <div class="checks" id="edgeChecks">
+              <label class="chk"><input type="checkbox" data-edge="attached and advancing">Attached / advancing</label>
+              <label class="chk"><input type="checkbox" data-edge="non-advancing">Non-advancing</label>
+              <label class="chk"><input type="checkbox" data-edge="EPIBOLE">Epibole (rolled)</label>
+              <label class="chk"><input type="checkbox" data-edge="fibrotic">Fibrotic</label>
+              <label class="chk"><input type="checkbox" data-edge="callused and hyperkeratotic">Callused</label>
+              <label class="chk"><input type="checkbox" data-edge="undermined">Undermined</label>
+            </div>
+            <label class="f"><span>Epibole clock position (if present)</span><input type="text" id="epiAt" placeholder="3 to 6 o'clock"></label>
+            <div class="checks" id="periChecks">
+              <label class="chk"><input type="checkbox" data-peri="intact">Intact</label>
+              <label class="chk"><input type="checkbox" data-peri="MACERATION">Maceration</label>
+              <label class="chk"><input type="checkbox" data-peri="excoriated">Excoriation</label>
+              <label class="chk"><input type="checkbox" data-peri="ERYTHEMA">Erythema</label>
+              <label class="chk"><input type="checkbox" data-peri="INDURATION">Induration</label>
+              <label class="chk"><input type="checkbox" data-peri="warm relative to the contralateral side">Warmth</label>
+              <label class="chk"><input type="checkbox" data-peri="hemosiderin staining and lipodermatosclerosis">Hemosiderin / LDS</label>
+              <label class="chk"><input type="checkbox" data-peri="dry and scaly">Dry / scaly</label>
+            </div>
+            <div class="grid g3">
+              <label class="f"><span>Erythema cm</span><input type="number" step="0.1" id="eryCm" placeholder="3.5"></label>
+              <label class="f"><span>Blanchable?</span><select id="eryBl"><option value="blanchable">Blanchable</option><option value="non-blanchable">Non-blanchable</option></select></label>
+              <label class="f"><span>Induration cm</span><input type="number" step="0.1" id="indCm" placeholder="2"></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Exudate, odor, pain</legend>
+            <div class="grid g3">
+              <label class="f"><span>Amount</span>
+                <select id="exAmt"><option value="">—</option><option>none</option><option>scant</option><option>small</option><option>moderate</option><option>large</option><option>copious</option></select>
+              </label>
+              <label class="f"><span>Type</span>
+                <select id="exType"><option value="">—</option><option>serous</option><option>serosanguineous</option><option>sanguineous</option><option>seropurulent</option><option>purulent</option></select>
+              </label>
+              <label class="f"><span>Odor after cleansing</span>
+                <select id="odor"><option value="">—</option><option>none</option><option>mild</option><option>foul</option></select>
+              </label>
+            </div>
+            <div class="grid g3">
+              <label class="f"><span>Pain at rest /10</span><input type="number" min="0" max="10" id="painRest" placeholder="3"></label>
+              <label class="f"><span>Pain w/ change /10</span><input type="number" min="0" max="10" id="painChg" placeholder="6"></label>
+              <label class="f"><span>Prior exudate</span><input type="text" id="exPrior" placeholder="moderate serosanguineous"></label>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">4</span><h2>Infection — NERDS / STONEES</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <fieldset><legend>NERDS — superficial (≥3 = critical colonization)</legend>
+            <div class="checks" id="nerds">
+              <label class="chk"><input type="checkbox" data-n="Non-healing">Non-healing</label>
+              <label class="chk"><input type="checkbox" data-n="Exudate increased">Exudate ↑</label>
+              <label class="chk"><input type="checkbox" data-n="Red friable granulation">Red friable granulation</label>
+              <label class="chk"><input type="checkbox" data-n="Debris">Debris</label>
+              <label class="chk"><input type="checkbox" data-n="Smell">Smell</label>
+            </div>
+          </fieldset>
+          <fieldset><legend>STONEES — deep (≥3 = deep &amp; surrounding infection)</legend>
+            <div class="checks" id="stonees">
+              <label class="chk"><input type="checkbox" data-s="Size increasing">Size ↑</label>
+              <label class="chk"><input type="checkbox" data-s="Temperature elevated">Temperature ↑</label>
+              <label class="chk"><input type="checkbox" data-s="Os — probes to bone">Os / probes to bone</label>
+              <label class="chk"><input type="checkbox" data-s="New areas of breakdown">New breakdown</label>
+              <label class="chk"><input type="checkbox" data-s="Exudate">Exudate</label>
+              <label class="chk"><input type="checkbox" data-s="Erythema/Edema">Erythema / edema</label>
+              <label class="chk"><input type="checkbox" data-s="Smell">Smell</label>
+            </div>
+          </fieldset>
+          <div class="grid g2">
+            <label class="f"><span>Culture technique</span>
+              <select id="cult"><option value="">Not indicated</option><option value="tissue biopsy from the wound base">Tissue biopsy</option><option value="Levine technique — swab rotated over 1 sq cm of clean granulating tissue with sufficient pressure to express fluid">Levine technique</option></select>
+            </label>
+            <label class="f"><span>Empiric antibiotic (if starting)</span><input type="text" id="abx" placeholder="ampicillin-sulbactam 3 g IV q6h"></label>
+          </div>
+          <label class="f"><span>Supporting labs / vitals for the infection call</span><input type="text" id="infSupport" placeholder="T 100.8°F, WBC 12.8 with 82% neutrophils, CRP 6.8, ESR 68"></label>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">5</span><h2>Labs, nutrition &amp; comorbidities</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <fieldset><legend>Albumin &amp; nutrition</legend>
+            <div class="grid g4">
+              <label class="f"><span>Albumin g/dL</span><input type="number" step="0.1" id="alb" placeholder="2.4"></label>
+              <label class="f"><span>Prior albumin</span><input type="number" step="0.1" id="albPrior" placeholder="2.6"></label>
+              <label class="f"><span>Prealbumin</span><input type="number" step="0.1" id="prealb" placeholder="12"></label>
+              <label class="f"><span>CRP mg/dL</span><input type="number" step="0.1" id="crp" placeholder="6.8"></label>
+            </div>
+            <div class="grid g4">
+              <label class="f"><span>Weight kg</span><input type="number" step="0.1" id="wt" placeholder="58.4"></label>
+              <label class="f"><span>Prior weight kg</span><input type="number" step="0.1" id="wtPrior" placeholder="61.0"></label>
+              <label class="f"><span>Protein g/kg</span><input type="number" step="0.05" id="gkg" value="1.5"></label>
+              <label class="f"><span>Est. intake g/day</span><input type="number" id="intake" placeholder="48"></label>
+            </div>
+            <p class="hint" id="proteinHint">Enter a weight to compute the protein target.</p>
+          </fieldset>
+          <fieldset><legend>Platelets</legend>
+            <div class="grid g3">
+              <label class="f"><span>Platelets K/µL</span><input type="number" id="plt" placeholder="118"></label>
+              <label class="f"><span>Prior platelets</span><input type="number" id="pltPrior" placeholder="147"></label>
+              <label class="f"><span>WBC K/µL</span><input type="number" step="0.1" id="wbc" placeholder="12.8"></label>
+            </div>
+            <label class="f"><span>Medications on the thrombocytopenia differential</span><input type="text" id="pltMeds" placeholder="enoxaparin, pantoprazole"></label>
+            <p class="hint">A low platelet count is charted with a differential and a workup. The antibiotic decision is generated from the STONEES tally in step 4 — <b>not</b> from this number.</p>
+          </fieldset>
+          <fieldset><legend>Comorbidity control — realistic targets</legend>
+            <div class="grid g3">
+              <label class="f"><span>A1c %</span><input type="number" step="0.1" id="a1c" placeholder="8.1"></label>
+              <label class="f"><span>Individualized target</span><input type="text" id="a1cTgt" placeholder="< 8.0%"></label>
+              <label class="f"><span>ABI</span><input type="number" step="0.01" id="abi" placeholder="0.92"></label>
+            </div>
+            <label class="f"><span>Why this target rather than the guideline number</span><input type="text" id="a1cWhy" placeholder="age 82, multiple comorbidities, hypoglycemia and fall risk"></label>
+            <label class="f"><span>Other comorbidities and who manages them</span><textarea id="comorbOther" placeholder="HFmrEF EF 45% — Dr. [PCP], notified 08/28 re: IV fluid caution"></textarea></label>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">6</span><h2>Impediments &amp; offloading</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <p class="hint">Each box adds the intervention <b>and</b> the education sentence to the note. Checking a box is not the documentation — the generated text is, so read it.</p>
+          <div class="checks" id="imped">
+            <label class="chk"><input type="checkbox" data-imp="pressure" checked>Unrelieved pressure</label>
+            <label class="chk"><input type="checkbox" data-imp="mobility">Immobility</label>
+            <label class="chk"><input type="checkbox" data-imp="perfusion">Poor perfusion / pooling</label>
+            <label class="chk"><input type="checkbox" data-imp="nutrition">Malnutrition</label>
+            <label class="chk"><input type="checkbox" data-imp="infection">Infection</label>
+            <label class="chk"><input type="checkbox" data-imp="moisture">Moisture / incontinence</label>
+            <label class="chk"><input type="checkbox" data-imp="glycemic">Hyperglycemia</label>
+            <label class="chk"><input type="checkbox" data-imp="meds">Medications</label>
+            <label class="chk"><input type="checkbox" data-imp="adherence">Adherence barrier</label>
+          </div>
+          <div class="grid g2">
+            <label class="f"><span>Side to keep off</span><input type="text" id="offSide" placeholder="right"></label>
+            <label class="f"><span>Braden score</span><input type="number" id="braden" placeholder="12"></label>
+          </div>
+          <div class="grid g2">
+            <label class="f"><span>Turn log gaps (count)</span><input type="number" id="gapN" placeholder="4"></label>
+            <label class="f"><span>Gap length ≥ hours</span><input type="number" id="gapH" placeholder="4"></label>
+          </div>
+          <label class="f"><span>Adherence barrier, named plainly</span><input type="text" id="adhBarrier" placeholder="night-shift staffing; caregiver removing compression at night"></label>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">7</span><h2>Debridement</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <div class="grid g2">
+            <label class="f"><span>Type</span>
+              <select id="debType">
+                <option value="">Not performed</option>
+                <option value="selective">Selective, non-excisional</option>
+                <option value="excisional">Sharp excisional</option>
+              </select>
+            </label>
+            <label class="f"><span>Anesthesia</span><input type="text" id="anes" placeholder="topical lidocaine 4%, ~2 g, 20-min dwell"></label>
+          </div>
+          <div class="grid g2">
+            <label class="f"><span>Instrument(s) with size</span><input type="text" id="instr" placeholder="4 mm sterile ring curette; #15 scalpel blade"></label>
+            <label class="f"><span>Tissue removed</span><input type="text" id="tissRem" placeholder="adherent slough, soft boggy eschar, fibrotic margin"></label>
+          </div>
+          <label class="f"><span>Deepest tissue level removed — drives code selection</span>
+            <select id="deepest">
+              <option value="devitalized tissue only; no viable tissue was excised">Devitalized tissue only</option>
+              <option value="subcutaneous tissue">Subcutaneous tissue</option>
+              <option value="fascia">Fascia</option>
+              <option value="muscle">Muscle</option>
+              <option value="bone">Bone</option>
+            </select>
+          </label>
+          <div class="grid g3">
+            <label class="f"><span>Area debrided sq cm</span><input type="number" step="0.1" id="debCm" placeholder="5.4"></label>
+            <label class="f"><span>Bleeding</span>
+              <select id="bleed"><option value="punctate capillary">Punctate capillary</option><option value="minimal">Minimal</option><option value="moderate">Moderate</option></select>
+            </label>
+            <label class="f"><span>Pressure held, minutes</span><input type="number" id="hemoMin" placeholder="4"></label>
+          </div>
+          <div class="grid g2">
+            <label class="f"><span>Additional hemostasis</span><input type="text" id="hemoOther" placeholder="calcium alginate to the margin"></label>
+            <label class="f"><span>Pain during procedure /10</span><input type="number" min="0" max="10" id="debPain" placeholder="4"></label>
+          </div>
+          <fieldset><legend>Post-debridement</legend>
+            <div class="grid g4">
+              <label class="f"><span>Granulation %</span><input type="number" min="0" max="100" id="postG" placeholder="85"></label>
+              <label class="f"><span>Length cm</span><input type="number" step="0.1" id="postL" placeholder="4.8"></label>
+              <label class="f"><span>Width cm</span><input type="number" step="0.1" id="postW" placeholder="3.5"></label>
+              <label class="f"><span>Depth cm</span><input type="number" step="0.1" id="postD" placeholder="1.3"></label>
+            </div>
+            <p class="hint" id="postHint">Enter post-debridement dimensions to compute the change and generate the unmasking statement if the wound enlarged.</p>
+          </fieldset>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">8</span><h2>Matrix — consent, product, technique</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <label class="f"><span>Status this visit</span>
+            <select id="mlStatus">
+              <option value="">Not applicable</option>
+              <option value="applied">Applied today</option>
+              <option value="deferred">Deferred — with reason</option>
+            </select>
+          </label>
+          <div class="grid g2">
+            <label class="f"><span>Product</span><input type="text" id="mlProd" value="Microlyte Ag antimicrobial wound matrix"></label>
+            <label class="f"><span>Consented by (name, relationship)</span><input type="text" id="mlWho" placeholder="the patient, who has capacity"></label>
+          </div>
+          <div class="grid g4">
+            <label class="f"><span>Lot #</span><input type="text" id="mlLot" placeholder="LOT-00000"></label>
+            <label class="f"><span>Expiration</span><input type="text" id="mlExp" placeholder="06/2027"></label>
+            <label class="f"><span>Sheet opened sq cm</span><input type="number" step="0.1" id="mlSheet" placeholder="25"></label>
+            <label class="f"><span>Applied sq cm</span><input type="number" step="0.1" id="mlApplied" placeholder="10.8"></label>
+          </div>
+          <div class="grid g3">
+            <label class="f"><span>Application #</span><input type="number" id="mlN" placeholder="1"></label>
+            <label class="f"><span>Planned course</span><input type="number" id="mlOf" placeholder="4"></label>
+            <label class="f"><span>Secure with</span><input type="text" id="mlSecure" value="Steri-Strips"></label>
+          </div>
+          <label class="f"><span>Deferral reason (if deferred)</span><input type="text" id="mlDefer" placeholder="clinical deep tissue infection with positive probe-to-bone"></label>
+          <label class="f"><span>Dressing stack over the matrix</span><input type="text" id="stack" value="Adaptic, ABD pad, roll gauze"></label>
+          <label class="f"><span>Compression applied over the stack</span><input type="text" id="compression" placeholder="three-layer, 30–40 mmHg"></label>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num">9</span><h2>Education &amp; communication</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <div class="grid g2">
+            <label class="f"><span>Caregiver educated (name, relationship)</span><input type="text" id="cgName" placeholder="Karen Doe, daughter"></label>
+            <label class="f"><span>Teach-back skill returned</span><input type="text" id="teachBack" placeholder="30° lateral tilt with pillow bridging"></label>
+          </div>
+          <label class="f"><span>Remaining knowledge gap and how it was addressed</span><input type="text" id="eduGap" placeholder="was removing the compression wrap 'to help'; addressed without blame, agreed to call instead"></label>
+          <div class="grid g2">
+            <label class="f"><span>Facility nurse (name, role)</span><input type="text" id="rnName" placeholder="M. Alvarez, RN, charge nurse"></label>
+            <label class="f"><span>Escalated to (name, role, time)</span><input type="text" id="escalate" placeholder="N. Reyes, RN, DON, by phone at 1140"></label>
+          </div>
+          <label class="f"><span>PCP notified — what about</span><input type="text" id="pcpNote" placeholder="Dr. [PCP], by phone 1155: new deep infection, antibiotics, MRI, thrombocytopenia workup"></label>
+          <div class="grid g2">
+            <label class="f"><span>Next visit</span><input type="date" id="nextVisit"></label>
+            <label class="f"><span>Provider name &amp; credentials</span><input type="text" id="provider" placeholder="[Name], NP"></label>
+          </div>
+        </div>
+      </details>
+
+    </form>
+
+    <!-- ============ READOUT ============ -->
+    <aside class="panel">
+      <section class="readout" aria-live="polite">
+        <div class="ro-head"><h3>Trajectory</h3><span class="pill p-idle" id="trajPill">Awaiting measurements</span></div>
+        <div class="stats">
+          <div class="stat"><span class="k">Area today</span><span class="v" id="sArea">—<span class="u"> sq cm</span></span></div>
+          <div class="stat"><span class="k">Week over week</span><span class="v" id="sWow">—</span></div>
+          <div class="stat"><span class="k">Four-week change</span><span class="v" id="sFour">—</span></div>
+          <div class="stat"><span class="k">From baseline</span><span class="v" id="sCum">—</span></div>
+        </div>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" id="meterFill" style="width:0%"></div><div class="meter-mark" id="meterMark" style="left:40%"></div></div>
+          <div class="meter-legend"><span id="meterBasis">four-week change</span><span id="meterLabel">benchmark —</span><span>100%</span></div>
+        </div>
+        <div class="flags" id="flags"></div>
+      </section>
+
+      <section class="note">
+        <div class="note-bar">
+          <h3>Generated note</h3>
+          <button type="button" class="btn" id="expandAll">Open all steps</button>
+          <button type="button" class="btn btn-primary" id="copyAll">Copy all</button>
+        </div>
+        <div class="note-body" id="out"><div class="empty">Fill in the visit on the left and the note assembles here.</div></div>
+      </section>
+    </aside>
+  </div>
+
+  <p class="foot">
+    <b>This is a documentation aid, not clinical advice, and it does not make clinical decisions.</b>
+    Generated text is a draft: read every line, correct anything that does not match what you actually found and did, and sign only what is true.
+    Benchmarks are the commonly cited four-week area-reduction thresholds (≈50% for diabetic foot ulcers, ≈40% for venous, ≈30–40% for pressure) — verify code selection, units, modifiers, and coverage criteria against your own payer policy.
+  </p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var v = function(id){ var e=$(id); return e ? e.value.trim() : ""; };
+  var n = function(id){ var x=parseFloat(v(id)); return isNaN(x) ? null : x; };
+  var f = function(x,d){ return x===null||x===undefined ? null : Number(x).toFixed(d===undefined?2:d); };
+
+  function area(l,w){ return (l!==null && w!==null) ? l*w : null; }
+  function pct(prev,cur){ return (prev && prev>0 && cur!==null) ? (prev-cur)/prev*100 : null; }
+  function checked(sel,attr){
+    return Array.prototype.slice.call(document.querySelectorAll(sel+" input:checked"))
+      .map(function(c){ return c.getAttribute(attr); });
+  }
+  function benchmark(){
+    var e=v("etio");
+    if(e==="diabetic") return 50;
+    if(e==="venous") return 40;
+    if(e==="pressure") return 35;
+    return 40;
+  }
+  function etioWord(){
+    var m={pressure:"pressure",venous:"venous",diabetic:"diabetic foot",arterial:"arterial",mixed:"mixed-etiology",surgical:"surgical",trauma:"traumatic"};
+    return m[v("etio")]||"chronic";
+  }
+  function dstr(id){
+    var d=v(id); if(!d) return "[date]";
+    var p=d.split("-"); return p[1]+"/"+p[2]+"/"+p[0];
+  }
+  function orBlank(s,fb){ return s ? s : fb; }
+  function join(arr,fb){ return arr.length ? arr.join(", ") : fb; }
+  function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+
+  /* ---------- computed model ---------- */
+  function model(){
+    var m={};
+    m.cur=area(n("cl"),n("cw"));
+    m.prev=area(n("pl"),n("pw"));
+    m.base=area(n("bl"),n("bw"));
+    m.post=area(n("postL"),n("postW"));
+    m.four=area(n("fl"),n("fw"));
+    m.wow=pct(m.prev,m.cur);
+    m.cum=pct(m.base,m.cur);
+    m.fourPct=pct(m.four,m.cur);
+    m.bench=benchmark();
+    // The published thresholds are four-week area reductions, so compare like with
+    // like. Fall back to the cumulative figure only when no four-week point exists,
+    // and label it so the note never implies a four-week comparison it did not make.
+    m.benchVal = m.fourPct!==null ? m.fourPct : m.cum;
+    m.benchIsFour = m.fourPct!==null;
+    m.debPct=(n("debCm")!==null && m.cur) ? n("debCm")/m.cur*100 : null;
+    m.postDelta=(m.post!==null && m.cur!==null) ? m.post-m.cur : null;
+    m.tissue=["tG","tS","tE","tP"].map(n);
+    m.tSum=m.tissue.reduce(function(a,b){ return a+(b||0); },0);
+    m.tAny=m.tissue.some(function(x){ return x!==null; });
+    m.nerds=checked("#nerds","data-n");
+    m.stonees=checked("#stonees","data-s");
+    m.imped=checked("#imped","data-imp");
+    m.edges=checked("#edgeChecks","data-edge");
+    m.peri=checked("#periChecks","data-peri");
+    var wt=n("wt"), gkg=n("gkg");
+    m.protein=(wt!==null&&gkg!==null)?Math.round(wt*gkg):null;
+    m.kcal=(wt!==null)?Math.round(wt*32):null;
+    m.gap=(m.protein!==null&&n("intake")!==null)?m.protein-n("intake"):null;
+    m.wtLoss=(n("wtPrior")&&wt!==null)?(n("wtPrior")-wt)/n("wtPrior")*100:null;
+    m.mlWaste=(n("mlSheet")!==null&&n("mlApplied")!==null)?n("mlSheet")-n("mlApplied"):null;
+    m.pltDrop=(n("pltPrior")&&n("plt")!==null)?(n("pltPrior")-n("plt"))/n("pltPrior")*100:null;
+
+    // Deterioration signals. Area alone hides a wound that is extending in depth,
+    // tracking under the edge, or becoming infected — so the verdict reads all four.
+    m.deter=[];
+    if(m.wow!==null && m.wow<0) m.deter.push("the area increased over the past week");
+    if(n("cd")!==null && n("pd")!==null && n("cd")>n("pd")) m.deter.push("depth increased from "+n("pd")+" to "+n("cd")+" cm");
+    if(n("umCm")!==null && n("umPrior")!==null && n("umCm")>n("umPrior")) m.deter.push("undermining increased from "+n("umPrior")+" to "+n("umCm")+" cm");
+    if(m.stonees.length>=3) m.deter.push("deep and surrounding tissue infection criteria are met");
+
+    // Cumulative status drives the benchmark meter; the verdict is the composite.
+    if(m.benchVal===null) m.cumStatus="idle";
+    else if(m.benchVal<0) m.cumStatus="crit";
+    else if(m.benchVal>=m.bench) m.cumStatus="good";
+    else if(m.benchVal>=m.bench*0.6) m.cumStatus="warn";
+    else m.cumStatus="crit";
+
+    if(m.deter.length) m.verdict={k:"crit",label:"Deteriorating",word:"DETERIORATING",plan:"The plan changes materially this visit, as detailed in the assessment and plan."};
+    else if(m.benchVal===null) m.verdict={k:"idle",label:"Awaiting measurements",word:"[state trajectory]",plan:"[state whether the plan changes]"};
+    else if(m.benchVal>=m.bench) m.verdict={k:"good",label:"On track",word:"progressing as expected",plan:"Trajectory is appropriate and the current plan is continued without change."};
+    else if(m.benchVal>=m.bench*0.6) m.verdict={k:"warn",label:"Below benchmark",word:"improving but below benchmark",plan:"The plan is escalated this visit, as detailed in the assessment and plan."};
+    else m.verdict={k:"crit",label:"STALLED",word:"STALLED",plan:"The plan is escalated this visit, as detailed in the assessment and plan."};
+
+    // Cumulative progress can look fine while this week does not. Say so explicitly.
+    m.diverges = m.deter.length>0 && m.benchVal!==null && m.benchVal>=m.bench;
+    return m;
+  }
+
+  /* ---------- readout ---------- */
+  function renderReadout(m){
+    $("sArea").innerHTML = m.cur!==null ? f(m.cur)+'<span class="u"> sq cm</span>' : "—";
+    $("sWow").textContent = m.wow!==null ? (m.wow>=0?"−":"+")+Math.abs(m.wow).toFixed(1)+"%" : "—";
+    $("sFour").textContent = m.fourPct!==null ? (m.fourPct>=0?"−":"+")+Math.abs(m.fourPct).toFixed(1)+"%" : "—";
+    $("sCum").textContent = m.cum!==null ? (m.cum>=0?"−":"+")+Math.abs(m.cum).toFixed(1)+"%" : "—";
+
+    var pill=$("trajPill");
+    pill.className="pill p-"+m.verdict.k; pill.textContent=m.verdict.label;
+
+    var fill=Math.max(0,Math.min(100,m.benchVal||0));
+    $("meterFill").style.width=fill+"%";
+    $("meterFill").style.background = m.cumStatus==="good" ? "var(--good)" : m.cumStatus==="warn" ? "var(--warn)" : m.cumStatus==="crit" ? "var(--crit)" : "var(--accent)";
+    $("meterMark").style.left=m.bench+"%";
+    $("meterLabel").textContent="benchmark "+m.bench+"%";
+    $("meterBasis").textContent=m.benchIsFour?"four-week change":"cumulative (no 4-wk point)";
+
+    var fl=[];
+    if(m.diverges) fl.push(["f-crit","<b>Cumulative reduction meets the "+m.bench+"% benchmark, but this week does not:</b> "+m.deter.join("; ")+". Area alone would hide this — the note states it as a distinct inflection."]);
+    else if(m.deter.length) fl.push(["f-crit","<b>Deteriorating:</b> "+m.deter.join("; ")+"."]);
+    if(m.stonees.length>=3) fl.push(["f-crit","<b>STONEES "+m.stonees.length+"/7</b> — deep and surrounding tissue infection. Systemic therapy indicated; culture before starting."]);
+    else if(m.nerds.length>=3) fl.push(["f-warn","<b>NERDS "+m.nerds.length+"/5</b> — critical colonization. Topical antimicrobial therapy indicated."]);
+    if(v("ptb")==="positive") fl.push(["f-crit","<b>Probe-to-bone positive</b> — osteomyelitis must be excluded. Imaging and ID input."]);
+    if(m.tAny && m.tSum!==100) fl.push(["f-warn","<b>Tissue percentages total "+m.tSum+"%</b> — must equal 100 before this note is signed."]);
+    if(m.benchVal!==null && m.benchVal<m.bench && m.benchVal>=0) fl.push(["f-warn","<b>"+(m.benchIsFour?"Four-week reduction ":"Cumulative reduction ")+m.benchVal.toFixed(1)+"% is below the "+m.bench+"% benchmark</b> — the note must state the plan change, not just the number."]);
+    if(m.cur!==null && !m.benchIsFour) fl.push(["f-warn","<b>No four-week measurement entered.</b> The benchmark is a four-week threshold, so the cumulative figure is being used as a stand-in — enter the four-week point for a like-for-like comparison."]);
+    if(m.postDelta!==null && m.postDelta>0) fl.push(["f-good","<b>Wound enlarged "+f(m.postDelta)+" sq cm post-debridement</b> — the unmasking statement is generated so next week is not misread."]);
+    if(m.mlWaste!==null && m.mlWaste>0) fl.push(["f-good","<b>"+f(m.mlWaste)+" sq cm discarded</b> — wastage is documented."]);
+    if(v("mlStatus")==="applied" && m.stonees.length>=3) fl.push(["f-crit","<b>Matrix applied to a wound meeting deep-infection criteria.</b> Reconsider — this is contraindicated and will not be covered."]);
+    if(m.pltDrop!==null && m.pltDrop>0 && n("plt")<150) fl.push(["f-warn","<b>Platelets "+n("plt")+" K/µL, down "+m.pltDrop.toFixed(0)+"%</b> — differential and workup generated; the antibiotic decision is driven by the infection tally."]);
+    if(m.gap!==null && m.gap>0) fl.push(["f-warn","<b>Protein gap "+Math.round(m.gap)+" g/day</b> — the note names how it will be closed."]);
+
+    $("flags").innerHTML = fl.map(function(x){ return '<div class="flag '+x[0]+'"><span class="dot"></span><span>'+x[1]+'</span></div>'; }).join("");
+
+    // tissue bar
+    var colors=["var(--good)","var(--warn)","var(--ink-2)","var(--accent)"];
+    $("tbar").innerHTML = m.tissue.map(function(x,i){
+      return '<i style="width:'+(x||0)+'%;background:'+colors[i]+'"></i>';
+    }).join("");
+    var ts=$("tsum");
+    if(!m.tAny){ ts.textContent="—"; ts.style.color="var(--ink-3)"; }
+    else { ts.textContent="Total "+m.tSum+"%"+(m.tSum===100?" ✓":" — must equal 100%"); ts.style.color=m.tSum===100?"var(--good)":"var(--crit)"; }
+
+    // hints
+    $("proteinHint").innerHTML = m.protein!==null
+      ? "<b>"+n("wt")+" kg × "+n("gkg")+" g/kg = "+m.protein+" g protein/day</b> · "+m.kcal+" kcal/day"
+        + (m.gap!==null ? " · current intake "+n("intake")+" g/day, <b>gap "+Math.round(m.gap)+" g/day</b> ≈ "+Math.max(1,Math.round(m.gap/20))+" high-protein supplement(s) between meals" : "")
+        + (m.wtLoss!==null ? " · weight loss <b>"+m.wtLoss.toFixed(1)+"%</b>" : "")
+      : "Enter a weight to compute the protein target.";
+    $("postHint").innerHTML = m.postDelta!==null
+      ? "Post-debridement <b>"+f(m.post)+" sq cm</b> — "+(m.postDelta>0?"enlarged":"reduced")+" by <b>"+f(Math.abs(m.postDelta))+" sq cm</b>"
+        + (m.postDelta>0?". Unmasking statement generated.":".")
+      : "Enter post-debridement dimensions to compute the change and generate the unmasking statement if the wound enlarged.";
+  }
+
+  /* ---------- note assembly ---------- */
+  function sections(m){
+    var S=[], loc=orBlank(v("loc"),"[location]"), P=[];
+
+    // header
+    S.push(["Header",
+      "Date of service: "+dstr("dos")+"  |  Visit "+orBlank(v("visitNo"),"[N]")+" of this episode  |  Week "+orBlank(v("weeks"),"[N]")+" of treatment\n"+
+      "Wound: "+loc+"  |  Etiology: "+etioWord()+"  |  "+orBlank(v("stage"),"[stage/classification]")
+    ]);
+
+    // measurements
+    if(m.cur!==null){
+      var t="Measured before debridement. Length "+n("cl")+" cm (longest head-to-toe dimension), width "+n("cw")+" cm (greatest dimension perpendicular to length)"+
+        (n("cd")!==null?", depth "+n("cd")+" cm at the deepest point via moistened sterile applicator":"")+
+        ". Area (L x W) = "+f(m.cur)+" sq cm.";
+      if(n("umCm")!==null && n("umCm")>0) t+=" Undermining "+n("umCm")+" cm from "+orBlank(v("umA"),"[__]")+" to "+orBlank(v("umB"),"[__]")+" o'clock"+
+        (n("umPrior")!==null?" (previously "+n("umPrior")+" cm)":"")+".";
+      else t+=" No undermining.";
+      if(n("tunCm")!==null && n("tunCm")>0) t+=" Tunneling "+n("tunCm")+" cm at "+orBlank(v("tunAt"),"[__]")+" o'clock.";
+      t+=" Exposed structures: "+v("exposed")+".";
+      if(v("ptb")) t+=" Probe to bone: "+v("ptb")+(v("ptb")==="positive"?" — NEW FINDING requiring evaluation for osteomyelitis.":".");
+      if(m.wow!==null) t+="\n\nWeek-over-week: "+f(m.prev)+" -> "+f(m.cur)+" sq cm = "+Math.abs(m.wow).toFixed(1)+"% "+(m.wow>=0?"reduction":"increase")+".";
+      if(m.cum!==null) t+=" Cumulative from baseline ("+dstr("bdate")+", "+f(m.base)+" sq cm): "+Math.abs(m.cum).toFixed(1)+"% "+(m.cum>=0?"reduction":"increase")+" over "+orBlank(v("weeks"),"[N]")+" weeks.";
+      if(n("cd")!==null && n("pd")!==null) t+=" Depth "+n("pd")+" -> "+n("cd")+" cm.";
+      S.push(["Measurements",t]);
+    }
+
+    // characteristics
+    if(m.tAny || m.edges.length || m.peri.length || v("exAmt")){
+      var c="";
+      if(m.tAny){
+        c+="Wound bed: "+(m.tissue[0]||0)+"% granulation"+(v("gq")?" — "+v("gq"):"")+", "+(m.tissue[1]||0)+"% slough, "+(m.tissue[2]||0)+"% eschar, "+(m.tissue[3]||0)+"% epithelial tissue."+
+           (m.tSum!==100?"  [WARNING: totals "+m.tSum+"%, must equal 100]":"");
+      }
+      if(m.edges.length){
+        var e=m.edges.map(function(x){
+          return x==="EPIBOLE" ? "epibole — rolled edges at "+orBlank(v("epiAt"),"[__] o'clock")+", with epithelium curled under and not migrating" : x;
+        });
+        c+="\nEdges: "+e.join("; ")+".";
+      }
+      if(m.peri.length){
+        var p=m.peri.map(function(x){
+          if(x==="ERYTHEMA") return "erythema, "+v("eryBl")+", extending "+orBlank(v("eryCm"),"[N]")+" cm from the wound edge";
+          if(x==="INDURATION") return "induration "+orBlank(v("indCm"),"[N]")+" cm";
+          if(x==="MACERATION") return "maceration";
+          return x;
+        });
+        c+="\nPeriwound within 4 cm: "+p.join("; ")+".";
+      }
+      if(v("exAmt")||v("exType")) c+="\nExudate: "+orBlank(v("exAmt"),"[amount]")+" "+orBlank(v("exType"),"[type]")+".";
+      if(v("odor")) c+=" Odor after cleansing: "+v("odor")+".";
+      if(v("painRest")||v("painChg")) c+="\nPain: "+orBlank(v("painRest"),"[N]")+"/10 at rest, "+orBlank(v("painChg"),"[N]")+"/10 with dressing change.";
+      S.push(["Characteristics",c.trim()]);
+    }
+
+    // week over week narrative
+    if(m.wow!==null){
+      var w="Compared with "+dstr("pdate")+":\n";
+      w+="- Size: "+f(m.prev)+" -> "+f(m.cur)+" sq cm ("+Math.abs(m.wow).toFixed(1)+"% "+(m.wow>=0?"reduction":"increase")+")";
+      if(n("cd")!==null&&n("pd")!==null&&n("cd")!==n("pd")) w+="; depth "+n("pd")+" -> "+n("cd")+" cm"+(n("cd")>n("pd")?" (INCREASED)":"");
+      if(n("umCm")!==null&&n("umPrior")!==null) w+="; undermining "+n("umPrior")+" -> "+n("umCm")+" cm"+(n("umCm")>n("umPrior")?" (INCREASED)":"");
+      w+=".";
+      if(n("tGprior")!==null&&m.tissue[0]!==null) w+="\n- Granulation: "+n("tGprior")+"% -> "+m.tissue[0]+"%.";
+      if(v("gq")) w+="\n- Granulation quality: "+v("gq")+".";
+      if(v("exPrior")&&v("exAmt")) w+="\n- Exudate: "+v("exPrior")+" -> "+v("exAmt")+" "+v("exType")+".";
+      if(v("odor")) w+="\n- Odor after cleansing: "+v("odor")+".";
+
+      w+="\n\nTrajectory: "+m.verdict.word+".";
+      if(m.deter.length) w+=" This week "+m.deter.join(", ")+".";
+      if(m.fourPct!==null) w+=" Four-week area change ("+dstr("fdate")+" to today): "+f(m.four)+" -> "+f(m.cur)+" sq cm = "+Math.abs(m.fourPct).toFixed(1)+"% "+(m.fourPct>=0?"reduction":"increase")+", against the >="+m.bench+"% four-week benchmark for "+etioWord()+" wounds.";
+      if(m.cum!==null) w+=(m.fourPct!==null?" Cumulative ":" Cumulative ")+Math.abs(m.cum).toFixed(1)+"% "+(m.cum>=0?"reduction":"increase")+" over "+orBlank(v("weeks"),"[N]")+" weeks"+(m.fourPct===null?" (no four-week measurement available for a like-for-like benchmark comparison)":"")+".";
+      if(m.diverges) w+=" The cumulative figure reflects genuine earlier progress; the change over the past week is a DISTINCT INFLECTION and is the basis for the plan change below. Area alone would have hidden this.";
+      w+=" "+m.verdict.plan;
+      S.push(["Week-over-week comparison",w]);
+    }
+
+    // infection
+    if(m.nerds.length||m.stonees.length){
+      var i="NERDS (superficial; >=3 suggests critical colonization): "+join(m.nerds,"none")+" = "+m.nerds.length+"/5.\n"+
+            "STONEES (deep; >=3 suggests deep and surrounding infection): "+join(m.stonees,"none")+" = "+m.stonees.length+"/7.\n";
+      if(m.stonees.length>=3){
+        i+="Impression: DEEP AND SURROUNDING TISSUE INFECTION. Systemic antibiotic therapy is indicated on these findings"+
+           (v("infSupport")?", supported by "+v("infSupport"):"")+".";
+        if(v("ptb")==="positive") i+=" Probe-to-bone is positive, which in this wound carries a high likelihood of underlying bone involvement; imaging to evaluate for osteomyelitis is ordered and infectious disease input will be obtained if confirmed.";
+      } else if(m.nerds.length>=3){
+        i+="Impression: critical colonization of the wound surface. Topical antimicrobial therapy is indicated; systemic antibiotics are not indicated, as deep-infection criteria are not met.";
+      } else {
+        i+="Impression: no clinical evidence of wound infection. Non-healing here is attributable to the impediments documented below rather than to infection.";
+      }
+      if(v("cult")) i+="\nCulture obtained by "+v("cult")+", after cleansing with normal saline and after debridement, to sample viable tissue rather than surface colonizers. Sent for aerobic, anaerobic, and fungal culture with sensitivities.";
+      if(v("abx")) i+="\nEmpiric "+v("abx")+" started today, to be narrowed on sensitivities. The decision to treat systemically rests on the clinical infection findings above"+(v("infSupport")?" and "+v("infSupport"):"")+".";
+      S.push(["Infection assessment",i]);
+    }
+
+    // labs / nutrition
+    var L="";
+    if(n("alb")!==null){
+      L+="Albumin "+n("alb")+" g/dL"+(n("albPrior")!==null?" (prior "+n("albPrior")+")":"")+". Interpretation documented: albumin is a negative acute-phase reactant and falls with inflammation independent of intake"+
+         (n("crp")!==null?" — with a CRP of "+n("crp")+" mg/dL":"")+", so some of this decline is inflammatory rather than nutritional. The malnutrition diagnosis is supported independently by"+
+         (m.wtLoss!==null?" "+m.wtLoss.toFixed(1)+"% weight loss ("+n("wtPrior")+" -> "+n("wt")+" kg),":"")+
+         (n("prealb")!==null?" a prealbumin of "+n("prealb")+",":"")+
+         " and reported intake. Hypoalbuminemia also contributes to third-spacing and peripheral edema, further impairing perfusion at the wound.";
+    }
+    if(m.protein!==null){
+      L+=(L?"\n\n":"")+"Protein prescription: "+n("wt")+" kg x "+n("gkg")+" g/kg/day = "+m.protein+" g protein/day. Calories "+m.kcal+" kcal/day.";
+      if(m.gap!==null&&m.gap>0){
+        L+=" Current estimated intake "+n("intake")+" g/day — gap of approximately "+Math.round(m.gap)+" g/day.";
+        L+="\nHow the gap will be closed, with specific options given in writing:\n"+
+           "- "+Math.max(1,Math.round(m.gap/20))+" high-protein oral supplement(s) daily (~20 g each), given BETWEEN meals rather than with them, so they add to intake instead of displacing it.\n"+
+           "- Fortify foods already accepted rather than adding volume: 2 Tbsp dry milk powder into oatmeal, soup, mashed potatoes, and milk (+14 g per fortified 8 oz serving).\n"+
+           "- High-yield, low-volume options: Greek yogurt 1 cup (17 g), cottage cheese 1 cup (24 g), two eggs (12 g), 3 oz canned tuna (25 g), 3 oz chicken (26 g).\n"+
+           "- Arginine/glutamine/HMB supplement, 2 servings daily. Vitamin C 500 mg BID. Zinc sulfate 220 mg daily with a STOP DATE at 14 days, as prolonged zinc induces copper deficiency.\n"+
+           "- Registered dietitian consult ordered. Weekly weights, same scale, same time of day. Repeat albumin, prealbumin, and CRP together — a falling CRP with a rising prealbumin is the pattern that confirms nutritional response.";
+      }
+    }
+    if(n("plt")!==null){
+      L+=(L?"\n\n":"")+"Platelets "+n("plt")+" K/uL"+(n("pltPrior")!==null?", down from "+n("pltPrior")+" ("+(m.pltDrop||0).toFixed(0)+"% decline)":"")+". Differential considered: ";
+      var dd=[];
+      if(m.stonees.length>=3) dd.push("consumption in the setting of systemic infection — the platelet count is read here as a marker of systemic inflammatory burden and severity, NOT as the evidence of infection, which is established by the wound findings"+(v("infSupport")?", "+v("infSupport"):"")+" documented above");
+      if(v("pltMeds")) dd.push("medication effect ("+v("pltMeds")+"), with a 4T score assessed for heparin-induced thrombocytopenia where applicable");
+      dd.push("nutritional deficiency (B12/folate), given the concurrent hypoalbuminemia");
+      dd.push("hepatic disease with splenic sequestration");
+      L+=dd.join("; ")+".";
+      L+="\nOrdered: repeat CBC with differential and peripheral smear (to assess for schistocytes and exclude pseudothrombocytopenia), CMP with LFTs, B12, folate, PT/INR and fibrinogen, and medication reconciliation with the facility pharmacist. Escalation: hematology consultation if the count falls below 100 K/uL, if the smear is abnormal, or if bleeding develops.";
+    }
+    if(n("a1c")!==null){
+      L+=(L?"\n\n":"")+"A1c "+n("a1c")+"%. Individualized glycemic target of "+orBlank(v("a1cTgt"),"[target]")+" is appropriate"+(v("a1cWhy")?" given "+v("a1cWhy"):"")+
+         "; tighter control to 6.5-7.0% is not an appropriate goal here and would increase hypoglycemia and fall risk without wound benefit. Communicated to the managing clinician.";
+    }
+    if(v("comorbOther")) L+=(L?"\n\n":"")+"Other comorbidity control: "+v("comorbOther")+". Where full guideline control is not attainable, the achievable target and the reason are stated above so the plan reflects this patient rather than a generic goal.";
+    if(L) S.push(["Labs, nutrition & comorbidities",L]);
+
+    // impediments
+    if(m.imped.length){
+      var side=orBlank(v("offSide"),"[affected]");
+      var lib={
+        pressure:"Unrelieved pressure over the "+loc+" -> Repositioning rewritten and posted at the bedside: every 2 hours in bed around the clock and every 1 hour in the chair with an assisted weight shift every 15 minutes; 30-degree lateral tilt with pillow bridging, with 90-degree side-lying specifically PROHIBITED as it places full body weight onto the bony prominence where the ulcer is; no positioning on the "+side+" side until healed; heels floated completely free of the mattress with a pillow supporting the length of the calves; head of bed at or below 30 degrees except during meals to limit shear. Turn log at the bedside to be initialed at each turn and reviewed at every visit."+
+          (n("braden")!==null?" Braden "+n("braden")+" (high risk).":"")+
+          (n("gapN")!==null?" Turn log reviewed: "+n("gapN")+" documented gaps of >= "+orBlank(v("gapH"),"[N]")+" hours since the last visit.":"")+
+          " EDUCATION: caregiver taught the 30-degree tilt with pillow bridging and the heel-float check, with return demonstration obtained.",
+        mobility:"Immobility -> Caregiver- and staff-assisted range of motion to both lower extremities: heel slides, ankle pumps, and hip and knee flexion-extension, 10 repetitions each, 3 times daily. PT/OT consult ordered for a formal positioning and mobility program. EDUCATION: caregiver taught each movement with return demonstration, and taught to prompt them on a schedule, as the patient will not initiate them independently. The rationale was explained: without movement, blood flow to the tissue drops, joints stiffen, and the pressure on any one area never changes.",
+        perfusion:"Reduced perfusion with venous pooling and edema -> "+(n("abi")!==null?"ABI "+n("abi")+" verified prior to compression. ":"")+"Sustained compression "+orBlank(v("compression"),"[type, mmHg]")+" applied. Leg raises 10 repetitions 4 times daily to activate the calf muscle pump and drive venous return, decreasing blood pooling in the lower leg; ankle pumps 20 repetitions each hour while awake; elevation above heart level 30 minutes 3 times daily with the heel supported and free of pressure. EDUCATION: the patient was instructed NOT to remove or loosen the compression wrap between visits, and the reason was explained in plain terms — when the wrap comes off, blood pools in the leg, the tissue swells, oxygen and nutrients cannot reach the wound, and the progress made during the week is lost. She was told a snug sensation is expected, and given the specific findings that mean she should CALL rather than remove it: numbness, toes changing color, new or increasing pain, or inability to move the toes, with the office and after-hours numbers provided.",
+        nutrition:"Protein-calorie malnutrition -> "+(m.protein!==null?m.protein+" g/day protein prescription with named foods, a fortification strategy, and supplements between meals":"protein prescription with named foods and supplements")+", vitamin C, time-limited zinc, dietitian consult, and weekly weights, as detailed above. EDUCATION: patient and caregiver given the specific plan in writing; caregiver taught to record intake.",
+        infection:"Wound infection -> "+(v("cult")?"Culture obtained, ":"")+(v("abx")?v("abx")+" started, ":"")+"antimicrobial dressing, erythema border marked with a skin marker so nursing can objectively assess spread, and written escalation criteria left at the bedside. EDUCATION: nursing and caregiver given the specific findings that require a call rather than waiting for the next visit.",
+        moisture:"Moisture and incontinence-associated damage -> Barrier film or paste to the periwound, a toileting schedule, and a check-and-change protocol at a defined interval. EDUCATION: caregiver taught barrier application and the check-and-change interval, with return demonstration.",
+        glycemic:"Hyperglycemia -> "+(n("a1c")!==null?"A1c "+n("a1c")+"% with an individualized target of "+orBlank(v("a1cTgt"),"[target]"):"glycemic optimization")+", communicated to the managing clinician. EDUCATION: patient and caregiver taught the glucose log and when to call.",
+        meds:"Medications impairing healing -> Reviewed with the prescriber; taper or alternative discussed and the decision documented. EDUCATION: patient told why the medication matters to the wound.",
+        adherence:"Adherence and knowledge barrier"+(v("adhBarrier")?" ("+v("adhBarrier")+")":"")+" -> Identified specifically and addressed by simplifying the regimen to what is achievable and by escalating to nursing leadership where the barrier is systemic, rather than recording it as 'non-compliance.' EDUCATION: barrier discussed directly and without blame; the accommodation made is documented above."
+      };
+      var lines=m.imped.map(function(k,i){ return (i+1)+". "+lib[k]; });
+      S.push(["Impediments to healing","Impediments to healing and what is being done about each:\n"+lines.join("\n\n")]);
+    }
+
+    // debridement
+    if(v("debType")){
+      var sel=v("debType")==="selective";
+      var d="Indication: "+(m.tissue[1]||"[X]")+"% adherent slough"+((m.tissue[2])?" and "+m.tissue[2]+"% eschar":"")+" obstructing the wound bed"+
+        (m.stonees.length>=3?", in the setting of clinical deep tissue infection":"")+
+        ". Debridement is medically necessary to remove non-viable tissue, disrupt biofilm, "+(v("cult")?"obtain a valid tissue culture, ":"")+"and permit accurate assessment of the wound base.\n\n"+
+        "INFORMED CONSENT: the procedure, its purpose, alternatives (enzymatic debridement, continued dressing therapy alone, and no treatment), and its risks — pain, bleeding, infection, the need for repeat procedures, and the likelihood that the measured wound would appear larger afterward once non-viable tissue is removed — were discussed with the patient"+
+        ". Questions were invited and answered. Verbal consent was obtained PRIOR to the procedure. Site verified; timeout performed.\n\n"+
+        "Anesthesia: "+orBlank(v("anes"),"none required")+".\n"+
+        "Technique: "+(sel?"selective, non-excisional — removal of devitalized tissue only, without excision into viable tissue":"sharp excisional — removal extending into viable tissue")+".\n"+
+        "Instruments: "+orBlank(v("instr"),"[instrument with size]")+".\n"+
+        "Tissue removed: "+orBlank(v("tissRem"),"[tissue type]")+".\n"+
+        "Deepest tissue level removed: "+v("deepest")+".\n"+
+        "Area debrided: "+orBlank(v("debCm"),"[N]")+" sq cm"+(m.debPct!==null?" = "+m.debPct.toFixed(0)+"% of the "+f(m.cur)+" sq cm wound surface":"")+".\n"+
+        "Endpoint: carried to a viable base as evidenced by punctate capillary bleeding across the debrided surface.\n\n"+
+        "BLEEDING AND HEMOSTASIS: the wound bled during debridement — "+v("bleed")+" bleeding, expected and desirable as it confirms a viable base. Hemostasis was achieved with direct pressure using saline-moistened gauze for "+orBlank(v("hemoMin"),"[N]")+" minutes"+
+        (v("hemoOther")?", followed by "+v("hemoOther"):"")+". Hemostasis was confirmed complete before any dressing was applied. Estimated blood loss: minimal.\n\n"+
+        "TOLERANCE: patient tolerated the procedure well. Pain "+orBlank(v("debPain"),"[N]")+"/10 during the procedure. No distress; vital signs stable throughout.\n"+
+        "Specimen: "+(v("cult")?"tissue from the wound base sent for aerobic, anaerobic, and fungal culture with sensitivities":"none")+". Complications: none.";
+      if(n("postG")!==null||m.post!==null){
+        d+="\n\nPOST-DEBRIDEMENT REASSESSMENT: wound bed now "+orBlank(v("postG"),"[X]")+"% granulation";
+        if(m.post!==null){
+          d+=". Post-debridement measurements: "+n("postL")+" x "+n("postW")+(n("postD")!==null?" x "+n("postD"):"")+" cm = "+f(m.post)+" sq cm. Change from pre-debridement: "+
+             (m.postDelta>0?"increased ":"decreased ")+f(Math.abs(m.postDelta))+" sq cm.";
+          if(m.postDelta>0) d+="\nThe measured wound enlarged by "+f(m.postDelta)+" sq cm following debridement. This is EXPECTED UNMASKING of the true wound margin after removal of adherent non-viable tissue and does NOT represent clinical deterioration. Next week's comparison will be made against the post-debridement measurement of "+f(m.post)+" sq cm.";
+        } else d+=".";
+      }
+      S.push(["Debridement",d]);
+    }
+
+    // matrix
+    if(v("mlStatus")==="deferred"){
+      S.push(["Advanced matrix — deferred",
+        "ADVANCED MATRIX THERAPY IS DEFERRED on this wound at this visit. The wound demonstrates "+orBlank(v("mlDefer"),"[reason]")+
+        ". Application of a wound matrix over a bed that is not adequately prepared, or over an actively infected wound, is not appropriate and would not be expected to benefit the patient. The matrix will be reconsidered once the infection is controlled and the bed is clean and granulating."]);
+    } else if(v("mlStatus")==="applied"){
+      var prod=orBlank(v("mlProd"),"[product]");
+      var con="INFORMED CONSENT for "+prod+". Discussed with "+orBlank(v("mlWho"),"the patient")+", who demonstrates capacity to participate in this decision.\n\n"+
+        "What it is and why: I explained that "+prod+" is a very thin, flexible antimicrobial wound matrix laid directly onto a clean, granulating wound bed to support new tissue growth and help control bacteria at the surface. It is recommended because this wound has "+
+        (m.benchVal!==null?"achieved only "+Math.abs(m.benchVal).toFixed(1)+"% area reduction over "+(m.benchIsFour?"the past four weeks":orBlank(v("weeks"),"[N]")+" weeks")+" against a >="+m.bench+"% four-week benchmark despite documented standard care":"failed to progress despite documented standard care")+
+        " — the wound is clean, well-perfused, and uninfected, but stalled.\n\n"+
+        "Alternatives discussed: continuing the current dressing regimen alone, trying a different advanced dressing or cellular/tissue product, and no further treatment. The likely course of each was described, including that continuing unchanged would most likely mean continued slow or absent progress.\n\n"+
+        "Risks discussed: I told the patient the product is low-risk and non-invasive, and that no systemic risks are expected with topical application. The specific risks reviewed were local irritation or discomfort at the site; sensitivity or allergic reaction to the product or its silver component; infection if the dressing becomes contaminated, gets wet, or if sterile technique is broken during a change; the product failing to adhere or migrating, requiring reapplication; and the possibility that the wound does not improve, in which case we would stop and change approach. The patient was told the product does not guarantee healing.\n\n"+
+        "Benefits discussed: potential to restart epithelial advancement in a stalled but otherwise healthy wound, and surface antimicrobial protection without systemic antibiotic exposure.\n"+
+        "Questions were invited and answered fully. Verbal consent to proceed was obtained from "+orBlank(v("mlWho"),"the patient")+" PRIOR to application and is documented here.";
+      S.push(["Matrix — informed consent",con]);
+
+      var pr="Product: "+prod+"\nLot #: "+orBlank(v("mlLot"),"[__]")+"   Expiration: "+orBlank(v("mlExp"),"[__]")+
+        "\nSheet size opened: "+orBlank(v("mlSheet"),"[__]")+" sq cm   Size applied to the wound: "+orBlank(v("mlApplied"),"[__]")+" sq cm"+
+        (m.mlWaste!==null?"\nSize discarded / wasted: "+f(m.mlWaste)+" sq cm — remainder discarded after cutting; single-use, no portion retained.":"")+
+        "\nApplication "+orBlank(v("mlN"),"[N]")+" of a planned course of "+orBlank(v("mlOf"),"[N]")+", with response reassessed at each application and discontinuation if there is no measurable improvement by application "+orBlank(v("mlOf"),"[N]")+"."+
+        "\nWound bed status at application: "+orBlank(v("postG"),"100")+"% granulation, hemostasis complete, no necrotic tissue, no clinical evidence of infection (NERDS "+m.nerds.length+"/5, STONEES "+m.stonees.length+"/7)"+
+        (n("abi")!==null?", ABI "+n("abi")+" confirming adequate perfusion":"")+".";
+      S.push(["Matrix — product accountability",pr]);
+
+      var stackList=orBlank(v("stack"),"Adaptic, ABD pad, roll gauze").split(/,\s*/);
+      var ap="Following debridement, the wound bed was "+orBlank(v("postG"),"100")+"% beefy red granulating tissue with hemostasis confirmed complete. The "+prod.split(" ")[0]+" sheet was CUT TO FIT that wound bed and placed onto the granulating surface. It ADHERED TO THE MOISTURE of the wound bed on contact, so no additional saline hydration was required. The product was POSITIONED TO FILL THE WOUND BED and to provide a SLIGHT OVERHANG onto the intact periwound skin, as the manufacturer's IFU advises, so that the margin could be secured. "+
+        orBlank(v("mlSecure"),"Steri-Strips")+" were then applied over the overhang to hold the product in place.\n\n"+
+        "Per the IFU, a non-adherent contact layer ("+(stackList[0]||"Adaptic")+") was applied over the product to protect it and to keep the secondary dressing from adhering to the wound bed. "+
+        (stackList[1]?"An "+stackList[1]+" was applied over that to control drainage. ":"")+
+        (stackList[2]?"The area was then wrapped with "+stackList[2]+" to secure the dressing stack. ":"")+
+        (v("compression")?cap(v("compression"))+" compression was reapplied over the completed stack. ":"")+
+        "The patient tolerated the application without difficulty.\n\n"+
+        "Dressing stack, in order: "+prod.split(" ")[0]+" -> "+orBlank(v("mlSecure"),"Steri-Strips")+" at the margin -> "+stackList.join(" -> ")+(v("compression")?" -> "+v("compression"):"")+".";
+      S.push(["Matrix — application technique",ap]);
+    }
+
+    // education
+    if(v("cgName")||v("rnName")||v("pcpNote")){
+      var ed="";
+      if(v("cgName")){
+        ed+="EDUCATED: "+v("cgName")+", in person at the bedside, with the patient present.\n"+
+          "Content: (1) the turning schedule and technique, including why q2h matters and specifically why 30-degree lateral tilt with pillow bridging is required and 90-degree side-lying is not acceptable, as it places full body weight on the bone where the ulcer already is; (2) heel offloading, with a pillow under the length of the calf so the heels hang free, and how to check that a hand passes under the heel; (3) compression — why the wrap must stay on, what happens when it is removed, that snugness is expected, and the exact findings that mean to call rather than remove it; (4) leg raises and ankle pumps, how they pump blood out of the leg and reduce pooling, and how to assist and prompt on a schedule; (5) the protein plan"+(m.protein!==null?" — the "+m.protein+" g/day target in plain terms, the supplements between meals, fortification of foods already accepted, and the specific food list":"")+"; (6) the signs to report, with written call criteria and both phone numbers.\n"+
+          "Method: verbal instruction with hands-on demonstration. Written instructions provided and left at the bedside, with a copy given to the caregiver.\n"+
+          "TEACH-BACK: "+v("cgName").split(",")[0]+" verbalized understanding and returned demonstration of "+orBlank(v("teachBack"),"[skill]")+", and correctly restated the call criteria.";
+        if(v("eduGap")) ed+="\nRemaining gap: "+v("eduGap")+". Addressed directly and without blame; this will be re-verified at the next visit.";
+      }
+      if(v("rnName")){
+        ed+=(ed?"\n\n":"")+"FACILITY NURSING — "+v("rnName")+": reviewed all findings, the orders, and the escalation criteria."+
+          (n("gapN")!==null?" Turn log gaps discussed directly: "+n("gapN")+" documented gaps of >= "+orBlank(v("gapH"),"[N]")+" hours since the last visit.":"")+
+          (v("escalate")?" Escalated to "+v("escalate")+", requesting a turning audit and confirmation that the schedule is communicated at shift handoff.":"");
+      }
+      if(v("pcpNote")) ed+=(ed?"\n\n":"")+"PRIMARY CARE: "+v("pcpNote")+". Agreed with the plan.";
+      S.push(["Education & communication",ed]);
+    }
+
+    // plan
+    var pl="";
+    if(m.cur!==null){
+      pl+="ASSESSMENT: "+orBlank(v("stage"),"[classification]")+" of the "+loc+", currently "+f(m.post!==null?m.post:m.cur)+" sq cm"+
+        (m.cum!==null?" ("+Math.abs(m.cum).toFixed(1)+"% cumulative "+(m.cum>=0?"reduction":"increase")+" from baseline over "+orBlank(v("weeks"),"[N]")+" weeks)":"")+
+        (n("postG")!==null?", with a wound bed of "+n("postG")+"% granulation following today's debridement":"")+". Trajectory is "+m.verdict.word+
+        (m.benchVal!==null && !m.deter.length && m.benchVal<m.bench?" against the >="+m.bench+"% four-week benchmark":"")+
+        (m.deter.length?" — "+m.deter.join(", "):"")+". "+
+        (m.stonees.length>=3?"Clinical findings support deep and surrounding tissue infection.":m.nerds.length>=3?"Findings support critical colonization of the wound surface.":"There is no clinical evidence of infection.")+"\n\n";
+    }
+    pl+="PLAN:\n";
+    var num=1;
+    if(v("debType")) pl+=(num++)+". Debridement performed today; repeat sharp debridement anticipated at the next visit.\n";
+    if(v("mlStatus")==="applied") pl+=(num++)+". Matrix application "+orBlank(v("mlN"),"[N]")+" of "+orBlank(v("mlOf"),"[N]")+" completed today. Outer layers only at interim changes; the matrix is NOT to be disturbed. Stop and change approach if there is no measurable improvement by application "+orBlank(v("mlOf"),"[N]")+".\n";
+    if(v("mlStatus")==="deferred") pl+=(num++)+". Matrix deferred; reconsider once the bed is clean and infection controlled.\n";
+    if(v("abx")) pl+=(num++)+". "+v("abx")+"; narrow on sensitivities when the culture results.\n";
+    if(m.imped.indexOf("pressure")>-1) pl+=(num++)+". Offloading: q2h turning, 30-degree lateral tilt, off the "+orBlank(v("offSide"),"[affected]")+" side, heels floated, turn log audited at each visit.\n";
+    if(m.imped.indexOf("perfusion")>-1) pl+=(num++)+". Perfusion: compression maintained between visits, leg raises 4x daily, hourly ankle pumps, elevation 3x daily.\n";
+    if(m.protein!==null) pl+=(num++)+". Nutrition: "+m.protein+" g protein/day as prescribed above; dietitian consult; weekly weights.\n";
+    if(n("plt")!==null) pl+=(num++)+". Thrombocytopenia workup as ordered, with hematology if the count falls below 100 K/uL.\n";
+    pl+=(num++)+". Next visit: "+dstr("nextVisit")+", or sooner if the escalation criteria are met — nursing has been asked to call rather than wait.\n\n";
+    pl+="THE PLAN WILL CHANGE IF: the wound shows any further increase in depth or undermining or new breakdown; "+
+      (v("abx")?"the erythema fails to recede within 72 hours of antibiotics; ":"")+
+      (v("ptb")==="positive"?"imaging confirms osteomyelitis, prompting infectious disease consultation and consideration of surgical debridement; ":"")+
+      (n("plt")!==null?"platelets fall below 100 K/uL or the smear is abnormal; ":"")+
+      (v("mlStatus")==="applied"?"the wound fails to show further measurable area reduction by application "+orBlank(v("mlOf"),"[N]")+"; ":"")+
+      (n("gapN")!==null?"turn log gaps persist at the next visit, prompting written notification to facility administration, as pressure relief is the determining factor for this wound":"adherence barriers persist")+".";
+    if(v("provider")) pl+="\n\n"+v("provider")+" — "+dstr("dos");
+    S.push(["Assessment & plan",pl]);
+
+    return S;
+  }
+
+  function renderNote(m){
+    var S=sections(m), out=$("out");
+    if(!S.length){ out.innerHTML='<div class="empty">Fill in the visit on the left and the note assembles here.</div>'; return; }
+    out.innerHTML = S.map(function(s,i){
+      return '<div class="sec"><div class="sec-head"><h4>'+esc(s[0])+'</h4>'+
+             '<button type="button" class="copy" data-i="'+i+'">copy</button></div>'+
+             '<pre>'+esc(s[1])+'</pre></div>';
+    }).join("");
+    window.__sections=S;
+  }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  var toastT;
+  function toast(msg){
+    var t=$("toast"); t.textContent=msg; t.classList.add("on");
+    clearTimeout(toastT); toastT=setTimeout(function(){ t.classList.remove("on"); },1700);
+  }
+  function copyText(txt,label){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ toast(label); }, fallback);
+    } else fallback();
+    function fallback(){
+      var ta=document.createElement("textarea");
+      ta.value=txt; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); toast(label); }catch(e){ toast("Copy failed — select the text manually"); }
+      document.body.removeChild(ta);
+    }
+  }
+
+  function update(){ var m=model(); renderReadout(m); renderNote(m); }
+
+  $("form").addEventListener("input",update);
+  $("form").addEventListener("change",update);
+  $("out").addEventListener("click",function(e){
+    var b=e.target.closest(".copy"); if(!b) return;
+    var s=(window.__sections||[])[+b.getAttribute("data-i")];
+    if(s) copyText(s[1],"Copied: "+s[0]);
+  });
+  $("copyAll").addEventListener("click",function(){
+    var S=window.__sections||[];
+    if(!S.length){ toast("Nothing to copy yet"); return; }
+    copyText(S.map(function(s){ return s[0].toUpperCase()+"\n"+s[1]; }).join("\n\n"),"Full note copied");
+  });
+  $("expandAll").addEventListener("click",function(){
+    var d=document.querySelectorAll("details.step"), allOpen=true;
+    d.forEach(function(x){ if(!x.open) allOpen=false; });
+    d.forEach(function(x){ x.open=!allOpen; });
+    this.textContent = allOpen ? "Open all steps" : "Collapse steps";
+  });
+
+  var t=new Date(); $("dos").value=t.toISOString().slice(0,10);
+  update();
+})();
+</script>
