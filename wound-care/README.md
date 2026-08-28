@@ -23,8 +23,37 @@ The goal is a note that does three jobs at once:
 | `worked-example-note.md` | A complete note for a real-shaped patient — right trochanteric pressure ulcer, low albumin, thrombocytopenia, venous component, Microlyte application. Read this first. |
 | `clinical-reference.md` | Measurement math, healing-trajectory benchmarks, protein targets, the impediment matrix, the infection framework, and the pre-signature audit checklist. |
 | `etiology-playbooks.md` | The wound-type-specific assessment and plan: sacral, trochanteric, ischial, and heel pressure injuries; venous, diabetic foot, arterial, and mixed ulcers. Plus the healable / maintenance / non-healable framework and the deeper A&P structure. |
-| `note-builder.html` | Interactive builder. Enter the visit and it writes a **complete note you can edit in place** before copying — it computes area, week-over-week and four-week change against the etiology's benchmark, the tissue split, sq cm and % debrided, the protein target and gap, matrix wastage, and the NERDS/STONEES tally. Switch to **Sections** for per-section copy, or turn on **"include the sections I haven't filled in"** to get the full skeleton as headings to type under. Open in any browser; nothing is saved or uploaded. |
+| `note-builder.html` | Interactive builder. Enter the visit and it writes a **complete note you can edit in place** before copying — it computes area, week-over-week and four-week change against the etiology's benchmark, the tissue split, sq cm and % debrided, the protein target and gap, matrix wastage, and the NERDS/STONEES tally. Switch to **Sections** for per-section copy, or turn on **"include the sections I haven't filled in"** to get the full skeleton as headings to type under. Exports to PDF, Word, or the clipboard. One self-contained file — open it in any browser, works offline, nothing is saved or uploaded. |
 
+
+### Giving this to a provider, and getting a document out
+
+The builder is **one self-contained HTML file**. There is no install, no account,
+no server, and no data leaves the machine it runs on — which is what makes it
+usable with real patients.
+
+**To hand it to someone:**
+
+1. Download `wound-care/note-builder.html` from this repo (on GitHub, open the
+   file and click **Download raw file**).
+2. Send them the file — email attachment, shared drive, USB, whatever your
+   organization allows for a document.
+3. They double-click it. It opens in Chrome, Edge, Safari, or Firefox and works
+   immediately, including offline.
+
+**To get a document out, once they've filled it in:**
+
+| Button | What it produces |
+| --- | --- |
+| **Print / PDF** | Opens the browser's print dialog — choose **Save as PDF** for a clean, black-on-white clinical note with proper page breaks. Only the note prints; the form does not. |
+| **Word** | Saves a `.doc` file named for the patient and date, which opens in Word, Pages, or Google Docs and can be edited further. |
+| **Copy note** | Puts the note on the clipboard as plain text, for pasting into the EMR. |
+
+> **One caveat about the embedded preview.** If you're looking at this inside a
+> preview pane rather than as a downloaded file, the sandbox blocks
+> page-initiated downloads and printing. **Copy note** still works there.
+> **Print / PDF** and **Word** need the standalone file. The page detects this
+> and says so, so nobody is left clicking a dead button.
 
 ### Using the builder
 

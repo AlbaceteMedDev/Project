@@ -194,7 +194,8 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
   box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden;
 }
-.note-bar{display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--border); background:var(--surface-2)}
+.note-bar{display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--border); background:var(--surface-2)}
+@media (max-width:520px){ .note-bar .spacer{flex-basis:100%; height:0} }
 .note-bar h3{font-size:13px; font-weight:600; flex:1}
 .btn{
   border:1px solid var(--border-strong); background:var(--surface); color:var(--ink);
@@ -262,11 +263,38 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 .note-doc h4:first-child{margin-top:0}
 .note-doc .para{white-space:pre-wrap; word-wrap:break-word; margin:0}
 .note-doc .ph{color:var(--ink-3); font-style:italic}
-.note-doc .sig{
-  margin-top:26px; padding-top:12px; border-top:1px solid var(--border);
-  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; color:var(--ink-2);
-}
 .note-doc .empty-doc{padding:26px 0; text-align:center; color:var(--ink-3); font-size:13px; font-style:normal}
+
+.framed-note{
+  padding:9px 14px; font-size:12px; line-height:1.5; color:var(--ink-2);
+  background:var(--warn-soft); border-bottom:1px solid var(--border);
+}
+.framed-note b{color:var(--ink)}
+.framed-note code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; background:var(--surface); padding:1px 4px; border-radius:3px}
+
+@media print{
+  @page{ margin:18mm 16mm; }
+  body{background:#fff; color:#000}
+  .masthead,.steps,.readout,.note-bar,.docopt,.edited-bar,.framed-note,.foot,.toast{display:none !important}
+  .wrap{max-width:none; padding:0}
+  .layout{display:block}
+  .panel{position:static; gap:0}
+  .note{border:0; box-shadow:none; background:#fff; border-radius:0}
+  /* print the note even if the Sections tab is showing */
+  #noteDoc[hidden]{display:block !important}
+  #out{display:none !important}
+  .note-doc{
+    max-height:none; overflow:visible; padding:0; color:#000;
+    font-size:10.5pt; line-height:1.45; box-shadow:none;
+  }
+  .note-doc h4{
+    color:#000; border-bottom:1px solid #888; margin:16pt 0 5pt;
+    page-break-after:avoid; break-after:avoid;
+  }
+  .note-doc h4:first-child{margin-top:0}
+  .note-doc .para{orphans:3; widows:3}
+  .note-doc .ph{color:#555}
+}
 
 .toast{
   position:fixed; left:50%; bottom:22px; transform:translate(-50%,14px);
@@ -749,8 +777,14 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
           </div>
           <span class="spacer"></span>
           <button type="button" class="btn" id="expandAll">Open all steps</button>
+          <button type="button" class="btn" id="btnPrint">Print / PDF</button>
+          <button type="button" class="btn" id="btnWord">Word</button>
           <button type="button" class="btn btn-primary" id="copyAll">Copy note</button>
         </div>
+        <p class="framed-note" id="framedNote" hidden>
+          <b>You're viewing this embedded.</b> <b>Copy note</b> works here. <b>Print / PDF</b> and <b>Word</b> need the standalone file —
+          download <code>wound-care/note-builder.html</code> and open it in any browser. Everything works offline from there.
+        </p>
         <label class="docopt"><input type="checkbox" id="showEmpty"> Include the sections I haven't filled in, as headings to type under</label>
         <div class="edited-bar" id="editedBar" hidden>
           <span><b>You've edited this note.</b> Changes to the fields on the left are paused so your edits aren't overwritten.</span>
@@ -1452,7 +1486,6 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       $("noteDoc").innerHTML='<div class="empty-doc">Fill in the visit on the left and the note writes itself here — then edit it directly before copying.</div>';
       return;
     }
-    if(v("provider")) html.push('<p class="sig">'+esc(v("provider"))+'  —  '+esc(dstr("dos"))+'</p>');
     $("noteDoc").innerHTML=html.join("");
   }
 
@@ -1529,6 +1562,54 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     copyText(S.map(function(s){ return s[0].toUpperCase()+"\n"+s[1]; }).join("\n\n"),"All sections copied");
   });
 
+  function noteHTML(){
+    var d=$("noteDoc").cloneNode(true), pt=v("ptName")||"Wound care note";
+    return '<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" '+
+      'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+      '<head><meta charset="utf-8"><title>'+esc(pt)+' — '+esc(dstr("dos"))+'</title><style>'+
+      '@page{margin:18mm 16mm}'+
+      'body{font-family:Calibri,Arial,sans-serif; font-size:10.5pt; line-height:1.45; color:#000}'+
+      'h4{font-size:9pt; letter-spacing:.08em; text-transform:uppercase; margin:16pt 0 5pt;'+
+      ' border-bottom:1px solid #888; padding-bottom:3pt; page-break-after:avoid}'+
+      'h4:first-child{margin-top:0}'+
+      '.para{white-space:pre-wrap; margin:0}'+
+      '.ph{color:#555; font-style:italic}'+
+      '</style></head><body>'+d.innerHTML+'</body></html>';
+  }
+  function hasNote(){
+    var t=$("noteDoc").innerText.trim();
+    return t && !/^Fill in the visit/.test(t);
+  }
+  function fileStem(){
+    var nm=(v("ptName")||"wound-note").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"");
+    var d=v("dos")||"";
+    return (nm+(d?"-"+d:"")).toLowerCase();
+  }
+
+  $("btnPrint").addEventListener("click",function(){
+    if(!hasNote()){ toast("Nothing to print yet"); return; }
+    if(!docView) setView(true);
+    setTimeout(function(){
+      try{ window.print(); }
+      catch(e){ toast("Printing is blocked here — open the standalone file"); }
+    },60);
+  });
+
+  $("btnWord").addEventListener("click",function(){
+    if(!hasNote()){ toast("Nothing to export yet"); return; }
+    if(!docView) setView(true);
+    try{
+      var blob=new Blob(["\ufeff"+noteHTML()],{type:"application/msword"});
+      var url=URL.createObjectURL(blob), a=document.createElement("a");
+      a.href=url; a.download=fileStem()+".doc";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); },1500);
+      toast("Word file saved");
+    }catch(e){
+      toast("Download blocked here — open the standalone file");
+    }
+  });
+
   function setView(doc){
     docView=doc;
     $("noteDoc").hidden=!doc; $("out").hidden=doc;
@@ -1575,6 +1656,12 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 
   function syncEtio(){ $("psiteWrap").hidden = v("etio")!=="pressure"; }
   $("etio").addEventListener("change",syncEtio);
+
+  // In an embedded preview the sandbox blocks page-initiated downloads, so say so
+  // rather than leaving two buttons that quietly do nothing.
+  var framed=false;
+  try{ framed = window.self !== window.top; }catch(e){ framed = true; }
+  if(framed) $("framedNote").hidden=false;
 
   renderImpediments();
   syncEtio();
