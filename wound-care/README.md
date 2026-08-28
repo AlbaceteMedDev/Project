@@ -22,6 +22,7 @@ The goal is a note that does three jobs at once:
 | `smart-phrases.md` | Copy/paste blocks by section. Bracketed `[variables]` are the only things you change. |
 | `worked-example-note.md` | A complete note for a real-shaped patient — right trochanteric pressure ulcer, low albumin, thrombocytopenia, venous component, Microlyte application. Read this first. |
 | `clinical-reference.md` | Measurement math, healing-trajectory benchmarks, protein targets, the impediment matrix, the infection framework, and the pre-signature audit checklist. |
+| `etiology-playbooks.md` | The wound-type-specific assessment and plan: sacral, trochanteric, ischial, and heel pressure injuries; venous, diabetic foot, arterial, and mixed ulcers. Plus the healable / maintenance / non-healable framework and the deeper A&P structure. |
 | `note-builder.html` | Interactive builder — enter this week's and last week's numbers, it computes area, week-over-week change, cumulative change from baseline, and writes the narrative. Open in any browser; nothing is uploaded. |
 
 ---
@@ -66,6 +67,14 @@ and a chronic wound is an inflammatory state. The nutrition section therefore
 documents albumin *plus* intake, weight trend, and a specific protein
 prescription — so the intervention stands on its own even if a reviewer discounts
 the albumin.
+
+**Healability is decided before the plan, not after it.** Every wound is
+classified **healable**, **maintenance**, or **non-healable / palliative**, and
+the classification is written into the note. This is not a formality: in a
+non-healable wound, moist wound healing is the *wrong* goal — the wound is kept
+dry and stable eschar is preserved rather than debrided. That is correct care,
+but only if the record says it was a decision. Otherwise the next clinician reads
+it as neglect. See `etiology-playbooks.md` §0.
 
 **Low platelets are documented with a differential, and antibiotics are tied to
 clinical findings.** Thrombocytopenia can accompany severe infection and sepsis

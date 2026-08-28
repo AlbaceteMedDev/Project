@@ -556,3 +556,218 @@ Suggested trigger names are given as `.wcXXX` — rename to your own convention.
 > [date] → discontinue the matrix and reassess for [referral]] · [turn log gaps
 > persist at the next visit → written notification to facility administration, as
 > pressure relief is the determining factor for this wound].
+
+---
+
+## Healability classification
+
+**`.wchealable`**
+
+> **Wound classified as HEALABLE.** Perfusion is adequate ([ABI/TBI [X]] on
+> [date]) and the underlying cause is correctable ([cause] addressed by
+> [intervention]). Treatment is directed at healing: moist wound healing,
+> debridement to a viable base, correction of the cause, and advanced therapy
+> where indicated. Discussed with [patient/family], who verbalized understanding.
+
+**`.wcmaint`**
+
+> **Wound classified as MAINTENANCE.** This wound is healable in principle —
+> perfusion is adequate and the cause is correctable — but [specific barrier:
+> the required offloading cannot be sustained / the patient declines [X] /
+> caregiver capacity does not permit [Y] / supplies are not obtainable]. The plan
+> is therefore directed at **stability and prevention of deterioration** rather
+> than closure, with the regimen reduced to what will reliably happen: [regimen].
+> **This is a status, not a verdict** — the barrier is named above and will be
+> revisited at every visit. Discussed with [patient/family], who [response].
+
+**`.wcpallwound`**
+
+> **Wound classified as NON-HEALABLE / PALLIATIVE.** [Perfusion cannot be
+> corrected (ABI [X], not a revascularization candidate because [reason]) /
+> The patient is at end of life with [condition] and the wound will outlive the
+> available healing capacity]. **Moist wound healing is therefore NOT the goal.**
+> The wound will be kept **dry**; **dry stable eschar will be preserved and not
+> debrided**; sharp debridement to a bleeding base is not appropriate here.
+> Treatment is directed at **odor, pain, exudate, and bleeding control and the
+> preservation of dignity**: [specific measures]. This decision, and the reasoning
+> behind it, were discussed with [patient/family/proxy] on [date], who
+> [verbalized understanding and agreed]. **Documented explicitly so that the
+> preserved eschar is not read as an oversight by subsequent clinicians.**
+
+---
+
+## Etiology-specific assessment and plan
+
+**`.wcsacral`** — sacral / coccygeal pressure injury
+
+> Sacral pressure injury, [stage]. **The driving mechanism here is shear and
+> moisture, not pressure alone** — the head of the bed was found at [X]° on
+> arrival, the patient slides down in bed, and there is undermining at the
+> superior margin, which is the shear signature. [Incontinence-associated
+> dermatitis is / is not] also present and is distinguished from the pressure
+> injury by [diffuse indistinct borders over moisture-exposed skin versus a
+> distinct edge over the bony prominence].
+> **Plan:** (1) **HOB ≤ 30° at all times except during meals, lowered within 30
+> minutes after eating**, with knee gatch or foot-of-bed elevation to stop
+> sliding; (2) q2h repositioning at 30° lateral tilt, alternating sides, never
+> supine on the ulcer; (3) **lift sheet with two staff for every boost — never
+> drag**, as dragging is the mechanism; (4) silicone foam sacral dressing as a
+> shear-redistribution layer, lifted daily for inspection; (5) bowel and bladder
+> program with scheduled toileting, a check-and-change interval of [N] hours, and
+> barrier paste at every change — [fecal management system evaluated given
+> persistent liquid stool]; (6) Group 2 support surface and a redistribution
+> cushion, **no donut devices**; (7) sitting limited to [N] minutes with weight
+> shifts every 15 minutes; (8) nutrition as above.
+> **Escalate for:** growing undermining at the superior margin (shear not fixed —
+> recheck HOB and transfer technique before changing the dressing), new purple
+> discoloration at the margin, or odor with fever, which requires imaging for
+> deep abscess or osteomyelitis.
+
+**`.wctroch`** — trochanteric pressure injury
+
+> Trochanteric pressure injury, [stage]. **Mechanism is direct pressure from 90°
+> side-lying**, which loads the greater trochanter where there is minimal tissue
+> between skin and bone.
+> **Plan:** (1) **30° lateral tilt with pillow bridging; 90° side-lying is
+> PROHIBITED** — written that way because "reposition side to side" reads as
+> permission; (2) **no positioning on the [right/left] side at all** until healed;
+> alternate the opposite tilt and supine; (3) pillows between the knees and
+> ankles to prevent bony contact; (4) PT/OT for contracture — [if the hip will not
+> abduct, the tilt cannot be achieved and the order fails silently]; (5) support
+> surface and turn-log audit as above.
+> **Escalate for:** deep undermining tracking toward the hip joint or probing to
+> bone — trochanteric osteomyelitis and septic hip arthritis both present this way.
+
+**`.wcischial`** — ischial pressure injury
+
+> Ischial pressure injury, [stage]. **Mechanism is sitting load**, and the
+> exposure returns daily, so recurrence risk is high. Patient sits [N] hours per
+> day; cushion is [type, age, condition — bottomed-out cushions do nothing];
+> independent weight shift [is/is not] possible; posture shows [posterior pelvic
+> tilt loading the ischium directly]. Surface opening [X] sq cm with undermining
+> [N] cm from [__] to [__] o'clock — **the opening substantially underestimates
+> this wound.**
+> **Plan:** (1) **sitting limited to [N] minutes per session** with [N] minutes
+> out of chair; (2) **weight shift every 15 minutes** — [forward lean / side lean
+> / push-up], with a timer or phone cue set, as "as able" will not happen;
+> (3) **seating and positioning evaluation** with pressure mapping; tilt-in-space
+> or recline chair; cushion replaced; (4) undermining probed and measured every
+> visit; (5) after healing, the seating plan continues indefinitely and is part of
+> the discharge plan.
+
+**`.wcheel`** — heel pressure injury
+
+> Heel pressure injury, [stage/unstageable]. **Perfusion assessed before any
+> debridement decision:** pulses [__], capillary refill [__], ABI/toe pressure
+> [__]. Eschar is [dry, hard and stable / boggy, fluctuant, draining, or
+> surrounded by erythema].
+> **Plan:** (1) **heels floated completely off the surface** — pillow under the
+> full length of the calf with the knee slightly flexed so the heel hangs free,
+> or a heel offloading boot; confirmed a hand passes freely under the heel;
+> (2) **[dry stable eschar on this ischemic heel is being LEFT INTACT]** — it is
+> acting as a biological cover; it will not be debrided or hydrated, and will be
+> kept dry [with povidone-iodine painted to maintain dryness, which is
+> appropriate in this specific setting]. **This is a deliberate decision based on
+> the perfusion finding above, documented so it is not read as an oversight;**
+> (3) **daily reassessment for fluctuance, drainage, surrounding erythema, odor,
+> or new pain** — any of these means the eschar is no longer protective and
+> requires urgent evaluation; (4) vascular referral [placed] for ABI < 0.9 or
+> non-healing; (5) **no donut devices**; avoid pressure from footwear, boots, or
+> linen pulled tight over the toes.
+
+**`.wcvlu`** — venous leg ulcer
+
+> Venous leg ulcer of the [gaiter area / medial malleolus], [duration].
+> Supporting features: hemosiderin staining, lipodermatosclerosis, [atrophie
+> blanche], ankle flare, [varicosities], and [N]+ pitting edema; shallow wound
+> with an irregular border, granulating base, and [heavy] exudate; pain improves
+> with elevation. **ABI [X] on [date] — [full-strength 30–40 mmHg / modified
+> 23–30 mmHg] compression is [appropriate / contraindicated].**
+> **Plan:** (1) **compression is the treatment** — [multilayer type] at [mmHg],
+> reapplied today; everything else is adjunctive; (2) **elevation above heart
+> level [N] times daily for [N] minutes** — prescribed as specific sessions, not
+> "as tolerated"; (3) **calf-pump exercise**: ankle pumps [20] hourly while awake,
+> leg raises [10] × [4] daily — the calf pump is the physiological engine of
+> venous return and in this patient it has stopped; (4) exudate management sized
+> to the drainage with a periwound barrier, as maceration here is a dressing
+> failure and not an infection; (5) **emollients to the surrounding skin at every
+> change** — chronically dry skin fissures into the next ulcer; (6) **venous
+> duplex and referral for superficial venous ablation [placed]** — early
+> intervention alongside compression speeds healing and reduces recurrence, and is
+> a referral to make now rather than after failure; (7) [pentoxifylline considered
+> as an adjunct]; (8) weight management and heart-failure optimization where they
+> drive the edema; (9) **after healing, compression stockings continue
+> indefinitely** — recurrence without them is the expected outcome, and fitting is
+> built into the discharge plan.
+> **If not healing, verify in this order:** is the compression actually being
+> worn → recheck the ABI → look for contact dermatitis from current products
+> (these patients sensitize at high rates to topical antibiotics, lanolin,
+> fragrance, and adhesives) → **biopsy the edge** to exclude malignancy and
+> vasculitis.
+
+**`.wcdfu`** — diabetic foot ulcer
+
+> Diabetic foot ulcer, [Wagner grade / University of Texas grade-stage], of the
+> [plantar surface over the [N] metatarsal head / hallux / heel], [duration].
+> **Loss of protective sensation documented**: 10 g monofilament absent at [N] of
+> [N] sites, [128 Hz tuning fork absent] — this is why the patient continued
+> weight-bearing on the wound. **Vascular: ABI [X], TBI [X], toe pressure [X]
+> mmHg.** [⚠️ ABI [>1.3] reflects medial arterial calcification and is not
+> accepted as evidence of adequate perfusion; TBI/toe pressure obtained instead.]
+> **Probe to bone [positive / negative].** Callus rim [present]. Deformity:
+> [rocker-bottom / hammertoes / prominent metatarsal heads / hallux valgus /
+> equinus]. Footwear inspected inside by hand: [findings].
+> **Plan:** (1) **offloading is the treatment** — [total contact cast /
+> irremovable cast walker / removable cast walker / healing sandal / felted foam]
+> selected [because [reason]; a removable device was chosen because [reason],
+> recognizing that the difference between removable and irremovable is adherence];
+> (2) **callus debrided at every visit** — callus concentrates plantar pressure
+> and is not protective; (3) glycemic control with an individualized target of
+> [X], addressing variability and not only the A1c, communicated to [clinician];
+> (4) infection assessed at every visit with **tissue culture rather than surface
+> swab**; [probe-to-bone positive → MRI ordered, bone biopsy considered where it
+> will change therapy]; (5) **vascular referral** [placed] for [ABI < 0.9 / TBI <
+> 0.7 / non-compressible vessels / failure to progress at 4 weeks]; (6) podiatry
+> co-management, with **custom insoles and therapeutic footwear at healing**;
+> (7) **daily foot inspection** by [patient/caregiver] using a mirror or phone
+> camera for the plantar surface; **never barefoot, including indoors**; shoes
+> checked inside by hand before each wear; both feet examined every visit.
+> **At healing:** documented as **in remission rather than resolved**, with
+> surveillance every [interval], because recurrence within a year is common.
+
+**`.wcarterial`** — arterial / ischemic ulcer
+
+> Arterial/ischemic ulcer of the [toe / lateral malleolus / pressure point],
+> [duration]. Punched-out with sharp edges, [pale/dry/necrotic] base, minimal
+> exudate. **Rest pain worse on elevation and relieved by dependency.** Foot cool;
+> pulses [absent/diminished]; dependent rubor and pallor on elevation [present];
+> **ABI [X] / toe pressure [X] mmHg.**
+> **Management rules documented explicitly:** (1) **NO compression.** (2) **Dry
+> stable eschar will NOT be debrided** — without perfusion, debridement creates a
+> larger wound that cannot heal and opens a portal for infection. (3) **Revascular-
+> ization comes first** — [ABI < 0.5 / rest pain / tissue loss] constitutes
+> chronic limb-threatening ischemia; **urgent vascular referral placed [date],
+> [appointment/contact]**.
+> **Plan:** keep the wound dry and protected; protect from pressure and trauma;
+> aggressive cardiovascular risk management with [clinician] — smoking cessation,
+> statin, antiplatelet, blood pressure and glycemic control; **adequate pain
+> control**, as ischemic rest pain is severe and commonly undertreated; prompt
+> systemic treatment of infection, since local defenses are poor. **The wound plan
+> will be reassessed after revascularization**, at which point a currently
+> non-healable wound may become healable and the plan changes entirely.
+> **Same-day evaluation required for:** increasing rest pain, new numbness, the
+> foot turning blue, black, or white, spreading redness, or fever — given to the
+> patient in writing with [contact].
+
+**`.wcmixed`** — mixed venous-arterial ulcer
+
+> Mixed venous-arterial ulcer. Venous features are present ([hemosiderin,
+> lipodermatosclerosis, gaiter location, edema]) **alongside arterial disease:
+> ABI [X]**.
+> **Plan:** with an ABI of [0.5–0.79], **modified compression at 23–30 mmHg** is
+> applied rather than full strength, with vascular consultation [placed] and close
+> monitoring. [With an ABI < 0.5 this is managed as an arterial ulcer and no
+> compression is applied.] The ABI will be rechecked if the wound deteriorates or
+> the patient develops rest pain. **Patient specifically educated that with mixed
+> disease, pain that increases after wrapping, numbness, or color change is to be
+> REPORTED and not self-managed** — contact [name, number].

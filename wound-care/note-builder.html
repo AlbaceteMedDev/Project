@@ -276,7 +276,33 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
               </select>
             </label>
           </div>
-          <label class="f"><span>Stage / classification</span><input type="text" id="stage" placeholder="Stage 4 pressure injury"></label>
+          <div class="grid g2">
+            <label class="f"><span>Stage / classification</span><input type="text" id="stage" placeholder="Stage 4 pressure injury"></label>
+            <label class="f" id="psiteWrap"><span>Pressure injury site</span>
+              <select id="psite">
+                <option value="">—</option>
+                <option value="sacral">Sacral / coccygeal</option>
+                <option value="trochanteric">Trochanteric (hip)</option>
+                <option value="ischial">Ischial (sitting)</option>
+                <option value="heel">Heel</option>
+                <option value="other">Other bony prominence</option>
+              </select>
+            </label>
+          </div>
+          <fieldset><legend>Healability — decide this first, it changes the whole plan</legend>
+            <div class="grid g2">
+              <label class="f"><span>Classification</span>
+                <select id="heal">
+                  <option value="">—</option>
+                  <option value="healable">Healable</option>
+                  <option value="maintenance">Maintenance</option>
+                  <option value="nonhealable">Non-healable / palliative</option>
+                </select>
+              </label>
+              <label class="f"><span>Basis for the classification</span><input type="text" id="healWhy" placeholder="ABI 0.92, cause correctable, goals discussed with daughter 08/28"></label>
+            </div>
+            <p class="hint" id="healHint">In a non-healable wound, keeping an eschar dry and intact is correct care — but only if the record says that was the decision and why.</p>
+          </fieldset>
         </div>
       </details>
 
@@ -493,17 +519,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
         <summary><span class="num">6</span><h2>Impediments &amp; offloading</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <p class="hint">Each box adds the intervention <b>and</b> the education sentence to the note. Checking a box is not the documentation — the generated text is, so read it.</p>
-          <div class="checks" id="imped">
-            <label class="chk"><input type="checkbox" data-imp="pressure" checked>Unrelieved pressure</label>
-            <label class="chk"><input type="checkbox" data-imp="mobility">Immobility</label>
-            <label class="chk"><input type="checkbox" data-imp="perfusion">Poor perfusion / pooling</label>
-            <label class="chk"><input type="checkbox" data-imp="nutrition">Malnutrition</label>
-            <label class="chk"><input type="checkbox" data-imp="infection">Infection</label>
-            <label class="chk"><input type="checkbox" data-imp="moisture">Moisture / incontinence</label>
-            <label class="chk"><input type="checkbox" data-imp="glycemic">Hyperglycemia</label>
-            <label class="chk"><input type="checkbox" data-imp="meds">Medications</label>
-            <label class="chk"><input type="checkbox" data-imp="adherence">Adherence barrier</label>
-          </div>
+          <div id="imped"></div>
           <div class="grid g2">
             <label class="f"><span>Side to keep off</span><input type="text" id="offSide" placeholder="right"></label>
             <label class="f"><span>Braden score</span><input type="number" id="braden" placeholder="12"></label>
@@ -687,6 +703,156 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   function orBlank(s,fb){ return s ? s : fb; }
   function join(arr,fb){ return arr.length ? arr.join(", ") : fb; }
   function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+  /* ---------- impediment library ----------
+     Grouped to match clinical-reference.md §4. Each entry generates the finding,
+     the intervention, and the education line — the three things the note needs. */
+  var SIDE=function(){ return orBlank(v("offSide"),"[affected]"); };
+  var IMPED=[
+   {g:"Mechanical — load, shear, dead space", items:[
+    {k:"pressure",l:"Unrelieved pressure",t:function(m){return "Unrelieved pressure over the "+orBlank(v("loc"),"[site]")+" -> Repositioning rewritten and posted at the bedside: every 2 hours in bed around the clock and every 1 hour in the chair with an assisted weight shift every 15 minutes; 30-degree lateral tilt with pillow bridging, with 90-degree side-lying PROHIBITED as it places full body weight onto the bony prominence where the ulcer is; no positioning on the "+SIDE()+" side until healed; heels floated completely free of the mattress; head of bed at or below 30 degrees except during meals. Turn log at the bedside, initialed at each turn and reviewed at every visit."+(n("braden")!==null?" Braden "+n("braden")+" (high risk).":"")+(n("gapN")!==null?" Turn log reviewed: "+n("gapN")+" documented gaps of >= "+orBlank(v("gapH"),"[N]")+" hours since the last visit.":"")+" EDUCATION: caregiver taught the 30-degree tilt with pillow bridging and the heel-float check, with return demonstration obtained.";}},
+    {k:"shear",l:"Shear / friction",t:"Shear and friction -> This is the driving mechanism for a sacral wound, and it is fixed at the bed, not the dressing. Head of bed at or below 30 degrees at all times except during meals, then lowered within 30 minutes; knee gatch or foot-of-bed elevation to stop the patient sliding down; LIFT SHEET WITH TWO STAFF FOR EVERY BOOST, never dragging; silicone foam dressing applied as a shear-redistribution layer and lifted daily for skin inspection. EDUCATION: staff taught that sliding the patient up in bed is the mechanism, with lift-sheet technique demonstrated."},
+    {k:"trauma",l:"Repetitive trauma / ambulation",t:"Continued weight-bearing on the wound -> Offloading is the treatment, not an adjunct: [total contact cast / irremovable cast walker / removable cast walker / healing sandal / felted foam] applied, with activity limited to a stated number of steps or minutes. EDUCATION: patient taught that every unprotected step resets the wound, with a concrete activity target rather than 'stay off it.'"},
+    {k:"callus",l:"Callus / hyperkeratosis",t:"Callus rim around the wound -> Sharp debridement of callus performed at this visit and to be repeated at every visit; callus concentrates plantar pressure and is not a protective response. Emollient to the surrounding foot, avoiding the interdigital spaces. EDUCATION: patient and caregiver taught NOT to trim callus at home or use over-the-counter acid pads."},
+    {k:"deformity",l:"Foot deformity / Charcot",t:"Foot deformity [rocker-bottom / hammertoes / prominent metatarsal heads / hallux valgus / equinus] concentrating load at the wound site -> Podiatry and orthotics referral; custom insoles and therapeutic footwear; [Achilles lengthening considered for equinus]; [Charcot immobilization if active]. EDUCATION: patient taught that the deformity is why this specific location keeps breaking down."},
+    {k:"footwear",l:"Poorly fitting footwear",t:"Footwear inspected at this visit and found [findings] -> Therapeutic footwear prescribed; shoes to be inspected before every wear. EDUCATION: caregiver taught to check inside the shoe by hand, every time, for seams, foreign objects, and wear over the wound site."},
+    {k:"surface",l:"Inadequate support surface",t:"Support surface inadequate for the wound stage and risk level -> Escalated to a [Group 2 alternating-pressure / low-air-loss] surface with the clinical justification documented; pressure-redistribution wheelchair cushion ordered. NO donut or ring devices, which cause ischemia at the ring. EDUCATION: facility taught why the donut cushion was removed."},
+    {k:"deadspace",l:"Undermining / tunneling dead space",t:"Dead space from undermining and/or tunneling -> Loosely packed with [rope/ribbon] to wick exudate and prevent premature surface closure; NOT over-packed, as packing pressure causes ischemia. EDUCATION: nurse taught to count pieces in and out and to document the count at every change."},
+    {k:"sitting",l:"Prolonged sitting",t:"Prolonged sitting load -> Sitting limited to [N] minutes per session with [N] minutes out of chair; weight shift every 15 minutes with a timer or phone cue set, as 'as able' does not happen; seating and positioning evaluation with pressure mapping; tilt-in-space or recline chair; bottomed-out cushion replaced. EDUCATION: patient taught the weight-shift schedule and given a concrete cue."}]},
+   {g:"Perfusion & oxygenation", items:[
+    {k:"pad",l:"Arterial insufficiency / PAD",t:function(m){return "Arterial insufficiency"+(n("abi")!==null?" (ABI "+n("abi")+")":"")+" -> NO COMPRESSION is applied and DRY STABLE ESCHAR IS NOT DEBRIDED; without perfusion, debridement creates a larger wound that cannot heal. Urgent vascular referral placed for revascularization assessment; the wound is kept dry and protected; aggressive cardiovascular risk management with the managing clinician. The wound plan will be reassessed after revascularization, at which point a currently non-healable wound may become healable. EDUCATION: patient given written same-day warning signs -- increasing rest pain, new numbness, the foot turning blue, black or white, spreading redness, or fever -- with a named contact.";}},
+    {k:"abifalse",l:"Unreliable ABI (calcification)",t:function(m){return "ABI"+(n("abi")!==null?" of "+n("abi"):"")+" is not accepted as evidence of adequate perfusion: medial arterial calcification in [diabetes / ESRD] renders the vessels non-compressible and falsely elevates the value -> Toe-brachial index, toe pressure, or TcPO2 obtained instead, and the reason documented. EDUCATION: referring clinician told specifically why the normal ABI was not accepted.";}},
+    {k:"perfusion",l:"Venous hypertension / pooling",t:function(m){return "Venous hypertension with pooling and edema -> "+(n("abi")!==null?"ABI "+n("abi")+" verified prior to compression. ":"")+"Sustained compression "+orBlank(v("compression"),"[type, mmHg]")+" applied; compression is the treatment and everything else is adjunctive. Leg raises 10 repetitions 4 times daily to activate the calf muscle pump and drive venous return, decreasing blood pooling in the lower leg; ankle pumps 20 repetitions each hour while awake; elevation above heart level 30 minutes 3 times daily with the heel supported and free of pressure. Emollients to the surrounding skin at every change. EDUCATION: the patient was instructed NOT to remove or loosen the compression wrap between visits, and the reason was explained in plain terms -- when the wrap comes off, blood pools in the leg, the tissue swells, oxygen and nutrients cannot reach the wound, and the progress made during the week is lost. She was told a snug sensation is expected, and given the specific findings that mean she should CALL rather than remove it: numbness, toes changing color, new or increasing pain, or inability to move the toes, with the office and after-hours numbers provided.";}},
+    {k:"dependency",l:"Dependency syndrome",t:"Legs chronically dependent -- the patient sleeps sitting up and the legs are never elevated -> Elevation prescribed in specific sessions per day rather than 'as tolerated', and the REASON the patient sleeps upright was addressed directly [orthopnea / transfer ability / fear of falling] rather than repeating the instruction. EDUCATION: caregiver taught to elevate during specific named daily activities so that it actually happens."},
+    {k:"lymphedema",l:"Lymphedema",t:"Lymphedema with [non-pitting fibrotic edema / positive Stemmer sign / skin fibrosis] -> Complete decongestive therapy referral; multilayer short-stretch bandaging; meticulous skin care; long-term compression garment fitting arranged. EDUCATION: patient taught that this is lifelong management rather than a course of treatment."},
+    {k:"anemia",l:"Anemia / impaired oxygen delivery",t:"Impaired oxygen delivery [Hgb [X] / COPD / low SpO2] -> Cause identified and treated; iron, B12 and folate assessed and corrected; pulmonary status optimized with the managing clinician; transfusion considered only on standard thresholds. EDUCATION: patient told why the blood count matters to the wound."},
+    {k:"nicotine",l:"Smoking / vaping / nicotine",t:"Nicotine use -> Vasoconstriction and carboxyhemoglobin impair oxygen delivery for hours after each use. Cessation counseling provided for [N] minutes; pharmacotherapy offered; vaping and nicotine pouches asked about specifically. EDUCATION: counseling content and the patient's response documented."},
+    {k:"edema",l:"Systemic edema (HF/renal/albumin)",t:"Systemic edema driven by [heart failure / renal disease / hypoalbuminemia] -> Managed with the responsible clinician; compression applied only after the arterial assessment above; elevation prescribed. EDUCATION: caregiver taught daily weights and the specific call threshold."}]},
+   {g:"Infection & bioburden", items:[
+    {k:"colonization",l:"Critical colonization",t:"Critical colonization of the wound surface (NERDS criteria met) -> Topical antimicrobial [silver / PHMB / iodine / methylene blue] started; systemic antibiotics are NOT indicated, as deep-infection criteria are not met. EDUCATION: nurse taught what the antimicrobial dressing is for and the date it will be reassessed and stopped."},
+    {k:"infection",l:"Deep / surrounding infection",t:function(m){return "Deep and surrounding tissue infection -> "+(v("cult")?"Culture obtained by "+v("cult").split(" -- ")[0]+", ":"")+(v("abx")?v("abx")+" started and to be narrowed on sensitivities, ":"")+"antimicrobial dressing applied, erythema border marked with a skin marker so nursing can assess spread objectively rather than by impression, and written escalation criteria left at the bedside. EDUCATION: nursing and caregiver given the specific findings that require a call rather than waiting for the next visit, with a named contact and after-hours number.";}},
+    {k:"biofilm",l:"Biofilm",t:"Biofilm -- the wound is stalled despite a clean-looking bed, with a shiny or slimy film that re-forms within 24 to 72 hours of cleaning and a poor response to antibiotics -> Biofilm is physically protected and requires PHYSICAL DISRUPTION: serial sharp debridement on a defined schedule rather than as needed, combined with a surfactant or antibiofilm dressing. EDUCATION: nurse taught that a clean-looking wound can still be biofilm-laden, and why debridement repeats on a schedule."},
+    {k:"osteo",l:"Osteomyelitis",t:"Suspected osteomyelitis [probe-to-bone positive / exposed bone / non-healing over a bony prominence with elevated ESR and CRP] -> MRI ordered; bone biopsy for culture where it will change therapy; infectious disease consultation; prolonged targeted antibiotic course anticipated; surgical evaluation considered. EDUCATION: patient and family told the likely course and duration, so that a multi-week antibiotic plan is not a surprise."},
+    {k:"cellulitis",l:"Cellulitis",t:"Surrounding cellulitis -> Systemic antibiotics started; erythema border marked AND DATED; limb elevated; reassessment within 48 to 72 hours scheduled. EDUCATION: nursing taught to assess against the marked border rather than by impression."},
+    {k:"fungal",l:"Fungal / candidal involvement",t:"Fungal involvement [satellite lesions / skin-fold or periwound candidiasis] -> Topical antifungal started; moisture control addressed; distinguished from bacterial infection before any antibiotic escalation. EDUCATION: caregiver taught skin-fold drying and barrier technique."}]},
+   {g:"Metabolic, nutritional & systemic", items:[
+    {k:"nutrition",l:"Malnutrition",t:function(m){return "Protein-calorie malnutrition -> "+(m.protein!==null?m.protein+" g/day protein prescription with named foods, a fortification strategy for early satiety, and supplements given between meals":"protein prescription with named foods and supplements")+", vitamin C, time-limited zinc with a stop date, dietitian referral, and weekly weights, as detailed above. EDUCATION: patient and caregiver given the specific plan IN WRITING; caregiver taught to record intake.";}},
+    {k:"glycemic",l:"Hyperglycemia / variability",t:function(m){return "Hyperglycemia -> "+(n("a1c")!==null?"A1c "+n("a1c")+"% with an individualized target of "+orBlank(v("a1cTgt"),"[target]"):"glycemic optimization")+", communicated to the managing clinician. The CBG log was reviewed alongside the A1c, since a acceptable average can conceal wide swings that impair neutrophil function. EDUCATION: patient and caregiver taught the log and the specific call thresholds.";}},
+    {k:"obesity",l:"Obesity / skin folds",t:"Obesity with skin-fold moisture and friction -> Skin-fold care and moisture management protocol; equipment verified as rated for the patient's weight; positioning support provided; realistic weight goals set with the managing clinician. EDUCATION: caregiver taught skin-fold drying and support techniques."},
+    {k:"cachexia",l:"Cachexia / sarcopenia",t:"Cachexia and sarcopenia with unintentional weight loss -> Protein repletion combined with resistance activity as tolerated; the underlying driver addressed; goals set realistically. EDUCATION: family counseled on what is and is not achievable, so that the plan is not judged against an unattainable standard."},
+    {k:"dehydration",l:"Dehydration",t:"Dehydration -> Fluid target set at approximately 1 mL per kcal, adjusted for cardiac and renal status. EDUCATION: caregiver given a concrete daily target in cups rather than 'encourage fluids.'"},
+    {k:"micronutrient",l:"Micronutrient deficiency",t:"Micronutrient deficiency risk [poor intake / bariatric surgery / malabsorption / alcohol use] -> Vitamin C, vitamin A, zinc WITH A STOP DATE, copper, iron, B12 and folate assessed and supplemented as indicated. EDUCATION: patient told specifically why zinc stops at 14 days, as prolonged supplementation induces copper deficiency."},
+    {k:"renal",l:"Renal disease / calciphylaxis",t:"Renal disease -> Protein and medication dosing adjusted; dialysis schedule accounted for in visit planning. [Calciphylaxis considered given exquisitely painful retiform purpura and necrosis -- this is a distinct diagnosis requiring nephrology, sodium thiosulfate consideration, and careful debridement decisions.] EDUCATION: where calciphylaxis is suspected, family counseled that the prognosis is poor and a goals-of-care conversation belongs here."},
+    {k:"hepatic",l:"Hepatic disease",t:"Hepatic disease -> Synthetic failure limits protein repletion regardless of intake; coagulopathy corrected before any sharp debridement. EDUCATION: patient told why bleeding risk changes how the procedure is done."},
+    {k:"thyroid",l:"Thyroid disease",t:"Hypothyroidism -> Corrected with the managing clinician; untreated hypothyroidism slows collagen synthesis and wound contraction."},
+    {k:"autoimmune",l:"Autoimmune / pyoderma gangrenosum",t:"Inflammatory or autoimmune ulceration considered [vasculitis / rheumatoid arthritis / lupus / PYODERMA GANGRENOSUM] -> WARNING DOCUMENTED: pyoderma gangrenosum exhibits pathergy, and sharp debridement makes it worse. Violaceous undermined borders, rapid expansion, pain out of proportion to appearance, and a history of inflammatory bowel disease or rheumatoid arthritis are present/absent as noted. [Debridement withheld pending biopsy and rheumatology/dermatology referral; treatment is immunosuppression, not debridement.] EDUCATION: patient told specifically why the usual treatment is being withheld, so that it is not perceived as inaction."},
+    {k:"malignancy",l:"Malignancy / Marjolin ulcer",t:"Malignancy considered -- the wound has not healed despite a correct plan, with [rolled everted edges / exuberant friable granulation / a chronic scar or burn site] -> BIOPSY obtained from the wound EDGE rather than the center. A wound that will not heal despite a correct plan is a wound whose diagnosis should be reconsidered. EDUCATION: patient told the biopsy is to establish why it is not healing, not because cancer is assumed."},
+    {k:"radiation",l:"Prior radiation",t:"Prior radiotherapy to this field, with [telangiectasia / atrophy / fibrosis] -> Radiation-damaged tissue has fixed microvascular injury; expectations set accordingly, the site protected, and hyperbaric oxygen referral considered where indicated. EDUCATION: patient told that healing in a radiated field is slower and may be incomplete."},
+    {k:"sleep",l:"Sleep deprivation",t:"Sleep disruption from night-time care interruptions -> Night care clustered to protect sleep blocks; pain and nocturia treated. Tissue repair is sleep-dependent. EDUCATION: facility asked to consolidate overnight tasks and the request documented."}]},
+   {g:"Wound bed & local factors", items:[
+    {k:"necrotic",l:"Necrotic tissue",t:"Non-viable slough and/or eschar in the wound bed -> Debridement matched to the wound and the patient [sharp / enzymatic / autolytic / mechanical]. EXCEPTION DOCUMENTED WHERE APPLICABLE: dry stable eschar on an ischemic heel is deliberately left intact and kept dry, with the perfusion finding recorded. EDUCATION: caregiver told why an eschar is deliberately not being removed, where that decision was made."},
+    {k:"epibole",l:"Epibole (rolled edges)",t:function(m){return "Epibole -- rolled edges"+(v("epiAt")?" at "+v("epiAt"):"")+", with epithelium curled under and sealed to itself so that migration has stopped -> Edge debridement performed to reopen the margin [/ chemical cautery applied]. This is a specific, actionable finding rather than a descriptor. EDUCATION: nurse taught what a rolled edge looks like so that it is reported early rather than at the next provider visit.";}},
+    {k:"hypergran",l:"Hypergranulation",t:"Hypergranulation proud of the surrounding skin, blocking epithelial migration -> Cause identified [pressure / moisture imbalance / foreign body / occlusion] and addressed; foam pressure, hypertonic or silver dressing, or cautery applied; BIOPSY if it persists. EDUCATION: nurse taught this is not 'extra healing.'"},
+    {k:"desiccation",l:"Desiccation (too dry)",t:"Wound bed desiccated, with an adherent dressing and no exudate -> Moisture-donating hydrogel or moisture-retentive dressing applied; epithelial cells cannot migrate across a dry bed. EDUCATION: caregiver taught why a healable wound is kept moist rather than dried out -- and that this is the opposite of the instruction for a non-healable wound."},
+    {k:"moisture",l:"Maceration / incontinence",t:"Excess moisture with periwound maceration [and incontinence-associated damage] -> Absorbency increased and a periwound barrier film or paste applied; THIS IS A DRESSING PROBLEM, NOT AN INFECTION PROBLEM. Toileting schedule and a check-and-change protocol at a stated interval. EDUCATION: caregiver taught barrier application and the check-and-change interval, with return demonstration; nurse taught to report strikethrough rather than adding a second pad."},
+    {k:"foreign",l:"Foreign body",t:"Suspected retained foreign body [suture / staple / mesh / gauze fiber / hardware] -- the wound will not close over one specific point -> Removed [/ imaging ordered for a suspected retained fragment]. Packing counted in and out at every change. EDUCATION: nurse taught the packing count and to document it."},
+    {k:"cytotoxic",l:"Cytotoxic topical agents",t:"Cytotoxic topical agent in use [full-strength povidone-iodine / hydrogen peroxide / Dakin's] on a clean granulating wound -> Discontinued; these are toxic to fibroblasts and keratinocytes with prolonged use. Substitution documented. EDUCATION: patient and family taught to stop home hydrogen peroxide, which is common, well-intentioned, and harmful here."},
+    {k:"allergy",l:"Contact sensitization",t:"Periwound dermatitis with a dressing-shaped border, consistent with contact sensitization -> Suspected agent withdrawn [neomycin / bacitracin / lanolin / fragrance / adhesive / rubber accelerator]; adhesive or contact-layer chemistry changed; patch-testing referral if it recurs. Venous ulcer patients are sensitized at high rates. EDUCATION: patient told which product to avoid, BY NAME, everywhere -- not only on this wound."},
+    {k:"cooling",l:"Wound cooling at dressing change",t:"Wound cooling at dressing change -> Irrigation solution warmed to body temperature, open time minimized, and unnecessary daily changes eliminated; mitotic activity is suppressed for hours after the wound is chilled. EDUCATION: nurse taught to warm solution and limit exposure time."},
+    {k:"overchange",l:"Over-frequent dressing changes",t:"Over-frequent or traumatic dressing changes, with bleeding at removal -> Change interval matched to exudate rather than routine; non-adherent contact layer used. Once the bed is clean, the dressing that is disturbed least heals fastest. EDUCATION: nurse taught that more frequent is not better."}]},
+   {g:"Medications", items:[
+    {k:"steroids",l:"Systemic corticosteroids",t:"Systemic corticosteroids [agent, dose, duration] -> These impair inflammation, collagen synthesis and epithelialization; taper discussed with the prescriber and the decision documented; vitamin A discussed as partial counteraction. EDUCATION: patient told why the steroid matters to the wound."},
+    {k:"chemo",l:"Chemotherapy / immunosuppressants",t:"Chemotherapy or immunosuppressant therapy -> Procedures coordinated around the nadir; delayed healing anticipated and stated; discussion with oncology documented. EDUCATION: expectations set with the patient and family in advance."},
+    {k:"anticoag",l:"Anticoagulants / antiplatelets",t:"Anticoagulant or antiplatelet therapy [agent, indication, INR] -> Bleeding and hematoma risk change the debridement plan: INR checked before sharp debridement and hemostatic materials made ready. Anticoagulation was NOT stopped for a bedside debridement without the prescriber. EDUCATION: patient told what bruising and bleeding to expect and what to report."},
+    {k:"hydroxyurea",l:"Hydroxyurea",t:"Long-term hydroxyurea -> A recognized cause of refractory leg ulceration; alternatives discussed with the prescriber, as these ulcers frequently will not heal until the drug is changed. EDUCATION: patient told the drug itself may be the cause of the ulcer."},
+    {k:"meds",l:"Other medications impairing healing",t:"Other medications impairing healing reviewed [NSAIDs / immunomodulators / others] -> Necessity reviewed with the prescriber and the decision documented. EDUCATION: patient told the rationale."}]},
+   {g:"Patient, caregiver & system", items:[
+    {k:"pain",l:"Uncontrolled pain",t:"Uncontrolled pain -> Pain drives immobility, missed dressing changes and refused repositioning, so it is treated here as a HEALING intervention rather than a comfort measure. Pre-medication before dressing changes [agent, dose, timing]; atraumatic silicone contact layer; background pain addressed with the managing clinician. EDUCATION: patient taught the pre-medication TIMING so that it is actually taken beforehand rather than after."},
+    {k:"cognition",l:"Cognitive impairment / dementia",t:"Cognitive impairment limiting participation, with the dressing found removed -> Regimen simplified to what the patient can manage; responsibility moved to the caregiver and facility; dressings selected to resist removal. THIS IS NOT CHARTED AS REFUSAL. EDUCATION: caregiver taught redirection rather than correction."},
+    {k:"depression",l:"Depression / low motivation",t:"Depression and low engagement -> Treated, as untreated depression predicts both non-adherence and non-healing; behavioral health referral placed. EDUCATION: connection explained to the patient plainly and without judgment."},
+    {k:"caregiver",l:"Caregiver burden / capacity",t:"Caregiver capacity is the limiting factor -> The regimen was matched to the caregiver who exists rather than the one the plan assumed: home health frequency increased, the dressing stack simplified, and the change interval extended where safe. EDUCATION: caregiver asked DIRECTLY what is not workable, and the plan changed in response; the accommodation is documented above."},
+    {k:"supplies",l:"Supply / cost barrier",t:"Supply or cost barrier -- confirmed by asking whether the supplies are physically in hand rather than assuming -> Prescribed to what is covered and obtainable; social work referral placed; delivery to be confirmed before the next visit. EDUCATION: patient told exactly what should arrive, when, and whom to call if it does not."},
+    {k:"transport",l:"Transportation / access",t:"Transportation and access barrier with missed visits -> Home visits, telehealth interim contacts, and consolidated appointments arranged. The plan is built around the visits that will actually happen. EDUCATION: schedule confirmed with the patient and caregiver."},
+    {k:"housing",l:"Housing / environment",t:"Environmental constraint [housing instability / no refrigeration / no running water] -> Regimen chosen to work in the actual environment; social work referral placed. Discussed without judgment and documented as a clinical constraint on the plan."},
+    {k:"substance",l:"Substance use",t:"Substance use affecting nutrition, adherence, perfusion and infection risk -> Harm-reduction approach taken; treatment referral offered and the patient's response documented."},
+    {k:"language",l:"Language / health literacy",t:"Language or health-literacy barrier, identified by teach-back failure -> Interpreter services used [name/ID documented]; written materials provided in the patient's language and at an appropriate reading level. TEACH-BACK IS THE TEST, and it was repeated until passed."},
+    {k:"adherence",l:"Adherence barrier",t:function(m){return "Adherence barrier"+(v("adhBarrier")?" ("+v("adhBarrier")+")":"")+" -> The specific barrier was named and a concrete accommodation made, rather than recording the patient as 'non-compliant', which ends the inquiry and fixes nothing. Systemic failures such as night-shift turning gaps were escalated to nursing leadership in writing. EDUCATION: barrier discussed directly and without blame; the accommodation is documented above.";}}]}
+  ];
+
+  /* ---------- etiology playbooks ----------
+     The single highest-yield intervention differs by wound type, and naming it
+     is what keeps a plan from being a list of equally-weighted good ideas. */
+  var PLAY={
+   "pressure:sacral":{y:"shear and moisture control -- the head-of-bed angle, not the dressing",
+     p:["Head of bed at or below 30 degrees at all times except during meals, then lowered within 30 minutes; knee gatch or foot-of-bed elevation to stop sliding.",
+        "Q2H repositioning at 30-degree lateral tilt, alternating sides, never supine on the ulcer.",
+        "Lift sheet with two staff for every boost -- never drag, as dragging is the mechanism.",
+        "Silicone foam sacral dressing as a shear-redistribution layer, lifted daily for skin inspection.",
+        "Bowel and bladder program: scheduled toileting, check-and-change every [N] hours, barrier paste at every change; fecal management system evaluated if stool is liquid.",
+        "Group 2 support surface and redistribution cushion; NO donut devices.",
+        "Sitting limited to [N] minutes with weight shifts every 15 minutes."],
+     e:"Growing undermining at the superior margin means the shear has not been fixed -- recheck the HOB and transfer technique before changing the dressing. New purple discoloration at the margin is deep tissue injury extending. Odor with fever needs imaging for deep abscess or osteomyelitis."},
+   "pressure:trochanteric":{y:"eliminating 90-degree side-lying -- 30-degree tilt, off that side entirely",
+     p:["30-degree lateral tilt with pillow bridging; 90-degree side-lying is PROHIBITED, written that way because 'reposition side to side' reads as permission.",
+        "No positioning on the affected side at all until healed; alternate the opposite tilt and supine.",
+        "Pillows between the knees and ankles to prevent bony contact.",
+        "PT/OT for contracture -- if the hip will not abduct, the tilt cannot be achieved and the order fails silently.",
+        "Group 2 support surface; turn log audited at every visit."],
+     e:"Deep undermining tracking toward the hip joint, or probing to bone at the trochanter, requires imaging -- trochanteric osteomyelitis and septic hip arthritis both present this way."},
+   "pressure:ischial":{y:"sitting time and the seating system",
+     p:["Sitting limited to [N] minutes per session with [N] minutes out of chair.",
+        "Weight shift every 15 minutes -- forward lean, side lean or push-up -- with a timer or phone cue set, as 'as able' does not happen.",
+        "Seating and positioning evaluation with pressure mapping; tilt-in-space or recline wheelchair; bottomed-out cushion replaced.",
+        "Undermining probed and measured every visit -- the surface opening badly underestimates these wounds.",
+        "After healing the seating plan continues indefinitely and is part of the discharge plan."],
+     e:"Rapidly expanding undermining, or a wound probing to the ischial tuberosity, requires imaging and surgical evaluation."},
+   "pressure:heel":{y:"establishing perfusion status before touching the wound",
+     p:["Heels floated completely off the surface -- pillow under the full length of the calf, knee slightly flexed, heel hanging free; confirm a hand passes freely under the heel. Or a heel offloading boot.",
+        "If the eschar is DRY, HARD AND STABLE on an ischemic heel it is LEFT INTACT and kept dry -- it is acting as a biological cover. Do not debride, do not hydrate. This is a deliberate decision recorded with the perfusion finding so it is not read as an oversight.",
+        "Daily reassessment for fluctuance, drainage, surrounding erythema, odor or new pain -- any of these means the eschar is no longer protective.",
+        "Vascular referral for ABI under 0.9 or any non-healing heel wound.",
+        "No donut devices; avoid pressure from footwear, boots or linen pulled tight over the toes."],
+     e:"Fluctuance, drainage, surrounding erythema, odor or new pain under an eschar requires urgent evaluation and changes the plan from preservation to debridement."},
+   "venous":{y:"compression that is actually worn",
+     p:["Compression is the treatment and everything else is adjunctive: [multilayer type] at [30-40 mmHg], graduated, with the ABI verified beforehand and documented.",
+        "Elevation above heart level, prescribed as specific sessions per day rather than 'as tolerated'.",
+        "Calf-pump exercise: ankle pumps 20 hourly while awake, leg raises 10 x 4 daily -- the calf pump is the engine of venous return and in an immobile patient it has stopped.",
+        "Exudate management sized to the drainage with a periwound barrier; maceration here is a dressing failure, not an infection.",
+        "Emollients to the surrounding skin at every change -- chronically dry skin fissures into the next ulcer.",
+        "Venous duplex and referral for superficial venous ablation, made now rather than after failure.",
+        "After healing, compression stockings continue indefinitely; recurrence without them is the expected outcome, and fitting is built into the discharge plan."],
+     e:"If not healing, verify in this order: is the compression actually being worn, then recheck the ABI, then look for contact dermatitis from current products, then biopsy the edge to exclude malignancy and vasculitis."},
+   "diabetic":{y:"offloading, preferably irremovable",
+     p:["Offloading is the treatment: total contact cast is the reference standard for a non-infected, non-ischemic plantar ulcer, then irremovable cast walker, then removable walker, healing sandal, felted foam. If a removable device is chosen, the reason is documented -- the gap between removable and irremovable is adherence, and it is large.",
+        "Callus debrided at EVERY visit; callus concentrates plantar pressure and is not protective.",
+        "Loss of protective sensation documented by 10 g monofilament and 128 Hz tuning fork -- this is why the patient continued weight-bearing.",
+        "Perfusion by ABI AND toe-brachial index or toe pressure; an ABI above 1.3 reflects medial calcification and is not accepted as evidence of adequate perfusion.",
+        "Probe-to-bone at every visit; positive probe-to-bone or a non-healing wound over bone means MRI and consideration of bone biopsy.",
+        "Vascular referral for ABI under 0.9, TBI under 0.7, non-compressible vessels, or failure to progress at 4 weeks.",
+        "Podiatry co-management; custom insoles and therapeutic footwear at healing.",
+        "Daily foot inspection with a mirror or phone camera for the plantar surface; never barefoot including indoors; shoes checked inside by hand before each wear; both feet examined every visit."],
+     e:"At healing, document as IN REMISSION rather than resolved, with a stated surveillance interval -- recurrence within a year is common."},
+   "arterial":{y:"revascularization -- and doing no harm until then",
+     p:["NO COMPRESSION.",
+        "DRY STABLE ESCHAR IS NOT DEBRIDED -- without perfusion, debridement creates a larger wound that cannot heal and opens a portal for infection.",
+        "Urgent vascular referral: rest pain, tissue loss or an ABI under 0.5 is chronic limb-threatening ischemia and is not a wound-clinic problem.",
+        "Keep the wound dry and protected; protect from pressure and trauma.",
+        "Aggressive cardiovascular risk management with the managing clinician: smoking cessation, statin, antiplatelet, blood pressure and glycemic control.",
+        "Adequate pain control -- ischemic rest pain is severe and commonly undertreated.",
+        "Prompt systemic treatment of infection, as local defenses are poor.",
+        "The wound plan is reassessed AFTER revascularization, at which point a currently non-healable wound may become healable."],
+     e:"Same-day evaluation for increasing rest pain, new numbness, the foot turning blue, black or white, spreading redness, or fever -- given to the patient in writing."},
+   "mixed":{y:"getting the compression pressure right for the arterial disease present",
+     p:["With an ABI of 0.5 to 0.79, MODIFIED compression at 23-30 mmHg rather than full strength, with vascular consultation and close monitoring.",
+        "With an ABI under 0.5, manage as an arterial ulcer: no compression.",
+        "Recheck the ABI if the wound deteriorates or the patient develops rest pain.",
+        "Venous measures -- elevation, calf pump, emollients -- continue alongside."],
+     e:"Patient educated specifically that with mixed disease, pain increasing after wrapping, numbness or colour change is REPORTED and not self-managed."}
+  };
+  function playKey(){
+    var e=v("etio");
+    if(e==="pressure") return v("psite") ? "pressure:"+v("psite") : "";
+    return PLAY[e] ? e : "";
+  }
 
   /* ---------- computed model ---------- */
   function model(){
@@ -778,6 +944,18 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     if(m.postDelta!==null && m.postDelta>0) fl.push(["f-good","<b>Wound enlarged "+f(m.postDelta)+" sq cm post-debridement</b> — the unmasking statement is generated so next week is not misread."]);
     if(m.mlWaste!==null && m.mlWaste>0) fl.push(["f-good","<b>"+f(m.mlWaste)+" sq cm discarded</b> — wastage is documented."]);
     if(v("mlStatus")==="applied" && m.stonees.length>=3) fl.push(["f-crit","<b>Matrix applied to a wound meeting deep-infection criteria.</b> Reconsider — this is contraindicated and will not be covered."]);
+    // Contradictions the record must never carry — each is a note documenting
+    // two incompatible decisions about the same wound.
+    if(v("heal")==="nonhealable" && v("debType")) fl.push(["f-crit","<b>Sharp debridement recorded on a wound classified non-healable.</b> A palliative wound is kept dry with stable eschar preserved. Reconcile the classification or the procedure before signing."]);
+    if(v("heal")==="nonhealable" && v("mlStatus")==="applied") fl.push(["f-crit","<b>Advanced matrix applied to a non-healable wound.</b> Reconcile the classification or the application."]);
+    if(v("etio")==="arterial" && v("debType")) fl.push(["f-crit","<b>Debridement recorded on an arterial ulcer.</b> Dry stable eschar is not debrided without perfusion — confirm revascularization status first."]);
+    if(v("etio")==="arterial" && v("compression")) fl.push(["f-crit","<b>Compression recorded on an arterial ulcer.</b> Compression is contraindicated here."]);
+    if(n("abi")!==null && v("compression")){
+      if(n("abi")<0.5) fl.push(["f-crit","<b>Compression recorded with an ABI of "+n("abi")+".</b> Compression is contraindicated below 0.5 — this needs urgent vascular referral, not a wrap."]);
+      else if(n("abi")<0.8) fl.push(["f-warn","<b>ABI "+n("abi")+" — modified compression only, 23–30 mmHg</b>, with vascular consultation and close monitoring. Full-strength 30–40 mmHg is not appropriate."]);
+    }
+    if(n("abi")!==null && n("abi")>1.3) fl.push(["f-warn","<b>ABI "+n("abi")+" reflects non-compressible vessels</b> (medial calcification) and is not evidence of adequate perfusion. Obtain a toe-brachial index or toe pressure."]);
+    if(v("etio")==="pressure" && !v("psite")) fl.push(["f-warn","<b>Pressure injury site not selected.</b> The highest-yield intervention differs by site — sacral is shear, trochanteric is side-lying, ischial is sitting, heel is perfusion."]);
     if(m.pltDrop!==null && m.pltDrop>0 && n("plt")<150) fl.push(["f-warn","<b>Platelets "+n("plt")+" K/µL, down "+m.pltDrop.toFixed(0)+"%</b> — differential and workup generated; the antibiotic decision is driven by the infection tally."]);
     if(m.gap!==null && m.gap>0) fl.push(["f-warn","<b>Protein gap "+Math.round(m.gap)+" g/day</b> — the note names how it will be closed."]);
 
@@ -938,22 +1116,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 
     // impediments
     if(m.imped.length){
-      var side=orBlank(v("offSide"),"[affected]");
-      var lib={
-        pressure:"Unrelieved pressure over the "+loc+" -> Repositioning rewritten and posted at the bedside: every 2 hours in bed around the clock and every 1 hour in the chair with an assisted weight shift every 15 minutes; 30-degree lateral tilt with pillow bridging, with 90-degree side-lying specifically PROHIBITED as it places full body weight onto the bony prominence where the ulcer is; no positioning on the "+side+" side until healed; heels floated completely free of the mattress with a pillow supporting the length of the calves; head of bed at or below 30 degrees except during meals to limit shear. Turn log at the bedside to be initialed at each turn and reviewed at every visit."+
-          (n("braden")!==null?" Braden "+n("braden")+" (high risk).":"")+
-          (n("gapN")!==null?" Turn log reviewed: "+n("gapN")+" documented gaps of >= "+orBlank(v("gapH"),"[N]")+" hours since the last visit.":"")+
-          " EDUCATION: caregiver taught the 30-degree tilt with pillow bridging and the heel-float check, with return demonstration obtained.",
-        mobility:"Immobility -> Caregiver- and staff-assisted range of motion to both lower extremities: heel slides, ankle pumps, and hip and knee flexion-extension, 10 repetitions each, 3 times daily. PT/OT consult ordered for a formal positioning and mobility program. EDUCATION: caregiver taught each movement with return demonstration, and taught to prompt them on a schedule, as the patient will not initiate them independently. The rationale was explained: without movement, blood flow to the tissue drops, joints stiffen, and the pressure on any one area never changes.",
-        perfusion:"Reduced perfusion with venous pooling and edema -> "+(n("abi")!==null?"ABI "+n("abi")+" verified prior to compression. ":"")+"Sustained compression "+orBlank(v("compression"),"[type, mmHg]")+" applied. Leg raises 10 repetitions 4 times daily to activate the calf muscle pump and drive venous return, decreasing blood pooling in the lower leg; ankle pumps 20 repetitions each hour while awake; elevation above heart level 30 minutes 3 times daily with the heel supported and free of pressure. EDUCATION: the patient was instructed NOT to remove or loosen the compression wrap between visits, and the reason was explained in plain terms — when the wrap comes off, blood pools in the leg, the tissue swells, oxygen and nutrients cannot reach the wound, and the progress made during the week is lost. She was told a snug sensation is expected, and given the specific findings that mean she should CALL rather than remove it: numbness, toes changing color, new or increasing pain, or inability to move the toes, with the office and after-hours numbers provided.",
-        nutrition:"Protein-calorie malnutrition -> "+(m.protein!==null?m.protein+" g/day protein prescription with named foods, a fortification strategy, and supplements between meals":"protein prescription with named foods and supplements")+", vitamin C, time-limited zinc, dietitian consult, and weekly weights, as detailed above. EDUCATION: patient and caregiver given the specific plan in writing; caregiver taught to record intake.",
-        infection:"Wound infection -> "+(v("cult")?"Culture obtained, ":"")+(v("abx")?v("abx")+" started, ":"")+"antimicrobial dressing, erythema border marked with a skin marker so nursing can objectively assess spread, and written escalation criteria left at the bedside. EDUCATION: nursing and caregiver given the specific findings that require a call rather than waiting for the next visit.",
-        moisture:"Moisture and incontinence-associated damage -> Barrier film or paste to the periwound, a toileting schedule, and a check-and-change protocol at a defined interval. EDUCATION: caregiver taught barrier application and the check-and-change interval, with return demonstration.",
-        glycemic:"Hyperglycemia -> "+(n("a1c")!==null?"A1c "+n("a1c")+"% with an individualized target of "+orBlank(v("a1cTgt"),"[target]"):"glycemic optimization")+", communicated to the managing clinician. EDUCATION: patient and caregiver taught the glucose log and when to call.",
-        meds:"Medications impairing healing -> Reviewed with the prescriber; taper or alternative discussed and the decision documented. EDUCATION: patient told why the medication matters to the wound.",
-        adherence:"Adherence and knowledge barrier"+(v("adhBarrier")?" ("+v("adhBarrier")+")":"")+" -> Identified specifically and addressed by simplifying the regimen to what is achievable and by escalating to nursing leadership where the barrier is systemic, rather than recording it as 'non-compliance.' EDUCATION: barrier discussed directly and without blame; the accommodation made is documented above."
-      };
-      var lines=m.imped.map(function(k,i){ return (i+1)+". "+lib[k]; });
+      var lines=m.imped.map(function(k,i){ return (i+1)+". "+impedText(k,m); });
       S.push(["Impediments to healing","Impediments to healing and what is being done about each:\n"+lines.join("\n\n")]);
     }
 
@@ -1043,6 +1206,29 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       S.push(["Education & communication",ed]);
     }
 
+    // healability
+    if(v("heal")){
+      var HB={
+        healable:"Wound classified as HEALABLE. Perfusion is adequate and the underlying cause is correctable. Treatment is directed at healing: moist wound healing, debridement to a viable base, correction of the cause, and advanced therapy where indicated.",
+        maintenance:"Wound classified as MAINTENANCE. This wound is healable in principle -- perfusion is adequate and the cause is correctable -- but the required care cannot currently be delivered. The plan is therefore directed at STABILITY AND PREVENTION OF DETERIORATION rather than closure, with the regimen reduced to what will reliably happen. This is a status, not a verdict: the barrier is named below and will be revisited at every visit.",
+        nonhealable:"Wound classified as NON-HEALABLE / PALLIATIVE. Perfusion cannot be corrected, or the patient is at end of life with a wound that will outlive the available healing capacity. MOIST WOUND HEALING IS THEREFORE NOT THE GOAL. The wound will be kept DRY; DRY STABLE ESCHAR WILL BE PRESERVED AND NOT DEBRIDED; sharp debridement to a bleeding base is not appropriate here. Treatment is directed at odor, pain, exudate and bleeding control and the preservation of dignity. This is documented explicitly so that the preserved eschar is not read as an oversight by subsequent clinicians."
+      };
+      var hb=HB[v("heal")];
+      if(v("healWhy")) hb+="\nBasis for this classification: "+v("healWhy")+".";
+      hb+="\nDiscussed with the patient and family, who verbalized understanding.";
+      S.push(["Healability classification",hb]);
+    }
+
+    // etiology-specific cause correction
+    var pk=playKey();
+    if(pk && PLAY[pk]){
+      var pb=PLAY[pk];
+      var et="THE HIGHEST-YIELD INTERVENTION FOR THIS WOUND IS "+pb.y.toUpperCase()+".\n\nCause correction, with specific parameters:\n"+
+        pb.p.map(function(x,i){ return (i+1)+". "+x; }).join("\n")+
+        "\n\nEscalation / what changes the plan: "+pb.e;
+      S.push(["Cause correction — "+pk.replace(":"," / "),et]);
+    }
+
     // plan
     var pl="";
     if(m.cur!==null){
@@ -1055,6 +1241,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     }
     pl+="PLAN:\n";
     var num=1;
+    if(pk && PLAY[pk]) pl+=(num++)+". Highest-yield intervention: "+PLAY[pk].y+" -- see the cause-correction section above for the specific parameters.\n";
     if(v("debType")) pl+=(num++)+". Debridement performed today; repeat sharp debridement anticipated at the next visit.\n";
     if(v("mlStatus")==="applied") pl+=(num++)+". Matrix application "+orBlank(v("mlN"),"[N]")+" of "+orBlank(v("mlOf"),"[N]")+" completed today. Outer layers only at interim changes; the matrix is NOT to be disturbed. Stop and change approach if there is no measurable improvement by application "+orBlank(v("mlOf"),"[N]")+".\n";
     if(v("mlStatus")==="deferred") pl+=(num++)+". Matrix deferred; reconsider once the bed is clean and infection controlled.\n";
@@ -1106,6 +1293,28 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     }
   }
 
+
+  function renderImpediments(){
+    var host=$("imped");
+    host.innerHTML = IMPED.map(function(grp){
+      return '<fieldset><legend>'+esc(grp.g)+'</legend><div class="checks">'+
+        grp.items.map(function(it){
+          return '<label class="chk"><input type="checkbox" data-imp="'+it.k+'">'+esc(it.l)+'</label>';
+        }).join("")+'</div></fieldset>';
+    }).join("");
+  }
+  function impedText(k,m){
+    for(var i=0;i<IMPED.length;i++){
+      for(var j=0;j<IMPED[i].items.length;j++){
+        if(IMPED[i].items[j].k===k){
+          var t=IMPED[i].items[j].t;
+          return typeof t==="function" ? t(m) : t;
+        }
+      }
+    }
+    return "["+k+"]";
+  }
+
   function update(){ var m=model(); renderReadout(m); renderNote(m); }
 
   $("form").addEventListener("input",update);
@@ -1127,6 +1336,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     this.textContent = allOpen ? "Open all steps" : "Collapse steps";
   });
 
+  function syncEtio(){ $("psiteWrap").hidden = v("etio")!=="pressure"; }
+  $("etio").addEventListener("change",syncEtio);
+
+  renderImpediments();
+  syncEtio();
   var t=new Date(); $("dos").value=t.toISOString().slice(0,10);
   update();
 })();

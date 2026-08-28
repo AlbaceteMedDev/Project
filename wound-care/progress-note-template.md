@@ -395,27 +395,74 @@ regarding [labs, antibiotics, comorbidity control] / not required this visit›.
 
 ## 11. Assessment and plan
 
-**Assessment:** [Age] [sex] with [comorbidities] and a [duration]-week
-[classification] [location] wound, currently [__] sq cm ([__]% cumulative
-reduction from baseline), with a wound bed of [__]% granulation following
-today's debridement. Trajectory is ‹on track / stalled›. Healing is impeded by
-[list], each addressed below. ‹Clinical findings support / do not support›
-infection.
+*See `etiology-playbooks.md` for the wound-type-specific version of this section
+(sacral, trochanteric, ischial, heel, venous, diabetic foot, arterial, mixed).*
 
-**Plan:**
-1. [Debridement performed today; next debridement anticipated [date/interval].]
-2. [Product application [N] of [N]; next application [date].]
-3. [Dressing regimen and rationale.]
-4. **Pressure:** [offloading orders and adherence follow-up.]
-5. **Mobility:** [ROM program and PT/OT.]
-6. **Perfusion:** [compression, elevation, exercises, vascular referral.]
-7. **Nutrition:** [protein target and how it will be met; dietitian; labs.]
-8. **Infection:** [antibiotics or topical therapy; culture follow-up; reassessment date.]
-9. **Comorbidities:** [what was communicated to whom.]
-10. **Labs to repeat:** [__] on [date].
-11. **Next visit:** [date/interval]. **The plan will change if:** [specific
-    triggers — e.g., "less than 20% additional area reduction by [date], any new
-    STONEES criteria, or platelets below [N]."]
+### 11a. Healability classification — state this first
+
+**This wound is classified: ‹healable / maintenance / non-healable (palliative)›**
+on the basis of ‹perfusion: ABI/TBI [__]›, ‹correctability of the cause: [__]›,
+and ‹goals of care discussed with [name] on [date]›.
+Treatment is therefore directed at ‹healing / stability and prevention of
+deterioration / comfort, odor, exudate and pain control with preservation of dry
+stable eschar›. Discussed with ‹patient / family›, who [__].
+
+*In a non-healable wound, keeping an eschar dry and intact is correct care — but
+only if the record says that was the decision and why.*
+
+### 11b. Assessment
+
+**The patient:** [Age] [sex] with [comorbidities that bear on healing] and
+[functional status determining what is achievable].
+
+**The wound:** [duration]-week [classification] of the [location], currently
+[__] sq cm post-debridement ([__]% cumulative reduction; [__]% over four weeks
+against the ≥[40/50]% benchmark), with a wound bed of [__]% granulation.
+
+**Trajectory:** ‹on track / improving but below benchmark / stalled /
+deteriorating›. [__]
+
+**Does the diagnosis still fit?** ‹Yes — the wound is behaving as expected for
+[etiology].› ‹The wound has failed a correct plan, so the diagnosis was
+reconsidered this visit: perfusion reassessed ([ABI/TBI]), osteomyelitis
+‹excluded / under evaluation by [imaging]›, biopsy ‹not indicated / indicated
+and [scheduled] to exclude malignancy and atypical inflammatory causes›.›
+
+**The rate-limiting impediment is [__]** — [why this one, and not the others] —
+addressed by [__].
+
+**Additional impediments, ranked:**
+1. [__] → [intervention] → [education given]
+2. [__] → [intervention] → [education given]
+3. [__] → [intervention] → [education given]
+
+**Changed since last visit:** [__]
+
+### 11c. Plan
+
+1. **Highest-yield intervention this visit:** [__], because [__].
+2. **Local wound care:** [dressing/product] because [wound state] requires
+   [property]. [Debridement performed today; next anticipated [date].]
+   [Product application [N] of [N]; next [date].]
+3. **Cause correction with specific parameters:**
+   - **Pressure/shear:** [q2h, 30° tilt, HOB ≤30°, off the [side], heels floated,
+     surface, cushion, sitting limits, weight-shift interval]
+   - **Compression:** [type, mmHg, ABI verified [value/date]]
+   - **Offloading:** [TCC / irremovable walker / removable walker / felted foam —
+     and why this one]
+   - **Perfusion:** [elevation schedule, calf-pump exercises, vascular referral]
+4. **Systemic optimization:** nutrition [__] g protein/day; infection [__];
+   comorbidity targets [__]; medication review [__].
+5. **Measurable goal:** expect ≥[__]% area reduction by [date]. ‹If not met, the
+   next step is [__].›
+6. **Escalate immediately for:** [specific findings — fever ≥100.4°F, spreading
+   erythema beyond the marked border, new drainage or odor, increasing pain,
+   compression causing numbness or color change, dressing displacement] →
+   call [name, number]; after hours [number]. **Do not wait for the next visit.**
+7. **Care coordination:** [who was contacted, about what, their response, and
+   what they are doing].
+8. **Next visit [date]**, at which I will reassess: [specific items — measurements
+   against [__] sq cm, culture results, imaging, adherence to [__], lab repeat].
 
 **Time:** [If billing time-based E/M: total time on the date of service and what
 it comprised.]

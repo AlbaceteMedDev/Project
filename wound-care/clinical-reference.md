@@ -128,18 +128,118 @@ Every impediment gets three lines in the note: **what you found**, **what you di
 about it**, and **who you taught**. The middle line is what makes it care rather
 than observation.
 
+The list below is deliberately long. Work it as a checklist — most stalled wounds
+have three or four impediments running at once, and the one that is actually
+holding the wound back is often not the one being treated.
+
+---
+
+### 4a. Mechanical — load, shear, and dead space
+
 | Impediment | How you establish it | Intervention documented | Education documented |
 | --- | --- | --- | --- |
-| **Unrelieved pressure** (hip/trochanter, sacrum, heel) | Ulcer over bony prominence; turn log review; erythema pattern matching support surface | Q2H repositioning in bed / Q1H in chair; 30° lateral tilt, **never 90° directly on the trochanter**; heels floated off the surface entirely; HOB ≤ 30°; pressure-redistribution mattress and wheelchair cushion; never position on the ulcer | Turn schedule posted at bedside; caregiver and facility nurse taught the 30° tilt with pillow bridging; teach-back obtained; turn log to be initialed each turn and reviewed at next visit |
-| **Immobility / contracture** | Unable to self-reposition; Braden mobility subscore; observed ROM | Caregiver-assisted passive/active-assisted ROM to bilateral lower extremities, [N] reps × [N] sessions/day; PT/OT referral; chair-based mobility program | Caregiver taught heel slides, ankle pumps, hip/knee flexion-extension; return demonstration performed |
-| **Poor perfusion / venous congestion** | Pulses, capillary refill, ABI, dependent rubor, edema, pooling | Compression [type, mmHg] applied — **verify ABI before compressing**; leg elevation above heart [N]× daily for [N] min; ankle pumps and leg raises to drive the calf pump; vascular referral if ABI < 0.9 or non-healing | Patient instructed **not to remove or loosen compression** between visits and told exactly whom to call if it becomes painful, numb, or discolored; taught leg raises and ankle pumps to encourage venous return and reduce pooling; teach-back obtained |
-| **Malnutrition / low albumin** | Albumin, prealbumin, weight trend, intake %, MST/MNA screen | Protein target [g/day] with named food and supplement options; calorie target; vitamin C and zinc course; dietitian referral; weekly weights | Patient and caregiver given the specific protein plan in writing; caregiver taught to record intake |
-| **Infection / biofilm** | NERDS/STONEES (§5); tissue culture; probe-to-bone | Serial debridement to disrupt biofilm; antimicrobial dressing; systemic antibiotics **only when clinical criteria are met**; imaging if osteomyelitis suspected | Signs to report between visits, with a named contact and threshold ("call if…") |
-| **Moisture / incontinence** | Maceration, excoriation, IAD pattern | Barrier film or paste; toileting schedule; absorbent product change frequency; check-and-change protocol | Caregiver taught barrier application and the check-and-change interval |
-| **Uncontrolled hyperglycemia** | A1c, CBG log | Realistic individualized target; med adjustment communicated to the managing clinician | Patient/caregiver taught the CBG log and when to call |
-| **Medications impairing healing** | Chart review: systemic steroids, chemo/immunosuppressants, anticoagulants, NSAIDs | Discussed taper or alternative with the prescriber; documented the conversation and the decision | Patient told why the medication matters to the wound |
-| **Smoking / nicotine** | History | Cessation counseling, duration, pharmacotherapy offered | Documented counseling time and patient response |
-| **Non-adherence / caregiver burden** | Dressing found off, compression removed, turn log blank | Simplify the regimen to what is actually achievable; add home health visit frequency; address caregiver capacity directly | Barrier identified and named in the note, plus the concrete accommodation made |
+| **Unrelieved pressure** (sacrum, trochanter, ischium, heel, occiput) | Ulcer over a bony prominence; turn log review; erythema pattern matching the support surface | Q2H repositioning in bed / Q1H in chair; 30° lateral tilt, **never 90° directly on the trochanter**; heels floated off the surface entirely; HOB ≤ 30°; pressure-redistribution mattress and wheelchair cushion; never position on the ulcer | Turn schedule posted at bedside; caregiver and nurse taught the 30° tilt with pillow bridging; teach-back obtained; turn log initialed each turn and reviewed at the next visit |
+| **Shear and friction** (distinct from pressure — the sacral ulcer's usual driver) | Sacral or coccygeal location; patient slides down in bed; HOB kept high; ulcer undermined at the superior margin | **HOB ≤ 30° except during meals, then lowered within 30 minutes**; knee gatch or foot-of-bed elevation to stop sliding; lift sheet and two-person repositioning — **never drag**; silicone sacral foam dressing as a shear-reduction layer | Staff taught that sliding the patient up in bed is the mechanism; lift-sheet technique demonstrated |
+| **Repetitive trauma / continued ambulation on the wound** | Plantar or lateral foot location; wound resists healing despite a clean bed; callus rim | **Offloading is the treatment** — total contact cast, removable cast walker (rendered irremovable if adherence is poor), felted foam, or postoperative shoe; activity limits in steps or minutes | Patient taught that every unprotected step resets the wound; step or activity target given in concrete terms |
+| **Callus / hyperkeratosis** | Thick keratin rim around a plantar wound | **Sharp debridement of callus at every visit** — callus concentrates plantar pressure and is not a protective response; emollient to the surrounding foot, not between toes | Patient and caregiver taught not to trim callus at home or use over-the-counter acid pads |
+| **Foot deformity, Charcot, limited joint mobility** | Rocker-bottom foot, hammertoes, prominent metatarsal heads, equinus, restricted ankle dorsiflexion | Podiatry and orthotics referral; custom insoles and therapeutic footwear; Achilles lengthening considered for equinus; Charcot immobilization if active | Patient taught the deformity is the reason this location keeps breaking down |
+| **Poorly fitting or inappropriate footwear** | Inspect the shoes at every visit — wear pattern, foreign objects, seams over the wound | Therapeutic footwear prescription; shoes inspected before every wear | Caregiver taught to check inside the shoe by hand before each wear |
+| **Inadequate support surface** | Stage 3–4 ulcer, high-risk Braden, ulcer failing to progress on the current surface | Escalate to a Group 2 alternating-pressure or low-air-loss surface with the justification stated; pressure-redistribution wheelchair cushion; **no donut or ring devices** — they cause ischemia at the ring | Facility taught why the donut cushion was removed |
+| **Dead space — undermining and tunneling** | Probe with a moistened applicator; measure by clock position | Loosely pack with rope or ribbon to wick and prevent premature surface closure; **never over-pack** — packing pressure causes ischemia; count in and count out | Nurse taught to document the number of pieces placed and removed |
+| **Prolonged sitting** | Ischial ulcer; chair-bound; sitting tolerance not defined | Sitting time limited to a stated interval; weight shifts every 15 minutes; tilt-in-space or recline wheelchair; seating and positioning evaluation | Patient taught the weight-shift schedule and given a timer or cue |
+
+### 4b. Perfusion and oxygenation
+
+| Impediment | How you establish it | Intervention documented | Education documented |
+| --- | --- | --- | --- |
+| **Arterial insufficiency / PAD** | Absent or diminished pulses, **ABI < 0.9**, dependent rubor, pallor on elevation, rest pain, punched-out distal wound, cool foot | **Do not compress. Do not debride dry stable eschar.** Urgent vascular referral for revascularization; keep the wound dry and protected; smoking cessation; walking program only if claudication rather than critical limb ischemia | Patient taught the limb-threat warning signs and given a same-day contact |
+| **Falsely normal ABI in diabetes or ESRD** | **ABI > 1.3** or non-compressible vessels from medial arterial calcification | ABI is unreliable here — obtain **toe-brachial index, toe pressure, or TcPO₂** instead and document why | Referring clinician told why the normal ABI was not accepted |
+| **Venous hypertension** | Edema, hemosiderin staining, lipodermatosclerosis, atrophie blanche, medial gaiter location, varicosities | **Compression is the treatment**, at 30–40 mmHg once ABI ≥ 0.8; elevation above heart level; calf-pump exercise; venous duplex and vein-ablation referral | Patient taught not to remove the wrap, and given the findings that mean *call* rather than remove |
+| **Dependency syndrome** | Chair-bound patient who sleeps sitting up; legs never elevated | Elevation schedule written in hours, not "as tolerated"; address why the patient sleeps upright (orthopnea, transfer ability, fear of falling) rather than repeating the instruction | Caregiver taught to elevate during specific daily activities so it actually happens |
+| **Lymphedema** | Non-pitting late-stage edema, positive Stemmer sign, skin fibrosis, papillomatosis | Complete decongestive therapy referral; multilayer short-stretch bandaging; meticulous skin care; long-term compression garment fitting | Patient taught this is lifelong management, not a course of treatment |
+| **Anemia and impaired oxygen delivery** | Hgb, especially < 10 g/dL; COPD; low SpO₂ | Identify and treat the cause; correct iron, B12, folate; optimize pulmonary status; transfusion only on standard thresholds | Patient told why the blood count matters to the wound |
+| **Nicotine — smoking or vaping** | History; ask specifically about vaping and nicotine pouches | Vasoconstriction and carboxyhemoglobin impair oxygen delivery for hours after each use; cessation counseling with duration documented; pharmacotherapy offered | Counseling time, content, and patient response documented |
+| **Edema from heart failure, renal disease, or hypoalbuminemia** | Bilateral pitting edema, weight trend, JVD, albumin | Treat the systemic cause with the managing clinician; compression only after the arterial assessment; elevation | Caregiver taught daily weights and the call threshold |
+
+### 4c. Infection and bioburden
+
+| Impediment | How you establish it | Intervention documented | Education documented |
+| --- | --- | --- | --- |
+| **Critical colonization** | NERDS ≥ 3 (§5) | Topical antimicrobial — silver, PHMB, iodine, methylene blue; **not** systemic antibiotics | Nurse taught what the antimicrobial dressing is for and when it stops |
+| **Deep and surrounding infection** | STONEES ≥ 3 (§5) | Tissue or Levine culture, then empiric systemic antibiotics, narrowed on sensitivities; erythema border marked; reassessment date stated | Written escalation criteria left at the bedside with a named contact |
+| **Biofilm** | Wound stalls despite a clean-looking bed; a shiny or slimy film that **re-forms within 24–72 hours** of cleaning; poor response to antibiotics | Biofilm is physically protected, so it needs **physical disruption**: serial sharp debridement plus a surfactant or antibiofilm dressing, on a defined schedule rather than as needed | Nurse taught that a clean-looking wound can still be biofilm-laden, and why debridement repeats |
+| **Osteomyelitis** | Probe-to-bone positive, exposed bone, ESR/CRP elevation, non-healing over a bony prominence | MRI; bone biopsy for culture where it will change therapy; infectious disease consultation; prolonged targeted antibiotics; surgical evaluation | Patient and family told the likely course and duration |
+| **Cellulitis** | Spreading non-blanchable erythema, warmth, edema, systemic signs | Systemic antibiotics; border marked and dated; elevation; reassessment within 48–72 hours | Nursing taught to assess against the marked border, not by impression |
+| **Fungal or candidal involvement** | Satellite lesions, skin-fold or periwound involvement, moist macerated skin | Topical antifungal; moisture control; distinguish from bacterial infection before escalating antibiotics | Caregiver taught skin-fold drying and barrier technique |
+
+### 4d. Metabolic, nutritional, and systemic
+
+| Impediment | How you establish it | Intervention documented | Education documented |
+| --- | --- | --- | --- |
+| **Malnutrition and protein deficit** | Albumin and prealbumin **read with the CRP**, weight trend, intake %, MST/MNA screen | Protein target in **g/day** with named foods and supplements; calorie target; vitamin C; time-limited zinc; dietitian referral; weekly weights (§6) | Written plan with specific foods; caregiver taught to record intake |
+| **Hyperglycemia and glycemic variability** | A1c **plus the CBG log** — a normal A1c can hide wide swings that impair neutrophil function | Individualized target; address the swings, not just the average; medication adjustment communicated to the managing clinician | Patient and caregiver taught the log and the call thresholds |
+| **Obesity** | BMI; panniculus; skin-fold moisture and friction | Skin-fold care and moisture management; equipment rated for weight; positioning support; realistic weight goals | Caregiver taught skin-fold drying and support techniques |
+| **Cachexia and sarcopenia** | Muscle wasting, unintentional weight loss, low grip strength | Protein plus resistance activity as tolerated; treat the underlying driver; realistic goals | Family counseled on what is and is not achievable |
+| **Dehydration** | Intake, skin turgor, BUN:Cr, orthostatics | Fluid target ~1 mL per kcal, adjusted for cardiac and renal status | Caregiver given a concrete daily fluid target in cups |
+| **Micronutrient deficiency** | Poor intake, bariatric surgery, malabsorption, alcohol use | Vitamin C, vitamin A, zinc (**with a stop date**), copper, iron, B12, folate as indicated | Patient told why zinc stops at 14 days |
+| **Renal disease and dialysis** | eGFR, dialysis schedule, calciphylaxis (exquisitely painful retiform purpura and necrosis) | Adjust protein and medication dosing; **calciphylaxis is a distinct diagnosis** needing nephrology, sodium thiosulfate consideration, and careful debridement decisions | Family counseled — calciphylaxis carries a poor prognosis and the goals conversation belongs here |
+| **Hepatic disease** | LFTs, albumin, coagulopathy, ascites | Synthetic failure limits protein repletion; correct coagulopathy before sharp debridement | Patient told why bleeding risk changes the procedure |
+| **Thyroid disease** | TSH | Correct hypothyroidism — it slows collagen synthesis and wound contraction | Straightforward: treatment is being addressed |
+| **Autoimmune and inflammatory disease** | Vasculitis, rheumatoid arthritis, lupus, **pyoderma gangrenosum** | ⚠️ **Pyoderma gangrenosum exhibits pathergy — sharp debridement makes it worse.** Violaceous undermined borders, rapid expansion, severe pain out of proportion, and a history of IBD or RA should stop the debridement and prompt biopsy and rheumatology or dermatology referral. Treatment is immunosuppression, not debridement | The patient must be told why the usual treatment is being withheld |
+| **Malignancy — primary or Marjolin ulcer** | Non-healing beyond 4–12 weeks despite correct therapy; rolled everted edges; exuberant friable granulation; a chronic scar or burn site | **Biopsy.** Take it from the wound edge, not the center. A wound that will not heal despite a correct plan is a wound whose diagnosis should be reconsidered | Explain that the biopsy is to establish why it is not healing |
+| **Prior radiation** | Radiotherapy field history; telangiectasia, atrophy, fibrosis | Radiation-damaged tissue has fixed microvascular injury; set expectations, protect, consider hyperbaric oxygen referral where indicated | Patient told that healing in a radiated field is slower and may be incomplete |
+| **Sleep deprivation and circadian disruption** | Sleep history; night-time care interruptions | Cluster night care to protect sleep blocks; treat pain and nocturia; growth hormone release and repair are sleep-dependent | Facility asked to consolidate overnight tasks |
+
+### 4e. Wound-bed and local factors
+
+| Impediment | How you establish it | Intervention documented | Education documented |
+| --- | --- | --- | --- |
+| **Necrotic tissue — slough and eschar** | Tissue percentages | Debridement matched to the wound and the patient: sharp, enzymatic, autolytic, or mechanical. **Exception: dry stable eschar on an ischemic heel is left intact** — document that decision and the perfusion finding behind it | Caregiver told why an eschar is deliberately not being removed |
+| **Epibole — rolled edges** | Edge curled under; epithelium sealed to itself and not migrating | Edge debridement or chemical cautery to reopen the margin. This is a specific, actionable finding, not a descriptor | Nurse taught what a rolled edge looks like so it is reported early |
+| **Hypergranulation** | Granulation proud of the surrounding skin, blocking epithelial migration | Identify the cause — pressure, moisture imbalance, foreign body, or occlusion; apply foam pressure, a hypertonic or silver dressing, or cautery; **biopsy if it persists** | Nurse taught this is not "extra healing" |
+| **Desiccation** | Dry bed, adherent dressing, no exudate | Moisture-donating hydrogel or a moisture-retentive dressing; epithelial cells cannot migrate across a dry bed | Caregiver taught why a wound is kept moist rather than dried out |
+| **Excess moisture and maceration** | White waterlogged periwound | Increase absorbency and add a periwound barrier — **this is a dressing problem, not an infection problem** | Nurse taught to report strikethrough rather than adding a second pad |
+| **Foreign body** | Retained suture, staple, mesh, gauze fiber, hardware; wound that will not close over one point | Remove it; imaging if a retained fragment is suspected; **count packing in and out** | Nurse taught the packing count |
+| **Cytotoxic topical agents** | Chart and home review: full-strength povidone-iodine, hydrogen peroxide, Dakin's used chronically | These are toxic to fibroblasts and keratinocytes with prolonged use on a clean granulating wound. Discontinue and document the substitution | Patient and family taught to stop home hydrogen peroxide, which is common and well-intentioned |
+| **Contact sensitization** | Periwound dermatitis with a dressing-shaped border. Common allergens: neomycin, bacitracin, lanolin, fragrance, adhesives, rubber accelerators. **Venous ulcer patients are sensitized at high rates** | Withdraw the suspected agent; switch adhesive or contact-layer chemistry; patch testing referral for recurrence | Patient told which product to avoid, by name, everywhere |
+| **Wound cooling at dressing change** | Long dressing changes; wound left open and irrigated with cold solution | Warm irrigation to body temperature, minimize open time, avoid unnecessary daily changes — mitotic activity is suppressed for hours after the wound is chilled | Nurse taught to warm solution and limit exposure |
+| **Over-frequent or traumatic dressing changes** | Daily changes on a clean granulating wound; bleeding at removal | Match the interval to exudate; use a non-adherent contact layer; **the dressing that is disturbed least heals fastest** once the bed is clean | Nurse taught that more frequent is not better |
+
+### 4f. Medications
+
+| Impediment | How you establish it | Intervention documented | Education documented |
+| --- | --- | --- | --- |
+| **Systemic corticosteroids** | Dose and duration | Impair inflammation, collagen synthesis, and epithelialization; discuss taper with the prescriber; **vitamin A may partially counteract topical and systemic steroid effects** — discuss before starting | Patient told why the steroid matters to the wound |
+| **Chemotherapy and immunosuppressants** | Regimen and cycle timing | Coordinate procedures around nadir; anticipate delayed healing; document the discussion with oncology | Expectations set with the patient and family |
+| **Anticoagulants and antiplatelets** | Agent, indication, INR | Bleeding and hematoma risk changes the debridement plan — check the INR before sharp debridement and have hemostatic materials ready; **do not stop anticoagulation for a bedside debridement without the prescriber** | Patient told what bruising and bleeding to expect and report |
+| **Hydroxyurea** | Long-term use, often in myeloproliferative disease | A recognized cause of refractory leg ulceration; discuss alternatives with the prescriber — these ulcers frequently will not heal until the drug is changed | Patient told the drug itself may be the cause |
+| **NSAIDs, some immunomodulators, nicotine replacement** | Medication review | Review necessity; document the decision | Patient told the rationale |
+
+### 4g. Patient, caregiver, and system factors
+
+| Impediment | How you establish it | Intervention documented | Education documented |
+| --- | --- | --- | --- |
+| **Uncontrolled pain** | 0–10 at rest, with change, and during procedures | Pain drives immobility, missed dressing changes, and refused repositioning. Pre-medicate before changes; use atraumatic contact layers; treat the pain as a healing intervention, not a comfort measure | Patient taught the pre-medication timing so it is actually taken beforehand |
+| **Cognitive impairment or dementia** | Orientation, ability to follow the plan, dressing found removed | Simplify to what the patient can do; move responsibility to the caregiver or facility; use dressings that resist removal; **do not chart it as refusal** | Caregiver taught redirection rather than correction |
+| **Depression and low motivation** | Screening, affect, engagement | Treat it — untreated depression predicts non-adherence and non-healing; behavioral health referral | Patient told the connection plainly and without judgment |
+| **Caregiver burden and capacity** | Who actually performs the care, how often, and whether they can | **Match the regimen to the caregiver you have, not the one you wish you had.** Increase home health frequency, simplify the stack, extend the change interval where safe | Caregiver asked directly what is not workable, and the plan changed accordingly |
+| **Supply and cost barriers** | Ask whether they have the supplies in hand — do not assume | Prescribe what is covered and obtainable; social work referral; confirm delivery before the next visit | Patient told exactly what should arrive and when, and whom to call if it does not |
+| **Transportation and access** | Missed visits, distance, no driver | Home visits, telehealth interims, consolidate appointments | Plan built around the visits that will actually happen |
+| **Housing instability, no refrigeration, no running water** | Ask | Choose a regimen that works in the actual environment; social work | Discussed without judgment; documented as a clinical constraint |
+| **Substance use** | Alcohol, stimulants, injection use | Affects nutrition, adherence, perfusion, and infection risk; harm-reduction approach; treatment referral offered | Offered, response documented |
+| **Language and health literacy** | Teach-back failure; written material not in the patient's language | Interpreter services; materials at an appropriate level and language; **teach-back is the test** | Interpreter use documented by name or ID |
+| **Adherence framed as the system's problem** | Dressing off, compression removed, turn log blank | Name the specific barrier and make a concrete accommodation. Escalate systemic failures — such as night-shift turning gaps — to nursing leadership in writing | **Never chart "non-compliant" without the reason.** It ends the inquiry and fixes nothing |
+
+---
+
+### When a wound will not heal and you have addressed everything above
+
+Reconsider the diagnosis. A wound that fails a correct plan is telling you the
+plan is aimed at the wrong problem. In order of yield: repeat the **vascular**
+assessment (with toe pressures if the ABI is unreliable), image for
+**osteomyelitis**, **biopsy** for malignancy and for atypical inflammatory causes,
+review for **pyoderma gangrenosum** before debriding again, and review the
+medication list for **hydroxyurea** and other drug-induced ulceration.
 
 ---
 
