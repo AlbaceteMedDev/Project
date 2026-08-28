@@ -41,6 +41,9 @@
 }
 
 *{box-sizing:border-box}
+/* A class that sets `display` outranks the UA rule for [hidden], so elements
+   toggled with el.hidden stay visible without this. Do not remove. */
+[hidden]{display:none !important}
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -224,6 +227,47 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 }
 .empty{padding:26px 14px; text-align:center; color:var(--ink-3); font-size:13px}
 
+.seg{display:inline-flex; background:var(--surface-3); border-radius:6px; padding:2px; gap:2px}
+.seg-b{border:0; background:transparent; color:var(--ink-2); font-size:12.5px; font-weight:500; padding:4px 10px; border-radius:4px}
+.seg-b:hover{color:var(--ink)}
+.seg-b.on{background:var(--surface); color:var(--accent); box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.seg-b:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.spacer{flex:1}
+
+.docopt{
+  display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:12.5px; color:var(--ink-2);
+  border-bottom:1px solid var(--border); background:var(--surface-2); cursor:pointer;
+}
+.docopt input{accent-color:var(--accent); margin:0}
+
+.edited-bar{
+  display:flex; align-items:center; gap:12px; padding:9px 14px; font-size:12.5px; line-height:1.45;
+  background:var(--warn-soft); color:var(--warn); border-bottom:1px solid var(--border);
+}
+.edited-bar span{flex:1}
+.edited-bar .btn{background:var(--surface); border-color:currentColor; color:inherit; flex:none}
+
+.note-doc{
+  max-height:min(62vh,760px); overflow-y:auto; padding:20px 22px 26px;
+  font-size:13.5px; line-height:1.62; color:var(--ink);
+  outline:none;
+}
+@media (max-width:1080px){ .note-doc{max-height:none} }
+.note-doc:focus{box-shadow:inset 0 0 0 2px var(--accent-soft)}
+.note-doc h4{
+  margin:22px 0 7px; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+  padding-bottom:5px; border-bottom:1px solid var(--border);
+}
+.note-doc h4:first-child{margin-top:0}
+.note-doc .para{white-space:pre-wrap; word-wrap:break-word; margin:0}
+.note-doc .ph{color:var(--ink-3); font-style:italic}
+.note-doc .sig{
+  margin-top:26px; padding-top:12px; border-top:1px solid var(--border);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; color:var(--ink-2);
+}
+.note-doc .empty-doc{padding:26px 0; text-align:center; color:var(--ink-3); font-size:13px; font-style:normal}
+
 .toast{
   position:fixed; left:50%; bottom:22px; transform:translate(-50%,14px);
   background:var(--ink); color:var(--bg); padding:9px 16px; border-radius:100px;
@@ -255,8 +299,19 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     <form class="steps" id="form" autocomplete="off">
 
       <details class="step" open>
-        <summary><span class="num">1</span><h2>Visit &amp; wound</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Visit &amp; wound</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
+          <fieldset><legend>Patient</legend>
+            <div class="grid g3">
+              <label class="f"><span>Name</span><input type="text" id="ptName" placeholder="Doe, Jane R."></label>
+              <label class="f"><span>DOB</span><input type="text" id="ptDob" placeholder="03/14/1944"></label>
+              <label class="f"><span>MRN</span><input type="text" id="ptMrn" placeholder="000-0000"></label>
+            </div>
+            <div class="grid g2">
+              <label class="f"><span>Place of service / facility</span><input type="text" id="ptFac" placeholder="Example Care Center, Room 214-B"></label>
+              <label class="f"><span>Comorbidities bearing on healing</span><input type="text" id="ptHx" placeholder="T2DM, CVI, HFmrEF, prior CVA, malnutrition"></label>
+            </div>
+          </fieldset>
           <div class="grid g3">
             <label class="f"><span>Date of service</span><input type="date" id="dos"></label>
             <label class="f"><span>Visit # this episode</span><input type="number" id="visitNo" min="1" placeholder="7"></label>
@@ -306,8 +361,29 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
         </div>
       </details>
 
+      <details class="step">
+        <summary><span class="num"></span><h2>Interval since last visit</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <label class="f"><span>What has happened since the last visit</span><textarea id="ivHx" placeholder="Staff report increasing drainage over 4 days and an odor since 8/25. Daughter reports appetite down, eating about half of meals."></textarea></label>
+          <div class="grid g2">
+            <label class="f"><span>Reported by facility nursing (name, role)</span><input type="text" id="ivRn" placeholder="M. Alvarez, RN, charge nurse"></label>
+            <label class="f"><span>Reported by caregiver (name, relationship)</span><input type="text" id="ivCg" placeholder="Karen Doe, daughter"></label>
+          </div>
+          <div class="grid g3">
+            <label class="f"><span>Temp</span><input type="text" id="vTemp" placeholder="100.8°F"></label>
+            <label class="f"><span>BP / HR</span><input type="text" id="vBpHr" placeholder="118/64, 96"></label>
+            <label class="f"><span>Dressing found</span>
+              <select id="ivDress"><option value="">—</option><option value="intact">Intact as ordered</option><option value="saturated with strikethrough">Saturated / strikethrough</option><option value="off">Found off</option><option value="displaced">Displaced</option></select>
+            </label>
+          </div>
+          <label class="f"><span>Compression / offloading device found</span>
+            <select id="ivDevice"><option value="">Not applicable</option><option value="in place and undisturbed">In place, undisturbed</option><option value="removed by the patient">Removed by patient</option><option value="removed by the caregiver">Removed by caregiver</option></select>
+          </label>
+        </div>
+      </details>
+
       <details class="step" open>
-        <summary><span class="num">2</span><h2>Measurements</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Measurements</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <p class="hint">Measure <b>before</b> debridement. Length is the longest head-to-toe dimension; width is the greatest dimension at 90° to it. Post-debridement numbers go in step 7.</p>
           <fieldset><legend>Today — pre-debridement</legend>
@@ -371,7 +447,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">3</span><h2>Characteristics</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Characteristics</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <fieldset><legend>Tissue composition — must total 100%</legend>
             <div class="grid g4">
@@ -444,7 +520,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">4</span><h2>Infection — NERDS / STONEES</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Infection — NERDS / STONEES</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <fieldset><legend>NERDS — superficial (≥3 = critical colonization)</legend>
             <div class="checks" id="nerds">
@@ -477,7 +553,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">5</span><h2>Labs, nutrition &amp; comorbidities</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Labs, nutrition &amp; comorbidities</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <fieldset><legend>Albumin &amp; nutrition</legend>
             <div class="grid g4">
@@ -516,7 +592,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">6</span><h2>Impediments &amp; offloading</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Impediments &amp; offloading</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <p class="hint">Each box adds the intervention <b>and</b> the education sentence to the note. Checking a box is not the documentation — the generated text is, so read it.</p>
           <div id="imped"></div>
@@ -533,7 +609,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">7</span><h2>Debridement</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Debridement</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <div class="grid g2">
             <label class="f"><span>Type</span>
@@ -582,7 +658,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">8</span><h2>Matrix — consent, product, technique</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Matrix — consent, product, technique</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <label class="f"><span>Status this visit</span>
             <select id="mlStatus">
@@ -613,7 +689,21 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       </details>
 
       <details class="step">
-        <summary><span class="num">9</span><h2>Education &amp; communication</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <summary><span class="num"></span><h2>Prior care, dressing &amp; orders</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <div class="grid g2">
+            <label class="f"><span>Weeks of documented standard care</span><input type="number" id="pcWeeks" placeholder="6"></label>
+            <label class="f"><span>Dressing change frequency / by whom</span><input type="text" id="ordFreq" placeholder="daily by facility nursing"></label>
+          </div>
+          <label class="f"><span>Treatments already tried and why they were changed</span><textarea id="pcTried" placeholder="07/17–07/31 collagenase + foam — slough 70%→45%, too slow for the burden, added sharp debridement. 07/31–08/28 weekly sharp debridement + silver foam — good progress to 08/21, then deterioration."></textarea></label>
+          <label class="f"><span>Why this dressing was chosen</span><textarea id="ordWhy" placeholder="Exudate is large and seropurulent with clinical infection, so silver alginate was selected — alginate for absorbency and hemostasis at the debrided margin, silver for local bioburden alongside systemic therapy."></textarea></label>
+          <label class="f"><span>Additional orders (labs, imaging, consults, equipment)</span><textarea id="ordOther" placeholder="MRI right hip without contrast within 72h. CBC with smear daily x3. Dietitian consult. Group 2 alternating-pressure mattress."></textarea></label>
+          <label class="f"><span>Escalation contact (name, number, after hours)</span><input type="text" id="ordContact" placeholder="Wound care office 555-0100; after hours 555-0199"></label>
+        </div>
+      </details>
+
+      <details class="step">
+        <summary><span class="num"></span><h2>Education &amp; communication</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
         <div class="step-body">
           <div class="grid g2">
             <label class="f"><span>Caregiver educated (name, relationship)</span><input type="text" id="cgName" placeholder="Karen Doe, daughter"></label>
@@ -653,11 +743,21 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 
       <section class="note">
         <div class="note-bar">
-          <h3>Generated note</h3>
+          <div class="seg" role="tablist" aria-label="Note view">
+            <button type="button" class="seg-b on" id="viewDoc" role="tab" aria-selected="true">Complete note</button>
+            <button type="button" class="seg-b" id="viewSec" role="tab" aria-selected="false">Sections</button>
+          </div>
+          <span class="spacer"></span>
           <button type="button" class="btn" id="expandAll">Open all steps</button>
-          <button type="button" class="btn btn-primary" id="copyAll">Copy all</button>
+          <button type="button" class="btn btn-primary" id="copyAll">Copy note</button>
         </div>
-        <div class="note-body" id="out"><div class="empty">Fill in the visit on the left and the note assembles here.</div></div>
+        <label class="docopt"><input type="checkbox" id="showEmpty"> Include the sections I haven't filled in, as headings to type under</label>
+        <div class="edited-bar" id="editedBar" hidden>
+          <span><b>You've edited this note.</b> Changes to the fields on the left are paused so your edits aren't overwritten.</span>
+          <button type="button" class="btn" id="rebuild">Rebuild from fields</button>
+        </div>
+        <div class="note-doc" id="noteDoc" contenteditable="true" spellcheck="true" aria-label="Complete note, editable"></div>
+        <div class="note-body" id="out" hidden></div>
       </section>
     </aside>
   </div>
@@ -987,10 +1087,30 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     var S=[], loc=orBlank(v("loc"),"[location]"), P=[];
 
     // header
-    S.push(["Header",
-      "Date of service: "+dstr("dos")+"  |  Visit "+orBlank(v("visitNo"),"[N]")+" of this episode  |  Week "+orBlank(v("weeks"),"[N]")+" of treatment\n"+
-      "Wound: "+loc+"  |  Etiology: "+etioWord()+"  |  "+orBlank(v("stage"),"[stage/classification]")
-    ]);
+    var hdr="Patient: "+orBlank(v("ptName"),"[name]")+"   DOB: "+orBlank(v("ptDob"),"[DOB]")+"   MRN: "+orBlank(v("ptMrn"),"[MRN]")+"\n";
+    if(v("ptFac")) hdr+="Place of service: "+v("ptFac")+"\n";
+    hdr+="Date of service: "+dstr("dos")+"   |   Visit "+orBlank(v("visitNo"),"[N]")+" of this episode   |   Week "+orBlank(v("weeks"),"[N]")+" of treatment\n"+
+      "Wound: "+loc+(v("psite")?" ("+v("psite")+")":"")+"   |   Etiology: "+etioWord()+"   |   "+orBlank(v("stage"),"[stage/classification]");
+    if(v("ptHx")) hdr+="\nActive problems bearing on healing: "+v("ptHx")+".";
+    if(v("provider")) hdr+="\nProvider: "+v("provider");
+    S.push(["Header",hdr]);
+
+    // interval history
+    if(v("ivHx")||v("ivRn")||v("ivCg")||v("ivDress")||v("vTemp")||n("gapN")!==null){
+      var iv="";
+      if(v("ivHx")) iv+="Since the last visit ("+dstr("pdate")+"): "+v("ivHx")+"\n\n";
+      if(n("gapN")!==null) iv+="Turn log reviewed at the bedside. "+n("gapN")+" documented gaps of >= "+orBlank(v("gapH"),"[N]")+" hours since the last visit"+(v("adhBarrier")?"; barrier identified as "+v("adhBarrier"):"")+".\n";
+      if(v("ivRn")) iv+="Reported by facility nursing ("+v("ivRn")+"): as above.\n";
+      if(v("ivCg")) iv+="Reported by caregiver ("+v("ivCg")+"): as above.\n";
+      if(v("ivDress")) iv+="Dressing found "+v("ivDress")+".\n";
+      if(v("ivDevice")) iv+="Compression/offloading device "+v("ivDevice")+".\n";
+      if(v("painRest")||v("painChg")) iv+="Pain "+orBlank(v("painRest"),"[N]")+"/10 at rest, "+orBlank(v("painChg"),"[N]")+"/10 with dressing change.\n";
+      if(v("vTemp")||v("vBpHr")||n("wt")!==null){
+        iv+="Vitals: "+(v("vTemp")?"T "+v("vTemp")+"  ":"")+(v("vBpHr")?"BP/HR "+v("vBpHr")+"  ":"")+
+            (n("wt")!==null?"Weight "+n("wt")+" kg"+(n("wtPrior")!==null?" (prior "+n("wtPrior")+" kg)":""):"")+".";
+      }
+      S.push(["Interval history",iv.trim()]);
+    }
 
     // measurements
     if(m.cur!==null){
@@ -1034,7 +1154,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       if(v("exAmt")||v("exType")) c+="\nExudate: "+orBlank(v("exAmt"),"[amount]")+" "+orBlank(v("exType"),"[type]")+".";
       if(v("odor")) c+=" Odor after cleansing: "+v("odor")+".";
       if(v("painRest")||v("painChg")) c+="\nPain: "+orBlank(v("painRest"),"[N]")+"/10 at rest, "+orBlank(v("painChg"),"[N]")+"/10 with dressing change.";
-      S.push(["Characteristics",c.trim()]);
+      S.push(["Wound characteristics",c.trim()]);
     }
 
     // week over week narrative
@@ -1187,6 +1307,29 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       S.push(["Matrix — application technique",ap]);
     }
 
+    // prior & conservative care
+    if(n("pcWeeks")!==null||v("pcTried")||v("ordWhy")){
+      var pc="";
+      if(n("pcWeeks")!==null) pc+="Duration of documented standard care: "+n("pcWeeks")+" weeks ("+(n("pcWeeks")*7)+" days), comprising pressure offloading and repositioning, "+(v("compression")?"compression therapy with verified ABI, ":"")+"moist wound healing with dressing selection matched to exudate level, serial selective sharp debridement, periwound protection, nutritional optimization and glycemic management.\n\n";
+      if(v("pcTried")) pc+="Treatments trialed this episode and why they were changed: "+v("pcTried")+"\n\n";
+      if(v("ordWhy")) pc+="Rationale for the current dressing selection: "+v("ordWhy");
+      S.push(["Prior & conservative care",pc.trim()]);
+    }
+
+    // orders
+    if(v("ordFreq")||v("ordOther")||v("ordContact")||m.imped.length){
+      var od="";
+      if(v("ordFreq")) od+="Dressing change: "+v("ordFreq")+"."+(v("mlStatus")==="applied"?" DO NOT DISTURB the matrix layer -- change only the outer layers.":"")+"\n";
+      if(m.imped.indexOf("pressure")>-1||m.imped.indexOf("shear")>-1) od+="Repositioning: q2h in bed around the clock, q1h in chair with 15-minute weight shifts; 30-degree lateral tilt with pillow bridging, never 90-degree side-lying; off the "+orBlank(v("offSide"),"[affected]")+" side; heels floated free; HOB at or below 30 degrees. Turn log at the bedside, initialed each turn.\n";
+      if(v("compression")) od+="Compression: "+v("compression")+" -- do not remove between visits.\n";
+      if(m.imped.indexOf("perfusion")>-1) od+="Exercise: leg raises 10 reps 4x daily; ankle pumps 20 reps hourly while awake; elevation above heart level 30 minutes 3x daily.\n";
+      if(m.protein!==null) od+="Nutrition: "+m.protein+" g protein/day, "+m.kcal+" kcal/day; supplements between meals; vitamin C 500 mg BID; zinc 220 mg daily with a stop date at 14 days; weekly weights.\n";
+      if(v("abx")) od+="Antibiotics: "+v("abx")+"; narrow on sensitivities.\n";
+      if(v("ordOther")) od+="Additional orders: "+v("ordOther")+"\n";
+      od+="Call the office immediately for: fever >= 100.4F, increasing pain, spreading redness beyond the marked border, new drainage or odor, the dressing coming off"+(v("compression")?", or compression causing numbness, colour change or new pain":"")+". Contact: "+orBlank(v("ordContact"),"[name, number; after hours number]")+". Do not wait for the next scheduled visit.";
+      S.push(["Orders",od]);
+    }
+
     // education
     if(v("cgName")||v("rnName")||v("pcpNote")){
       var ed="";
@@ -1263,6 +1406,56 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     return S;
   }
 
+  /* The note reads in this order regardless of which fields were filled. Each slot
+     lists the section keys that can land in it; with "include unfilled" on, an
+     empty slot becomes a heading to type under. */
+  var SKELETON=[
+    ["Header",["Header"],"Patient, date, wound, provider."],
+    ["Interval history",["Interval history"],"What has happened since the last visit; turn-log adherence; what nursing and the caregiver report; vitals."],
+    ["Measurements",["Measurements"],"Length, width, depth measured before debridement; undermining and tunnelling by clock position; week-over-week and four-week change."],
+    ["Wound characteristics",["Wound characteristics"],"Tissue percentages totalling 100; granulation quality; edges; periwound; exudate; odour; pain."],
+    ["Week-over-week comparison",["Week-over-week comparison"],"What changed since last visit, and the trajectory against the benchmark."],
+    ["Infection assessment",["Infection assessment"],"NERDS and STONEES tallies, the impression that follows, culture technique, and any antibiotic decision."],
+    ["Labs, nutrition & comorbidities",["Labs, nutrition"],"Abnormal values with an action attached to each; the protein prescription; realistic comorbidity targets."],
+    ["Impediments to healing",["Impediments to healing"],"Each impediment with the intervention taken and the education given."],
+    ["Debridement",["Debridement"],"Consent, anaesthesia, instrument and size, tissue and depth removed, sq cm and % debrided, bleeding and hemostasis, tolerance, post-debridement bed and measurements."],
+    ["Advanced therapy",["Advanced matrix","Matrix —"],"Consent with alternatives and risks; product, lot, size applied and discarded; application technique per IFU; dressing stack."],
+    ["Prior & conservative care",["Prior & conservative care"],"What was tried, how it responded, why it changed, and why the current dressing was chosen."],
+    ["Orders",["Orders"],"Dressing change, repositioning, compression, exercise, nutrition, labs, and the call criteria with a named contact."],
+    ["Education & communication",["Education & communication"],"Who was taught, what, by what method, and the teach-back result; who was contacted and their response."],
+    ["Healability classification",["Healability classification"],"Healable, maintenance, or non-healable — and the basis for it."],
+    ["Cause correction",["Cause correction"],"The highest-yield intervention for this wound type, with specific parameters."],
+    ["Assessment & plan",["Assessment & plan"],"The patient, the wound, the trajectory, the rate-limiting impediment, the measurable goal, and what would change the plan."]
+  ];
+
+  var docEdited=false, docView=true;
+
+  function renderDoc(m){
+    if(docEdited) return;
+    var S=window.__sections||[], showEmpty=$("showEmpty").checked, used=[], html=[];
+    SKELETON.forEach(function(slot){
+      var hits=[];
+      S.forEach(function(sec,i){
+        if(used.indexOf(i)>-1) return;
+        if(slot[1].some(function(k){ return sec[0].indexOf(k)===0; })){ hits.push(sec); used.push(i); }
+      });
+      if(hits.length){
+        hits.forEach(function(sec){
+          html.push('<h4>'+esc(sec[0])+'</h4><p class="para">'+esc(sec[1])+'</p>');
+        });
+      } else if(showEmpty){
+        html.push('<h4>'+esc(slot[0])+'</h4><p class="para ph">'+esc(slot[2])+'</p>');
+      }
+    });
+    S.forEach(function(sec,i){ if(used.indexOf(i)===-1) html.push('<h4>'+esc(sec[0])+'</h4><p class="para">'+esc(sec[1])+'</p>'); });
+    if(!html.length){
+      $("noteDoc").innerHTML='<div class="empty-doc">Fill in the visit on the left and the note writes itself here — then edit it directly before copying.</div>';
+      return;
+    }
+    if(v("provider")) html.push('<p class="sig">'+esc(v("provider"))+'  —  '+esc(dstr("dos"))+'</p>');
+    $("noteDoc").innerHTML=html.join("");
+  }
+
   function renderNote(m){
     var S=sections(m), out=$("out");
     if(!S.length){ out.innerHTML='<div class="empty">Fill in the visit on the left and the note assembles here.</div>'; return; }
@@ -1272,6 +1465,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
              '<pre>'+esc(s[1])+'</pre></div>';
     }).join("");
     window.__sections=S;
+    renderDoc(m);
   }
   function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
@@ -1325,9 +1519,52 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     if(s) copyText(s[1],"Copied: "+s[0]);
   });
   $("copyAll").addEventListener("click",function(){
+    if(docView){
+      var txt=$("noteDoc").innerText.trim();
+      if(!txt || /^Fill in the visit/.test(txt)){ toast("Nothing to copy yet"); return; }
+      copyText(txt,"Complete note copied"); return;
+    }
     var S=window.__sections||[];
     if(!S.length){ toast("Nothing to copy yet"); return; }
-    copyText(S.map(function(s){ return s[0].toUpperCase()+"\n"+s[1]; }).join("\n\n"),"Full note copied");
+    copyText(S.map(function(s){ return s[0].toUpperCase()+"\n"+s[1]; }).join("\n\n"),"All sections copied");
+  });
+
+  function setView(doc){
+    docView=doc;
+    $("noteDoc").hidden=!doc; $("out").hidden=doc;
+    $("showEmpty").parentNode.hidden=!doc;
+    $("editedBar").hidden=!(doc&&docEdited);
+    $("viewDoc").classList.toggle("on",doc); $("viewSec").classList.toggle("on",!doc);
+    $("viewDoc").setAttribute("aria-selected",String(doc)); $("viewSec").setAttribute("aria-selected",String(!doc));
+    $("copyAll").textContent=doc?"Copy note":"Copy all sections";
+  }
+  $("viewDoc").addEventListener("click",function(){ setView(true); });
+  $("viewSec").addEventListener("click",function(){ setView(false); });
+
+  $("showEmpty").addEventListener("change",function(){
+    if(docEdited){ toast("Rebuild from fields first — your edits would be lost"); this.checked=!this.checked; return; }
+    update();
+  });
+
+  // Typing in the note pauses regeneration so field edits cannot wipe the writing.
+  $("noteDoc").addEventListener("input",function(){
+    if(!docEdited){ docEdited=true; $("editedBar").hidden=false; }
+  });
+  // Keep pasted content plain so the note structure survives.
+  $("noteDoc").addEventListener("paste",function(e){
+    e.preventDefault();
+    var t=(e.clipboardData||window.clipboardData).getData("text/plain");
+    var ok=false;
+    try{ ok=document.execCommand("insertText",false,t); }catch(err){ ok=false; }
+    if(ok) return;
+    var sel=window.getSelection();
+    if(!sel||!sel.rangeCount) return;
+    var r=sel.getRangeAt(0); r.deleteContents();
+    var node=document.createTextNode(t); r.insertNode(node);
+    r.setStartAfter(node); r.collapse(true); sel.removeAllRanges(); sel.addRange(r);
+  });
+  $("rebuild").addEventListener("click",function(){
+    docEdited=false; $("editedBar").hidden=true; update(); toast("Rebuilt from the fields");
   });
   $("expandAll").addEventListener("click",function(){
     var d=document.querySelectorAll("details.step"), allOpen=true;
@@ -1341,6 +1578,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 
   renderImpediments();
   syncEtio();
+  document.querySelectorAll(".step .num").forEach(function(el,i){ el.textContent=i+1; });
   var t=new Date(); $("dos").value=t.toISOString().slice(0,10);
   update();
 })();

@@ -23,7 +23,22 @@ The goal is a note that does three jobs at once:
 | `worked-example-note.md` | A complete note for a real-shaped patient — right trochanteric pressure ulcer, low albumin, thrombocytopenia, venous component, Microlyte application. Read this first. |
 | `clinical-reference.md` | Measurement math, healing-trajectory benchmarks, protein targets, the impediment matrix, the infection framework, and the pre-signature audit checklist. |
 | `etiology-playbooks.md` | The wound-type-specific assessment and plan: sacral, trochanteric, ischial, and heel pressure injuries; venous, diabetic foot, arterial, and mixed ulcers. Plus the healable / maintenance / non-healable framework and the deeper A&P structure. |
-| `note-builder.html` | Interactive builder — enter this week's and last week's numbers, it computes area, week-over-week change, cumulative change from baseline, and writes the narrative. Open in any browser; nothing is uploaded. |
+| `note-builder.html` | Interactive builder. Enter the visit and it writes a **complete note you can edit in place** before copying — it computes area, week-over-week and four-week change against the etiology's benchmark, the tissue split, sq cm and % debrided, the protein target and gap, matrix wastage, and the NERDS/STONEES tally. Switch to **Sections** for per-section copy, or turn on **"include the sections I haven't filled in"** to get the full skeleton as headings to type under. Open in any browser; nothing is saved or uploaded. |
+
+
+### Using the builder
+
+1. Work down the eleven steps on the left in the order the visit happens.
+2. The note assembles on the right as you type. Anything you leave blank is left
+   out, or — with **"include the sections I haven't filled in"** ticked — appears
+   as a heading with a prompt so you can type under it directly.
+3. **Edit the note in place.** Click into it and rewrite anything. From your
+   first keystroke, changes to the fields stop overwriting the note, and a bar
+   appears offering **Rebuild from fields** if you want to start over.
+4. **Copy note** puts the whole thing on the clipboard as plain text for the EMR.
+
+Nothing is saved. Closing the tab discards everything, so copy the note out
+before you leave the page.
 
 ---
 
