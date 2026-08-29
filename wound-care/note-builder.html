@@ -228,6 +228,38 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 }
 .empty{padding:26px 14px; text-align:center; color:var(--ink-3); font-size:13px}
 
+.import-card > summary{gap:10px}
+.import-card .ico{
+  flex:none; width:26px; height:26px; border-radius:5px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); font-size:14px; line-height:1;
+}
+.drop{
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  border:1.5px dashed var(--border-strong); border-radius:6px; padding:16px;
+  background:var(--surface-2); transition:border-color .15s, background .15s;
+}
+.drop.over{border-color:var(--accent); background:var(--accent-soft)}
+.drop-or{color:var(--ink-3); font-size:13px}
+.drop-fmt{
+  margin-left:auto; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; color:var(--ink-3); letter-spacing:.04em;
+}
+.find-head{
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:4px;
+  padding-bottom:8px; border-bottom:1px solid var(--border);
+}
+.find-head h3{font-size:13px; font-weight:600; flex:1}
+.find-list{display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:6px; overflow:hidden; margin-top:10px}
+.find{display:flex; align-items:flex-start; gap:10px; padding:9px 11px; background:var(--surface); cursor:pointer}
+.find:hover{background:var(--surface-2)}
+.find input{accent-color:var(--accent); margin:2px 0 0; flex:none}
+.find-b{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px}
+.find-k{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
+.find-v{font-size:13.5px; font-weight:500}
+.find-v em{font-style:normal; color:var(--accent); font-family:"IBM Plex Mono",ui-monospace,monospace}
+.find-src{font-size:11.5px; color:var(--ink-3); line-height:1.4; overflow-wrap:anywhere}
+.find-src b{color:var(--ink-2); font-weight:500}
+
 .seg{display:inline-flex; background:var(--surface-3); border-radius:6px; padding:2px; gap:2px}
 .seg-b{border:0; background:transparent; color:var(--ink-2); font-size:12.5px; font-weight:500; padding:4px 10px; border-radius:4px}
 .seg-b:hover{color:var(--ink)}
@@ -325,6 +357,22 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   <div class="layout">
     <!-- ============ FORM ============ -->
     <form class="steps" id="form" autocomplete="off">
+
+      <details class="step import-card" id="importCard">
+        <summary><span class="ico" aria-hidden="true">&#8681;</span><h2>Import from a document</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
+        <div class="step-body">
+          <p class="hint">Drop in <b>last week's note</b> to carry the measurements and identifiers forward, or a <b>nursing note, discharge summary, or lab report</b> to pull values out of it. Everything found is shown with the line it came from, and <b>nothing is filled in until you tick it and apply</b> — so a bad match costs you a glance, not a wrong note.</p>
+          <div class="drop" id="drop">
+            <input type="file" id="fileIn" multiple accept=".txt,.md,.markdown,.csv,.tsv,.html,.htm,.docx,.json,.rtf" hidden>
+            <button type="button" class="btn" id="pickFile">Choose files</button>
+            <span class="drop-or">or drop them here</span>
+            <span class="drop-fmt">.txt · .md · .csv · .html · .docx</span>
+          </div>
+          <p class="hint" id="importMsg" hidden></p>
+          <div id="findings"></div>
+          <p class="hint"><b>PDFs are not read here.</b> Reading one needs a parser this page deliberately does not carry, so it stays a single offline file. Open the PDF, copy the text, and paste it into any field — or save it as text and drop that in.</p>
+        </div>
+      </details>
 
       <details class="step" open>
         <summary><span class="num"></span><h2>Visit &amp; wound</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
@@ -1520,6 +1568,251 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     }
   }
 
+
+  /* ================= document import =================
+     Reads an uploaded document, pulls out values it recognises, and shows each
+     one with the line it came from. Nothing is written into the form until the
+     provider ticks it — a wrong match should cost a glance, not a wrong note.
+     No AI and no network: this is pattern matching over text, done locally. */
+
+  function u16le(b,o){ return b[o]|(b[o+1]<<8); }
+  function u32le(b,o){ return (b[o]|(b[o+1]<<8)|(b[o+2]<<16)|(b[o+3]<<24))>>>0; }
+
+  async function inflateRaw(bytes){
+    if(typeof DecompressionStream!=="function") throw new Error("no-inflate");
+    var stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+
+  // Minimal ZIP reader — enough to pull one named part out of a .docx.
+  async function zipRead(bytes,wanted){
+    var eocd=-1;
+    for(var i=bytes.length-22; i>=0 && i>bytes.length-70000; i--){
+      if(u32le(bytes,i)===0x06054b50){ eocd=i; break; }
+    }
+    if(eocd<0) throw new Error("not-a-zip");
+    var count=u16le(bytes,eocd+10), cd=u32le(bytes,eocd+16), p=cd;
+    for(var n=0;n<count;n++){
+      if(u32le(bytes,p)!==0x02014b50) break;
+      var method=u16le(bytes,p+10), csize=u32le(bytes,p+20), usize=u32le(bytes,p+24);
+      var nameLen=u16le(bytes,p+28), extraLen=u16le(bytes,p+30), cmtLen=u16le(bytes,p+32);
+      var lho=u32le(bytes,p+42);
+      var name=new TextDecoder().decode(bytes.subarray(p+46,p+46+nameLen));
+      if(name===wanted){
+        var lNameLen=u16le(bytes,lho+26), lExtraLen=u16le(bytes,lho+28);
+        var start=lho+30+lNameLen+lExtraLen;
+        var raw=bytes.subarray(start,start+(method===0?usize:csize));
+        return method===0 ? raw : await inflateRaw(raw);
+      }
+      p+=46+nameLen+extraLen+cmtLen;
+    }
+    throw new Error("part-missing");
+  }
+
+  function docxToText(xml){
+    return xml
+      .replace(/<w:p[ >][\s\S]*?(?=<w:p[ >]|<\/w:body>)|<w:p\/>/g,function(m){
+        var t=(m.match(/<w:t[^>]*>[\s\S]*?<\/w:t>/g)||[])
+          .map(function(x){ return x.replace(/<[^>]+>/g,""); }).join("");
+        return t+"\n";
+      })
+      .replace(/<[^>]+>/g,"")
+      .replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"')
+      .replace(/&apos;/g,"'").replace(/&amp;/g,"&");
+  }
+
+  async function fileToText(file){
+    var name=(file.name||"").toLowerCase();
+    if(/\.docx$/.test(name)){
+      var bytes=new Uint8Array(await file.arrayBuffer());
+      var part=await zipRead(bytes,"word/document.xml");
+      return docxToText(new TextDecoder().decode(part));
+    }
+    var txt=await file.text();
+    if(/\.html?$/.test(name)){
+      var d=document.createElement("div");
+      d.innerHTML=txt.replace(/<(script|style)[\s\S]*?<\/\1>/gi,"");
+      return d.innerText||d.textContent||"";
+    }
+    if(/\.rtf$/.test(name)) return txt.replace(/\\[a-z]+-?\d* ?/g,"").replace(/[{}]/g,"");
+    return txt;
+  }
+
+  /* Each rule: the field it fills, a label, and a regex whose first group is the
+     value. Ordered so the note this tool writes matches most precisely first. */
+  var RULES=[
+    {f:"ptName", l:"Patient name",  re:/^\s*Patient:\s*([^\n]+?)(?:\s{2,}DOB:|\n|$)/im},
+    {f:"ptDob",  l:"DOB",           re:/\bDOB:\s*([0-9]{1,2}\/[0-9]{1,2}\/[0-9]{2,4})/i},
+    {f:"ptMrn",  l:"MRN",           re:/\bMRN[:#\s]+([A-Za-z0-9-]{2,})/i},
+    {f:"ptFac",  l:"Place of service", re:/^\s*Place of service:\s*([^\n]+)/im},
+    {f:"loc",    l:"Wound location", re:/^\s*Wound:\s*([^|\n]+?)\s*(?:\||$)/im,
+     clean:function(v){ return v.replace(/[.;,]\s*$/,"").replace(/,?\s*(?:Stage|Wagner)\b.*$/i,"").trim(); }},
+    {f:"stage",  l:"Stage / classification", re:/\b(Stage\s*(?:1|2|3|4|I{1,3}V?)\b[^\n,.|]*)/i},
+    {f:"weeks",  l:"Weeks in treatment", re:/Week\s+(\d+)\s+of treatment/i},
+    {f:"visitNo",l:"Visit number",  re:/Visit\s+(\d+)\s+of this episode/i},
+
+    {f:"alb",    l:"Albumin g/dL",  re:/\balbumin[^0-9\n]{0,18}(\d+\.\d)\s*(?:g\/dL)?/i},
+    {f:"prealb", l:"Prealbumin",    re:/\bprealbumin[^0-9\n]{0,18}(\d+(?:\.\d)?)/i},
+    {f:"plt",    l:"Platelets K/µL",re:/\bplatelets?[^0-9\n]{0,18}(\d{2,3})\b/i},
+    {f:"wbc",    l:"WBC K/µL",      re:/\bWBC[^0-9\n]{0,18}(\d+\.?\d*)/i},
+    {f:"crp",    l:"CRP mg/dL",     re:/\bCRP[^0-9\n]{0,18}(\d+\.?\d*)/i},
+    {f:"a1c",    l:"A1c %",         re:/\b(?:Hb)?A1c[^0-9\n]{0,18}(\d+\.?\d*)/i},
+    {f:"abi",    l:"ABI",           re:/\bABI[^0-9\n]{0,18}(\d?\.\d{1,2})/i},
+    {f:"wt",     l:"Weight kg",     re:/\b(?:weight|wt)[^0-9\n]{0,14}(\d{2,3}(?:\.\d)?)\s*kg/i},
+    {f:"braden", l:"Braden score",  re:/\bBraden[^0-9\n]{0,18}(\d{1,2})\b/i},
+    {f:"vTemp",  l:"Temperature",   re:/\b(?:T|temp(?:erature)?)[:\s]+(\d{2,3}\.?\d?\s*°?\s*F)/i},
+
+    {f:"tG",     l:"Granulation %", re:/(\d{1,3})\s*%\s*granulation/i},
+    {f:"tS",     l:"Slough %",      re:/(\d{1,3})\s*%\s*slough/i},
+    {f:"tE",     l:"Eschar %",      re:/(\d{1,3})\s*%\s*eschar/i},
+    {f:"umCm",   l:"Undermining cm",re:/undermining\s+(\d+\.?\d*)\s*cm/i}
+  ];
+
+  function lineAround(text,idx){
+    // A rule anchored with ^\s* can start the match on the preceding newline,
+    // which would collapse the slice below to nothing. Step onto real content.
+    while(idx<text.length && /\s/.test(text.charAt(idx))) idx++;
+    var a=text.lastIndexOf("\n",idx)+1, b=text.indexOf("\n",idx);
+    if(b<0) b=text.length;
+    var line=text.slice(a,b).trim();
+    return line.length>190 ? line.slice(0,190)+"…" : line;
+  }
+
+  // Measurements are the high-value carry-forward, so they get their own pass.
+  function findMeasurements(text,priorNote){
+    var out=[];
+    var post=/post-debridement measurements[^0-9\n]{0,20}(\d+\.?\d*)\s*[x×]\s*(\d+\.?\d*)(?:\s*[x×]\s*(\d+\.?\d*))?/i.exec(text);
+    var pre=/length\s+(\d+\.?\d*)\s*cm[\s\S]{0,80}?width\s+(\d+\.?\d*)\s*cm(?:[\s\S]{0,80}?depth\s+(\d+\.?\d*)\s*cm)?/i.exec(text);
+    var m=post||pre;
+    if(!m){
+      var generic=/(\d+\.?\d*)\s*(?:cm)?\s*[x×]\s*(\d+\.?\d*)\s*(?:cm)?(?:\s*[x×]\s*(\d+\.?\d*)\s*(?:cm)?)?\s*cm/i.exec(text);
+      if(generic) m=generic;
+    }
+    if(m){
+      var tgt = priorNote ? ["pl","pw","pd"] : ["cl","cw","cd"];
+      var where = priorNote ? "last visit" : "today";
+      var src = lineAround(text,m.index);
+      out.push({f:tgt[0], l:"Length cm → "+where, v:m[1], src:src});
+      out.push({f:tgt[1], l:"Width cm → "+where,  v:m[2], src:src});
+      if(m[3]) out.push({f:tgt[2], l:"Depth cm → "+where, v:m[3], src:src});
+      if(post && priorNote) out[0].note="from the post-debridement measurement, which is what next week compares against";
+    }
+    return out;
+  }
+
+  function scanText(text,fileName){
+    var priorNote=/WEEK-OVER-WEEK COMPARISON|Measured before debridement|IMPEDIMENTS TO HEALING/i.test(text);
+    var found=[], seen={};
+    RULES.forEach(function(r){
+      var m=r.re.exec(text);
+      if(!m || !m[1]) return;
+      var val=String(m[1]).trim();
+      if(r.clean) val=r.clean(val);
+      if(!val || seen[r.f]) return;
+      seen[r.f]=1;
+      found.push({f:r.f, l:r.l, v:val, src:lineAround(text,m.index)});
+    });
+    findMeasurements(text,priorNote).forEach(function(x){
+      if(!seen[x.f]){ seen[x.f]=1; found.push(x); }
+    });
+    return {found:found, priorNote:priorNote, file:fileName};
+  }
+
+  var pending=[];
+  function renderFindings(){
+    var host=$("findings");
+    if(!pending.length){ host.innerHTML=""; return; }
+    host.innerHTML=
+      '<div class="find-head"><h3>'+pending.length+' value'+(pending.length===1?"":"s")+' found</h3>'+
+      '<button type="button" class="btn" id="findNone">Untick all</button>'+
+      '<button type="button" class="btn btn-primary" id="findApply">Apply ticked</button></div>'+
+      '<div class="find-list">'+pending.map(function(x,i){
+        var el=$(x.f), label=el&&el.previousElementSibling ? "" : "";
+        return '<label class="find"><input type="checkbox" data-i="'+i+'" checked>'+
+          '<span class="find-b"><span class="find-k">'+esc(x.l)+'</span>'+
+          '<span class="find-v"><em>'+esc(x.v)+'</em>'+(x.note?' — '+esc(x.note):'')+'</span>'+
+          '<span class="find-src"><b>from:</b> '+esc(x.src)+'</span></span></label>';
+      }).join("")+'</div>';
+  }
+
+  function applyFindings(){
+    var boxes=$("findings").querySelectorAll('input[type="checkbox"]:checked'), n=0;
+    Array.prototype.forEach.call(boxes,function(b){
+      var x=pending[+b.getAttribute("data-i")], el=$(x.f);
+      if(!el) return;
+      if(el.tagName==="SELECT"){
+        var hit=Array.prototype.filter.call(el.options,function(o){
+          return o.value.toLowerCase()===String(x.v).toLowerCase();
+        })[0];
+        if(!hit) return;
+        el.value=hit.value;
+      } else el.value=x.v;
+      n++;
+    });
+    pending=[]; renderFindings();
+    document.querySelectorAll("details.step").forEach(function(d,i){ if(i>0&&i<4) d.open=true; });
+    update();
+    toast(n+" value"+(n===1?"":"s")+" applied — check them against the source");
+  }
+
+  function setImportMsg(html,show){
+    var el=$("importMsg");
+    el.innerHTML=html||""; el.hidden=!show;
+  }
+
+  async function handleFiles(files){
+    if(!files||!files.length) return;
+    var all=[], names=[], errs=[], prior=false;
+    for(var i=0;i<files.length;i++){
+      var f=files[i];
+      if(/\.pdf$/i.test(f.name)){ errs.push(esc(f.name)+" — PDFs are not read here; paste the text instead"); continue; }
+      try{
+        var text=await fileToText(f);
+        if(!text || !text.trim()){ errs.push(esc(f.name)+" — no readable text"); continue; }
+        var r=scanText(text,f.name);
+        prior=prior||r.priorNote;
+        names.push(f.name);
+        r.found.forEach(function(x){ if(!all.some(function(y){ return y.f===x.f; })) all.push(x); });
+      }catch(e){
+        var why=e&&e.message==="no-inflate" ? "this browser cannot unzip .docx — save it as .txt"
+             : e&&e.message==="part-missing" ? "not a Word document"
+             : e&&e.message==="not-a-zip" ? "not a readable .docx"
+             : "could not be read";
+        errs.push(esc(f.name)+" — "+why);
+      }
+    }
+    pending=all; renderFindings();
+    var msg=[];
+    if(names.length) msg.push("Read <b>"+esc(names.join(", "))+"</b>."+(prior?" Recognised as a note from this builder, so measurements are offered as <b>last visit</b>.":""));
+    if(!all.length && names.length) msg.push("No values recognised — fill the form directly, or paste the text into the fields.");
+    if(errs.length) msg.push("Skipped: "+errs.join("; ")+".");
+    setImportMsg(msg.join(" "), msg.length>0);
+    if(all.length) $("importCard").open=true;
+  }
+
+  $("pickFile").addEventListener("click",function(){ $("fileIn").click(); });
+  $("fileIn").addEventListener("change",function(){
+    // Snapshot first: FileList is live, and clearing value empties it mid-read.
+    var picked=Array.prototype.slice.call(this.files);
+    this.value="";
+    handleFiles(picked);
+  });
+  $("findings").addEventListener("click",function(e){
+    if(e.target.id==="findApply"){ applyFindings(); return; }
+    if(e.target.id==="findNone"){
+      $("findings").querySelectorAll('input[type="checkbox"]').forEach(function(b){ b.checked=false; });
+    }
+  });
+  ["dragenter","dragover"].forEach(function(ev){
+    $("drop").addEventListener(ev,function(e){ e.preventDefault(); this.classList.add("over"); });
+  });
+  ["dragleave","drop"].forEach(function(ev){
+    $("drop").addEventListener(ev,function(e){ e.preventDefault(); this.classList.remove("over"); });
+  });
+  $("drop").addEventListener("drop",function(e){
+    if(e.dataTransfer&&e.dataTransfer.files)
+      handleFiles(Array.prototype.slice.call(e.dataTransfer.files));
+  });
 
   function renderImpediments(){
     var host=$("imped");

@@ -23,7 +23,7 @@ The goal is a note that does three jobs at once:
 | `worked-example-note.md` | A complete note for a real-shaped patient — right trochanteric pressure ulcer, low albumin, thrombocytopenia, venous component, Microlyte application. Read this first. |
 | `clinical-reference.md` | Measurement math, healing-trajectory benchmarks, protein targets, the impediment matrix, the infection framework, and the pre-signature audit checklist. |
 | `etiology-playbooks.md` | The wound-type-specific assessment and plan: sacral, trochanteric, ischial, and heel pressure injuries; venous, diabetic foot, arterial, and mixed ulcers. Plus the healable / maintenance / non-healable framework and the deeper A&P structure. |
-| `note-builder.html` | Interactive builder. Enter the visit and it writes a **complete note you can edit in place** before copying — it computes area, week-over-week and four-week change against the etiology's benchmark, the tissue split, sq cm and % debrided, the protein target and gap, matrix wastage, and the NERDS/STONEES tally. Switch to **Sections** for per-section copy, or turn on **"include the sections I haven't filled in"** to get the full skeleton as headings to type under. Exports to PDF, Word, or the clipboard. One self-contained file — open it in any browser, works offline, nothing is saved or uploaded. |
+| `note-builder.html` | Interactive builder. Import a document or enter the visit, and it writes a **complete note you can edit in place** before copying — it computes area, week-over-week and four-week change against the etiology's benchmark, the tissue split, sq cm and % debrided, the protein target and gap, matrix wastage, and the NERDS/STONEES tally. Switch to **Sections** for per-section copy, or turn on **"include the sections I haven't filled in"** to get the full skeleton as headings to type under. Exports to PDF, Word, or the clipboard. One self-contained file — open it in any browser, works offline, nothing is saved or uploaded. |
 
 
 ### Giving this to a provider, and getting a document out
@@ -53,6 +53,31 @@ usable with real patients.
 > you to confirm first. **Print / PDF** needs the standalone file, because a
 > preview sandbox cannot open a print dialog. The page checks which it can do and
 > says so, rather than leaving a dead button.
+
+### Importing from a document
+
+Rather than retyping, drop a document into **Import from a document** at the top
+of the form.
+
+- **Last week's note** (the `.docx` this tool exported, or a `.txt` of it) is
+  recognised as such: its measurements are offered as **last visit**, so the
+  week-over-week and four-week arithmetic carries forward with the patient
+  identifiers.
+- **A nursing note, discharge summary, or lab report** is scanned for values it
+  recognises — labs, vitals, weight, ABI, Braden, tissue percentages, and
+  measurements written as `4.5 x 3.4 x 1.1 cm`.
+- Reads `.txt`, `.md`, `.csv`, `.html`, and `.docx`. Several files at once merge
+  into one list.
+
+**Every value is shown with the line it came from, and nothing is written into
+the form until you tick it and press Apply.** A wrong match costs you a glance,
+not a wrong note.
+
+> **What this is not.** The page does no AI and makes no network calls — it is
+> pattern matching over text, running entirely on your machine. It will miss
+> values phrased in ways it does not recognise, and it does not read PDFs
+> (that needs a parser this page deliberately does not carry, so it stays one
+> offline file). For a PDF, copy the text out and paste it in.
 
 ### Using the builder
 
