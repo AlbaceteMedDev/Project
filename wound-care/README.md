@@ -1,16 +1,35 @@
-# Wound Care Provider Documentation Kit
+# Wound Care Documentation — A Teaching Kit
 
-A documentation system for providers performing serial debridement and advanced
+Teaching material for wound care documentation: serial debridement and advanced
 wound matrix application (Microlyte Ag / tri-membrane wrap) in the SNF, home
 health, and outpatient setting.
 
-The goal is a note that does three jobs at once:
+> **This is for teaching, not for charting.** Every note the builder produces is
+> marked *Teaching example — not for clinical use*, and that marker travels into
+> the copied text, the PDF, and the Word file. Use fictional patients. Nothing
+> here is a substitute for your own clinical judgment, your institution's
+> documentation standards, or a real chart.
+
+It teaches a note that does three things at once, because those are the three
+tests a real note has to pass:
 
 1. **Communicates clinically** — the next provider, the facility nurse, and the
    caregiver can all act on it.
-2. **Survives an audit** — every billed service is supported by the elements the
-   payer actually looks for.
+2. **Holds up on review** — every service is supported by the elements a reader
+   actually looks for.
 3. **Gets written in the room** — not reconstructed from memory at 9 p.m.
+
+## Start here
+
+Open `note-builder.html` and load one of the three **teaching cases**. Each is a
+complete worked visit built around one thing the note has to get right, and every
+field stays editable — change a value and watch what the note does.
+
+| Case | What it teaches |
+| --- | --- |
+| **Deteriorating pressure injury** | Area is flat while depth and undermining grow and infection criteria are met. Area alone is not the trajectory, and the matrix is deferred rather than applied. |
+| **Stalled venous ulcer** | Clean, granulating, well-perfused, but under the four-week benchmark after six weeks. The case for advanced therapy, and the consent that goes with it. |
+| **Ischemic heel — do not debride** | Dry stable eschar on a poorly perfused heel. The case where the usual treatment is wrong, closure is not the goal, and the reasoning has to be written down or it reads as neglect. |
 
 ---
 
@@ -26,11 +45,11 @@ The goal is a note that does three jobs at once:
 | `note-builder.html` | Interactive builder. Import a document or enter the visit, and it writes a **complete note you can edit in place** before copying — it computes area, week-over-week and four-week change against the etiology's benchmark, the tissue split, sq cm and % debrided, the protein target and gap, matrix wastage, and the NERDS/STONEES tally. Switch to **Sections** for per-section copy, or turn on **"include the sections I haven't filled in"** to get the full skeleton as headings to type under. Exports to PDF, Word, or the clipboard. One self-contained file — open it in any browser, works offline, nothing is saved or uploaded. |
 
 
-### Giving this to a provider, and getting a document out
+### Giving this to a learner, and getting a document out
 
 The builder is **one self-contained HTML file**. There is no install, no account,
-no server, and no data leaves the machine it runs on — which is what makes it
-usable with real patients.
+and no server — which makes it easy to hand round a teaching session, and means
+nothing a learner types goes anywhere.
 
 **To hand it to someone:**
 
@@ -40,6 +59,9 @@ usable with real patients.
    organization allows for a document.
 3. They double-click it. It opens in Chrome, Edge, Safari, or Firefox and works
    immediately, including offline.
+
+Exported notes carry the teaching marker, so a practice note handed in or emailed
+around cannot be mistaken for a chart document.
 
 **To get a document out, once they've filled it in:**
 
@@ -90,7 +112,7 @@ not a wrong note.
    appears offering **Rebuild from fields** if you want to start over.
 4. **Copy note** puts the whole thing on the clipboard as plain text for the EMR.
 
-Nothing is saved. Closing the tab discards everything, so copy the note out
+Nothing is saved. Closing the tab discards everything, so export or copy the note
 before you leave the page.
 
 ---

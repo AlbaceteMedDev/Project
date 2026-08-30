@@ -228,6 +228,31 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 }
 .empty{padding:26px 14px; text-align:center; color:var(--ink-3); font-size:13px}
 
+.cases{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.cases-h{padding:13px 16px 11px; border-bottom:1px solid var(--border); background:var(--surface-2)}
+.cases-h h2{font-size:15px; font-weight:600}
+.cases-h span{display:block; margin-top:2px; font-size:12.5px; color:var(--ink-3)}
+.cases-b{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--border)}
+@media (max-width:760px){ .cases-b{grid-template-columns:1fr} }
+.case{
+  display:flex; flex-direction:column; gap:5px; text-align:left;
+  background:var(--surface); border:0; padding:13px 14px 15px; color:inherit;
+}
+.case:hover{background:var(--accent-soft)}
+.case:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
+.case b{font-size:13.5px; font-weight:600; color:var(--accent)}
+.case i{font-style:normal; font-size:12px; line-height:1.45; color:var(--ink-3)}
+
+.note-doc .tag{
+  margin:0 0 18px; padding:8px 11px; border:1px solid var(--warn);
+  background:var(--warn-soft); color:var(--warn); border-radius:5px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px;
+  font-weight:600; letter-spacing:.09em; text-transform:uppercase; text-align:center;
+}
+
 .import-card > summary{gap:10px}
 .import-card .ico{
   flex:none; width:26px; height:26px; border-radius:5px; display:grid; place-items:center;
@@ -326,6 +351,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   .note-doc h4:first-child{margin-top:0}
   .note-doc .para{orphans:3; widows:3}
   .note-doc .ph{color:#555}
+  .note-doc .tag{border:1px solid #000; background:#fff; color:#000; margin-bottom:14pt}
 }
 
 .toast{
@@ -346,17 +372,38 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     <div class="mast-l">
       <div class="eyebrow">Serial debridement &amp; matrix application</div>
       <h1>Wound Note Builder</h1>
-      <p class="sub">Enter the visit as you work through it. The measurements, trajectory, tissue split, protein target, and infection tally are computed for you, and the note assembles on the right — section by section, ready to paste.</p>
+      <p class="sub">A teaching tool for wound care documentation. Work through a visit and watch a complete note assemble — the measurements, trajectory, tissue split, protein target, and infection tally are computed as you go, so you can see which findings drive which conclusions.</p>
     </div>
     <div class="privacy">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span><b style="color:var(--ink)">Nothing leaves this page.</b> No data is saved, stored, or transmitted — everything lives in the browser tab and is gone when you close it. Paste into your EMR before leaving.</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+      <span><b style="color:var(--ink)">For teaching, not for charting.</b> Every note this page produces is marked as a teaching example. Use fictional patients — nothing is saved or transmitted, and everything is gone when you close the tab.</span>
     </div>
   </header>
 
   <div class="layout">
     <!-- ============ FORM ============ -->
     <form class="steps" id="form" autocomplete="off">
+
+      <div class="cases">
+        <div class="cases-h">
+          <h2>Teaching cases</h2>
+          <span>Load a worked visit, then change values and watch what the note does</span>
+        </div>
+        <div class="cases-b">
+          <button type="button" class="case" data-case="trochanteric">
+            <b>Deteriorating pressure injury</b>
+            <i>Area is flat but depth and undermining grew, and infection criteria are met. Shows why area alone is not the trajectory — and why the matrix is deferred.</i>
+          </button>
+          <button type="button" class="case" data-case="venous">
+            <b>Stalled venous ulcer</b>
+            <i>Clean, granulating, well-perfused, but under the four-week benchmark after six weeks. Shows the case for advanced therapy, and the consent that goes with it.</i>
+          </button>
+          <button type="button" class="case" data-case="heel">
+            <b>Ischemic heel — do not debride</b>
+            <i>Dry stable eschar on a poorly perfused heel. Shows the case where the usual treatment is wrong, and why that decision has to be written down.</i>
+          </button>
+        </div>
+      </div>
 
       <details class="step import-card" id="importCard">
         <summary><span class="ico" aria-hidden="true">&#8681;</span><h2>Import from a document</h2><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary>
@@ -1086,7 +1133,15 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     else if(m.benchVal>=m.bench*0.6) m.cumStatus="warn";
     else m.cumStatus="crit";
 
-    if(m.deter.length) m.verdict={k:"crit",label:"Deteriorating",word:"DETERIORATING",plan:"The plan changes materially this visit, as detailed in the assessment and plan."};
+    m.palliative = v("heal")==="nonhealable";
+    if(m.palliative && !m.deter.length){
+      m.verdict={k:"good",label:"Palliative — stable",word:"stable under palliative goals",
+        plan:"Closure is not the goal here, so the wound is not measured against a healing benchmark. Treatment continues to be directed at comfort, odour, exudate and bleeding control, and the wound is followed for deterioration rather than for healing rate."};
+    }
+    else if(m.deter.length) m.verdict={k:"crit",label:"Deteriorating",word:"DETERIORATING",
+      plan:m.palliative
+        ? "Deterioration in a palliative wound still changes the plan: it can mean infection developing beneath an eschar, and is evaluated on that basis."
+        : "The plan changes materially this visit, as detailed in the assessment and plan."};
     else if(m.benchVal===null) m.verdict={k:"idle",label:"Awaiting measurements",word:"[state trajectory]",plan:"[state whether the plan changes]"};
     else if(m.benchVal>=m.bench) m.verdict={k:"good",label:"On track",word:"progressing as expected",plan:"Trajectory is appropriate and the current plan is continued without change."};
     else if(m.benchVal>=m.bench*0.6) m.verdict={k:"warn",label:"Below benchmark",word:"improving but below benchmark",plan:"The plan is escalated this visit, as detailed in the assessment and plan."};
@@ -1112,7 +1167,12 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     $("meterFill").style.background = m.cumStatus==="good" ? "var(--good)" : m.cumStatus==="warn" ? "var(--warn)" : m.cumStatus==="crit" ? "var(--crit)" : "var(--accent)";
     $("meterMark").style.left=m.bench+"%";
     $("meterLabel").textContent="benchmark "+m.bench+"%";
-    $("meterBasis").textContent=m.benchIsFour?"four-week change":"cumulative (no 4-wk point)";
+    $("meterBasis").textContent=m.palliative?"palliative — not benchmarked"
+      :(m.benchIsFour?"four-week change":"cumulative (no 4-wk point)");
+    if(m.palliative){
+      $("meterFill").style.background="var(--ink-3)";
+      $("meterLabel").textContent="closure is not the goal";
+    }
 
     var fl=[];
     if(m.diverges) fl.push(["f-crit","<b>Cumulative reduction meets the "+m.bench+"% benchmark, but this week does not:</b> "+m.deter.join("; ")+". Area alone would hide this — the note states it as a distinct inflection."]);
@@ -1121,8 +1181,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     else if(m.nerds.length>=3) fl.push(["f-warn","<b>NERDS "+m.nerds.length+"/5</b> — critical colonization. Topical antimicrobial therapy indicated."]);
     if(v("ptb")==="positive") fl.push(["f-crit","<b>Probe-to-bone positive</b> — osteomyelitis must be excluded. Imaging and ID input."]);
     if(m.tAny && m.tSum!==100) fl.push(["f-warn","<b>Tissue percentages total "+m.tSum+"%</b> — must equal 100 before this note is signed."]);
-    if(m.benchVal!==null && m.benchVal<m.bench && m.benchVal>=0) fl.push(["f-warn","<b>"+(m.benchIsFour?"Four-week reduction ":"Cumulative reduction ")+m.benchVal.toFixed(1)+"% is below the "+m.bench+"% benchmark</b> — the note must state the plan change, not just the number."]);
-    if(m.cur!==null && !m.benchIsFour) fl.push(["f-warn","<b>No four-week measurement entered.</b> The benchmark is a four-week threshold, so the cumulative figure is being used as a stand-in — enter the four-week point for a like-for-like comparison."]);
+    if(m.palliative) fl.push(["f-good","<b>Non-healable wound.</b> Measurements are followed for deterioration, not against a healing benchmark — closure is not the goal. Watch instead for fluctuance, drainage, surrounding erythema, odour, or new pain, any of which means an eschar is no longer protective."]);
+    if(!m.palliative && m.benchVal!==null && m.benchVal<m.bench && m.benchVal>=0) fl.push(["f-warn","<b>"+(m.benchIsFour?"Four-week reduction ":"Cumulative reduction ")+m.benchVal.toFixed(1)+"% is below the "+m.bench+"% benchmark</b> — the note must state the plan change, not just the number."]);
+    if(m.cur!==null && !m.benchIsFour && !m.palliative) fl.push(["f-warn","<b>No four-week measurement entered.</b> The benchmark is a four-week threshold, so the cumulative figure is being used as a stand-in — enter the four-week point for a like-for-like comparison."]);
     if(m.postDelta!==null && m.postDelta>0) fl.push(["f-good","<b>Wound enlarged "+f(m.postDelta)+" sq cm post-debridement</b> — the unmasking statement is generated so next week is not misread."]);
     if(m.mlWaste!==null && m.mlWaste>0) fl.push(["f-good","<b>"+f(m.mlWaste)+" sq cm discarded</b> — wastage is documented."]);
     if(v("mlStatus")==="applied" && m.stonees.length>=3) fl.push(["f-crit","<b>Matrix applied to a wound meeting deep-infection criteria.</b> Reconsider — this is contraindicated and will not be covered."]);
@@ -1253,8 +1314,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
 
       w+="\n\nTrajectory: "+m.verdict.word+".";
       if(m.deter.length) w+=" This week "+m.deter.join(", ")+".";
-      if(m.fourPct!==null) w+=" Four-week area change ("+dstr("fdate")+" to today): "+f(m.four)+" -> "+f(m.cur)+" sq cm = "+Math.abs(m.fourPct).toFixed(1)+"% "+(m.fourPct>=0?"reduction":"increase")+", against the >="+m.bench+"% four-week benchmark for "+etioWord()+" wounds.";
-      if(m.cum!==null) w+=(m.fourPct!==null?" Cumulative ":" Cumulative ")+Math.abs(m.cum).toFixed(1)+"% "+(m.cum>=0?"reduction":"increase")+" over "+orBlank(v("weeks"),"[N]")+" weeks"+(m.fourPct===null?" (no four-week measurement available for a like-for-like benchmark comparison)":"")+".";
+      if(m.palliative) w+=" Closure is not the goal for this wound, so it is not measured against a healing benchmark; the measurements are followed for deterioration.";
+      if(!m.palliative && m.fourPct!==null) w+=" Four-week area change ("+dstr("fdate")+" to today): "+f(m.four)+" -> "+f(m.cur)+" sq cm = "+Math.abs(m.fourPct).toFixed(1)+"% "+(m.fourPct>=0?"reduction":"increase")+", against the >="+m.bench+"% four-week benchmark for "+etioWord()+" wounds.";
+      if(m.cum!==null && !m.palliative) w+=(m.fourPct!==null?" Cumulative ":" Cumulative ")+Math.abs(m.cum).toFixed(1)+"% "+(m.cum>=0?"reduction":"increase")+" over "+orBlank(v("weeks"),"[N]")+" weeks"+(m.fourPct===null?" (no four-week measurement available for a like-for-like benchmark comparison)":"")+".";
       if(m.diverges) w+=" The cumulative figure reflects genuine earlier progress; the change over the past week is a DISTINCT INFLECTION and is the basis for the plan change below. Area alone would have hidden this.";
       w+=" "+m.verdict.plan;
       S.push(["Week-over-week comparison",w]);
@@ -1460,7 +1522,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       pl+="ASSESSMENT: "+orBlank(v("stage"),"[classification]")+" of the "+loc+", currently "+f(m.post!==null?m.post:m.cur)+" sq cm"+
         (m.cum!==null?" ("+Math.abs(m.cum).toFixed(1)+"% cumulative "+(m.cum>=0?"reduction":"increase")+" from baseline over "+orBlank(v("weeks"),"[N]")+" weeks)":"")+
         (n("postG")!==null?", with a wound bed of "+n("postG")+"% granulation following today's debridement":"")+". Trajectory is "+m.verdict.word+
-        (m.benchVal!==null && !m.deter.length && m.benchVal<m.bench?" against the >="+m.bench+"% four-week benchmark":"")+
+        (!m.palliative && m.benchVal!==null && !m.deter.length && m.benchVal<m.bench?" against the >="+m.bench+"% four-week benchmark":"")+
         (m.deter.length?" — "+m.deter.join(", "):"")+". "+
         (m.stonees.length>=3?"Clinical findings support deep and surrounding tissue infection.":m.nerds.length>=3?"Findings support critical colonization of the wound surface.":"There is no clinical evidence of infection.")+"\n\n";
     }
@@ -1530,11 +1592,12 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       }
     });
     S.forEach(function(sec,i){ if(used.indexOf(i)===-1) html.push('<h4>'+esc(sec[0])+'</h4><p class="para">'+esc(sec[1])+'</p>'); });
+    var TAG='<p class="tag">Teaching example — not for clinical use</p>';
     if(!html.length){
       $("noteDoc").innerHTML='<div class="empty-doc">Fill in the visit on the left and the note writes itself here — then edit it directly before copying.</div>';
       return;
     }
-    $("noteDoc").innerHTML=html.join("");
+    $("noteDoc").innerHTML=TAG+html.join("");
   }
 
   function renderNote(m){
@@ -1812,6 +1875,169 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   $("drop").addEventListener("drop",function(e){
     if(e.dataTransfer&&e.dataTransfer.files)
       handleFiles(Array.prototype.slice.call(e.dataTransfer.files));
+  });
+
+  /* ---------- teaching cases ----------
+     Each is a complete visit chosen to teach one thing the note has to get
+     right. Fictional patients throughout. */
+  var CASES={
+    trochanteric:{
+      f:{ptName:"Doe, Jane R. (fictional)",ptDob:"03/14/1944",ptMrn:"TEACH-001",
+         ptFac:"Example Care Center, Room 214-B",
+         ptHx:"Type 2 diabetes, chronic venous insufficiency, HFmrEF, prior CVA with left hemiparesis, protein-calorie malnutrition",
+         visitNo:"7",weeks:"6",loc:"right greater trochanter",etio:"pressure",psite:"trochanteric",
+         stage:"Stage 4 pressure injury",heal:"healable",
+         healWhy:"perfusion adequate and the cause — unrelieved pressure — is correctable",
+         ivHx:"Staff report increasing drainage over four days and an odour since 8/25. Temperature 100.4F last evening.",
+         ivRn:"M. Alvarez, RN, charge nurse",ivCg:"Karen Doe, daughter",
+         vTemp:"100.8°F",vBpHr:"118/64, 96",ivDress:"saturated with strikethrough",
+         cl:"4.5",cw:"3.4",cd:"1.1",pl:"4.6",pw:"3.4",pd:"0.9",pdate:"2026-08-21",
+         bl:"6.2",bw:"4.8",bd:"1.4",bdate:"2026-07-17",
+         umCm:"2.2",umA:"2",umB:"5",umPrior:"1.6",exposed:"subcutaneous tissue and fascia",ptb:"positive",
+         tG:"45",tS:"45",tE:"10",tP:"0",tGprior:"60",gq:"dusky, friable, bleeds on light contact",
+         eryCm:"3.5",eryBl:"non-blanchable",indCm:"2",exAmt:"large",exType:"seropurulent",odor:"foul",
+         painRest:"3",painChg:"6",exPrior:"moderate serosanguineous",
+         alb:"2.4",albPrior:"2.6",prealb:"12",crp:"6.8",wt:"58.4",wtPrior:"61.0",intake:"48",
+         plt:"118",pltPrior:"147",wbc:"12.8",pltMeds:"enoxaparin, pantoprazole",
+         a1c:"8.1",a1cTgt:"< 8.0%",a1cWhy:"age 82, multiple comorbidities, hypoglycemia and fall risk",
+         infSupport:"T 100.8F, WBC 12.8 with 82% neutrophils, CRP 6.8, ESR 68",
+         cult:"tissue biopsy from the wound base",abx:"ampicillin-sulbactam 3 g IV q6h",
+         offSide:"right",braden:"12",gapN:"4",gapH:"4",
+         adhBarrier:"night-shift staffing; patient found lying on the ulcer",
+         debType:"selective",anes:"topical lidocaine 4%, ~2 g, 20-minute dwell",
+         instr:"4 mm sterile ring curette; #15 scalpel blade to the fibrotic margin",
+         tissRem:"adherent slough, soft boggy eschar, fibrotic non-viable margin",
+         deepest:"devitalized tissue only; no viable tissue was excised",
+         debCm:"5.4",bleed:"punctate capillary",hemoMin:"4",hemoOther:"calcium alginate to the margin",
+         debPain:"4",postG:"85",postL:"4.8",postW:"3.5",postD:"1.3",
+         mlStatus:"deferred",mlDefer:"clinical deep tissue infection with a positive probe-to-bone test",
+         pcWeeks:"6",
+         pcTried:"07/17-07/31 collagenase + foam, slough 70% to 45%, too slow for the burden. 07/31-08/28 weekly sharp debridement + silver foam, good progress to 08/21 then deterioration.",
+         ordFreq:"daily by facility nursing while drainage is large",
+         ordWhy:"Exudate is large and seropurulent with clinical infection, so silver alginate was selected: alginate for absorbency and hemostasis at the debrided margin, silver for local bioburden alongside systemic therapy.",
+         ordOther:"MRI right hip and pelvis without contrast within 72 hours. CBC with differential and peripheral smear daily x3. Group 2 alternating-pressure mattress.",
+         ordContact:"Wound care office 555-0100; after hours 555-0199",
+         cgName:"Karen Doe, daughter",teachBack:"30-degree lateral tilt with pillow bridging",
+         eduGap:"was unaware that positioning on the right side was harmful",
+         rnName:"M. Alvarez, RN, charge nurse",escalate:"N. Reyes, RN, DON, by phone at 1140",
+         pcpNote:"Dr. [PCP], by telephone 1155: new deep infection with positive probe-to-bone, antibiotics started, MRI ordered, new thrombocytopenia and its workup",
+         nextVisit:"2026-09-04",provider:"[Provider Name], NP — Wound Care"},
+      nerds:["Non-healing","Exudate increased","Red friable granulation","Debris","Smell"],
+      stonees:["Size increasing","Temperature elevated","Os — probes to bone","Exudate","Erythema/Edema","Smell"],
+      edges:["non-advancing","fibrotic","undermined"],
+      peri:["ERYTHEMA","INDURATION","warm relative to the contralateral side"],
+      imped:["pressure","shear","mobility","nutrition","infection","osteo","adherence","surface"]
+    },
+    venous:{
+      f:{ptName:"Doe, Jane R. (fictional)",ptDob:"03/14/1944",ptMrn:"TEACH-001",
+         ptFac:"Example Care Center, Room 214-B",
+         ptHx:"Type 2 diabetes, chronic venous insufficiency, HFmrEF, protein-calorie malnutrition",
+         visitNo:"7",weeks:"6",loc:"left medial lower leg, 6 cm above the medial malleolus",
+         etio:"venous",stage:"venous leg ulcer",heal:"healable",
+         healWhy:"ABI 0.92, cause correctable with sustained compression, goals discussed with the patient and daughter",
+         ivHx:"Compression wrap found off on three occasions this week; daughter reports removing it at night because it feels tight.",
+         ivRn:"M. Alvarez, RN, charge nurse",ivCg:"Karen Doe, daughter",
+         vTemp:"98.6°F",vBpHr:"118/64, 78",ivDress:"intact",ivDevice:"removed by the patient",
+         cl:"2.9",cw:"2.3",cd:"0.2",pl:"3.0",pw:"2.4",pd:"0.2",pdate:"2026-08-21",
+         fl:"3.2",fw:"2.5",fdate:"2026-08-07",bl:"3.4",bw:"2.6",bd:"0.3",bdate:"2026-07-17",
+         exposed:"none",tG:"80",tS:"20",tE:"0",tP:"0",tGprior:"70",
+         gq:"pink-red, healthy, not friable",epiAt:"3 to 6 o'clock",
+         exAmt:"small",exType:"serous",odor:"none",painRest:"2",painChg:"2",exPrior:"small serous",
+         abi:"0.92",alb:"2.4",albPrior:"2.6",prealb:"12",crp:"1.9",wt:"58.4",wtPrior:"61.0",intake:"48",
+         a1c:"8.1",a1cTgt:"< 8.0%",a1cWhy:"age 82, multiple comorbidities, hypoglycemia and fall risk",
+         compression:"three-layer, 30–40 mmHg",
+         adhBarrier:"compression removed at night because it feels tight",
+         debType:"selective",anes:"none required — patient declined topical anesthetic",
+         instr:"3 mm sterile ring curette; #15 scalpel blade to the rolled edge",
+         tissRem:"adherent slough and rolled non-viable epithelial edge",
+         deepest:"devitalized tissue only; no viable tissue was excised",
+         debCm:"1.8",bleed:"punctate capillary",hemoMin:"2",debPain:"2",
+         postG:"100",postL:"3.0",postW:"2.4",postD:"0.2",
+         mlStatus:"applied",mlProd:"Microlyte Ag antimicrobial wound matrix",
+         mlWho:"the patient, who has decision-making capacity, with her daughter present",
+         mlLot:"LOT-48219",mlExp:"06/2027",mlSheet:"25",mlApplied:"10.8",mlN:"1",mlOf:"4",
+         mlSecure:"Steri-Strips",stack:"Adaptic, ABD pad, roll gauze",
+         pcWeeks:"6",
+         pcTried:"07/17-08/07 compression + hydrofiber, 8.84 to 8.00 sq cm, too slow and the bed was drying. 08/07-08/21 compression + foam with weekly debridement, epibole developed and persisted. 08/21-08/28 added periwound barrier for maceration.",
+         ordFreq:"weekly by this provider, or sooner for strikethrough, odour, or the wrap loosening",
+         ordWhy:"The bed is clean and fully granulating with small serous exudate under a wound matrix, so the covering must be non-adherent to protect the matrix and the new granulation at change.",
+         ordOther:"Venous duplex and referral for superficial venous ablation. Repeat albumin, prealbumin and CRP on 09/11. Dietitian consult. Compression stocking fitting at healing.",
+         ordContact:"Wound care office 555-0100; after hours 555-0199",
+         cgName:"Karen Doe, daughter",teachBack:"leg raises, ankle pumps, and why the wrap stays on",
+         eduGap:"was removing the compression wrap at night to help; agreed to call instead",
+         rnName:"M. Alvarez, RN, charge nurse",
+         pcpNote:"Dr. [PCP], by telephone: hypoalbuminemia and the nutrition plan, venous ablation referral, individualized A1c target",
+         nextVisit:"2026-09-04",provider:"[Provider Name], NP — Wound Care"},
+      nerds:["Non-healing","Debris"], stonees:[],
+      edges:["EPIBOLE","non-advancing"],
+      peri:["MACERATION","hemosiderin staining and lipodermatosclerosis"],
+      imped:["perfusion","dependency","epibole","nutrition","adherence","moisture"]
+    },
+    heel:{
+      f:{ptName:"Roe, Samuel T. (fictional)",ptDob:"11/02/1938",ptMrn:"TEACH-002",
+         ptFac:"Example Care Center, Room 108-A",
+         ptHx:"Peripheral arterial disease, type 2 diabetes, chronic kidney disease stage 4, prior MI",
+         visitNo:"3",weeks:"3",loc:"left posterior heel",etio:"pressure",psite:"heel",
+         stage:"unstageable — eschar-covered pressure injury",
+         heal:"nonhealable",
+         healWhy:"ABI 0.38 with rest pain, not currently a revascularization candidate pending vascular assessment",
+         ivHx:"No change in the eschar. Patient reports rest pain in the forefoot at night, relieved by hanging the leg over the side of the bed.",
+         ivRn:"J. Park, RN",ivCg:"son, present at the visit",
+         vTemp:"98.2°F",vBpHr:"132/70, 74",ivDress:"intact",
+         cl:"4.0",cw:"3.2",pl:"4.0",pw:"3.2",pdate:"2026-08-21",bl:"4.1",bw:"3.3",bdate:"2026-08-07",
+         exposed:"none",ptb:"negative",tG:"0",tS:"0",tE:"100",tP:"0",
+         exAmt:"none",odor:"none",painRest:"6",painChg:"6",
+         abi:"0.38",
+         mlStatus:"",debType:"",
+         pcWeeks:"3",
+         pcTried:"Heel offloading boot from 08/07. Eschar left intact throughout; no debridement attempted at any visit.",
+         ordFreq:"dry dressing, inspected daily",
+         ordWhy:"The eschar is dry, hard and stable over a poorly perfused heel, so it is acting as a biological cover. It is kept dry rather than hydrated; moist wound healing here would liquefy a protective layer over tissue that cannot heal.",
+         ordOther:"Urgent vascular surgery referral for revascularization assessment. Daily inspection for fluctuance, drainage, surrounding erythema, odour or new pain. No compression.",
+         ordContact:"Wound care office 555-0100; after hours 555-0199",
+         cgName:"son",teachBack:"the heel-float check and the daily eschar inspection",
+         eduGap:"family expected the eschar to be removed and needed the reasoning explained",
+         rnName:"J. Park, RN",
+         pcpNote:"Dr. [PCP]: ABI 0.38 with rest pain, urgent vascular referral placed, eschar preservation explained",
+         nextVisit:"2026-09-04",provider:"[Provider Name], NP — Wound Care"},
+      nerds:[], stonees:[],
+      edges:["attached and advancing"], peri:["dry and scaly"],
+      imped:["pressure","pad","necrotic","pain","renal"]
+    }
+  };
+
+  function loadCase(key){
+    var c=CASES[key]; if(!c) return;
+    document.querySelectorAll("#form input, #form select, #form textarea").forEach(function(el){
+      if(el.type==="checkbox"){ el.checked=false; return; }
+      if(el.type==="file") return;
+      if(el.id==="showEmpty") return;
+      el.value="";
+    });
+    Object.keys(c.f).forEach(function(id){
+      var el=$(id); if(el) el.value=c.f[id];
+    });
+    function tick(sel,attr,list){
+      document.querySelectorAll(sel+" input").forEach(function(b){
+        b.checked = list.indexOf(b.getAttribute(attr))>-1;
+      });
+    }
+    tick("#nerds","data-n",c.nerds||[]);
+    tick("#stonees","data-s",c.stonees||[]);
+    tick("#edgeChecks","data-edge",c.edges||[]);
+    tick("#periChecks","data-peri",c.peri||[]);
+    tick("#imped","data-imp",c.imped||[]);
+    if(!$("dos").value){ $("dos").value=new Date().toISOString().slice(0,10); }
+    docEdited=false; $("editedBar").hidden=true;
+    $("importCard").open=false;
+    pending=[]; renderFindings(); setImportMsg("",false);
+    syncEtio(); update();
+    var head=$("importCard").previousElementSibling;
+    if(head&&head.scrollIntoView) head.scrollIntoView({block:"start",behavior:"smooth"});
+    toast("Loaded the teaching case — every field is editable");
+  }
+  document.querySelectorAll(".case").forEach(function(btn){
+    btn.addEventListener("click",function(){ loadCase(this.getAttribute("data-case")); });
   });
 
   function renderImpediments(){
