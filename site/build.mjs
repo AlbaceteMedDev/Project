@@ -140,7 +140,7 @@ function shell({ title, desc, body, active, toc = [], wide = false }) {
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <div class="top-in">
-    <a class="brand" href="/"><span class="brand-m">Wound Care</span><span class="brand-s">Documentation Teaching Kit</span></a>
+    <a class="brand" href="/"><span class="brand-m">Documentation Advisory</span><span class="brand-s">Wound Care Teaching Kit</span></a>
     <nav class="nav">${nav}</nav>
   </div>
 </header>
@@ -169,7 +169,7 @@ mkdirSync(dist, { recursive: true });
 for (const p of PAGES) {
   const src = readFileSync(join(docs, p.file), "utf8");
   const { html, toc } = markdown(src);
-  const page = shell({ title: `${p.title} — Wound Care Teaching Kit`, desc: p.desc, body: html, active: p.href, toc });
+  const page = shell({ title: `${p.title} — Documentation Advisory`, desc: p.desc, body: html, active: p.href, toc });
   mkdirSync(join(dist, dirname(p.out)), { recursive: true });
   writeFileSync(join(dist, p.out), page);
 }
@@ -205,7 +205,7 @@ ${headBits}
 </head>
 <body>
 <div class="site-bar">
-  <a class="home" href="/">← Wound Care Teaching Kit</a>
+  <a class="home" href="/">← Documentation Advisory</a>
   <a href="/reference">Clinical reference</a>
   <a href="/playbooks">Etiology playbooks</a>
   <a href="/example">Worked example</a>
@@ -218,7 +218,7 @@ ${bodyBits}
 cpSync(join(here, "src/site.css"), join(dist, "site.css"));
 const landing = readFileSync(join(here, "src/index-body.html"), "utf8");
 writeFileSync(join(dist, "index.html"), shell({
-  title: "Wound Care Documentation — Teaching Kit",
+  title: "Documentation Advisory — Wound Care Teaching Kit",
   desc: "A teaching kit for wound care documentation: eight worked cases, an interactive note builder, and the clinical reference behind them.",
   body: landing, active: "/", wide: true,
 }));
