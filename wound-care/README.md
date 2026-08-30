@@ -88,18 +88,25 @@ of the form.
 - **A nursing note, discharge summary, or lab report** is scanned for values it
   recognises — labs, vitals, weight, ABI, Braden, tissue percentages, and
   measurements written as `4.5 x 3.4 x 1.1 cm`.
-- Reads `.txt`, `.md`, `.csv`, `.html`, and `.docx`. Several files at once merge
-  into one list.
+- **A `.zip`** is expanded and every readable document inside it is scanned,
+  with `__MACOSX`, dot-files and unreadable types skipped by name.
+- Reads `.txt`, `.md`, `.csv`, `.html`, `.docx`, `.pdf`, and `.zip`. Several
+  files at once merge into one list.
 
 **Every value is shown with the line it came from, and nothing is written into
 the form until you tick it and press Apply.** A wrong match costs you a glance,
 not a wrong note.
 
+**PDFs.** These are read by inflating the content streams and decoding the text
+through each font's `/ToUnicode` map, with no library, so the page stays one
+offline file. That reads a PDF with a real text layer — an export from Word, a
+browser, or most EHRs. It cannot read a **scan**, which has no text to read, and
+it will decline a PDF whose fonts use an encoding it cannot map. In both cases
+it says which, rather than reporting an empty document.
+
 > **What this is not.** The page does no AI and makes no network calls — it is
 > pattern matching over text, running entirely on your machine. It will miss
-> values phrased in ways it does not recognise, and it does not read PDFs
-> (that needs a parser this page deliberately does not carry, so it stays one
-> offline file). For a PDF, copy the text out and paste it in.
+> values phrased in ways it does not recognise.
 
 ### Using the builder
 

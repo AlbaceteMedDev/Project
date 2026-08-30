@@ -430,14 +430,14 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
         <div class="step-body">
           <p class="hint">Drop in <b>last week's note</b> to carry the measurements and identifiers forward, or a <b>nursing note, discharge summary, or lab report</b> to pull values out of it. Everything found is shown with the line it came from, and <b>nothing is filled in until you tick it and apply</b> — so a bad match costs you a glance, not a wrong note.</p>
           <div class="drop" id="drop">
-            <input type="file" id="fileIn" multiple accept=".txt,.md,.markdown,.csv,.tsv,.html,.htm,.docx,.json,.rtf" hidden>
+            <input type="file" id="fileIn" multiple accept=".txt,.md,.markdown,.csv,.tsv,.html,.htm,.docx,.pdf,.zip,.json,.rtf" hidden>
             <button type="button" class="btn" id="pickFile">Choose files</button>
             <span class="drop-or">or drop them here</span>
-            <span class="drop-fmt">.txt · .md · .csv · .html · .docx</span>
+            <span class="drop-fmt">.txt · .md · .csv · .html · .docx · .pdf · .zip</span>
           </div>
           <p class="hint" id="importMsg" hidden></p>
           <div id="findings"></div>
-          <p class="hint"><b>PDFs are not read here.</b> Reading one needs a parser this page deliberately does not carry, so it stays a single offline file. Open the PDF, copy the text, and paste it into any field — or save it as text and drop that in.</p>
+          <p class="hint"><b>PDFs and .zip archives are read too.</b> A zip is expanded and every readable document inside it is scanned. PDFs work when they carry a real text layer — a scanned PDF has no text to read, and some are built with font encodings this reader cannot map. Either way it says so rather than reporting an empty document.</p>
         </div>
       </details>
 
@@ -1667,56 +1667,235 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   function u16le(b,o){ return b[o]|(b[o+1]<<8); }
   function u32le(b,o){ return (b[o]|(b[o+1]<<8)|(b[o+2]<<16)|(b[o+3]<<24))>>>0; }
 
-  async function inflateRaw(bytes){
+  async function inflate(bytes, raw){
     if(typeof DecompressionStream!=="function") throw new Error("no-inflate");
-    var stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+    var fmt = raw ? "deflate-raw" : "deflate";
+    var stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream(fmt));
     return new Uint8Array(await new Response(stream).arrayBuffer());
   }
 
-  // Minimal ZIP reader — enough to pull one named part out of a .docx.
-  async function zipRead(bytes,wanted){
+  /* Minimal ZIP reader. Walks the central directory so it can both pull one
+     named part out of a .docx and enumerate every member of a .zip. */
+  function zipEntries(bytes){
     var eocd=-1;
     for(var i=bytes.length-22; i>=0 && i>bytes.length-70000; i--){
       if(u32le(bytes,i)===0x06054b50){ eocd=i; break; }
     }
     if(eocd<0) throw new Error("not-a-zip");
-    var count=u16le(bytes,eocd+10), cd=u32le(bytes,eocd+16), p=cd;
+    var count=u16le(bytes,eocd+10), p=u32le(bytes,eocd+16), list=[], dec=new TextDecoder();
     for(var n=0;n<count;n++){
       if(u32le(bytes,p)!==0x02014b50) break;
       var method=u16le(bytes,p+10), csize=u32le(bytes,p+20), usize=u32le(bytes,p+24);
       var nameLen=u16le(bytes,p+28), extraLen=u16le(bytes,p+30), cmtLen=u16le(bytes,p+32);
       var lho=u32le(bytes,p+42);
-      var name=new TextDecoder().decode(bytes.subarray(p+46,p+46+nameLen));
-      if(name===wanted){
-        var lNameLen=u16le(bytes,lho+26), lExtraLen=u16le(bytes,lho+28);
-        var start=lho+30+lNameLen+lExtraLen;
-        var raw=bytes.subarray(start,start+(method===0?usize:csize));
-        return method===0 ? raw : await inflateRaw(raw);
-      }
+      var name=dec.decode(bytes.subarray(p+46,p+46+nameLen));
+      list.push({name:name, method:method, csize:csize, usize:usize, lho:lho});
       p+=46+nameLen+extraLen+cmtLen;
     }
-    throw new Error("part-missing");
+    return list;
+  }
+  async function zipReadEntry(bytes,e){
+    var lNameLen=u16le(bytes,e.lho+26), lExtraLen=u16le(bytes,e.lho+28);
+    var start=e.lho+30+lNameLen+lExtraLen;
+    var raw=bytes.subarray(start,start+(e.method===0?e.usize:e.csize));
+    if(e.method===0) return raw;
+    if(e.method===8) return await inflate(raw,true);
+    throw new Error("zip-method");
+  }
+  async function zipRead(bytes,wanted){
+    var hit=zipEntries(bytes).filter(function(e){ return e.name===wanted; })[0];
+    if(!hit) throw new Error("part-missing");
+    return await zipReadEntry(bytes,hit);
   }
 
-  function docxToText(xml){
-    return xml
-      .replace(/<w:p[ >][\s\S]*?(?=<w:p[ >]|<\/w:body>)|<w:p\/>/g,function(m){
-        var t=(m.match(/<w:t[^>]*>[\s\S]*?<\/w:t>/g)||[])
-          .map(function(x){ return x.replace(/<[^>]+>/g,""); }).join("");
-        return t+"\n";
-      })
-      .replace(/<[^>]+>/g,"")
-      .replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"')
-      .replace(/&apos;/g,"'").replace(/&amp;/g,"&");
+  /* ---------- PDF text extraction ----------
+     Pulls the text layer out of a PDF by inflating its content streams and
+     reading the text-showing operators. No library, so the page stays one
+     offline file. The trade: it reads PDFs that have a real text layer with
+     standard encodings, and cannot read a scan or a custom-subset font. When
+     the result is empty or mostly unreadable the caller says so, rather than
+     pretending the document was blank. */
+  function latin1(bytes){
+    var s="", CH=0x8000;
+    for(var i=0;i<bytes.length;i+=CH)
+      s+=String.fromCharCode.apply(null, bytes.subarray(i,i+CH));
+    return s;
+  }
+  /* A subset-embedded font addresses glyphs by its own codes, so the content
+     stream is not readable text until it is mapped through the font's
+     /ToUnicode CMap. Parse every CMap in the file into one table: per-font
+     resolution would need the page resource dictionaries, and a merged table
+     is right for the documents this reads. */
+  function hexToUtf16(h){
+    var r="";
+    for(var i=0;i+3<h.length;i+=4) r+=String.fromCharCode(parseInt(h.substr(i,4),16));
+    if(h.length%4===2) r+=String.fromCharCode(parseInt(h.substr(h.length-2,2),16));
+    return r;
+  }
+  function parseCMap(text,map){
+    var wide=false, m;
+    var csr=/begincodespacerange([\s\S]*?)endcodespacerange/g;
+    while((m=csr.exec(text))){
+      var pair=/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>/.exec(m[1]);
+      if(pair && pair[1].length>=4) wide=true;
+    }
+    var bc=/beginbfchar([\s\S]*?)endbfchar/g;
+    while((m=bc.exec(text))){
+      var re=/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]*)>/g, e;
+      while((e=re.exec(m[1]))){
+        if(e[1].length>=4) wide=true;
+        map[parseInt(e[1],16)]=hexToUtf16(e[2]);
+      }
+    }
+    var br=/beginbfrange([\s\S]*?)endbfrange/g;
+    while((m=br.exec(text))){
+      var body=m[1];
+      var r1=/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]*)>/g, e1;
+      while((e1=r1.exec(body))){
+        if(e1[1].length>=4) wide=true;
+        var lo=parseInt(e1[1],16), hi=parseInt(e1[2],16), dst=e1[3];
+        if(hi-lo>65535) continue;
+        var base=parseInt(dst.slice(-4)||"0",16), pre=dst.slice(0,-4);
+        for(var c=lo;c<=hi;c++)
+          map[c]=hexToUtf16(pre)+String.fromCharCode(base+(c-lo));
+      }
+      var r2=/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*\[([\s\S]*?)\]/g, e2;
+      while((e2=r2.exec(body))){
+        if(e2[1].length>=4) wide=true;
+        var lo2=parseInt(e2[1],16), items=e2[3].match(/<([0-9A-Fa-f]*)>/g)||[];
+        for(var k=0;k<items.length;k++)
+          map[lo2+k]=hexToUtf16(items[k].replace(/[<>]/g,""));
+      }
+    }
+    return wide;
+  }
+  function mapCodes(raw,cmap,wide){
+    if(!cmap || !cmap.size) return raw;
+    var out="", step = wide ? 2 : 1;
+    for(var i=0;i<raw.length;i+=step){
+      var code = step===2
+        ? ((raw.charCodeAt(i)<<8) | (raw.charCodeAt(i+1)||0))
+        : raw.charCodeAt(i);
+      var hit=cmap.get(code);
+      out += hit!==undefined ? hit : (step===2 ? "" : raw.charAt(i));
+    }
+    return out;
+  }
+  function pdfContentText(s,cmap,wide){
+    var out=[], pend=[], i=0, n=s.length;
+    function lit(){
+      var d=1, r=""; i++;
+      while(i<n && d>0){
+        var c=s.charAt(i);
+        if(c==="\\"){
+          var e=s.charAt(i+1);
+          if(e>="0"&&e<="7"){
+            var oct="", k=1;
+            while(k<=3 && s.charAt(i+k)>="0" && s.charAt(i+k)<="7"){ oct+=s.charAt(i+k); k++; }
+            r+=String.fromCharCode(parseInt(oct,8)); i+=k; continue;
+          }
+          r += e==="n" ? "\n" : e==="r" ? "" : e==="t" ? "\t" : (e==="b"||e==="f") ? " " : e;
+          i+=2; continue;
+        }
+        if(c==="("){ d++; r+=c; i++; continue; }
+        if(c===")"){ d--; i++; if(!d) break; r+=c; continue; }
+        r+=c; i++;
+      }
+      return r;
+    }
+    function hex(){
+      var h=""; i++;
+      while(i<n && s.charAt(i)!==">"){ var c=s.charAt(i++); if(/[0-9A-Fa-f]/.test(c)) h+=c; }
+      i++;
+      if(h.length%2) h+="0";
+      var r="";
+      for(var k=0;k<h.length;k+=2) r+=String.fromCharCode(parseInt(h.substr(k,2),16));
+      return r;
+    }
+    while(i<n){
+      var c=s.charAt(i);
+      if(c==="("){ pend.push(mapCodes(lit(),cmap,wide)); continue; }
+      if(c==="<" && s.charAt(i+1)!=="<"){ pend.push(mapCodes(hex(),cmap,wide)); continue; }
+      if(c==="-" || (c>="0" && c<="9")){
+        var j=i; while(j<n && /[-0-9.]/.test(s.charAt(j))) j++;
+        if(parseFloat(s.slice(i,j)) < -120 && pend.length) pend.push(" ");
+        i=j; continue;
+      }
+      if(/[A-Za-z'"*]/.test(c)){
+        var j2=i; while(j2<n && /[A-Za-z0-9*'"]/.test(s.charAt(j2))) j2++;
+        var op=s.slice(i,j2); i=j2;
+        if(op==="Tj"||op==="TJ"||op==="'"||op==='"'){ out.push(pend.join("")); pend=[]; }
+        else if(op==="Td"||op==="TD"||op==="T*"||op==="ET"||op==="BT"){ out.push("\n"); pend=[]; }
+        continue;
+      }
+      i++;
+    }
+    return out.join("").replace(/[ \t]+\n/g,"\n").replace(/\n{3,}/g,"\n\n");
+  }
+  async function pdfToText(bytes){
+    var s=latin1(bytes), streams=[], m;
+    var re=/stream\r?\n?/g;
+    while((m=re.exec(s))){
+      var start=m.index+m[0].length;
+      var end=s.indexOf("endstream", start);
+      if(end<0) break;
+      var head=s.slice(Math.max(0,m.index-900), m.index);
+      // The bytes between the compressed data and "endstream" are an EOL, and
+      // DecompressionStream rejects them as trailing junk. Prefer the declared
+      // /Length; otherwise trim the line ending.
+      var stop=end, len=/\/Length\s+(\d+)/.exec(head);
+      if(len && start + (+len[1]) <= end) stop = start + (+len[1]);
+      else while(stop>start && (bytes[stop-1]===0x0A || bytes[stop-1]===0x0D)) stop--;
+      var body=bytes.subarray(start, stop), text=null;
+      if(/\/FlateDecode/.test(head)){
+        try{ text=latin1(await inflate(body,false)); }
+        catch(e){ try{ text=latin1(await inflate(body,true)); }catch(e2){ text=null; } }
+      } else if(!/\/(DCT|JPX|CCITTFax|JBIG2|RunLength|LZW)Decode/.test(head)){
+        text=latin1(body);
+      }
+      if(text) streams.push(text);
+      re.lastIndex=end+9;
+      if(streams.length>500) break;
+    }
+
+    var table={}, wide=false;
+    streams.forEach(function(t){
+      if(/beginbfchar|beginbfrange/.test(t)) wide = parseCMap(t,table) || wide;
+    });
+    var cmap=new Map();
+    Object.keys(table).forEach(function(k){ cmap.set(+k, table[k]); });
+
+    var chunks=[];
+    streams.forEach(function(t){
+      if(/(\bTj\b|\bTJ\b|\bBT\b)/.test(t)) chunks.push(pdfContentText(t,cmap,wide));
+    });
+
+    var outText=chunks.join("\n").trim();
+    if(!outText) throw new Error("pdf-no-text");
+    var printable=(outText.match(/[ -~ -ɏ\n\r\t]/g)||[]).length;
+    if(printable/outText.length < 0.6) throw new Error("pdf-garbled");
+    return outText;
+  }
+
+  // Shared by uploaded files and by members pulled out of a .zip.
+  async function bytesToText(name,bytes){
+    name=(name||"").toLowerCase();
+    if(/\.docx$/.test(name)) return docxToText(new TextDecoder().decode(await zipRead(bytes,"word/document.xml")));
+    if(/\.pdf$/.test(name)) return await pdfToText(bytes);
+    var txt=new TextDecoder().decode(bytes);
+    if(/\.html?$/.test(name)){
+      var d=document.createElement("div");
+      d.innerHTML=txt.replace(/<(script|style)[\s\S]*?<\/\1>/gi,"");
+      return d.innerText||d.textContent||"";
+    }
+    if(/\.rtf$/.test(name)) return txt.replace(/\\[a-z]+-?\d* ?/g,"").replace(/[{}]/g,"");
+    return txt;
   }
 
   async function fileToText(file){
     var name=(file.name||"").toLowerCase();
-    if(/\.docx$/.test(name)){
-      var bytes=new Uint8Array(await file.arrayBuffer());
-      var part=await zipRead(bytes,"word/document.xml");
-      return docxToText(new TextDecoder().decode(part));
-    }
+    if(/\.docx$/.test(name)||/\.pdf$/.test(name))
+      return await bytesToText(name, new Uint8Array(await file.arrayBuffer()));
     var txt=await file.text();
     if(/\.html?$/.test(name)){
       var d=document.createElement("div");
@@ -1730,7 +1909,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   /* Each rule: the field it fills, a label, and a regex whose first group is the
      value. Ordered so the note this tool writes matches most precisely first. */
   var RULES=[
-    {f:"ptName", l:"Patient name",  re:/^\s*Patient:\s*([^\n]+?)(?:\s{2,}DOB:|\n|$)/im},
+    {f:"ptName", l:"Patient name",  re:/^\s*Patient:\s*([^\n]+?)(?:\s*\b(?:DOB|MRN)\b|\s{2,}|\n|$)/im},
     {f:"ptDob",  l:"DOB",           re:/\bDOB:\s*([0-9]{1,2}\/[0-9]{1,2}\/[0-9]{2,4})/i},
     {f:"ptMrn",  l:"MRN",           re:/\bMRN[:#\s]+([A-Za-z0-9-]{2,})/i},
     {f:"ptFac",  l:"Place of service", re:/^\s*Place of service:\s*([^\n]+)/im},
@@ -1849,31 +2028,69 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     el.innerHTML=html||""; el.hidden=!show;
   }
 
+  var READABLE=/\.(txt|md|markdown|csv|tsv|html?|docx|pdf|json|rtf)$/i;
+  var SKIP=/(^|\/)(__MACOSX\/|\._|\.DS_Store$|Thumbs\.db$)/i;
+
+  // A .zip becomes the list of readable documents inside it.
+  async function expandZip(file){
+    var bytes=new Uint8Array(await file.arrayBuffer());
+    var out=[], errs=[], entries=zipEntries(bytes);
+    for(var i=0;i<entries.length && out.length<40;i++){
+      var e=entries[i];
+      if(/\/$/.test(e.name) || SKIP.test(e.name)) continue;
+      var label=file.name+" › "+e.name;
+      if(!READABLE.test(e.name)){ errs.push(esc(label)+" — not a readable document type"); continue; }
+      if(e.usize>25*1024*1024){ errs.push(esc(label)+" — too large to read"); continue; }
+      try{
+        var raw=await zipReadEntry(bytes,e);
+        out.push({name:label, text:await bytesToText(e.name, raw)});
+      }catch(err){ errs.push(esc(label)+" — "+whyFailed(err)); }
+    }
+    return {files:out, errs:errs};
+  }
+
+  function whyFailed(e){
+    var m=e&&e.message;
+    return m==="no-inflate"   ? "this browser cannot decompress it — save it as .txt"
+         : m==="part-missing" ? "not a Word document"
+         : m==="not-a-zip"    ? "not a readable archive"
+         : m==="zip-method"   ? "compressed with a method this reader does not support"
+         : m==="pdf-no-text"  ? "no text layer — most likely a scan, so there is nothing to read"
+         : m==="pdf-garbled"  ? "text layer uses a custom font encoding this reader cannot map"
+         : "could not be read";
+  }
+
   async function handleFiles(files){
     if(!files||!files.length) return;
-    var all=[], names=[], errs=[], prior=false;
-    for(var i=0;i<files.length;i++){
-      var f=files[i];
-      if(/\.pdf$/i.test(f.name)){ errs.push(esc(f.name)+" — PDFs are not read here; paste the text instead"); continue; }
+    var all=[], names=[], errs=[], prior=false, queue=[];
+
+    for(var z=0;z<files.length;z++){
+      var f0=files[z];
+      if(/\.zip$/i.test(f0.name)){
+        try{
+          var ex=await expandZip(f0);
+          queue=queue.concat(ex.files);
+          errs=errs.concat(ex.errs);
+          if(!ex.files.length && !ex.errs.length) errs.push(esc(f0.name)+" — no readable documents inside");
+        }catch(err){ errs.push(esc(f0.name)+" — "+whyFailed(err)); }
+      } else queue.push(f0);
+    }
+
+    for(var i=0;i<queue.length;i++){
+      var f=queue[i];
       try{
-        var text=await fileToText(f);
+        var text = typeof f.text==="string" ? f.text : await fileToText(f);
         if(!text || !text.trim()){ errs.push(esc(f.name)+" — no readable text"); continue; }
         var r=scanText(text,f.name);
         prior=prior||r.priorNote;
         names.push(f.name);
         r.found.forEach(function(x){ if(!all.some(function(y){ return y.f===x.f; })) all.push(x); });
-      }catch(e){
-        var why=e&&e.message==="no-inflate" ? "this browser cannot unzip .docx — save it as .txt"
-             : e&&e.message==="part-missing" ? "not a Word document"
-             : e&&e.message==="not-a-zip" ? "not a readable .docx"
-             : "could not be read";
-        errs.push(esc(f.name)+" — "+why);
-      }
+      }catch(e){ errs.push(esc(f.name)+" — "+whyFailed(e)); }
     }
     pending=all; renderFindings();
     var msg=[];
     if(names.length) msg.push("Read <b>"+esc(names.join(", "))+"</b>."+(prior?" Recognised as a note from this builder, so measurements are offered as <b>last visit</b>.":""));
-    if(!all.length && names.length) msg.push("No values recognised — fill the form directly, or paste the text into the fields.");
+    if(!all.length && names.length) msg.push("No values recognised in what was read — fill the form directly, or paste the text into the fields.");
     if(errs.length) msg.push("Skipped: "+errs.join("; ")+".");
     setImportMsg(msg.join(" "), msg.length>0);
     if(all.length) $("importCard").open=true;
