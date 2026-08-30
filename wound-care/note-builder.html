@@ -402,6 +402,26 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
             <b>Ischemic heel — do not debride</b>
             <i>Dry stable eschar on a poorly perfused heel. Shows the case where the usual treatment is wrong, and why that decision has to be written down.</i>
           </button>
+          <button type="button" class="case" data-case="sacral">
+            <b>Sacral — shear, not pressure</b>
+            <i>Head of bed at 45 degrees, undermining growing at the superior margin. Shows a wound where the dressing is fine and the bed is the problem.</i>
+          </button>
+          <button type="button" class="case" data-case="diabetic">
+            <b>Diabetic foot — an ABI that lies</b>
+            <i>Plantar ulcer, absent protective sensation, ABI of 1.42. Shows why that number is not reassurance, and why offloading is the treatment.</i>
+          </button>
+          <button type="button" class="case" data-case="ontrack">
+            <b>Healing on track</b>
+            <i>Well above the four-week benchmark on unchanged care. Shows what a good trajectory reads like, and that "continue" is a real plan when the numbers support it.</i>
+          </button>
+          <button type="button" class="case" data-case="pyoderma">
+            <b>Worse after every debridement</b>
+            <i>Rapid expansion, violaceous borders, pain out of proportion, Crohn's disease, negative cultures. Shows when to stop cutting and biopsy instead.</i>
+          </button>
+          <button type="button" class="case" data-case="maintenance">
+            <b>Maintenance — the achievable plan</b>
+            <i>Healable in principle, but a sole elderly caregiver cannot deliver the care it needs. Shows the middle tier, and why "non-compliant" is the wrong word.</i>
+          </button>
         </div>
       </div>
 
@@ -1178,11 +1198,15 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     if(m.diverges) fl.push(["f-crit","<b>Cumulative reduction meets the "+m.bench+"% benchmark, but this week does not:</b> "+m.deter.join("; ")+". Area alone would hide this — the note states it as a distinct inflection."]);
     else if(m.deter.length) fl.push(["f-crit","<b>Deteriorating:</b> "+m.deter.join("; ")+"."]);
     if(m.stonees.length>=3) fl.push(["f-crit","<b>STONEES "+m.stonees.length+"/7</b> — deep and surrounding tissue infection. Systemic therapy indicated; culture before starting."]);
-    else if(m.nerds.length>=3) fl.push(["f-warn","<b>NERDS "+m.nerds.length+"/5</b> — critical colonization. Topical antimicrobial therapy indicated."]);
+    else if(m.nerds.length>=3){
+      fl.push(m.imped.indexOf("autoimmune")>-1
+        ? ["f-warn","<b>NERDS "+m.nerds.length+"/5, but an inflammatory cause is on the differential.</b> These criteria score bioburden and an inflammatory ulcer meets them without being infected — do not read this as a mandate for antimicrobials. Biopsy settles it."]
+        : ["f-warn","<b>NERDS "+m.nerds.length+"/5</b> — critical colonization. Topical antimicrobial therapy indicated."]);
+    }
     if(v("ptb")==="positive") fl.push(["f-crit","<b>Probe-to-bone positive</b> — osteomyelitis must be excluded. Imaging and ID input."]);
     if(m.tAny && m.tSum!==100) fl.push(["f-warn","<b>Tissue percentages total "+m.tSum+"%</b> — must equal 100 before this note is signed."]);
     if(m.palliative) fl.push(["f-good","<b>Non-healable wound.</b> Measurements are followed for deterioration, not against a healing benchmark — closure is not the goal. Watch instead for fluctuance, drainage, surrounding erythema, odour, or new pain, any of which means an eschar is no longer protective."]);
-    if(!m.palliative && m.benchVal!==null && m.benchVal<m.bench && m.benchVal>=0) fl.push(["f-warn","<b>"+(m.benchIsFour?"Four-week reduction ":"Cumulative reduction ")+m.benchVal.toFixed(1)+"% is below the "+m.bench+"% benchmark</b> — the note must state the plan change, not just the number."]);
+    if(!m.palliative && m.benchVal!==null && m.benchVal<m.bench && m.benchVal>=0) fl.push(["f-warn","<b>"+(m.benchIsFour?"Four-week reduction ":"Cumulative reduction ")+m.benchVal.toFixed(1)+"% is below the "+m.bench+"% benchmark</b> — the note must state the plan change, not just the number."+(v("heal")==="maintenance"?" On a maintenance wound that change can be the reclassification itself, provided the barrier is named.":"")]);
     if(m.cur!==null && !m.benchIsFour && !m.palliative) fl.push(["f-warn","<b>No four-week measurement entered.</b> The benchmark is a four-week threshold, so the cumulative figure is being used as a stand-in — enter the four-week point for a like-for-like comparison."]);
     if(m.postDelta!==null && m.postDelta>0) fl.push(["f-good","<b>Wound enlarged "+f(m.postDelta)+" sq cm post-debridement</b> — the unmasking statement is generated so next week is not misread."]);
     if(m.mlWaste!==null && m.mlWaste>0) fl.push(["f-good","<b>"+f(m.mlWaste)+" sq cm discarded</b> — wastage is documented."]);
@@ -1331,7 +1355,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
            (v("infSupport")?", supported by "+v("infSupport"):"")+".";
         if(v("ptb")==="positive") i+=" Probe-to-bone is positive, which in this wound carries a high likelihood of underlying bone involvement; imaging to evaluate for osteomyelitis is ordered and infectious disease input will be obtained if confirmed.";
       } else if(m.nerds.length>=3){
-        i+="Impression: critical colonization of the wound surface. Topical antimicrobial therapy is indicated; systemic antibiotics are not indicated, as deep-infection criteria are not met.";
+        i+= m.imped.indexOf("autoimmune")>-1
+          ? "Impression: NERDS criteria are met, but they are NOT read here as establishing infection. These criteria score bioburden, and an inflammatory ulcer meets them without being infected"+(v("infSupport")?" — "+v("infSupport"):"")+". An inflammatory cause is on the differential and biopsy is the test that separates the two. Antimicrobial therapy is not indicated on this basis alone."
+          : "Impression: critical colonization of the wound surface. Topical antimicrobial therapy is indicated; systemic antibiotics are not indicated, as deep-infection criteria are not met.";
       } else {
         i+="Impression: no clinical evidence of wound infection. Non-healing here is attributable to the impediments documented below rather than to infection.";
       }
@@ -2003,10 +2029,186 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
       nerds:[], stonees:[],
       edges:["attached and advancing"], peri:["dry and scaly"],
       imped:["pressure","pad","necrotic","pain","renal"]
+    },
+    sacral:{
+      f:{ptName:"Vance, Marie L. (fictional)",ptDob:"06/21/1951",ptMrn:"TEACH-003",
+         ptFac:"Example Care Center, Room 302-B",
+         ptHx:"Obesity, type 2 diabetes, urinary and faecal incontinence, limited mobility after hip fracture",
+         visitNo:"4",weeks:"4",loc:"sacrum",etio:"pressure",psite:"sacral",
+         stage:"Stage 3 pressure injury",heal:"healable",
+         healWhy:"perfusion adequate; the cause is shear and moisture, both correctable",
+         ivHx:"Head of bed found at 45 degrees on arrival. Staff report the patient slides down in bed and is boosted by dragging. Loose stool three to four times daily.",
+         ivRn:"T. Nguyen, RN",ivCg:"daughter-in-law, visits daily",
+         vTemp:"98.4°F",vBpHr:"142/78, 82",ivDress:"saturated with strikethrough",
+         cl:"4.3",cw:"3.6",cd:"0.8",pl:"4.5",pw:"3.8",pd:"0.8",pdate:"2026-08-21",
+         fl:"4.8",fw:"4.0",fdate:"2026-08-07",bl:"5.0",bw:"4.2",bd:"0.9",bdate:"2026-08-01",
+         umCm:"2.4",umA:"11",umB:"1",umPrior:"1.9",exposed:"subcutaneous tissue",ptb:"negative",
+         tG:"60",tS:"40",tE:"0",tP:"0",tGprior:"55",gq:"pink-red, healthy, not friable",
+         exAmt:"moderate",exType:"serosanguineous",odor:"none",painRest:"3",painChg:"5",
+         exPrior:"moderate serosanguineous",
+         alb:"3.0",wt:"96.0",intake:"70",a1c:"7.8",a1cTgt:"< 8.0%",
+         offSide:"back",braden:"13",gapN:"3",gapH:"3",
+         adhBarrier:"boosting by dragging rather than with a lift sheet; HOB kept high for reflux",
+         debType:"selective",anes:"none required",
+         instr:"4 mm sterile ring curette",tissRem:"loosely adherent slough",
+         deepest:"devitalized tissue only; no viable tissue was excised",
+         debCm:"3.2",bleed:"punctate capillary",hemoMin:"2",debPain:"4",
+         postG:"85",postL:"4.4",postW:"3.7",postD:"0.9",
+         pcWeeks:"4",
+         pcTried:"08/01-08/21 foam dressing with q2h turning ordered. Wound narrowed slowly but undermining at the superior margin kept growing, which pointed at shear rather than the dressing.",
+         ordFreq:"every 48 hours, and after each episode of soiling",
+         ordWhy:"Exudate is moderate and the periwound is repeatedly soiled, so an absorptive foam is paired with a barrier film at every change. The dressing is not the limiting factor here — the head-of-bed angle is.",
+         ordOther:"Evaluate for a faecal management system given persistent liquid stool. Group 2 support surface. Dietitian review.",
+         ordContact:"Wound care office 555-0100; after hours 555-0199",
+         cgName:"daughter-in-law",teachBack:"30-degree tilt with pillow bridging and the lift-sheet boost",
+         eduGap:"had been raising the head of the bed for comfort without knowing it drives the shear",
+         rnName:"T. Nguyen, RN",escalate:"unit manager, in person at 1030",
+         nextVisit:"2026-09-04",provider:"[Provider Name], NP — Wound Care"},
+      nerds:["Non-healing"], stonees:[],
+      edges:["non-advancing","undermined"], peri:["MACERATION","excoriated"],
+      imped:["shear","pressure","moisture","surface","nutrition","adherence"]
+    },
+    diabetic:{
+      f:{ptName:"Okafor, Daniel J. (fictional)",ptDob:"02/09/1962",ptMrn:"TEACH-004",
+         ptFac:"Outpatient wound clinic",
+         ptHx:"Type 2 diabetes with peripheral neuropathy, hypertension, retinopathy, prior contralateral toe amputation",
+         visitNo:"8",weeks:"8",loc:"plantar surface of the right first metatarsal head",
+         etio:"diabetic",stage:"Wagner grade 2",heal:"healable",
+         healWhy:"toe pressure adequate for healing and the cause — plantar load — is correctable with offloading",
+         ivHx:"Patient reports wearing the removable walker 'when going out' but not around the house. Works standing four days a week.",
+         ivCg:"wife, present at the visit",
+         vTemp:"98.2°F",vBpHr:"138/84, 76",ivDress:"intact",ivDevice:"removed by the patient",
+         cl:"2.0",cw:"1.8",cd:"0.4",pl:"2.1",pw:"1.8",pd:"0.4",pdate:"2026-08-21",
+         fl:"2.2",fw:"1.9",fdate:"2026-08-07",bl:"2.4",bw:"2.0",bd:"0.5",bdate:"2026-07-03",
+         exposed:"none",ptb:"negative",
+         tG:"70",tS:"25",tE:"5",tP:"0",tGprior:"70",gq:"pale pink",
+         exAmt:"small",exType:"serous",odor:"none",painRest:"0",painChg:"1",
+         exPrior:"small serous",
+         abi:"1.42",a1c:"9.4",a1cTgt:"< 8.0%",
+         a1cWhy:"otherwise well, working, and able to self-manage — a tighter target is achievable here",
+         wt:"104.0",alb:"3.6",
+         debType:"selective",anes:"none required — protective sensation absent",
+         instr:"#15 scalpel blade for the callus rim; 4 mm curette to the base",
+         tissRem:"hyperkeratotic callus rim and adherent slough",
+         deepest:"devitalized tissue only; no viable tissue was excised",
+         debCm:"2.6",bleed:"punctate capillary",hemoMin:"2",debPain:"0",
+         postG:"90",postL:"2.2",postW:"1.9",postD:"0.4",
+         pcWeeks:"8",
+         pcTried:"07/03-08/07 removable cast walker plus weekly callus debridement — the wound narrowed but never closed, and adherence to the walker was partial throughout. 08/07-08/28 same regimen, effectively flat.",
+         ordFreq:"weekly, with callus debrided at every visit",
+         ordWhy:"The bed is clean with small serous exudate, so a simple non-adherent contact layer is enough. The dressing was never the limiting factor — the offloading is.",
+         ordOther:"Total contact cast recommended and discussed today. Podiatry co-management. Custom insoles and therapeutic footwear at healing. Endocrinology referral for glycaemic control.",
+         ordContact:"Wound clinic 555-0100; after hours 555-0199",
+         cgName:"wife",teachBack:"daily plantar inspection with a mirror and checking inside the shoe by hand",
+         eduGap:"believed the wound was safe to walk on because it does not hurt — loss of protective sensation explained",
+         nextVisit:"2026-09-04",provider:"[Provider Name], DPM"},
+      nerds:["Non-healing","Debris"], stonees:[],
+      edges:["callused and hyperkeratotic","non-advancing"], peri:["dry and scaly"],
+      imped:["trauma","callus","footwear","abifalse","glycemic","deformity"]
+    },
+    ontrack:{
+      f:{ptName:"Bell, Arthur K. (fictional)",ptDob:"09/30/1948",ptMrn:"TEACH-005",
+         ptFac:"Home health",
+         ptHx:"Chronic venous insufficiency, hypertension, well-controlled type 2 diabetes",
+         visitNo:"5",weeks:"5",loc:"left lateral lower leg",etio:"venous",
+         stage:"venous leg ulcer",heal:"healable",
+         healWhy:"ABI 1.02, compression tolerated and worn consistently, cause well controlled",
+         ivHx:"Wrap has stayed on all week. Patient reports doing the ankle pumps and elevating in the afternoon as instructed.",
+         ivCg:"wife, assists with elevation",
+         vTemp:"98.0°F",vBpHr:"128/72, 68",ivDress:"intact",ivDevice:"in place and undisturbed",
+         cl:"3.4",cw:"2.4",cd:"0.1",pl:"4.0",pw:"2.8",pd:"0.2",pdate:"2026-08-21",
+         fl:"5.2",fw:"3.4",fdate:"2026-08-07",bl:"6.0",bw:"4.0",bd:"0.3",bdate:"2026-07-24",
+         exposed:"none",
+         tG:"95",tS:"5",tE:"0",tP:"0",tGprior:"85",gq:"beefy red and healthy",
+         exAmt:"scant",exType:"serous",odor:"none",painRest:"1",painChg:"1",
+         exPrior:"small serous",
+         abi:"1.02",alb:"3.9",wt:"81.0",
+         compression:"three-layer, 30–40 mmHg",
+         debType:"",mlStatus:"",
+         pcWeeks:"5",
+         pcTried:"07/24 onward: three-layer compression, foam, elevation and calf-pump exercise. No change of regimen has been needed.",
+         ordFreq:"weekly by this provider",
+         ordWhy:"The bed is clean and epithelialising from the edges with scant exudate, so the regimen is deliberately left alone. Once a wound is closing at this rate, the dressing that is disturbed least heals fastest.",
+         ordOther:"Continue compression unchanged. Begin compression stocking fitting now so it is ready at closure, since recurrence without it is the expected outcome.",
+         ordContact:"Wound care office 555-0100; after hours 555-0199",
+         cgName:"wife",teachBack:"ankle pumps and the elevation schedule",
+         nextVisit:"2026-09-04",provider:"[Provider Name], NP — Wound Care"},
+      nerds:[], stonees:[],
+      edges:["attached and advancing"], peri:["hemosiderin staining and lipodermatosclerosis"],
+      imped:["perfusion"]
+    },
+    pyoderma:{
+      f:{ptName:"Reyes, Camila S. (fictional)",ptDob:"04/17/1979",ptMrn:"TEACH-006",
+         ptFac:"Outpatient wound clinic",
+         ptHx:"Crohn's disease on maintenance therapy, iron deficiency anaemia",
+         visitNo:"3",weeks:"3",loc:"left anterior lower leg",etio:"trauma",
+         stage:"rapidly expanding ulcer of uncertain aetiology",heal:"healable",
+         healWhy:"perfusion is normal (ABI 1.05) and this is treatable — but by immunosuppression, not by wound care alone",
+         ivHx:"The wound has enlarged after each of the last two debridements rather than improving. Pain is severe and out of proportion to the appearance. Patient reports a flare of her Crohn's disease over the same period.",
+         ivCg:"partner, present at the visit",
+         vTemp:"98.6°F",vBpHr:"118/70, 84",ivDress:"saturated with strikethrough",
+         cl:"6.2",cw:"5.0",cd:"0.6",pl:"4.6",pw:"3.8",pd:"0.4",pdate:"2026-08-21",
+         bl:"3.0",bw:"2.5",bd:"0.3",bdate:"2026-08-07",
+         exposed:"subcutaneous tissue",ptb:"negative",
+         tG:"30",tS:"60",tE:"10",tP:"0",tGprior:"45",
+         gq:"dusky, friable, bleeds on light contact",
+         eryCm:"2.0",eryBl:"non-blanchable",exAmt:"large",exType:"serosanguineous",odor:"none",
+         painRest:"9",painChg:"10",exPrior:"moderate serosanguineous",
+         abi:"1.05",wbc:"7.2",crp:"4.1",alb:"3.2",wt:"62.0",
+         infSupport:"afebrile, WBC 7.2, two tissue cultures with no growth",
+         debType:"",mlStatus:"",
+         pcWeeks:"3",
+         pcTried:"08/07 and 08/14: sharp debridement performed at both visits. The wound was larger at the visit following each one. Antibiotics were trialled on the assumption of infection, without effect, and cultures have been negative twice.",
+         ordFreq:"every 48 hours, atraumatic technique",
+         ordWhy:"Silicone contact layer with a foam cover, chosen for atraumatic removal. NO further debridement pending diagnosis — if this is pyoderma gangrenosum, cutting it is what has been making it worse.",
+         ordOther:"Punch biopsy from the wound EDGE, including intact skin, sent for histology and tissue culture. Urgent dermatology and rheumatology referral. Gastroenterology informed of the concurrent flare. Analgesia reviewed — pain is severe and undertreated.",
+         ordContact:"Wound clinic 555-0100; after hours 555-0199",
+         cgName:"partner",teachBack:"why debridement has been stopped and what to watch for",
+         eduGap:"expected more aggressive debridement and needed the reasoning explained explicitly",
+         nextVisit:"2026-09-01",provider:"[Provider Name], MD"},
+      nerds:["Non-healing","Exudate increased","Red friable granulation","Debris"], stonees:[],
+      edges:["EPIBOLE","undermined"], peri:["ERYTHEMA"],
+      imped:["autoimmune","pain","malignancy"]
+    },
+    maintenance:{
+      f:{ptName:"Kowalski, Henry P. (fictional)",ptDob:"12/03/1944",ptMrn:"TEACH-007",
+         ptFac:"Private residence — home health, monthly provider visits",
+         ptHx:"Paraplegia after spinal cord injury, neurogenic bladder, recurrent pressure injuries",
+         visitNo:"6",weeks:"12",loc:"left ischial tuberosity",etio:"pressure",psite:"ischial",
+         stage:"Stage 4 pressure injury",heal:"maintenance",
+         healWhy:"healable in principle — perfusion is adequate and the cause is correctable — but the q2h repositioning and pressure-redistribution seating this wound needs cannot be delivered with a sole 79-year-old caregiver, no funded cushion, and monthly rather than weekly visits",
+         ivHx:"Wife is the sole caregiver and cannot reposition overnight. The wheelchair cushion has bottomed out and a replacement has been denied twice. Transport limits visits to monthly.",
+         ivCg:"wife, sole caregiver, aged 79",
+         vTemp:"98.1°F",vBpHr:"124/76, 72",ivDress:"intact",
+         cl:"7.4",cw:"5.7",cd:"2.1",pl:"7.5",pw:"5.7",pd:"2.1",pdate:"2026-07-31",
+         fl:"7.6",fw:"5.8",fdate:"2026-07-03",bl:"8.0",bw:"6.0",bd:"2.3",bdate:"2026-06-05",
+         umCm:"1.5",umA:"4",umB:"7",umPrior:"1.5",exposed:"subcutaneous tissue and fascia",ptb:"negative",
+         tG:"70",tS:"30",tE:"0",tP:"0",tGprior:"70",gq:"pink-red, healthy, not friable",
+         exAmt:"moderate",exType:"serous",odor:"none",painRest:"0",painChg:"2",
+         exPrior:"moderate serous",
+         alb:"3.1",wt:"68.0",intake:"65",braden:"11",
+         adhBarrier:"sole elderly caregiver cannot turn overnight; cushion replacement denied twice; transport limits visits to monthly",
+         debType:"selective",anes:"none required — sensation absent below the level of injury",
+         instr:"4 mm sterile ring curette",tissRem:"loosely adherent slough",
+         deepest:"devitalized tissue only; no viable tissue was excised",
+         debCm:"6.0",bleed:"minimal",hemoMin:"2",debPain:"0",
+         postG:"85",postL:"7.5",postW:"5.8",postD:"2.1",
+         pcWeeks:"12",
+         pcTried:"Twelve weeks of foam and alginate with monthly debridement. The wound has been essentially stable rather than closing. Weekly visits and q2h repositioning were ordered at week 2 and have never been achievable.",
+         ordFreq:"every 72 hours by the caregiver — deliberately extended from daily, because a regimen that is actually performed beats one that is not",
+         ordWhy:"Alginate rope loosely into the tract with a foam cover, chosen because it holds for 72 hours. The regimen was matched to the caregiver who exists rather than the one the original plan assumed.",
+         ordOther:"Social work referral for cushion funding — third appeal, with photographs. Home health aide hours requested for overnight repositioning. Wound reclassified as maintenance today and the reason recorded.",
+         ordContact:"Wound care office 555-0100; after hours 555-0199",
+         cgName:"wife, sole caregiver",teachBack:"the 72-hour dressing change and loose packing without over-filling",
+         eduGap:"had been apologising for missing turns — told plainly that the plan was wrong for her circumstances, not that she had failed",
+         nextVisit:"2026-09-28",provider:"[Provider Name], NP — Wound Care"},
+      nerds:["Non-healing"], stonees:[],
+      edges:["non-advancing"], peri:["intact"],
+      imped:["sitting","caregiver","supplies","transport","surface","nutrition"]
     }
   };
 
-  function loadCase(key){
+  function loadCase(key,quiet){
     var c=CASES[key]; if(!c) return;
     document.querySelectorAll("#form input, #form select, #form textarea").forEach(function(el){
       if(el.type==="checkbox"){ el.checked=false; return; }
@@ -2032,9 +2234,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
     $("importCard").open=false;
     pending=[]; renderFindings(); setImportMsg("",false);
     syncEtio(); update();
-    var head=$("importCard").previousElementSibling;
-    if(head&&head.scrollIntoView) head.scrollIntoView({block:"start",behavior:"smooth"});
-    toast("Loaded the teaching case — every field is editable");
+    if(!quiet){
+      var head=$("importCard").previousElementSibling;
+      if(head&&head.scrollIntoView) head.scrollIntoView({block:"start",behavior:"smooth"});
+      toast("Loaded the teaching case — every field is editable");
+    }
   }
   document.querySelectorAll(".case").forEach(function(btn){
     btn.addEventListener("click",function(){ loadCase(this.getAttribute("data-case")); });
@@ -2288,5 +2492,15 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline
   document.querySelectorAll(".step .num").forEach(function(el,i){ el.textContent=i+1; });
   var t=new Date(); $("dos").value=t.toISOString().slice(0,10);
   update();
+
+  // /builder#case=<key> arrives from a link on the site
+  (function(){
+    var m=/^#case=([a-z]+)$/.exec(window.location.hash||"");
+    if(m && CASES[m[1]]) loadCase(m[1],true);
+    window.addEventListener("hashchange",function(){
+      var h=/^#case=([a-z]+)$/.exec(window.location.hash||"");
+      if(h && CASES[h[1]]) loadCase(h[1]);
+    });
+  })();
 })();
 </script>
