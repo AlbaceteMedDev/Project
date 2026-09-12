@@ -1,0 +1,525 @@
+<title>First Time in the City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,400..800;1,100,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+<style>
+  :root {
+    --ground: #F1F2F4;
+    --surface: #FFFFFF;
+    --ink: #14161A;
+    --muted: #5B616B;
+    --rule: #D5D8DE;
+    --rule-strong: #B9BEC7;
+    --accent: #0039A6;
+    --flag: #EE352E;
+    --flag-soft: #FDECEB;
+    --sign: #0B0C0E;
+    --sign-ink: #FFFFFF;
+    --sign-muted: #B4B8C0;
+    --stripe: #F2F3F6;
+    --display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --body: "Newsreader", Georgia, "Times New Roman", serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101216;
+      --surface: #181B20;
+      --ink: #ECEEF1;
+      --muted: #A0A6B0;
+      --rule: #2A2F37;
+      --rule-strong: #3B414B;
+      --accent: #7FA6FF;
+      --flag: #FF6B62;
+      --flag-soft: #3A1F1E;
+      --sign: #000000;
+      --sign-ink: #FFFFFF;
+      --sign-muted: #9DA3AD;
+      --stripe: #1C1F25;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101216;
+    --surface: #181B20;
+    --ink: #ECEEF1;
+    --muted: #A0A6B0;
+    --rule: #2A2F37;
+    --rule-strong: #3B414B;
+    --accent: #7FA6FF;
+    --flag: #FF6B62;
+    --flag-soft: #3A1F1E;
+    --sign: #000000;
+    --sign-ink: #FFFFFF;
+    --sign-muted: #9DA3AD;
+    --stripe: #1C1F25;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Station sign */
+  .sign {
+    background: var(--sign);
+    color: var(--sign-ink);
+    padding-block: 28px 22px;
+    padding-inline: 20px;
+    border-bottom: 10px solid var(--flag);
+  }
+  .sign-inner { max-width: 920px; margin: 0 auto; padding-inline: 20px; }
+  .sign h1 {
+    font-family: var(--display);
+    font-variation-settings: "wdth" 118;
+    font-weight: 800;
+    font-size: clamp(30px, 6vw, 58px);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .sign .sub {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sign-muted);
+    margin: 0 0 16px;
+  }
+  .bullets { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .b {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    font-family: var(--display); font-weight: 700; font-size: 14px; line-height: 1;
+    color: #fff; flex: none;
+  }
+  .b.s { width: 20px; height: 20px; font-size: 11px; vertical-align: -4px; margin-inline: 1px; }
+  .b.r { background: #EE352E; }  /* 1 2 3 */
+  .b.g { background: #00933C; }  /* 4 5 6 */
+  .b.p { background: #B933AD; }  /* 7 */
+  .b.bl { background: #0039A6; } /* A C E */
+  .b.o { background: #FF6319; }  /* B D F M */
+  .b.y { background: #FCCC0A; color: #111; } /* N Q R W */
+  .b.gr { background: #A7A9AC; color: #111; } /* L */
+  .b.br { background: #996633; } /* J Z */
+  .b.lg { background: #6CBE45; color: #111; } /* G */
+  .b.sir { background: #0039A6; font-size: 9px; letter-spacing: 0; }
+
+  /* Nav */
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0; z-index: 5;
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding-inline: 20px;
+    display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav a {
+    font-family: var(--display); font-size: 12.5px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; white-space: nowrap;
+    padding-block: 12px; border-bottom: 2px solid transparent;
+  }
+  .nav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+
+  /* Page */
+  .page { max-width: 920px; margin: 0 auto; padding-inline: 20px; padding-block: 8px 72px; }
+  .lede {
+    max-width: 66ch; font-size: 19px; line-height: 1.45;
+    margin: 28px 0 8px;
+  }
+  .meta {
+    font-family: var(--display); font-size: 13.5px; color: var(--muted);
+    display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px;
+    max-width: 760px; margin: 18px 0 0; padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .meta dt { font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; font-size: 11.5px; padding-top: 2px; }
+  .meta dd { margin: 0; }
+
+  section { margin-top: 56px; scroll-margin-top: 56px; }
+  .eyebrow {
+    font-family: var(--display); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    margin: 0 0 6px;
+  }
+  h2 {
+    font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1.1;
+    letter-spacing: -0.01em; margin: 0 0 8px; text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 1.2;
+    margin: 36px 0 6px; text-wrap: balance;
+  }
+  .kicker { max-width: 66ch; color: var(--muted); margin: 0 0 18px; font-style: italic; }
+  p { max-width: 66ch; margin: 0 0 12px; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  .est { font-family: var(--display); font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+
+  /* Tables */
+  .tw { overflow-x: auto; margin: 14px 0 0; border-top: 2px solid var(--ink); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-family: var(--display); font-size: 14px; line-height: 1.4; font-variant-numeric: tabular-nums; }
+  th { text-align: left; font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 10px 12px 8px 0; border-bottom: 1px solid var(--rule-strong); vertical-align: bottom; }
+  td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td:first-child, th:first-child { padding-left: 0; }
+  td:last-child, th:last-child { padding-right: 0; }
+  tbody tr:nth-child(even) td { background: transparent; }
+  td.k { font-weight: 700; width: 24%; }
+  td.call { font-weight: 600; }
+  td.num { white-space: nowrap; }
+  .lead-time { font-weight: 700; }
+  .lead-time.hot { color: var(--flag); }
+
+  /* Timeline */
+  .day { margin-top: 30px; }
+  .day h3 { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+  .day h3 .dn { font-variation-settings: "wdth" 110; font-weight: 800; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--flag); }
+  .day .miles { font-family: var(--display); font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+  .tl { list-style: none; margin: 14px 0 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+  .tl li { display: grid; grid-template-columns: 8.2rem 1fr; gap: 0 18px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .tl .t { font-family: var(--display); font-weight: 700; font-size: 14.5px; line-height: 1.55; font-variant-numeric: tabular-nums; color: var(--ink); text-align: right; padding-right: 0; }
+  .tl .t small { display: block; font-weight: 500; font-size: 11.5px; color: var(--muted); letter-spacing: 0.03em; }
+  .tl .c { max-width: 62ch; }
+  .tl .c p { margin: 0 0 6px; max-width: none; }
+  .tl .c p:last-child { margin-bottom: 0; }
+  .tl .swap { font-size: 15px; color: var(--muted); font-style: italic; }
+  .tl .late .t { color: var(--muted); }
+
+  /* Two-column definition rows for adjustments and rules */
+  .rows { list-style: none; margin: 14px 0 0; padding: 0; border-top: 2px solid var(--ink); }
+  .rows li { display: grid; grid-template-columns: 11rem 1fr; gap: 0 18px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .rows .k { font-family: var(--display); font-weight: 700; font-size: 14.5px; line-height: 1.5; }
+  .rows .v { max-width: 62ch; }
+  .rules { margin: 14px 0 0; padding: 0 0 0 1.4em; max-width: 66ch; }
+  .rules li { padding: 6px 0; border-bottom: 1px solid var(--rule); }
+  .rules li::marker { font-family: var(--display); font-weight: 700; color: var(--accent); }
+
+  /* Fare strip */
+  .fares { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); margin: 14px 0 0; }
+  .fare { padding: 12px 12px 12px 0; border-right: 1px solid var(--rule); }
+  .fare:last-child { border-right: 0; }
+  .fare .n { font-family: var(--display); font-weight: 800; font-size: 24px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .fare .l { font-family: var(--display); font-size: 12px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px; }
+
+  .note { background: var(--stripe); border-left: 3px solid var(--accent); padding: 12px 16px; max-width: 70ch; margin: 18px 0 0; font-size: 16px; }
+  .note p { max-width: none; }
+  .cal { font-family: var(--display); font-size: 14px; line-height: 1.5; }
+  .cal p { max-width: 80ch; }
+  footer { margin-top: 56px; padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--display); font-size: 12.5px; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    .tl li, .rows li { grid-template-columns: 1fr; gap: 2px; }
+    .tl .t { text-align: left; }
+    .meta { grid-template-columns: 1fr; }
+    .fare { border-right: 0; border-bottom: 1px solid var(--rule); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  @media print {
+    .nav { display: none; }
+    .sign { border-bottom-color: #000; }
+    body { background: #fff; }
+  }
+</style>
+
+<header class="sign">
+  <div class="sign-inner">
+    <p class="sub">Host's playbook · New York · fall 2026</p>
+    <h1>First Time in the City</h1>
+    <div class="bullets" aria-label="Subway lines used in this plan">
+      <span class="b r">1</span><span class="b r">2</span><span class="b r">3</span>
+      <span class="b g">4</span><span class="b g">5</span><span class="b g">6</span>
+      <span class="b p">7</span>
+      <span class="b bl">A</span><span class="b bl">C</span><span class="b bl">E</span>
+      <span class="b o">D</span><span class="b o">F</span>
+      <span class="b y">N</span><span class="b y">Q</span><span class="b y">R</span>
+      <span class="b gr">L</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+  <div class="nav-inner">
+    <a href="#decisions">Decisions</a>
+    <a href="#book">Book ahead</a>
+    <a href="#day0">Arrival</a>
+    <a href="#day1">Day 1</a>
+    <a href="#day2">Day 2</a>
+    <a href="#day3">Day 3</a>
+    <a href="#modules">Swaps</a>
+    <a href="#around">Getting around</a>
+    <a href="#rules">Rules</a>
+    <a href="#fall">Fall 2026</a>
+    <a href="#food">Food</a>
+    <a href="#cal">Calibration</a>
+  </div>
+</nav>
+
+<main class="page">
+  <p class="lede">The plan makes the calls a first-timer can't make — which deck, which ferry, which museum — so the visitor spends money and daylight once. Every day ends somewhere with food and a view, because that is what they will remember.</p>
+  <dl class="meta">
+    <dt>Built for</dt><dd>a first-timer visiting Gabe · 3 full days on the ground plus the arrival evening · any age to about 70 with normal walking stamina</dd>
+    <dt>Shape</dt><dd>1 Midtown day · 1 Downtown + Brooklyn day · 1 Uptown-to-West-Side day · swap-in modules for a 4th day, kids, parents, or rain</dd>
+    <dt>Facts checked</dt><dd>Sep 12, 2026 — MTA fares, ticket prices, TKTS hours, Knicks schedule. Anything marked <span class="est">est.</span> is recalled, not checked.</dd>
+  </dl>
+
+  <section id="decisions">
+    <p class="eyebrow">Change only with a reason</p>
+    <h2>Decisions already made</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Question</th><th>Call</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Which observation deck?</td><td class="call">Top of the Rock, booked for 40 minutes before sunset. One deck only.</td><td>You see the Empire State Building <em>and</em> Central Park; the ESB deck can't show you the ESB. Two decks is ~$50 and 90 minutes wasted. Summit One Vanderbilt only if they want the mirror-room spectacle; Edge only if they want the outdoor ledge.</td></tr>
+          <tr><td class="k">Statue of Liberty?</td><td class="call">Staten Island Ferry — free, 25 min each way. The paid Liberty/Ellis ferry only if a Crown or Pedestal slot is booked.</td><td>The free boat passes within about 1 km of the statue with the skyline behind you. The $25.50 ferry plus Ellis is a 3½–4 hour commitment that eats the whole Downtown morning.</td></tr>
+          <tr><td class="k">Which big museum?</td><td class="call">The Met, capped at 2½ hours. MoMA is the Midtown add-on if they care about modern art; skip it otherwise.</td><td>First-timers burn out at 3 hours. The Met is the one everyone regrets missing.</td></tr>
+          <tr><td class="k">Broadway?</td><td class="call">Book one show 2–6 weeks ahead for the evening of Day 3. TKTS is for a <em>second</em>, spontaneous night.</td><td>TKTS opens 11 AM Wed/Thu/Sat, 3 PM Mon/Tue/Fri, 11 AM Sun; on this plan the visitor is uptown at those hours.</td></tr>
+          <tr><td class="k">Times Square?</td><td class="call">Fifteen minutes, at night, on the way to somewhere else. Never a Times Square hotel.</td><td>It exists to be seen lit up, then left.</td></tr>
+          <tr><td class="k">Brooklyn?</td><td class="call">Yes — on foot, over the bridge, ending at the Promenade at dusk.</td><td>The best skyline view in the city is from Brooklyn, and it is free.</td></tr>
+          <tr><td class="k">Airport to city</td><td class="call"><strong>JFK:</strong> AirTrain $8.50 + LIRR to Grand Central Madison or Penn, or a flat-fare yellow cab (~$70 + tolls + tip <span class="est">est.</span>). <strong>LGA:</strong> free Q70 bus to Jackson Hts–Roosevelt Av, then <span class="b s bl">E</span><span class="b s o">F</span><span class="b s o">M</span><span class="b s y">R</span><span class="b s p">7</span>. <strong>EWR:</strong> AirTrain + NJ Transit to Penn, $16.80.</td><td>Uber from JFK at rush hour is routinely $100+; the flat cab fare is the hedge.</td></tr>
+          <tr><td class="k">Getting around</td><td class="call">Tap a phone or contactless card at every turnstile. Same card every time. $3 a ride; after 12 taps in any rolling 7 days the rest of the week is free ($35 cap). MetroCards can no longer be bought or refilled.</td><td>Don't buy anything at the machines. Don't pay cash on buses.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="book">
+    <p class="eyebrow">Before they land</p>
+    <h2>Book ahead</h2>
+    <p class="kicker">Lead time is the column that matters. Prices are adult, checked Sep 12, 2026 unless marked.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>What</th><th>Lead time</th><th>Price</th><th>Where / notes</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Top of the Rock — sunset slot</td><td><span class="lead-time">1–3 weeks</span> for a good sunset slot</td><td class="num">$47–60 by date/time</td><td>topoftherocknyc.com · timed entry · arrive 15 min early</td></tr>
+          <tr><td class="k">The Met</td><td>Day-of is fine</td><td class="num">$30 visitor · Gabe pays what he wishes (NY resident: NY billing address online, or in person)</td><td>metmuseum.org · closed Wednesdays · opens 10 AM</td></tr>
+          <tr><td class="k">9/11 Memorial &amp; Museum</td><td><span class="lead-time">1–2 weeks</span></td><td class="num">$36 · the pools outside are free</td><td>911memorial.org · 9:30 AM slot · 2 h · heavy — read the visitor's mood</td></tr>
+          <tr><td class="k">Broadway show</td><td><span class="lead-time">2–6 weeks</span> (hits: 2–3 months)</td><td class="num">$80–250</td><td>Telecharge / Ticketmaster direct · TodayTix for lotteries and rush</td></tr>
+          <tr><td class="k">Statue Crown (only if wanted)</td><td><span class="lead-time hot">3–4 months</span> · 500 a day, sells out</td><td class="num">$25.80</td><td>City Cruises is the only official seller · 162 steps, no elevator · 42-inch height minimum</td></tr>
+          <tr><td class="k">Knicks at MSG</td><td><span class="lead-time hot">As soon as dates are known</span></td><td class="num">Ring night Oct 20 vs 76ers: from ~$2,200 · ordinary weeknights: low hundreds <span class="est">est.</span></td><td>nba.com/knicks · Ticketmaster · the 2026 champions raise the banner Oct 20</td></tr>
+          <tr><td class="k">MSG tour (the cheap Knicks fix)</td><td>Day-of usually fine</td><td class="num">$48 + $5 online fee</td><td>msg.com · 75 min · goes through the locker-room level</td></tr>
+          <tr><td class="k">Dinner reservations</td><td><span class="lead-time">14–30 days</span> · most Resy/OpenTable drops open 9–10 AM that many days out</td><td class="num">—</td><td>Keens (Day 1) · L'Artusi, or Via Carota walk-in (Day 3) · Juliana's is walk-in only (Day 2)</td></tr>
+          <tr><td class="k">Comedy Cellar (optional, Day 2 late)</td><td>1–2 weeks</td><td class="num">~$25–35 + 2-item minimum <span class="est">est.</span></td><td>comedycellar.com</td></tr>
+          <tr><td class="k">Village Vanguard (optional, Day 3 late)</td><td>1–2 weeks</td><td class="num">~$40 <span class="est">est.</span></td><td>villagevanguard.com · sets 8 and 10 PM</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="day0">
+    <p class="eyebrow">Exact clock, meals and trains included</p>
+    <h2>Day by day</h2>
+
+    <div class="day">
+      <h3><span class="dn">Day 0</span> Arrival evening</h3>
+      <ul class="tl">
+        <li><div class="t">Land</div><div class="c"><p>Airport row above. Whatever the hour, get them tapped into OMNY at the first turnstile and explain "uptown vs downtown entrance" once, at a station, not in the abstract.</p></div></li>
+        <li><div class="t">+45 min</div><div class="c"><p>Drop bags, then out. Jet lag or not, the first evening should be the postcard.</p></div></li>
+        <li><div class="t">7:30 PM</div><div class="c"><p>First slice: <strong>Joe's Pizza, 1435 Broadway at 40th</strong> — folded, standing, about $4. Then 5 minutes north to <strong>Times Square</strong>. Fifteen minutes. Photo on the red steps. Leave.</p></div></li>
+        <li><div class="t">8:15 PM</div><div class="c"><p>If they have energy: walk 42nd St east to <strong>Grand Central</strong> (the concourse is open till 2 AM; the ceiling reads better at night). Otherwise 32nd St <strong>Koreatown</strong> for a real dinner that's open late — BCD Tofu House, Her Name is Han.</p></div></li>
+        <li><div class="t">Early night</div><div class="c"><p>Day 1 is the long one.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="day" id="day1">
+      <h3><span class="dn">Day 1</span> Midtown — the postcard day, Top of the Rock at sunset</h3>
+      <p class="miles">About 5 miles on foot · 1 museum · 1 deck</p>
+      <ul class="tl">
+        <li><div class="t">8:30 AM</div><div class="c"><p>Breakfast bagel: <strong>Ess-a-Bagel, 831 3rd Ave (51st)</strong> — everything bagel, scallion cream cheese, lox if they're brave. Eat in the pocket park at 51st.</p></div></li>
+        <li><div class="t">9:15 AM</div><div class="c"><p><strong>Grand Central Terminal</strong> — the Main Concourse ceiling (the zodiac is painted backwards), the four-faced opal clock, then downstairs to the <strong>Whispering Gallery</strong> outside the Oyster Bar: face the corner, whisper, the other person hears it diagonally across. 25 min.</p></div></li>
+        <li><div class="t">9:45 AM</div><div class="c"><p>West on 42nd: the <strong>Chrysler Building lobby</strong> (2 min, Art Deco), the <strong>New York Public Library</strong> — Rose Main Reading Room, 3rd floor (free; opens 10 AM Mon–Sat, 1 PM Sun <span class="est">est.</span>), then <strong>Bryant Park</strong> behind it.</p></div></li>
+        <li><div class="t">10:45 AM</div><div class="c"><p>North on <strong>Fifth Avenue</strong>: St. Patrick's Cathedral (free, 10 min) → <strong>Rockefeller Center</strong>: Channel Gardens, Prometheus, the rink (opens mid-Oct <span class="est">est.</span>), Atlas across the street.</p></div></li>
+        <li><div class="t">11:45 AM<small>to 1:45 PM</small></div><div class="c"><p><strong>MoMA, 11 W 53rd</strong> ($28 online) — Floor 5 first: <em>Starry Night</em>, <em>Les Demoiselles d'Avignon</em>, Monet's <em>Water Lilies</em>, then down. <strong>If they don't care about art, skip it and give the two hours to Central Park below.</strong></p></div></li>
+        <li><div class="t">1:45 PM</div><div class="c"><p>Lunch on the sidewalk: <strong>The Halal Guys, SW corner of 53rd &amp; 6th</strong> (the original cart; chicken and rice, white sauce, a little red; about $12). Sit on the plaza steps.</p></div></li>
+        <li><div class="t">2:45 PM</div><div class="c"><p><strong>Central Park, south half</strong>, on foot: in at 6th Ave &amp; 59th → the Pond and Gapstow Bridge (the skyline-over-water photo) → Wollman Rink → the Mall (the elm allée) → <strong>Bethesda Terrace and Fountain</strong> → Bow Bridge → out at 72nd &amp; Central Park West past Strawberry Fields. About 90 min, 2 miles.</p></div></li>
+        <li><div class="t">4:30 PM</div><div class="c"><p>Coffee and a sit at Columbus Circle. The visitor's feet need it.</p></div></li>
+        <li><div class="t">Sunset − 40<small>Sep 15 ≈ 6:20 · Oct 15 ≈ 5:35 · Nov 15 ≈ 4:00</small></div><div class="c"><p><strong>Top of the Rock, 30 Rockefeller Plaza</strong> (entrance on 50th between 5th and 6th). Stay through blue hour; the lights come on about 25 minutes after sunset. 75 min. Sunsets ≈ 7:03 / 6:15 / 4:38 PM <span class="est">est. ±5 min</span>.</p></div></li>
+        <li><div class="t">7:45 PM</div><div class="c"><p>Dinner: <strong>Keens Steakhouse, 72 W 36th</strong> (the mutton chop; the clay-pipe ceiling; book 2–4 weeks ahead). Budget version: <strong>Koreatown</strong> on 32nd, a 10-minute walk south, no reservation needed.</p></div></li>
+        <li class="late"><div class="t">Late</div><div class="c"><p>Rooftop drink at <strong>Bar SixtyFive</strong>, 65th floor of the same building (smart dress; no reservation for the bar <span class="est">est.</span>).</p></div></li>
+      </ul>
+    </div>
+
+    <div class="day" id="day2">
+      <h3><span class="dn">Day 2</span> Downtown + Brooklyn — memorial, harbor, bridge, dusk on the Promenade</h3>
+      <p class="miles">About 6 miles on foot · 2 boats · 1 bridge</p>
+      <ul class="tl">
+        <li><div class="t">8:30 AM</div><div class="c"><p>Subway to <strong>Fulton St</strong> <span class="b s r">2</span><span class="b s r">3</span><span class="b s g">4</span><span class="b s g">5</span><span class="b s bl">A</span><span class="b s bl">C</span> — coffee and a bagel at <strong>Leo's Bagels, 3 Hanover Sq</strong>, 6 min south, or grab-and-go inside the Oculus.</p></div></li>
+        <li><div class="t">9:00 AM</div><div class="c"><p><strong>9/11 Memorial</strong> pools (free, outdoors; names cut into bronze; the Survivor Tree). <strong>9:30 AM</strong> museum slot ($36), 2 hours. If the visitor is a heavy feeler, do the pools only and give the museum's two hours to the harbor.</p></div></li>
+        <li><div class="t">11:30 AM</div><div class="c"><p>The <strong>Oculus</strong> (free; the white ribs; 10 min), then One World Trade from the plaza. Skip its deck — you already have Top of the Rock.</p></div></li>
+        <li><div class="t">11:45 AM</div><div class="c"><p>South on foot: <strong>Trinity Church</strong> → <strong>Wall Street</strong> (the NYSE façade, Fearless Girl) → the <strong>Federal Hall</strong> steps → <strong>Stone Street</strong>, cobbled, tables outside.</p></div></li>
+        <li><div class="t">12:30 PM</div><div class="c"><p>Lunch on Stone Street: <strong>Adrienne's Pizzabar</strong> (the square pie) or <strong>Fraunces Tavern</strong> (Washington said goodbye to his officers upstairs, 1783). Skip the Charging Bull queue — a 30-second look from across Bowling Green is enough.</p></div></li>
+        <li><div class="t">1:30 PM</div><div class="c"><p><strong>Staten Island Ferry</strong> from Whitehall Terminal — free, every 30 min, 25 min each way. <strong>Right side going out</strong> for the statue; the open rear deck for the skyline coming back. You must get off and re-board at St. George (5 min). Back at Whitehall about 2:45.</p><p class="swap">Swap: if a Liberty/Ellis slot is booked, make it the 9 AM boat from Battery Park and move the 9/11 block to 1:30 PM.</p></div></li>
+        <li><div class="t">3:00 PM</div><div class="c"><p>Walk north 15 min up Broadway past <strong>City Hall</strong> to the <strong>Brooklyn Bridge</strong> pedestrian entrance at Centre &amp; Chambers — or <span class="b s g">4</span><span class="b s g">5</span><span class="b s g">6</span> one stop from Bowling Green to Brooklyn Bridge–City Hall.</p></div></li>
+        <li><div class="t">3:15 PM<small>to 4:00 PM</small></div><div class="c"><p><strong>Walk the Brooklyn Bridge</strong>, Manhattan → Brooklyn. 1.1 miles on the wooden promenade; bikes were moved to the roadway in 2021, so no dodging. The light on the towers is best 3–5 PM in fall. Down the stairs at Washington St.</p></div></li>
+        <li><div class="t">4:00 PM</div><div class="c"><p><strong>DUMBO</strong>: the Manhattan Bridge framed on Washington St (the photo — 2 minutes, then move), <strong>Jane's Carousel</strong>, <strong>Brooklyn Bridge Park Pier 1</strong> lawns and Pebble Beach; ice cream at <strong>OddFellows</strong> on Water St.</p></div></li>
+        <li><div class="t">5:15 PM</div><div class="c"><p>Ten minutes uphill to the <strong>Brooklyn Heights Promenade</strong> — the skyline at dusk, the reason for the whole day. Bring a layer; it's windy.</p></div></li>
+        <li><div class="t">6:15 PM</div><div class="c"><p>Dinner back down the hill: <strong>Juliana's, 19 Old Fulton St</strong> (Patsy Grimaldi's coal-oven pizza; walk-in only; arriving before 6:30 keeps the wait under 30 min) — or <strong>Time Out Market</strong>, 55 Water St, if the group wants different things.</p></div></li>
+        <li><div class="t">7:45 PM</div><div class="c"><p>Home the scenic way: <strong>NYC Ferry from DUMBO (Fulton Landing) to Wall St/Pier 11</strong> — $4.50, the cheapest skyline cruise in the city; buy in the NYC Ferry app. Raining or late: <span class="b s bl">A</span><span class="b s bl">C</span> from High St, 2 stops to Fulton, 12 min.</p></div></li>
+        <li class="late"><div class="t">Late</div><div class="c"><p><strong>Comedy Cellar, 117 MacDougal</strong> (booked) or a drink on Stone Street.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="day" id="day3">
+      <h3><span class="dn">Day 3</span> Uptown to the West Side — the Met, the High Line, the Village, Broadway</h3>
+      <p class="miles">About 7 miles on foot · 1 museum · 1 show</p>
+      <ul class="tl">
+        <li><div class="t">8:30 AM</div><div class="c"><p>Breakfast on the Upper West Side: <strong>Zabar's café, 2245 Broadway (80th)</strong> — lox on a bagel; then <strong>Levain Bakery, 351 Amsterdam (77th)</strong> for the 6-ounce cookie to carry into the park.</p></div></li>
+        <li><div class="t">9:30 AM</div><div class="c"><p>Cross <strong>Central Park</strong> on foot from W 81st: Turtle Pond → <strong>Belvedere Castle</strong> (the little balcony over the pond) → the Obelisk → out at 82nd &amp; Fifth. 40 min. The American Museum of Natural History is right there at the start — the kids swap.</p></div></li>
+        <li><div class="t">10:15 AM<small>to 12:45 PM</small></div><div class="c"><p><strong>The Met, 1000 Fifth Ave</strong> — a route, not a wander: <strong>Temple of Dendur</strong> (Egyptian, gallery 131) → <strong>Arms &amp; Armor</strong> → the <strong>American Wing courtyard</strong> (Tiffany windows, coffee) → <strong>European Paintings, 2nd floor</strong> (Vermeer, Rembrandt, Bruegel's <em>Harvesters</em>) → the <strong>Roof Garden</strong> if open (seasonal, usually Apr–Oct <span class="est">est.</span>) for the skyline over the treeline. Hard stop at 2½ hours.</p></div></li>
+        <li><div class="t">12:45 PM</div><div class="c"><p>Lunch: <strong>Lexington Candy Shop, 1226 Lexington (83rd)</strong> — a 1925 luncheonette; egg cream, burger, the real thing. Or E.A.T. on Madison.</p></div></li>
+        <li><div class="t">2:00 PM</div><div class="c"><p><span class="b s g">6</span> 77th St → Grand Central, then <span class="b s p">7</span> to 34 St–Hudson Yards, its last stop. About 30 min door to door. A cab is 20 min, about $25 <span class="est">est.</span>, if feet are done.</p></div></li>
+        <li><div class="t">2:45 PM</div><div class="c"><p><strong>Hudson Yards</strong> — glance at the Vessel (climbing is ticketed; not worth the time) → up onto the <strong>High Line</strong> at 30th St and walk it <strong>south</strong>: 1.45 miles, 60 min with stops — the 30th St spur, the 10th Ave amphitheater window over traffic, the sculptures. Down into <strong>Chelsea Market</strong> at 16th: <strong>Los Tacos No. 1</strong> (adobada) as the 3:30 snack; Lobster Place if it's more.</p></div></li>
+        <li><div class="t">4:15 PM</div><div class="c"><p>Out at Gansevoort → <strong>Little Island</strong> (Pier 55; free; the tulip pillars; 20 min) → optional <strong>Whitney Museum</strong> ($30 <span class="est">est.</span>) if the Met didn't fill them up.</p></div></li>
+        <li><div class="t">5:00 PM</div><div class="c"><p><strong>West Village on foot</strong>: Gansevoort → <strong>Bleecker St</strong> (Murray's Cheese; skip the Magnolia line) → <strong>Grove &amp; Bedford</strong> (the <em>Friends</em> building at 90 Bedford — one minute) → <strong>Washington Square Park</strong>: the arch, the chess tables, whoever is playing the piano under it.</p></div></li>
+        <li><div class="t">6:15 PM</div><div class="c"><p>Dinner: <strong>Via Carota, 51 Grove</strong> (walk-in; at 5:30 or after 9:30 the wait is sane, before 7 it's an hour) · <strong>L'Artusi, 228 W 10th</strong> (book) · cheap and perfect: <strong>Mamoun's Falafel, 119 MacDougal</strong> ($5) or <strong>John's of Bleecker, 278 Bleecker</strong> (whole pies only; historically cash-only — carry $60).</p></div></li>
+        <li><div class="t">7:25 PM</div><div class="c"><p><span class="b s r">1</span> Christopher St → 50th St, 12 min → the <strong>8 PM Broadway show</strong> you booked weeks ago. Doors 30 min before; most shows 7 or 8 PM; Wed/Sat matinees at 2.</p></div></li>
+        <li class="late"><div class="t">Late<small>if no show</small></div><div class="c"><p>Jazz at the <strong>Village Vanguard, 178 7th Ave S</strong> (sets 8 and 10 PM) or <strong>Smalls, 183 W 10th</strong> — you're already there.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="modules">
+    <p class="eyebrow">A 4th day, or replace a block</p>
+    <h2>Swap-in modules</h2>
+    <ul class="rows">
+      <li><div class="k">Knicks at the Garden<br><span class="est">3 h · evening</span></div><div class="v">Oct 20 is banner night vs LeBron's 76ers — the 2026 champions get their rings — and it is priced like a final; any other home game is the better first-timer buy. Sit anywhere; the Chase Bridge seats hang over the court. Pregame: Koreatown is two blocks away.</div></li>
+      <li><div class="k">MSG tour<br><span class="est">75 min · daytime</span></div><div class="v">$48. The locker-room level and the ice-to-court changeover story. Pair with Moynihan Train Hall across 8th Ave (free, 10 min).</div></li>
+      <li><div class="k">Harlem Sunday<br><span class="est">half day</span></div><div class="v">Sunday service at a church that welcomes visitors (arrive 30 min early, dress properly, stay the full service — it isn't a show); lunch at <strong>Sylvia's</strong> or <strong>Red Rooster</strong>; the reopened <strong>Studio Museum in Harlem</strong> (late 2025 <span class="est">est.</span>); the Apollo marquee on 125th.</div></li>
+      <li><div class="k">Queens food crawl<br><span class="est">half day</span></div><div class="v"><span class="b s p">7</span> to Jackson Hts–Roosevelt Av: Colombian, Nepali momos, arepas along Roosevelt Ave — or stay on to Flushing–Main St: the New World Mall food court, Nan Xiang soup dumplings. The most real-New-York $30 of the trip.</div></li>
+      <li><div class="k">Williamsburg<br><span class="est">half day</span></div><div class="v"><span class="b s gr">L</span> to Bedford Ave. Saturdays Apr–Nov: <strong>Smorgasburg</strong> in Marsha P. Johnson State Park (11 AM–6 PM <span class="est">est.</span>). Domino Park's sugar-factory view, the Bedford Ave shops, <strong>Radegast</strong> beer hall; <strong>Lilia</strong> if booked a month out. Back by the East River NYC Ferry.</div></li>
+      <li><div class="k">Roosevelt Island Tram<br><span class="est">45 min</span></div><div class="v">Same $3 tap. An aerial ride over the East River from 59th &amp; 2nd; walk to Four Freedoms Park at the tip. The cheapest aerial view in the city.</div></li>
+      <li><div class="k">The Frick · the Morgan · the Cloisters<br><span class="est">2 h each</span></div><div class="v">The Frick reopened in 2025 with its second floor open for the first time; the Morgan Library's 1906 room; the Cloisters (the Met's medieval branch, <span class="b s bl">A</span> to 190th) is the quietest place in Manhattan.</div></li>
+      <li><div class="k">Tenement Museum<br><span class="est">90 min</span></div><div class="v">Lower East Side; guided only, book 1–2 weeks out; then <strong>Katz's</strong> (pastrami; keep the ticket) and <strong>Russ &amp; Daughters</strong> (the lox counter, since 1914).</div></li>
+      <li><div class="k">Coney Island<br><span class="est">half day</span></div><div class="v">Only while the rides run (they close after Halloween). <span class="b s y">Q</span> to the end. Nathan's, the Cyclone, the boardwalk.</div></li>
+      <li><div class="k">Baseball<br><span class="est">3 h</span></div><div class="v">The regular season ends in late September; October is playoff-only and pricey. Yankee Stadium (<span class="b s g">4</span><span class="b s o">D</span>, 20 min from Midtown), Citi Field (<span class="b s p">7</span>).</div></li>
+    </ul>
+
+    <h3>Adjust for</h3>
+    <ul class="rows">
+      <li><div class="k">Parents 70+</div><div class="v">Taxis between blocks (a cab across Midtown is $12–18 <span class="est">est.</span>); skip the bridge walk and take the ferry both ways (DUMBO ↔ Wall St); cut the Met to 90 min. Top of the Rock has elevators throughout; the Staten Island Ferry is fully step-free.</div></li>
+      <li><div class="k">Kids</div><div class="v">American Museum of Natural History replaces the Met; Central Park Zoo and Wollman Rink; the Intrepid (a real carrier, a real Concorde); Jane's Carousel in DUMBO; FAO Schwarz at Rock Center; the Roosevelt Island tram counts as a ride.</div></li>
+      <li><div class="k">One day only</div><div class="v">Day 1 as written, but replace MoMA with the Staten Island Ferry (<span class="b s r">1</span> from 50th to South Ferry, 25 min) and come back up for sunset at the Rock.</div></li>
+      <li><div class="k">Five days</div><div class="v">Add the Queens crawl and Williamsburg; give the Liberty/Ellis ferry its own morning; leave one afternoon unscheduled in the Village.</div></li>
+      <li><div class="k">Rain</div><div class="v">Grand Central → the Met (or MoMA) → Chelsea Market → the Oculus → Koreatown. All indoors, all connected by subway.</div></li>
+    </ul>
+  </section>
+
+  <section id="around">
+    <p class="eyebrow">The cheat sheet to read on the plane</p>
+    <h2>Getting around</h2>
+    <div class="fares">
+      <div class="fare"><div class="n">$3</div><div class="l">per subway or bus tap</div></div>
+      <div class="fare"><div class="n">$35</div><div class="l">7-day cap · after 12 taps</div></div>
+      <div class="fare"><div class="n">$8.50</div><div class="l">JFK AirTrain</div></div>
+      <div class="fare"><div class="n">Free</div><div class="l">LGA Q70 bus · Staten Island Ferry</div></div>
+      <div class="fare"><div class="n">$4.50</div><div class="l">NYC Ferry, in the app</div></div>
+      <div class="fare"><div class="n">$9</div><div class="l">toll to drive below 60th St</div></div>
+    </div>
+    <ul class="rows">
+      <li><div class="k">Fares</div><div class="v">$3 a ride; tap the same card or phone every time and after 12 taps in 7 rolling days rides are free ($35 cap). Free bus↔subway transfer within 2 hours. No MetroCard sales since Jan 1, 2026; cash on buses is ending this year.</div></li>
+      <li><div class="k">Express vs local</div><div class="v">The map shows white dots (local only) and black dots (express stops). Wrong train and you sail past your stop; get off and cross the platform.</div></li>
+      <li><div class="k">Entrances</div><div class="v">They say "Uptown" or "Downtown." Some entrances serve one direction only; read the sign before tapping in.</div></li>
+      <li><div class="k">Distances</div><div class="v">20 north–south blocks ≈ 1 mile ≈ 20 min on foot. Avenue blocks are about 3× longer. Streets run east–west and count up going north; avenues run north–south and count up going west.</div></li>
+      <li><div class="k">Sidewalk rules</div><div class="v">Walk on the right, stand right on escalators, never stop at the top of subway stairs, step out of the flow to look at your phone.</div></li>
+      <li><div class="k">Taxis vs apps</div><div class="v">Yellow cabs are metered and take cards; JFK↔Manhattan is a flat ~$70 + tolls + tip <span class="est">est.</span>. Ubers and Lyfts add a $1.50 congestion surcharge below 60th; cabs $0.75.</div></li>
+      <li><div class="k">Driving in</div><div class="v">Don't. $9 to enter Manhattan below 60th St at peak, $2.25 overnight, plus parking at $40–70 a day <span class="est">est.</span>. Park outside the zone or at the airport.</div></li>
+      <li><div class="k">Citi Bike</div><div class="v">Day pass about $25 <span class="est">est.</span>; the Hudson River Greenway and the Central Park loop are the safe rides.</div></li>
+      <li><div class="k">Tipping</div><div class="v">18–20% at restaurants (20% is the default now), $1–2 a drink, 15–20% in cabs, $2–5 a bag for a bellhop. Counter service: the tip screen is optional; 10% is fine.</div></li>
+      <li><div class="k">Cash</div><div class="v">Almost nowhere needs it. Carry $40 for carts, John's of Bleecker, and tips.</div></li>
+    </ul>
+  </section>
+
+  <section id="rules">
+    <p class="eyebrow">What a New Yorker knows and a visitor doesn't</p>
+    <h2>First-timer rules</h2>
+    <ol class="rules">
+      <li><strong>One deck, one big museum, one show, one bridge.</strong> Doubling any of them is the most common regret.</li>
+      <li><strong>Eat standing up at least once a day:</strong> a slice folded in half, a bacon-egg-and-cheese from a bodega, a halal-cart plate, a bagel with schmear. That is the cuisine.</li>
+      <li><strong>Reservations drop 14–30 days out at 9–10 AM</strong> on Resy and OpenTable. Walk-ins work at 5:30 or after 9:30. Between 7 and 9 you will wait.</li>
+      <li><strong>Don't book</strong> the hop-on-hop-off bus, the Charging Bull line, the M&amp;M store, or a "Statue of Liberty cruise" that doesn't stop at the island. The Staten Island Ferry does the cruise for free.</li>
+      <li><strong>Layers, not a coat.</strong> Subway platforms are 10°F warmer than the street; the Promenade and the ferry deck are 10°F colder.</li>
+      <li><strong>Wear the shoes you've already walked 8 miles in.</strong> Day 2 is about 6 miles; Day 3 about 7.</li>
+      <li><strong>Look up</strong> in Grand Central, the Chrysler lobby, the Oculus, the Woolworth lobby; <strong>look down</strong> on the High Line. Buildings here are meant to be seen from inside.</li>
+      <li><strong>Do the postcard things without apology</strong> — Times Square once, the bridge, the deck — then spend the equal time somewhere the visitor didn't know existed: the Whispering Gallery, Stone Street, the Promenade, Roosevelt Ave.</li>
+      <li><strong>Sundays:</strong> the Met opens 10 AM, the NYPL reading room 1 PM, TKTS 11 AM, Chinatown dim sum is packed by noon — make Sunday the Brooklyn or Harlem day.</li>
+      <li><strong>The subway runs all night.</strong> Late-night waits are 20 min; a cab home after midnight is money well spent.</li>
+    </ol>
+  </section>
+
+  <section id="fall">
+    <p class="eyebrow">What's on while they're here</p>
+    <h2>Fall 2026 overlay</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Date</th><th>What</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="k">now → late Oct</td><td>Best weather of the year: 60s–70s °F, low humidity, long light</td><td>Foliage in Central Park peaks late Oct–early Nov <span class="est">est.</span></td></tr>
+          <tr><td class="k">mid-Sep</td><td>Feast of San Gennaro, Mulberry St, Little Italy (typically ~Sep 10–20 <span class="est">est.</span>)</td><td>Evenings; zeppole; skip the restaurants, do the stalls</td></tr>
+          <tr><td class="k">Tue Oct 20</td><td><strong>Knicks banner night at MSG vs the 76ers</strong> — rings, banner, LeBron</td><td>7:30 PM <span class="est">est.</span>; from ~$2,200 on the secondary market as of the schedule release</td></tr>
+          <tr><td class="k">mid-Oct</td><td>Rockefeller Center rink opens; Bryant Park Winter Village opens late Oct <span class="est">est.</span></td><td>Free to watch; the rink is small — book if skating</td></tr>
+          <tr><td class="k">Sat Oct 31</td><td>Village Halloween Parade, 6th Ave from Spring to 16th, 7 PM <span class="est">est.</span></td><td>Anyone in costume can march; the crowd is the show</td></tr>
+          <tr><td class="k">Sun Nov 1</td><td><strong>NYC Marathon</strong> (<span class="est">est.</span> — first Sunday of Nov) and <strong>clocks go back</strong>; sunset ≈ 4:50 PM afterward</td><td>Watch on 1st Ave (mile 17) or Central Park South (mile 26); subways are packed until 3 PM</td></tr>
+          <tr><td class="k">mid-Nov → Jan</td><td>Holiday windows (Saks, Bergdorf, Macy's), Fifth Ave lights</td><td>Weeknights after 8 PM are the only uncrowded window</td></tr>
+          <tr><td class="k">Wed Nov 25, eve</td><td>Macy's balloon inflation, W 77th–81st between Columbus and CPW, ~1–6 PM <span class="est">est.</span></td><td>Better than the parade for kids; go before 3</td></tr>
+          <tr><td class="k">Thu Nov 26</td><td><strong>Macy's Thanksgiving Day Parade</strong>, 8:30 AM start on W 77th, down to 34th</td><td>Stake out Central Park West by 6:30 AM or watch from a hotel window</td></tr>
+          <tr><td class="k">Wed Dec 2 <span class="est">est.</span></td><td>Rockefeller tree lighting</td><td>Standing room only, corralled — watch it on TV and see the tree the next morning at 7 AM</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="food">
+    <p class="eyebrow">Everything mentioned above, in one place</p>
+    <h2>The food shortlist</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Place</th><th>Where</th><th>Order</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Joe's Pizza</td><td>1435 Broadway (40th) · 7 Carmine St</td><td>plain slice, folded</td><td>about $4; the Carmine St original is on Day 3's walk</td></tr>
+          <tr><td class="k">Ess-a-Bagel</td><td>831 3rd Ave (51st)</td><td>everything, scallion cream cheese</td><td>the line moves fast</td></tr>
+          <tr><td class="k">The Halal Guys</td><td>SW corner 53rd &amp; 6th</td><td>chicken &amp; rice, white sauce, red sparingly</td><td>the original cart, not the storefronts</td></tr>
+          <tr><td class="k">Keens Steakhouse</td><td>72 W 36th</td><td>mutton chop, creamed spinach</td><td>book 2–4 weeks; 1885; pipes on the ceiling</td></tr>
+          <tr><td class="k">Koreatown</td><td>W 32nd (5th–6th)</td><td>BCD Tofu House soondubu; Her Name is Han</td><td>open late; no reservations needed</td></tr>
+          <tr><td class="k">Leo's Bagels</td><td>3 Hanover Sq</td><td>bagel &amp; lox</td><td>6 min from the 9/11 Memorial</td></tr>
+          <tr><td class="k">Adrienne's Pizzabar</td><td>54 Stone St</td><td>old-fashioned square pie</td><td>outdoor tables on the cobbles</td></tr>
+          <tr><td class="k">Fraunces Tavern</td><td>54 Pearl St</td><td>chowder, a pint</td><td>1762; museum upstairs</td></tr>
+          <tr><td class="k">Juliana's</td><td>19 Old Fulton St, DUMBO</td><td>No. 1 pie — mozzarella, prosciutto, arugula</td><td>walk-in only; arrive before 6:30</td></tr>
+          <tr><td class="k">OddFellows</td><td>44 Water St, DUMBO</td><td>miso cherry, or whatever is weird</td><td>ice cream on the walk to the Promenade</td></tr>
+          <tr><td class="k">Zabar's</td><td>2245 Broadway (80th)</td><td>lox on a bagel, café side</td><td>the counter is the show</td></tr>
+          <tr><td class="k">Levain Bakery</td><td>351 Amsterdam (77th)</td><td>chocolate-chip walnut</td><td>6 oz; split it</td></tr>
+          <tr><td class="k">Lexington Candy Shop</td><td>1226 Lexington (83rd)</td><td>egg cream, burger</td><td>1925 luncheonette, unchanged</td></tr>
+          <tr><td class="k">Los Tacos No. 1</td><td>Chelsea Market</td><td>adobada on a flour tortilla</td><td>standing counter; 10-min line</td></tr>
+          <tr><td class="k">Via Carota</td><td>51 Grove St</td><td>cacio e pepe, the svizzerina</td><td>walk-in only; go at 5:30</td></tr>
+          <tr><td class="k">L'Artusi</td><td>228 W 10th</td><td>pasta, the ricotta</td><td>book 30 days out at 10 AM <span class="est">est.</span></td></tr>
+          <tr><td class="k">Mamoun's Falafel</td><td>119 MacDougal</td><td>falafel sandwich, hot sauce</td><td>$5; since 1971</td></tr>
+          <tr><td class="k">John's of Bleecker</td><td>278 Bleecker</td><td>whole pie only</td><td>historically cash-only; carry $60</td></tr>
+          <tr><td class="k">Katz's Delicatessen</td><td>205 E Houston</td><td>pastrami on rye, half-sour</td><td>keep the ticket you're handed</td></tr>
+          <tr><td class="k">Russ &amp; Daughters</td><td>179 E Houston</td><td>Gaspé nova on a bagel; or the café on Orchard</td><td>since 1914</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="cal" class="cal">
+    <p class="eyebrow">What's checked vs recalled</p>
+    <h2>Calibration</h2>
+    <p><strong>Verified Sep 12, 2026:</strong> OMNY $3 fare, $35 seven-day cap after 12 taps, MetroCard sales ended Jan 1, 2026 (mta.info); Staten Island Ferry free; NYC Ferry $4.50; JFK AirTrain $8.50; LGA Q70 free; EWR AirTrain + NJ Transit $16.80; Liberty/Ellis ferry $25.50 and Crown $25.80 with a 3–4 month sell-out; Top of the Rock $47–60; Summit from about $44; ESB from $44; the Met $30 with NY-resident pay-what-you-wish; MoMA $30 door / $28 online; 9/11 Museum $36; MSG tour $48 + $5 online; TKTS hours; congestion toll $9 peak / $2.25 overnight; the Knicks open Oct 20 at MSG vs the 76ers as defending champions, with ring-night seats from about $2,200; the Frick's 2025 reopening; Edge's summer-2026 installation overhaul.</p>
+    <p><strong>Recalled, not re-checked</strong> (marked <span class="est">est.</span> in the text): the yellow-cab JFK flat fare (~$70, set in 2022); sunset times (±5 min); NYPL reading-room hours; seasonal dates — San Gennaro, the rink and Winter Village openings, the Halloween Parade, the Marathon, balloon inflation, the tree lighting — all of which follow fixed annual patterns; Comedy Cellar and Vanguard covers; the Citi Bike day pass; Smorgasburg hours; the Studio Museum's reopening month; Whitney admission; John's of Bleecker's card policy; Bar SixtyFive's walk-in bar policy. Each is cheap to confirm the week before; none changes the shape of a day.</p>
+    <p><strong>Judgment calls, not facts:</strong> Top of the Rock over the ESB and Summit; the free ferry over the paid one; the Met over MoMA; the 2½-hour museum cap; Juliana's over Grimaldi's next door. If the visitor has a stated preference, their preference wins.</p>
+  </section>
+
+  <footer>Sources: mta.info fares page · omny.info · 911memorial.org · metmuseum.org · moma.org · topoftherocknyc.com · summitov.com · tdf.org (TKTS) · ferry.nyc · siferry.com · jfkairport.com · nba.com/knicks · Yahoo Sports schedule report · NYC Tourism "What's New" May 2026.</footer>
+</main>
