@@ -1,0 +1,375 @@
+A research-backed buying guide to red light therapy for the face and the scalp: what the clinical evidence supports, which devices to buy for each job, whether one device can do both, and how to use them. Every price, spec, FDA clearance and refund term below was checked against the maker's own site, FDA's 510(k) database or an independent measurement on September 23, 2026.
+
+## 1 Executive Summary
+
+**Judgment: buy two devices. No single device has credible evidence for both facial skin and hair regrowth.** For the face, buy the **Omnilux Contour Face** (~US $395). For thinning hair, buy a **laser-diode cap rather than an LED hat**. The **Capillus PRO** (~US $1,699) is the best overall cap, the **Kiierr 272 Premier** (~US $1,199) is the value pick, and a **HairMax Ultima comb** (~US $249–299) is the cheapest route to a design with sham-controlled trials behind it.
+
+**The two uses do not have equal evidence.**
+
+- **Hair is the stronger case.** Every meta-analysis of sham-controlled trials finds that low-level light adds about **15–20 hairs/cm²** over sham within six months. That is roughly a 10–15% density gain, similar to topical minoxidil.
+- **Face is the weaker case.** No meta-analysis gives a usable pooled wrinkle effect. The best sham-controlled home-mask trial was funded by the mask's maker. The largest independent one found no difference on its blinded wrinkle scale.
+- **Nearly all device trials in both fields were paid for by manufacturers.** No branded consumer mask or cap has an independent sham-controlled trial of its own.
+
+**Treat both as add-ons.** Sunscreen and retinoids remain first-line for facial aging. Minoxidil and finasteride remain first-line for pattern hair loss.
+
+**Picks at a glance**
+
+| Job | Recommendation | Price (Sept 23, 2026) |
+| --- | --- | --- |
+| Best face mask | Omnilux Contour Face | $395 (about $345 on sale) |
+| Face mask with acne mode and a 60-day refund | Shark CryoGlow | $349.99 |
+| Face mask with the longest refund window and published output | HigherDOSE Red Light Face Mask | $349 |
+| Face mask with 3-minute sessions | Solawave Wrinkle Retreat Pro | $399 |
+| Best hair device overall | Capillus PRO | $1,699 |
+| Best hair value, on the trial-tested schedule | Kiierr 272 Premier | $1,199 (list $1,799) |
+| Cheapest trial-backed hair device | HairMax Ultima 12 / Ultima 9 comb | $299 / $249 |
+| Best LED-only hair cap | REVIAN RED | $1,995 ($1,595 with promo code) |
+| One device for face and scalp, if you accept weaker evidence | Celluma MYSTIQUE | $895 |
+
+**Pairs**
+
+- **Best overall:** Omnilux Contour Face plus Capillus PRO, $2,094.
+- **Value:** Omnilux Contour Face plus Kiierr 272 Premier, $1,594.
+- **Budget:** Omnilux Contour Face plus HairMax Ultima 12, $694. That is about $200 less than the one-device Celluma MYSTIQUE, and both halves have stronger evidence.
+
+*Prices move often; this category runs standing sales of 25–40%. Confirm on the maker's page before buying.*
+
+## 2 How To Read This Guide (What Actually Matters)
+
+"FDA-cleared" on the box is not the useful filter. Three questions are:
+
+1. **Can the exact model be tied to a 510(k) K-number?** Several heavily marketed devices, including Wirecutter's and Fortune's top mask picks, could not be.
+2. **Has its output been measured independently?** Measured output ran from close to the claim (Omnilux) to 38% under it (CurrentBody Series 2) to essentially zero (FOREO FAQ 202).
+3. **Did trials test this wavelength, format and schedule?** For the face that means 630–660 nm red, with or without 830–850 nm near-infrared. For hair it means 650–655 nm laser diodes in a comb, cap or helmet on the scalp.
+
+Then match the refund window to the biology. Mask results separate from sham around week 8, so 60–120 days is enough to judge a mask. Hair trials measure at 16–26 weeks, so any refund window shorter than six months closes before you can tell whether a hair device works.
+
+## 3 What the Evidence Supports
+
+Study details below come from PubMed-indexed papers and FDA 510(k) summaries; DOIs and FDA links are in Section 12.
+
+### 3.1 Hair (androgenetic alopecia)
+
+**Meta-analyses agree the effect is real and modest.**
+
+- **Alahmadi 2026** (37 studies, 3,298 patients): +18.56 hairs/cm² and +10.62 µm of shaft thickness over sham, with mild, transient side effects.
+- **Perez 2024** (38 studies, 3,098 patients): standardized effect 1.14 before 20 weeks and 1.44 after, with very high heterogeneity (I² 81–88%).
+- **Cochrane, van Zuuren 2016** (women): laser combs added 17.4 and 17.6 hairs/cm² over sham in two trials, against 13.18 for minoxidil over placebo. Quality was rated low, and participants did not rate their own improvement as significantly better.
+- **Lueangarun 2021** (FDA-cleared home devices only): laser-only devices (SMD 1.52) outperformed laser-plus-LED hybrids (0.85, p=0.043). Gupta & Carviel 2019 found the same direction and no difference between combs and helmets.
+- **Network meta-analyses** rate the certainty for light versus sham "very low" (Gupta 2018). The newest one in men ranks oral finasteride and dutasteride above light therapy (Gupta 2024).
+- **The European S3 guideline** suggests light therapy only "as ancillary therapy" and makes no recommendation beyond six months.
+
+**Every device line with a sham-controlled trial was tested by its own maker.**
+
+| Device lineage | Trial | Design | Result vs sham | Funding |
+| --- | --- | --- | --- | --- |
+| HairMax LaserComb, 655 nm | Leavitt 2009 | 26 weeks, men, 110 completers | Greater terminal-hair density, p<0.0001 | Maker |
+| HairMax 7-, 9-, 12-beam combs | Jimenez 2014 | Four trials, 269 men and women, 26 weeks | Net +11.5 to +17.6 hairs/cm² | Maker |
+| iGrow prototype (21 lasers + 30 LEDs, 655 nm) | Lanzafame 2013, 2014 | 44 men; 47 women; 16 weeks | +39% and +37% relative hair count | Device maker |
+| Capillus272 (272 lasers, 650 nm) | Friedman 2017 | Women only, 40 analyzed, 30 min every other day, 17 weeks | +51% relative hair count | Maker |
+| REVIAN (620/660 nm LEDs) | Thomas 2024 | 160 randomized, 69 analyzed, 26 weeks | No single arm significant; arms pooled +28.5 hairs/cm² | Maker-affiliated authors |
+
+These trials were short, counted hairs in a small tattooed patch, and mostly used glowing incandescent shams.
+
+**Most cleared caps have no trial at all.** FDA has cleared 112 hair-laser devices since 2007. iRestore's first clearance states "No clinical performance data was produced" and relies on the iGrow trials. Kiierr's clearance also had no clinical data and describes the cap as identical to a factory private-label device.
+
+**Other findings that decide purchases**
+
+- **Laser versus LED:** no trial compares them at matched wavelength and dose. The laser advantage comes only from cross-trial subgroups. The trial evidence sits mostly with lasers, so an evidence-driven buyer should choose lasers.
+- **Diode count:** a regression across trials found diode count "not significantly associated" with density gains (Gupta 2020). Each home diode is capped near 5 mW, so "total mW" mostly restates the diode count.
+- **With minoxidil:** conflicting. One 2025 meta-analysis found +6.62 hairs/cm² from adding a cap (Mawu 2025); another found no added benefit (Alosaimi 2025). Alone, a 633 nm device was statistically indistinguishable from 5% minoxidil at six months in a 91-man trial (Neema 2024).
+- **After stopping:** no controlled follow-up exists. A Stanford dermatologist says the effects stop when the light stops.
+- **Panels:** no trial of any free-standing panel for pattern hair loss was found.
+- **Who it can help:** every hair clearance covers only men at Norwood-Hamilton IIa–V, women at Ludwig-Savin I–II, and Fitzpatrick skin types I–IV. Long-bald or scarred scalp will not respond.
+
+### 3.2 Face (fine lines and wrinkles)
+
+**Systematic reviews give wrinkles a middling grade.**
+
+- **Jagdeo 2018** (31 randomized LED trials) graded skin rejuvenation **C**, below acne at B. Two of the six rejuvenation trials found no difference from control. Two authors sat on the advisory board of Omnilux's maker.
+- **Ngoc 2022** pooled a large effect for acne and reported no pooled wrinkle estimate.
+- **Cohen 2021**, a review of home devices, recommended LEDs for acne but not for wrinkles.
+- **A 2025 JAAD expert consensus** lists hair loss among light therapy's effective uses; facial aging is not on that list in its abstract.
+
+**The sham-controlled trials cut both ways.**
+
+- **Park 2025**, the strongest home-mask trial: 60 people, double-blind, multicenter; 630 + 850 nm at no more than 10 mW/cm², 9 minutes five times a week for 12 weeks. Crow's feet improved by at least one grade in 86.2% of users versus 16.7% on sham. **Funded by Y&J Bio, the mask's maker.** A gap that large is implausible for this field and argues for caution.
+- **Bragato 2025**, the largest independent trial: 95 women, 660 nm mask at 6.4 mW/cm² versus sham for four weeks. **No difference on the blinded wrinkle scale**; only software-measured line length and satisfaction improved.
+- **Lee 2007**: 76 people, double-blind, split-face. Wrinkles fell 26% with 633 nm, 33% with 830 nm and 36% with both, from baseline. The device brand and funding could not be verified.
+- **Wunsch 2014**: 136 people, non-contact lamps at 6–13 mW/cm² red. Blinded raters saw improvement in 69–75% of treated versus 4% of untreated controls. No sham, and fully funded by the lamp maker's parent company.
+- **Negative results:** a 588 nm amber device was judged "a placebo" (Boulos 2009); an Omnilux Revive split-face trial found no objective change (Bhat 2005); 660 nm red was no better than white light (Nam 2017).
+
+**What to take from this**
+
+- Choose 630–660 nm red, with or without 830–850 nm near-infrared. That is where the controlled data sit. The 1072 nm diodes in Omnilux Men and CurrentBody rest on one self-reported 2007 trial and a seven-person pilot. Green and multi-color modes have no wrinkle trials.
+- Do not pay extra for irradiance. The positive sham-controlled home trials ran at 6–10 mW/cm², and positive studies span 0.1 to 126 J/cm² per session with no dose-response curve.
+- Expect slow, modest results that depend on continued use. Park's mask separated from sham at week 8. Prescription retinoids remain the best-studied treatment for photoaging, and no trial has compared a mask with tretinoin.
+- Red and near-infrared have weak evidence for acne and none for melasma. Blue 415 nm has acne evidence but can darken skin (Section 9).
+
+### 3.3 What FDA 510(k) clearance means
+
+- **Substantial equivalence, not approval.** Clearance means FDA found the device as safe and effective as an older predicate device. Federal rules state it "does not in any way denote official approval."
+- **Often no clinical data.** Shark CryoGlow's and CurrentBody Series 2's clearances rested on bench, electrical and biocompatibility testing. Most hair-cap clearances submitted no clinical data.
+- **Shared factories.** One Shenzhen manufacturer, Kaiyan, holds the clearances behind the HigherDOSE mask and hat, CurrentBody Series 2 and CurrentBody's dual-light helmet. A brand premium often pays for design and service rather than different light.
+- **Product codes.** Hair devices clear under OAP; wrinkle masks under OHS; acne masks under OLP. "FDA Class II registered" on a wellness panel usually means the 510(k)-exempt infrared-lamp code (ILY), which covers heat and pain, not wrinkles or hair.
+
+## 4 Face: The Picks
+
+### 4.1 Best face mask: Omnilux Contour Face ($395)
+
+- **Light:** 633 nm red plus 830 nm near-infrared from 66 dual-chip bulbs, marketed as "132 LEDs". Claims about 30 mW/cm². One calibrated-spectrometer reading, reported second-hand by LightTherapyIQ, is about 28 mW/cm², among the smallest claim-to-reality gaps in the category.
+- **Use:** 10 minutes, 3–5 times a week, in a flexible silicone shell with a battery controller on a cable.
+- **FDA:** FDA's device-identifier database links the retail model to **K191629**, cleared in September 2019 for "the treatment of full-face wrinkles."
+- **Testers:** Yahoo Shopping's 10-month, six-mask test named it best overall in September 2026. Fortune calls it best for wrinkles. Wirecutter's flexible-mask pick is its sibling, the Omnilux Men.
+- **Weak point:** a 2-year warranty, but **returns only within 30 days and only if unopened.** Yahoo's tester also reported poor customer service.
+
+**Get it if** you want the mask with the most consistent tester support, verified output and a traceable clearance, and you accept that you cannot return it once opened.
+
+### 4.2 Shark CryoGlow ($349.99): acne mode and a real trial period
+
+Cleared (**K242796**) for wrinkles with red and infrared light, and for mild-to-moderate inflammatory acne with red, blue and infrared light. It has a 2-year warranty, a 60-day money-back guarantee and chilled under-eye pads. Programs run 6 minutes for aging and 8 for acne. Shark publishes no wavelengths or irradiance, and its clinical support is a 12-week, 119-person study with no control group. Testers split: Wirecutter's rigid-mask pick and Men's Health's best overall, but Yahoo's tester found the hard shell uncomfortable. It also accounts for 69 of the 107 FDA adverse-event reports under the wrinkle-mask code, mostly irritation, discoloration, burning or eye irritation; high sales and batch filing of foreign reports likely inflate that count.
+
+**Get it if** you want acne treatment in the same mask and a 60-day window to decide.
+
+### 4.3 HigherDOSE Red Light Face Mask ($349): longest refund, published output
+
+Publishes irradiance per wavelength: 26 mW/cm² red plus 24 mW/cm² near-infrared, a 50 mW/cm² total that GembaRed's test matched (GembaRed sells panels, so it is not a neutral lab). Red and near-infrared only, cordless, cleared for full-face wrinkles (**K241933**), with a **120-day money-back guarantee**, the longest among the flagships.
+
+**Get it if** you want to try a mask with the least risk of being stuck with it.
+
+### 4.4 Solawave Wrinkle Retreat Pro ($399): 3-minute sessions
+
+605, 630, 660 and 830 nm from 320 LEDs; 3-minute sessions; cleared for full-face wrinkles (**K252983**, December 2025); 1-year warranty; 60-day refund with free return shipping. Its claimed 65 mW/cm² has not been independently measured.
+
+**Get it if** three minutes is the difference between using a mask and not.
+
+### 4.5 Others, and what to avoid
+
+- **Omnilux Clear ($395):** 415/633 nm, cleared for acne (K210948). The only branded mask with a peer-reviewed study, an open-label 30-patient acne trial. Buy it if acne, not wrinkles, is the goal.
+- **Dr. Dennis Gross DRx SpectraLite FaceWare Pro ($455):** 3-minute sessions, 1-year warranty, 30-day refund. Its clearance is probably K183247 but could not be confirmed.
+- **CurrentBody Series 2 ($469.99, out of stock):** measured at 18.5 mW/cm² against a claimed 30 by an independent spectrometer test.
+- **FOREO FAQ 202 ($799):** measured at about 0.2 mW/cm², with the claimed near-infrared not detected. Treat it as non-therapeutic.
+- **Could not be tied to any FDA clearance:** Omnilux Men, Sun Home Radiant (Fortune's best overall), iRestore Illumina and CurrentBody Series 3. Any of them may be covered by a factory clearance under another name; ask the seller for the K-number before paying for "FDA-cleared".
+
+## 5 Hair: The Picks
+
+### 5.1 Best overall: Capillus PRO ($1,699)
+
+- **Hardware:** 272 laser diodes at 650 nm, 5 mW each, continuous wave, no LEDs, hidden under a ball cap, rechargeable battery.
+- **Use:** 6 minutes a day, with auto-shutoff.
+- **Terms:** 3-year limited warranty, the longest among the recommended caps. A 6-month satisfaction guarantee on capillus.com purchases deducts a 25% service fee, and you pay return shipping.
+- **Evidence:** the same 272-diode hardware class Capillus tested against sham (Friedman 2017, women only). The 272 Pro model is cleared for men and women under K160285 and K163170, though FDA's device registry lists no K-number next to the current "PRO" name.
+- **Dose caveat:** the trial ran 30 minutes every other day. FDA filings list the 272-diode cap at about 2.75 mW/cm², so a 6-minute session delivers about 1 J/cm² against about 4.9 J/cm² in the trial. Clinician opinion calls the schedules equivalent; a cross-trial regression linked more energy per session to more growth. Nobody has tested which is better.
+
+**Get it if** short daily sessions are what will keep you consistent for six months, and you value the longest warranty. The CapillusOne, Plus and Ultra are no longer sold on capillus.com, so older roundup prices for them are stale.
+
+### 5.2 Value: Kiierr 272 Premier ($1,199, list $1,799)
+
+272 laser diodes at 650 nm, pulsed, on the trial-tested schedule of 30 minutes every other day. Battery pack included; 2-year warranty, extendable to five years for $99. The 7-month growth guarantee requires registering a before photo within 45 days and requesting the refund between days 210 and 240; it deducts 25% unless you submit monthly photos. Cleared under K181878 with no clinical data.
+
+**Get it if** you will reliably do 30 minutes every other day. It matches the tested dose for $500 less than the Capillus.
+
+### 5.3 Budget: HairMax Ultima 12 ($299) or Ultima 9 ($249)
+
+12 or 9 lasers at 655 nm; 8 or 11 minutes, three times a week. The beam counts and session lengths match the dose-matched combs in Jimenez 2014, which gained about 11–18 hairs/cm² over sham in both sexes. HairMax holds the original 2007 home-laser clearance (K060305). The trade-offs: you move the comb across the scalp by hand, the warranty is 1 year, and the 6-month refund deducts 20% and applies only to hairmax.com purchases. The hands-free **HairMax PowerFlex 272** ($1,799; 7 minutes three times a week; K180885) has no trial of its own.
+
+**Get it if** you want the most-tested design at the lowest price and will do the hand passes.
+
+### 5.4 LED-only: REVIAN RED ($1,995, $1,595 with promo code)
+
+119 LEDs at 620/660 nm, 10 minutes daily, cleared under K173729. The only LED cap with its own sham-controlled trial, which reached significance only with its active arms pooled. It is also the only hair device here that explicitly promises a **100% refund**, after six months if app-tracked use reaches 80%.
+
+**Get it if** you prefer LEDs and want the most complete refund.
+
+### 5.5 Popular picks to be skeptical of
+
+- **iRestore Elite ($2,699 list, $1,899 sale):** Fortune's "Best Helmet" for "2,500 mW/cm²". That figure is iRestore's total power output in milliwatts from 300 lasers and 200 LEDs, not irradiance; spread over the scalp it works out to about 5 mW/cm², like other caps. It is a laser-LED hybrid, the category that scored lower in meta-analysis subgroups, with no trial of its own. It has a 3-year warranty, but every return deducts a 25% service fee, and the guarantee's refund window is days 365–400.
+- **iRestore Essential ($799 list, $499 sale):** 51 lasers plus 69 LEDs at 655 nm, 25 minutes every other day, 2-year warranty. Same 25% refund fee and day 365–400 window as the Elite, no trial of its own.
+- **HigherDOSE Red Light Hat ($449):** Fortune's best overall. 120 LEDs at 650 nm, a stated 5 mW/cm², 10 minutes daily, cleared under K242363. Its evidence is a survey of 28 users, and its 120-day refund ends at about 17 weeks, just when trials first measure results.
+- **CurrentBody LED Hair Growth Helmet ($859.99):** 120 LEDs at 620–660 nm. Its own 510(k) lists 1.67 mW/cm² and 1 J/cm² per session; one independent reading was about 3 mW/cm². Its evidence is an open-label, 31-person company study.
+- **Theradome PRO LH80 ($995) and EVO LH40 ($695):** all-laser helmets with 80 or 40 lasers at 680 nm and 20-minute sessions. 1-year warranty (current bundles add a 5-year extension), 6-month refund (12 months via the site's quiz). The LH80 clearance submitted no clinical data, and the "727 J/cm²" dose claim is about 100 times the fluence used in trials.
+- **Illumiflow 272 Pro ($899):** the cheapest 272-diode cap, with a 2-year warranty, but it accepts no returns in the first 365 days.
+
+## 6 Can One Device Do Both?
+
+**Not credibly.** The options, in order of plausibility:
+
+- **Celluma MYSTIQUE ($895)** is the only mask sold as treating face and scalp together. It has 168 LEDs at 465, 640 and 880 nm, extends back over the scalp, and offers combined "Aging + Hair" and "Acne + Hair" modes for up to 30 minutes a day. Its sibling, the RESTORE flexible panel ($1,195), has a verified hair clearance (K211038, June 2021). MYSTIQUE's own K-number could not be confirmed, Celluma publishes no irradiance, no trial of the combined modes exists, and its hair side is LED-only. Celluma itself says it is not effective for Norwood I, II, Va, VI or VII, or Ludwig III.
+- **Small panels** such as the Mito Red Light MitoMIN 2.0 ($249; 60 LEDs at 660/850 nm; Mito's commissioned lab test shows 54.6 mW/cm² average at 6 inches) are plausible for the face: the Wunsch trial got wrinkle benefits from non-contact lamps at 6–13 mW/cm². They fail on the scalp. Light drops steeply with distance (Hooga's own figures fall from 90 mW/cm² at 6 inches to 32 at 18 inches), hair absorbs and scatters it, no panel has a hair-loss trial or clearance, and independent spectrometers find popular panels deliver 33–57% less than advertised. Mito Red itself says a cap or helmet is "the most practical" choice for thinning hair.
+- **Face masks for beards or eyebrows:** no controlled trial exists, and no clearance covers facial hair. Lumi Visage's own blog says its mask is "not designed to target the scalp."
+
+The budget two-device pair (HairMax Ultima 12 plus Omnilux Contour, $694) costs less than the MYSTIQUE and has stronger evidence for both jobs. Choose MYSTIQUE only if owning one device matters more to you than the evidence.
+
+## 7 Comparison Tables
+
+### 7.1 Face masks
+
+| Mask | Price | Wavelengths / emitters | Irradiance, claimed → measured | Session | FDA 510(k), indication | Warranty / returns |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Omnilux Contour Face** | $395 (≈$345 sale) | 633 + 830 nm; 66 dual-chip bulbs | ~30 → ~28 mW/cm² | 10 min, 3–5×/wk | K191629: full-face wrinkles | 2 yr; 30 days, unopened only |
+| Shark CryoGlow | $349.99 | Red / blue / IR (630 / 415 / 830 nm per reviewers); 160 tri-wick LEDs | Not published → none | 6 min aging, 8 min acne | K242796: wrinkles + inflammatory acne | 2 yr; 60-day money-back |
+| HigherDOSE Face Mask | $349 | 630 + 830 nm | 26 + 24 → 50 total (vendor test) | 10 or 20 min, 3–5×/wk | K241933: full-face wrinkles | Not found; 120-day money-back |
+| Solawave Wrinkle Retreat Pro | $399 | 605 / 630 / 660 / 830 nm; 320 LEDs | 65 → none | 3 min, 3–5×/wk | K252983: full-face wrinkles | 1 yr; 60 days, free return shipping |
+| CurrentBody Series 2 | $469.99 (out of stock) | 633 / 830 / 1072 nm; 110 bulbs | 30 → 18.5 mW/cm² | 10 min, 3–5×/wk | K250966: full-face wrinkles | 2 yr; 60 days, 10% fee |
+| DRx SpectraLite FaceWare Pro | $455 | 630 / 605 / 880 / 415 nm; 160 LEDs | Not published | 3 min daily | Probably K183247 (wrinkles + acne), unconfirmed | 1 yr; 30-day refund |
+| Therabody TheraFace Mask | $649.99 | 633 / 830 / 415 nm; 648 light sources | Not published | 3–9 min | K230293: wrinkles + acne | 1 yr; 30 days |
+| Omnilux Men | $395 | 633 / 830 / 1072 nm | ~30 claimed | 10 min | No K-number found | 2 yr; 30 days, unopened only |
+
+*LED counts are not comparable across brands: some count chips, some count bulbs, and Shark counts three-chip packages.*
+
+### 7.2 Hair devices
+
+| Device | Price | Emitters / wavelength | Session | FDA 510(k) | Warranty / refund | Own sham trial |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Capillus PRO** | $1,699 | 272 lasers, 650 nm | 6 min daily | K160285 / K163170 (272 Pro); current name not in FDA registry | 3 yr; 6 mo, 25% fee | Yes (Friedman 2017, women) |
+| **Kiierr 272 Premier** | $1,199 (list $1,799) | 272 lasers, 650 nm, pulsed | 30 min every other day | K181878 (no clinical data) | 2 yr; 7 mo, 25% fee unless monthly photos | No |
+| **HairMax Ultima 12 / 9** | $299 / $249 | 12 / 9 lasers, 655 nm | 8 / 11 min, 3×/wk | LaserComb family (K060305 onward); current names not in registry | 1 yr; 6 mo, 20% fee | Yes (Leavitt 2009; Jimenez 2014) |
+| HairMax PowerFlex 272 | $1,799 | 272 lasers, 655 nm | 7 min, 3×/wk | K180885 | 1 yr; 6 mo, 20% fee | No |
+| REVIAN RED | $1,995 ($1,595 with code) | 119 LEDs, 620 / 660 nm | 10 min daily | K173729 (no clinical data submitted) | Warranty not found; 6 mo, 100% if ≥80% app-tracked use | Yes (Thomas 2024, pooled only) |
+| Illumiflow 272 Pro | $899 (list $1,399) | 272 lasers, 650 nm | 30 min every other day | K162071 | 2 yr; refunds only days 365–395, 25% fee unless photos | No |
+| iRestore Elite | $2,699 list / $1,899 sale | 300 lasers + 200 LEDs | 12 min daily | K222081 | 3 yr; request days 365–400, 25% fee | No |
+| iRestore Essential | $799 list / $499 sale | 51 lasers + 69 LEDs, 655 nm | 25 min every other day | iRestore family (K151662 onward) | 2 yr; request days 365–400, 25% fee | No |
+| Theradome PRO LH80 / EVO LH40 | $995 / $695 | 80 / 40 lasers, 680 nm | 20 min, 2× / 4× per wk | K171775 / K180460 | 1 yr; 6 mo (12 via quiz) | No |
+| HigherDOSE Red Light Hat | $449 | 120 LEDs, 650 nm | 10 min daily | K242363 | 1 yr (per Fortune); 120 days | No (28-user survey) |
+| CurrentBody LED helmet | $859.99 | 120 LEDs, 620–660 nm | 10 min daily | K230336; K251017 | Not retrieved | No (open-label, 31 people) |
+| Celluma MYSTIQUE (face + scalp) | $895 | 168 LEDs, 465 / 640 / 880 nm | Up to 30 min daily | Sibling RESTORE K211038; own number unconfirmed | Not retrieved | No |
+
+*All hair clearances cover only Norwood-Hamilton IIa–V, Ludwig-Savin I–II and Fitzpatrick I–IV.*
+
+## 8 How To Use It
+
+**Face**
+
+1. Start with clean, dry skin. Apply serums and moisturizer after the session.
+2. Run the maker's program, typically 10 minutes 3–5 times a week. Keep eyes closed or wear the supplied goggles.
+3. If you use tretinoin or another retinoid, do not apply it right before a session.
+4. Photograph your face in the same light and expression every four weeks. Judge at 8–12 weeks.
+5. Drop to 2–3 sessions a week for maintenance; gains fade if you stop.
+
+**Hair**
+
+1. Use on dry, product-free hair. Apply minoxidil after the session if you use it.
+2. Seat the cap or helmet on the scalp, or part the hair with the comb teeth and move slowly. For a comb, the passes are the treatment.
+3. Follow the device's schedule exactly; doubling sessions does not double results.
+4. Photograph the crown and hairline monthly under the same light. Temporary shedding in the first one to two months is common.
+5. Judge at 16–26 weeks, and keep using it for maintenance.
+
+## 9 Safety
+
+- **No UV:** these devices cannot sunburn.
+- **Blue light and pigment:** blue 415 nm light caused pigmentation lasting up to three months in skin types III–IV, while 630 nm red caused none (Duteil 2014). If you have darker skin or melasma, choose a red/near-infrared-only mask such as the Omnilux Contour or HigherDOSE, or skip blue acne modes.
+- **Eyes:** near-infrared is invisible and does not trigger a blink. Neutrogena recalled its acne mask in July 2019 over a theoretical eye-injury risk. A 2026 case report describes acute angle-closure glaucoma in both eyes after two weeks of red-light mask use; it resolved and causation is unproven. Wear goggles with high-output panels.
+- **Photosensitizing drugs:** ask a clinician first if you take isotretinoin, doxycycline or other light-sensitizing medication. One FDA adverse-event report describes cheek blisters after a mask session that followed tretinoin.
+- **Pregnancy, epilepsy, skin cancer in the treated area:** warnings come from manufacturer labeling, not clinical data. Follow the label.
+
+## 10 FAQ
+
+**Is FDA-cleared the same as proven?** No. Clearance means equivalent to an older device, and many clearances in both categories rest on bench testing with no clinical data.
+
+**Laser or LED for hair?** No trial compares them head to head. The trial record sits mostly with lasers, and laser-only devices scored higher in meta-analysis subgroups, so choose lasers unless an LED device's terms matter more to you.
+
+**Do more diodes or more mW/cm² mean better results?** No. Diode count did not predict hair results across trials, and the positive home-mask trials used 6–10 mW/cm².
+
+**Can I use a panel for my hair?** Not with trial support. Hair blocks light, output falls fast with distance, and no panel is cleared or tested for hair loss.
+
+**Will a face mask grow my beard?** No controlled evidence says so, and no clearance covers facial hair.
+
+**Do I still need minoxidil, finasteride, retinoids and sunscreen?** Yes. Light is an add-on in both uses.
+
+**How long until results?** Face: 8–12 weeks. Hair: 16–26 weeks. Both fade when you stop.
+
+## 11 Bottom Line
+
+- **Face:** Omnilux Contour Face. Choose Shark CryoGlow for acne plus a 60-day refund, or HigherDOSE for a 120-day refund.
+- **Hair:** Capillus PRO for 6-minute daily sessions and a 3-year warranty; Kiierr 272 Premier for the trial-tested schedule at $500 less; HairMax Ultima comb for the most-tested design at the lowest price.
+- **One device:** Celluma MYSTIQUE only if one device matters more than evidence; a panel only as a face device.
+- **Skip:** masks you cannot tie to a K-number, LED hair hats backed by surveys, and "irradiance" figures in the thousands of mW/cm².
+- **Whatever you buy:** match the refund window to the biology, photograph monthly, and keep sunscreen, retinoids and minoxidil or finasteride as the foundation.
+
+## 12 Sources
+
+**Clinical evidence**
+
+- [Alahmadi et al. 2026: lasers and energy-based devices in androgenetic alopecia, meta-analysis](https://doi.org/10.1159/000551411)
+- [Perez et al. 2024: low-level laser and LED therapy in alopecia, meta-analysis](https://doi.org/10.1097/DSS.0000000000004442)
+- [van Zuuren et al. 2016: Cochrane review, female pattern hair loss](https://doi.org/10.1002/14651858.CD007628.pub4)
+- [Lueangarun et al. 2021: FDA-cleared home LLLT devices, meta-analysis](https://jcadonline.com/laser-therapy-hair-loss/)
+- [Gupta & Carviel 2019: device characteristics and LLLT efficacy](https://doi.org/10.1080/09546634.2019.1688755)
+- [Gupta et al. 2018: network meta-analysis, male pattern hair loss](https://doi.org/10.1111/jdv.15081)
+- [Gupta et al. 2024: network meta-analysis, men](https://doi.org/10.1111/jocd.16362)
+- [Gupta et al. 2020: LLLT parameters regression](https://doi.org/10.1111/dth.14191)
+- [Mawu et al. 2025: LLLT plus minoxidil vs minoxidil, meta-analysis](https://doi.org/10.1007/s10103-025-04593-7)
+- [Alosaimi et al. 2025: minoxidil alone vs plus LLLT, meta-analysis](https://doi.org/10.1080/09546634.2024.2447355)
+- [Neema et al. 2024: 633 nm device vs 5% minoxidil](https://doi.org/10.1016/j.mjafi.2024.03.006)
+- [Leavitt et al. 2009: HairMax LaserComb sham-controlled trial](https://doi.org/10.2165/00044011-200929050-00001)
+- [Jimenez et al. 2014: four sham-controlled laser comb trials](https://doi.org/10.1007/s40257-013-0060-6)
+- [Lanzafame et al. 2013: helmet trial, men](https://doi.org/10.1002/lsm.22173)
+- [Lanzafame et al. 2014: helmet trial, women](https://doi.org/10.1002/lsm.22277)
+- [Friedman & Schnoor 2017: Capillus272 trial, women](https://doi.org/10.1097/DSS.0000000000001114)
+- [Thomas et al. 2024: REVIAN LED cap trial](https://doi.org/10.1097/DSS.0000000000004509)
+- [European S3 guideline on androgenetic alopecia](https://turkderm.org.tr/turkdermData/Uploads/files/S3_guideline_androgenetic_alopecia_update_final-version.pdf)
+- [Jagdeo et al. 2018: LED systematic review](https://pmc.ncbi.nlm.nih.gov/articles/PMC6099480/)
+- [Ngoc et al. 2022: LED meta-analysis](https://doi.org/10.1111/phpp.12841)
+- [Cohen et al. 2021: home-use aesthetic devices review](https://doi.org/10.1007/s00403-021-02231-0)
+- [Maghfour et al. 2025: JAAD photobiomodulation consensus](https://doi.org/10.1016/j.jaad.2025.04.031)
+- [Park et al. 2025: home LED/IRED mask, sham-controlled trial](https://doi.org/10.1097/MD.0000000000041596)
+- [Bragato et al. 2025: 660 nm mask, sham-controlled trial](https://doi.org/10.1007/s10103-025-04383-1)
+- [Lee et al. 2007: 633/830 nm split-face trial](https://doi.org/10.1016/j.jphotobiol.2007.04.008)
+- [Wunsch & Matuschka 2014: red and near-infrared controlled trial](https://doi.org/10.1089/pho.2013.3616)
+- [Boulos et al. 2009: 588 nm LED blinded evaluation](https://doi.org/10.1111/j.1524-4725.2008.34414.x)
+- [Bhat et al. 2005: Omnilux Revive split-face trial](https://doi.org/10.1007/s10103-005-0330-5)
+- [Nam et al. 2017: red vs white light trial](https://doi.org/10.1097/DSS.0000000000000981)
+- [Duteil et al. 2014: blue vs red light pigmentation](https://doi.org/10.1111/pcmr.12273)
+- [Labkovich et al. 2026: angle-closure glaucoma case report](https://doi.org/10.1016/j.ajoc.2026.102645)
+- [Baeza-Moyano et al. 2026: irradiance variability of commercial masks](https://doi.org/10.1007/s43630-026-00908-x)
+
+**Regulatory**
+
+- [21 CFR 807.97: clearance is not approval](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part-807/subpart-E/section-807.97)
+- [K191629: Omnilux Contour Face (faceLITE)](https://www.accessdata.fda.gov/cdrh_docs/pdf19/K191629.pdf)
+- [K242796: Shark CryoGlow](https://www.accessdata.fda.gov/cdrh_docs/pdf24/K242796.pdf)
+- [K241933: HigherDOSE face mask](https://www.accessdata.fda.gov/cdrh_docs/pdf24/K241933.pdf)
+- [K252983: Solawave Wrinkle Retreat Pro](https://www.accessdata.fda.gov/cdrh_docs/pdf25/K252983.pdf)
+- [K250966: CurrentBody Series 2](https://www.accessdata.fda.gov/cdrh_docs/pdf25/K250966.pdf)
+- [K060305: HairMax LaserComb](https://www.accessdata.fda.gov/cdrh_docs/pdf6/K060305.pdf)
+- [K163170: Capillus 272 Pro](https://www.accessdata.fda.gov/cdrh_docs/pdf16/K163170.pdf)
+- [K181878: Kiierr](https://www.accessdata.fda.gov/cdrh_docs/pdf18/K181878.pdf)
+- [K151662: iRestore](https://www.accessdata.fda.gov/cdrh_docs/pdf15/K151662.pdf)
+- [K173729: REVIAN RED](https://www.accessdata.fda.gov/cdrh_docs/pdf17/K173729.pdf)
+- [K230336: CurrentBody hair helmet](https://www.accessdata.fda.gov/cdrh_docs/pdf23/K230336.pdf)
+- [K211038: Celluma RESTORE](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K211038)
+- [openFDA MAUDE: wrinkle-device adverse events by brand](https://api.fda.gov/device/event.json?search=device.device_report_product_code:OHS&count=device.brand_name.exact&limit=25)
+
+**Reviews and independent measurements**
+
+- [Yahoo Shopping: best LED face masks, tested (Sept 2026)](https://shopping.yahoo.com/beauty/skincare/article/best-led-face-mask-194406618.html)
+- [Fortune: best red light therapy masks](https://fortune.com/article/best-red-light-therapy-masks)
+- [Fortune: best red light therapy for hair loss](https://fortune.com/article/best-red-light-therapy-for-hair-loss/)
+- [Wirecutter Show: are red light masks worth it?](https://podcasts.apple.com/us/podcast/are-red-light-masks-worth-it/id1762217793?i=1000711134777)
+- [Innerbody: best laser caps for hair loss](https://www.innerbody.com/best-laser-cap-for-hair-loss)
+- [LightTherapyIQ: Omnilux Contour Face measurement](https://www.lighttherapyiq.com/reviews/omnilux-contour-face-review)
+- [Light Therapy Insiders: CurrentBody Series 2 measurement](https://www.lighttherapyinsiders.com/currentbody-series-2-ledmask-review/)
+- [Light Therapy Insiders: FOREO FAQ 202 measurement](https://www.lighttherapyinsiders.com/foreo-faq-202-led-mask-review/)
+- [ISHRS: red light therapy and hair loss](https://ishrs.org/red-light-therapy-hair-loss/)
+- [AAD: red light therapy](https://www.aad.org/public/cosmetic/safety/red-light-therapy)
+- [Stanford Medicine: red light therapy in clinics](https://med.stanford.edu/news/insights/2025/02/red-light-therapy-skin-hair-medical-clinics.html)
+
+**Manufacturer pages (prices, specs, terms)**
+
+- [Omnilux Contour Face](https://www.omniluxled.com/products/omnilux-contour-face)
+- [Shark CryoGlow](https://www.sharkninja.com/shark-cryoglow-red-blue-infrared-iqled-face-mask-under-eye-cooling---blue-frost/FW312.html)
+- [HigherDOSE Red Light Face Mask](https://higherdose.com/products/red-light-face-mask)
+- [Solawave Wrinkle Retreat Pro](https://www.solawave.co/products/wrinkle-retreat-pro-red-light-therapy-led-face-mask-infrared-fda-cleared)
+- [Capillus PRO](https://www.capillus.com/products/capillus-pro)
+- [Kiierr 272 Premier](https://kiierr.com/products/272) and [refund policy](https://kiierr.com/policies/refund-policy)
+- [HairMax Ultima 12](https://www.hairmax.com/products/ultima-12-classic-lasercomb) and [warranty and returns](https://www.hairmax.com/pages/warranty-guarantee-returns-exchanges)
+- [REVIAN](https://revian.com/)
+- [iRestore Elite](https://www.irestorelaser.com/products/laser-hair-growth-system-elite) and [refund policy](https://www.irestorelaser.com/policies/refund-policy)
+- [Illumiflow refund policy](https://illumiflow.com/policies/refund-policy)
+- [Theradome PRO LH80](https://www.theradome.com/products/theradome-pro-lh80-1)
+- [HigherDOSE Red Light Hat](https://higherdose.com/products/red-light-hat)
+- [CurrentBody LED Hair Growth Helmet](https://us.currentbody.com/products/currentbody-skin-led-hair-regrowth-device)
+- [Celluma MYSTIQUE](https://www.celluma.com/products/celluma-mystique-led-light-therapy-mask)
+- [Mito Red Light MitoMIN 2.0](https://mitoredlight.com/products/mitomin)
+
+*Compiled September 23, 2026. Specifications, refund terms and prices change often; confirm on the maker's page before buying. Nothing here is medical advice. People with a skin cancer history, photosensitivity or light-sensitizing medication should ask a dermatologist first.*
